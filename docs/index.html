@@ -31,6 +31,7 @@ svg{width:100%;height:auto;display:block}
 <div class="leg"><span><i style="background:var(--c1)"></i>Claude</span><span><i style="background:var(--c2)"></i>Welt-ETF</span><span><i style="background:var(--c3)"></i>Du</span></div></div>
 <h2>Positionen</h2><div class="wrap"><table id="pos"></table></div>
 <h2>Orderbuch</h2><div class="wrap"><table id="trd"></table></div>
+<h2>Offene Aufträge</h2><div class="wrap"><table id="ord"></table></div>
 <p class="mute" id="warn"></p>
 <p class="mute">Reine Simulation, keine Anlageberatung. Kurse von Yahoo Finance, gerechnet in Euro (Dollar-Werte mit aktuellem Wechselkurs).</p>
 </main>
@@ -60,6 +61,10 @@ fetch('data.json?'+Date.now()).then(r=>r.json()).then(d=>{
  let t='<tr><th>Datum</th><th>Art</th><th>Titel</th><th>Stück</th><th>Kurs €</th><th>Hinweis</th></tr>';
  d.trades.forEach(r=>{t+='<tr><td>'+r.date+'</td><td>'+r.side+'</td><td>'+r.name+'</td><td>'+f(r.qty,r.qty%1?2:0)+'</td><td>'+f(r.price)+'</td><td>'+(r.note||'')+'</td></tr>'});
  document.getElementById('trd').innerHTML=t;
+ let o='<tr><th>Art</th><th>Titel</th><th>Grenze €</th><th>Stück</th><th>Gültig bis</th><th>Hinweis</th></tr>';
+ (d.orders||[]).forEach(r=>{o+='<tr><td>'+r.side+'</td><td>'+r.name+'</td><td>'+(r.side=='KAUF'?'≤ ':'≥ ')+f(r.limit)+'</td><td>'+f(r.qty,r.qty%1?2:0)+'</td><td>'+r.valid_until+'</td><td>'+(r.note||'')+'</td></tr>'});
+ if(!(d.orders||[]).length)o+='<tr><td colspan="6">Keine offenen Aufträge</td></tr>';
+ document.getElementById('ord').innerHTML=o;
  document.getElementById('warn').textContent=d.warnings.length?'Hinweise: '+d.warnings.join(' '):'';
 }).catch(e=>{document.getElementById('upd').textContent='Daten konnten nicht geladen werden: '+e});
 </script>
