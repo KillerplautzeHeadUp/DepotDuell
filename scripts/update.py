@@ -107,7 +107,7 @@ def main():
     bench = round(bl / st["benchmark"]["start_price"] * 100, 2) if bl else (hist[-1]["bench"] if hist else 100.0)
     hist = [h for h in hist if h["date"] != ds] + [{"date": ds, "value": value, "idx": idx, "bench": bench}]
 
-    out = {"updated": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d %H:%M UTC"), "value": value,
+    out = {"updated": dt.datetime.now(__import__("zoneinfo").ZoneInfo("Europe/Berlin")).strftime("%d.%m.%Y %H:%M Uhr"), "value": value,
            "cash": round(st["cash"], 2), "reserve": st["reserve"], "rate": st["weekly_rate"],
            "series": hist, "user": usr, "positions": rows, "trades": st["trades"][::-1][:60],
            "deposits": st["deposits"], "warnings": warn}
