@@ -106,7 +106,7 @@
    "qty": 0.15,
    "buy": 71923.82,
    "stop": 0.35,
-   "last": 69929.0078
+   "last": 69787.4609
   },
   {
    "name": "Alphabet (Klasse A)",
@@ -248,6 +248,11 @@
    "date": "2026-10-29",
    "amount": 365.0,
    "note": "Wochenrate"
+  },
+  {
+   "date": "2026-11-01",
+   "amount": 0.0,
+   "note": "Test"
   }
  ],
  "last_fx": 1.1182805299758911
