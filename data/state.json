@@ -106,7 +106,7 @@
    "qty": 0.15,
    "buy": 71923.82,
    "stop": 0.35,
-   "last": 69962.7969
+   "last": 69929.0078
   },
   {
    "name": "Alphabet (Klasse A)",
@@ -125,7 +125,7 @@
    "qty": 118,
    "buy": 73.02,
    "stop": null,
-   "last": 73.02
+   "last": 71.68
   }
  ],
  "trades": [

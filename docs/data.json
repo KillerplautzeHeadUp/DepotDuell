@@ -1,6 +1,6 @@
 {
- "updated": "2026-11-01 17:35 UTC",
- "value": 283590.17,
+ "updated": "2026-11-01 17:40 UTC",
+ "value": 283426.98,
  "cash": 33300.58,
  "reserve": 30000,
  "rate": 365,
@@ -25,8 +25,8 @@
   },
   {
    "date": "2026-11-01",
-   "value": 283590.17,
-   "idx": 100.88,
+   "value": 283426.98,
+   "idx": 100.82,
    "bench": 100.07
   }
  ],
@@ -149,9 +149,9 @@
    "ticker": "BTC-EUR",
    "qty": 0.15,
    "buy": 71923.82,
-   "price": 69962.8,
-   "pct": -2.73,
-   "value": 10494.42,
+   "price": 69929.01,
+   "pct": -2.77,
+   "value": 10489.35,
    "stop": 0.35,
    "weight": 3.7
   },
@@ -168,12 +168,12 @@
   },
   {
    "name": "iShares Core MSCI Japan IMI",
-   "ticker": "EUNN",
+   "ticker": "EUNN.DE",
    "qty": 118,
    "buy": 73.02,
-   "price": 73.02,
-   "pct": 0.0,
-   "value": 8616.36,
+   "price": 71.68,
+   "pct": -1.84,
+   "value": 8458.24,
    "stop": null,
    "weight": 3.0
   }
@@ -300,7 +300,5 @@
    "note": "Wochenrate"
   }
  ],
- "warnings": [
-  "Kein Kurs fuer iShares Core MSCI Japan IMI (Ticker 'EUNN'), letzter bekannter Wert genutzt."
- ]
+ "warnings": []
 }
