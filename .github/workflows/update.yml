@@ -6,6 +6,8 @@ on:
   workflow_dispatch: {}
 permissions:
   contents: write
+concurrency:
+  group: depot
 jobs:
   update:
     runs-on: ubuntu-latest

@@ -1,0 +1,39 @@
+name: Orders buchen
+on:
+  issues:
+    types: [opened]
+permissions:
+  contents: write
+  issues: write
+concurrency:
+  group: depot
+jobs:
+  orders:
+    if: github.event.issue.user.login == github.repository_owner && startsWith(github.event.issue.title, 'Order')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Orders buchen
+        run: python scripts/apply_orders.py
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+      - name: Seite aktualisieren
+        run: python scripts/update.py
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      - name: Speichern und antworten
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "depot-bot"
+          git config user.email "depot-bot@users.noreply.github.com"
+          git add data docs
+          git diff --cached --quiet || git commit -m "Orders aus Issue #${{ github.event.issue.number }}"
+          git push
+          gh issue comment ${{ github.event.issue.number }} --body-file order_result.txt
+          gh issue close ${{ github.event.issue.number }}
