@@ -1,8 +1,7 @@
 name: Depot aktualisieren
 on:
   schedule:
-    - cron: "15 16 * * 1-5"   # ca. 17:15 Uhr deutscher Zeit
-    - cron: "10 21 * * 1-5"   # ca. 22:10 Uhr deutscher Zeit
+    - cron: "*/30 6-21 * * 1-5"   # alle 30 Minuten, ca. 7 bis 22 Uhr deutscher Zeit
   workflow_dispatch: {}
 permissions:
   contents: write
