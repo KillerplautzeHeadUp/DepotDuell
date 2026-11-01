@@ -24,7 +24,8 @@ def notify(text):
 def fetch(tickers):
     """Gibt {ticker: (letzter Kurs, Vortagesschluss)} zurueck; None bei Fehlern."""
     if os.environ.get("FAKE"):
-        return {t: (None, None) for t in tickers}
+        fake = json.loads(os.environ.get("FAKE_PX", "{}"))
+        return {t: (fake.get(t), None) for t in tickers}
     import yfinance as yf
     out = {}
     for t in tickers:
@@ -52,6 +53,8 @@ def main():
 
     tickers = {p["ticker"] for p in st["positions"] if p.get("ticker")}
     tickers |= {st["benchmark"]["ticker"], "EURUSD=X"} | set(st.get("watch", []))
+    st.setdefault("orders", [])
+    tickers |= {o["ticker"] for o in st["orders"] if o.get("ticker")}
     px = fetch(sorted(tickers))
     fx = px["EURUSD=X"][0] or st.get("last_fx", 1.12)
     st["last_fx"] = fx
@@ -65,6 +68,49 @@ def main():
         st["last_deposit"] = ds
         dep_today += st["weekly_rate"]
         notify(f"Wochenrate {st['weekly_rate']} EUR gebucht. Claude setzt sie beim naechsten Check-in ein.")
+
+    # Bedingte Auftraege (Limit-Orders)
+    def price_of(tk, ccy):
+        l = px.get(tk, (None, None))[0] if tk else None
+        return None if l is None else eur(ccy, l)
+    pending = []
+    for o in st["orders"]:
+        if ds > o["valid_until"]:
+            notify(f"Auftrag abgelaufen: {o['side']} {o['name']} (Grenze {o['limit']} EUR)")
+            continue
+        ex = next((x for x in st["positions"] if x["name"] == o["name"]), None)
+        if o["side"] == "KAUF":
+            pr = price_of(o["ticker"], o["ccy"])
+            if pr is not None and pr <= o["limit"]:
+                cost = o["qty"] * pr + fee
+                if cost > st["cash"] or (ex is None and len(st["positions"]) >= 90):
+                    notify(f"Auftrag nicht ausgefuehrt (Cash oder 90-Positionen-Grenze): Kauf {o['name']}")
+                    pending.append(o); continue
+                if ex:
+                    ex["buy"] = round((ex["qty"] * ex["buy"] + o["qty"] * pr) / (ex["qty"] + o["qty"]), 4)
+                    ex["qty"] = round(ex["qty"] + o["qty"], 8); ex["last"] = round(pr, 4)
+                else:
+                    st["positions"].append({"name": o["name"], "ticker": o["ticker"], "ccy": o["ccy"], "qty": o["qty"],
+                                            "buy": round(pr, 4), "stop": o.get("stop"), "last": round(pr, 4)})
+                st["cash"] = round(st["cash"] - cost, 2)
+                st["trades"].append({"date": ds, "side": "Kauf", "name": o["name"], "qty": o["qty"], "price": round(pr, 2),
+                                     "fee": fee, "note": "Limit-Auftrag. " + o.get("note", "")})
+                notify(f"AUFTRAG ausgefuehrt: Kauf {o['qty']:g} x {o['name']} zu {pr:.2f} EUR (Grenze {o['limit']}).")
+                continue
+        elif ex and ex.get("ticker"):
+            pr = price_of(ex["ticker"], ex["ccy"])
+            if pr is not None and pr >= o["limit"]:
+                q = min(o["qty"], ex["qty"])
+                st["cash"] = round(st["cash"] + q * pr - fee, 2)
+                ex["qty"] = round(ex["qty"] - q, 8)
+                if ex["qty"] <= 1e-9:
+                    st["positions"].remove(ex)
+                st["trades"].append({"date": ds, "side": "Verkauf", "name": o["name"], "qty": q, "price": round(pr, 2),
+                                     "fee": fee, "note": "Limit-Auftrag. " + o.get("note", "")})
+                notify(f"AUFTRAG ausgefuehrt: Verkauf {q:g} x {o['name']} zu {pr:.2f} EUR (Grenze {o['limit']}).")
+                continue
+        pending.append(o)
+    st["orders"] = pending
 
     rows, keep = [], []
     for p in st["positions"]:
@@ -110,7 +156,7 @@ def main():
     out = {"updated": dt.datetime.now(__import__("zoneinfo").ZoneInfo("Europe/Berlin")).strftime("%d.%m.%Y %H:%M Uhr"), "value": value,
            "cash": round(st["cash"], 2), "reserve": st["reserve"], "rate": st["weekly_rate"],
            "series": hist, "user": usr, "positions": rows, "trades": st["trades"][::-1][:60],
-           "deposits": st["deposits"], "warnings": warn}
+           "deposits": st["deposits"], "orders": st["orders"], "warnings": warn}
     save(st, "data", "state.json"); save(hist, "data", "history.json"); save(out, "docs", "data.json")
     print(f"Fertig: Wert {value} EUR, Index {idx}, Benchmark {bench}, Warnungen: {len(warn)}")
 

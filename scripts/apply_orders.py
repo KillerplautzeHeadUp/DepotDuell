@@ -16,6 +16,7 @@ def main():
     body = os.environ.get("ISSUE_BODY", "")
     st, usr = load("data", "state.json"), load("data", "user.json")
     today, fee, out = dt.date.today().isoformat(), load("data", "state.json")["fee"], []
+    st.setdefault("orders", [])
     find = lambda n: next((p for p in st["positions"] if p["name"].lower() == n.lower()), None)
     for raw in body.splitlines():
         line = raw.strip()
@@ -61,6 +62,19 @@ def main():
                 d, i = a[1] or today, num(a[2])
                 usr = [u for u in usr if u["date"] != d] + [{"date": d, "idx": i}]
                 usr.sort(key=lambda u: u["date"]); out.append(f"OK Dein Index {d}: {i}")
+            elif cmd == "LIMITKAUF":  # LIMITKAUF;Name;Ticker;Waehrung;Grenze_EUR;Stueck;GueltigBis;Stop;Hinweis
+                dt.date.fromisoformat(a[6])
+                st["orders"].append({"side": "KAUF", "name": a[1], "ticker": a[2], "ccy": a[3] or "EUR", "limit": num(a[4]),
+                                     "qty": num(a[5]), "valid_until": a[6], "stop": num(a[7]) if a[7] else None, "note": a[8]})
+                out.append(f"OK Auftrag: Kauf {a[5]} x {a[1]} bei <= {a[4]} EUR, gueltig bis {a[6]}")
+            elif cmd == "LIMITVERKAUF":  # LIMITVERKAUF;Name;Grenze_EUR;Stueck;GueltigBis;Hinweis
+                dt.date.fromisoformat(a[4])
+                st["orders"].append({"side": "VERKAUF", "name": a[1], "limit": num(a[2]), "qty": num(a[3]),
+                                     "valid_until": a[4], "note": a[5]})
+                out.append(f"OK Auftrag: Verkauf {a[3]} x {a[1]} bei >= {a[2]} EUR, gueltig bis {a[4]}")
+            elif cmd == "LOESCHEN":  # LOESCHEN;Name  (entfernt offene Auftraege dieses Titels)
+                n = len(st["orders"]); st["orders"] = [o for o in st["orders"] if o["name"].lower() != a[1].lower()]
+                out.append(f"OK {n - len(st['orders'])} Auftrag/Auftraege fuer {a[1]} geloescht")
             else:
                 out.append(f"UNBEKANNT: {line}")
         except Exception as e:
