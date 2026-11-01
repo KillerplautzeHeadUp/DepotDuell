@@ -1,0 +1,298 @@
+{
+ "updated": "2026-10-30 22:57 (Startstand)",
+ "value": 283822.42,
+ "cash": 33300.58,
+ "reserve": 30000,
+ "rate": 365,
+ "series": [
+  {
+   "date": "2026-10-23",
+   "value": 279700.0,
+   "idx": 100.0,
+   "bench": 100.0
+  },
+  {
+   "date": "2026-10-28",
+   "value": 285563.86,
+   "idx": 102.1,
+   "bench": 101.64
+  },
+  {
+   "date": "2026-10-30",
+   "value": 283822.42,
+   "idx": 100.96,
+   "bench": 99.9
+  }
+ ],
+ "user": [
+  {
+   "date": "2026-10-23",
+   "idx": 100.0
+  },
+  {
+   "date": "2026-10-28",
+   "idx": 101.43
+  },
+  {
+   "date": "2026-10-30",
+   "idx": 99.42
+  }
+ ],
+ "positions": [
+  {
+   "name": "iShares Core MSCI World",
+   "ticker": "EUNL.DE",
+   "qty": 503,
+   "buy": 129.59,
+   "price": 129.46,
+   "pct": -0.1,
+   "value": 65118.38,
+   "stop": null,
+   "weight": 22.9
+  },
+  {
+   "name": "iShares Core MSCI EM IMI",
+   "ticker": "IS3N.DE",
+   "qty": 615,
+   "buy": 45.4,
+   "price": 45.0,
+   "pct": -0.88,
+   "value": 27675.0,
+   "stop": null,
+   "weight": 9.8
+  },
+  {
+   "name": "Xetra-Gold",
+   "ticker": "4GLD.DE",
+   "qty": 205,
+   "buy": 116.37,
+   "price": 111.8,
+   "pct": -3.93,
+   "value": 22919.0,
+   "stop": null,
+   "weight": 8.1
+  },
+  {
+   "name": "ASML",
+   "ticker": "ASML.AS",
+   "qty": 19,
+   "buy": 1393.2,
+   "price": 1429.4,
+   "pct": 2.6,
+   "value": 27158.6,
+   "stop": 0.25,
+   "weight": 9.6
+  },
+  {
+   "name": "Eli Lilly",
+   "ticker": "LLY",
+   "qty": 19,
+   "buy": 1143.57,
+   "price": 1283.0,
+   "pct": 12.19,
+   "value": 24377.0,
+   "stop": 0.22,
+   "weight": 8.6
+  },
+  {
+   "name": "TotalEnergies",
+   "ticker": "TTE.PA",
+   "qty": 280,
+   "buy": 81.54,
+   "price": 85.55,
+   "pct": 4.92,
+   "value": 23954.0,
+   "stop": 0.2,
+   "weight": 8.4
+  },
+  {
+   "name": "JPMorgan Chase",
+   "ticker": "JPM",
+   "qty": 40,
+   "buy": 295.95,
+   "price": 302.35,
+   "pct": 2.16,
+   "value": 12094.0,
+   "stop": 0.2,
+   "weight": 4.3
+  },
+  {
+   "name": "TSMC",
+   "ticker": "TSM",
+   "qty": 30,
+   "buy": 373.54,
+   "price": 359.5,
+   "pct": -3.76,
+   "value": 10785.0,
+   "stop": 0.25,
+   "weight": 3.8
+  },
+  {
+   "name": "Siemens",
+   "ticker": "SIE.DE",
+   "qty": 45,
+   "buy": 256.8,
+   "price": 266.05,
+   "pct": 3.6,
+   "value": 11972.25,
+   "stop": 0.2,
+   "weight": 4.2
+  },
+  {
+   "name": "Bitcoin",
+   "ticker": "BTC-EUR",
+   "qty": 0.15,
+   "buy": 71923.82,
+   "price": 68663.0,
+   "pct": -4.53,
+   "value": 10299.45,
+   "stop": 0.35,
+   "weight": 3.6
+  },
+  {
+   "name": "Alphabet (Klasse A)",
+   "ticker": "GOOGL",
+   "qty": 22,
+   "buy": 262.7,
+   "price": 252.4,
+   "pct": -3.92,
+   "value": 5552.8,
+   "stop": 0.25,
+   "weight": 2.0
+  },
+  {
+   "name": "iShares Core MSCI Japan IMI",
+   "ticker": "",
+   "qty": 118,
+   "buy": 73.02,
+   "price": 73.02,
+   "pct": 0.0,
+   "value": 8616.36,
+   "stop": null,
+   "weight": 3.0
+  }
+ ],
+ "trades": [
+  {
+   "date": "2026-10-30",
+   "side": "Kauf",
+   "name": "iShares Core MSCI Japan IMI",
+   "qty": 118,
+   "price": 73.02,
+   "fee": 1,
+   "note": "eigene Recherche"
+  },
+  {
+   "date": "2026-10-29",
+   "side": "Kauf",
+   "name": "Alphabet (Klasse A)",
+   "qty": 22,
+   "price": 262.7,
+   "fee": 1,
+   "note": "durch Nutzerthema angestossen, maessige Ueberzeugung"
+  },
+  {
+   "date": "2026-10-24",
+   "side": "Kauf",
+   "name": "Bitcoin",
+   "qty": 0.15,
+   "price": 71923.82,
+   "fee": 1,
+   "note": "plus Spread ca. 54 EUR"
+  },
+  {
+   "date": "2026-10-23",
+   "side": "Kauf",
+   "name": "Siemens",
+   "qty": 45,
+   "price": 256.8,
+   "fee": 1,
+   "note": "eigene Recherche"
+  },
+  {
+   "date": "2026-10-23",
+   "side": "Kauf",
+   "name": "TSMC",
+   "qty": 30,
+   "price": 373.54,
+   "fee": 1,
+   "note": "eigene Recherche"
+  },
+  {
+   "date": "2026-10-23",
+   "side": "Kauf",
+   "name": "JPMorgan Chase",
+   "qty": 40,
+   "price": 295.95,
+   "fee": 1,
+   "note": "eigene Recherche"
+  },
+  {
+   "date": "2026-10-23",
+   "side": "Kauf",
+   "name": "TotalEnergies",
+   "qty": 280,
+   "price": 81.54,
+   "fee": 1,
+   "note": "Start"
+  },
+  {
+   "date": "2026-10-23",
+   "side": "Kauf",
+   "name": "Eli Lilly",
+   "qty": 19,
+   "price": 1143.57,
+   "fee": 1,
+   "note": "Start"
+  },
+  {
+   "date": "2026-10-23",
+   "side": "Kauf",
+   "name": "ASML",
+   "qty": 19,
+   "price": 1393.2,
+   "fee": 1,
+   "note": "Start"
+  },
+  {
+   "date": "2026-10-23",
+   "side": "Kauf",
+   "name": "Xetra-Gold",
+   "qty": 205,
+   "price": 116.37,
+   "fee": 1,
+   "note": "Start"
+  },
+  {
+   "date": "2026-10-23",
+   "side": "Kauf",
+   "name": "iShares Core MSCI EM IMI",
+   "qty": 615,
+   "price": 45.4,
+   "fee": 1,
+   "note": "Start"
+  },
+  {
+   "date": "2026-10-23",
+   "side": "Kauf",
+   "name": "iShares Core MSCI World",
+   "qty": 503,
+   "price": 129.59,
+   "fee": 1,
+   "note": "Start"
+  }
+ ],
+ "deposits": [
+  {
+   "date": "2026-10-29",
+   "amount": 1076.5,
+   "note": "Zuschuss"
+  },
+  {
+   "date": "2026-10-29",
+   "amount": 365.0,
+   "note": "Wochenrate"
+  }
+ ],
+ "warnings": []
+}

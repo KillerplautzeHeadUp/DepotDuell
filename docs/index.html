@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Depot-Duell: Du gegen Claude</title>
+<style>
+:root{--bg:#eef1ef;--card:#fbfcfb;--ink:#14201c;--mute:#5b6a64;--line:#d5dcd8;--gain:#0e7c66;--loss:#b3392b;--c1:#0e7c66;--c2:#2f5d8a;--c3:#7a4f8f}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1714;--card:#17211d;--ink:#e6eeea;--mute:#93a39b;--line:#2b3832;--gain:#4cc2a5;--loss:#ef7d6e;--c1:#4cc2a5;--c2:#6ea3d6;--c3:#b48ac7}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;padding-top:env(safe-area-inset-top,0)}
+main{max-width:820px;margin:0 auto;padding:18px 14px 48px}
+h1{font:600 26px/1.15 Georgia,serif;margin:0}h2{font:600 19px Georgia,serif;margin:28px 0 10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.big{font:600 38px/1.1 Georgia,serif}.mute{color:var(--mute);font-size:13px}
+.wrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:560px;font-variant-numeric:tabular-nums}
+th,td{padding:8px 11px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}th{color:var(--mute);font-size:13px}tr:last-child td{border:0}
+.up{color:var(--gain)}.dn{color:var(--loss)}
+svg{width:100%;height:auto;display:block}
+.leg span{margin-right:14px;font-size:13px}.leg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px}
+</style>
+</head>
+<body><main>
+<h1>Depot-Duell: Du gegen Claude</h1>
+<p class="mute" id="upd">Lade Daten …</p>
+<div class="card"><div class="mute">Depotwert Claude</div><div class="big" id="val"></div><div class="mute" id="sub"></div></div>
+<h2>Entwicklung</h2><div class="wrap"><table id="per"></table></div>
+<h2>Verlauf (Start = 100)</h2><div class="card"><svg id="ch" viewBox="0 0 700 240"></svg>
+<div class="leg"><span><i style="background:var(--c1)"></i>Claude</span><span><i style="background:var(--c2)"></i>Welt-ETF</span><span><i style="background:var(--c3)"></i>Du</span></div></div>
+<h2>Positionen</h2><div class="wrap"><table id="pos"></table></div>
+<h2>Orderbuch</h2><div class="wrap"><table id="trd"></table></div>
+<p class="mute" id="warn"></p>
+<p class="mute">Reine Simulation, keine Anlageberatung. Kurse von Yahoo Finance, gerechnet in Euro (Dollar-Werte mit aktuellem Wechselkurs).</p>
+</main>
+<script>
+const f=(n,d=2)=>n.toLocaleString('de-DE',{minimumFractionDigits:d,maximumFractionDigits:d});
+const pc=v=>v==null?'–':'<span class="'+(v>=0?'up':'dn')+'">'+(v>=0?'+':'−')+f(Math.abs(v))+' %</span>';
+const at=(a,ref)=>{let r=null;for(const x of a){if(x.date<=ref)r=x}return r};
+const perf=(a,ref)=>{const b=at(a,ref);return b?(a[a.length-1].v/b.v-1)*100:null};
+fetch('data.json?'+Date.now()).then(r=>r.json()).then(d=>{
+ document.getElementById('upd').textContent='Stand: '+d.updated;
+ document.getElementById('val').textContent=f(d.value)+' €';
+ document.getElementById('sub').textContent='Cash '+f(d.cash)+' € · Backup-Reserve '+f(d.reserve)+' € · Wochenrate '+f(d.rate,0)+' €';
+ const C=d.series.map(s=>({date:s.date,v:s.idx})),B=d.series.map(s=>({date:s.date,v:s.bench})),U=d.user.map(s=>({date:s.date,v:s.idx}));
+ const L=C[C.length-1].date,dt=new Date(L),iso=x=>x.toISOString().slice(0,10);
+ const refs=[['Heute',C.length>1?C[C.length-2].date:'0'],['Monat',iso(new Date(dt.getFullYear(),dt.getMonth(),0))],
+  ['Jahr (12 Monate)',iso(new Date(dt.getFullYear()-1,dt.getMonth(),dt.getDate()))],['Seit 01.01. (YTD)',(dt.getFullYear()-1)+'-12-31'],['Gesamt seit Start',C[0].date]];
+ let h='<tr><th>Zeitraum</th><th>Claude</th><th>Welt-ETF</th><th>Du</th></tr>';
+ refs.forEach(r=>{h+='<tr><td>'+r[0]+'</td><td>'+pc(perf(C,r[1]))+'</td><td>'+pc(perf(B,r[1]))+'</td><td>'+pc(U.length?perf(U,r[1]):null)+'</td></tr>'});
+ document.getElementById('per').innerHTML=h;
+ const all=[...C,...B,...U].map(x=>x.v),mn=Math.min(...all)-0.5,mx=Math.max(...all)+0.5,n=C.length;
+ const X=i=>40+i*(640/Math.max(n-1,1)),Y=v=>210-(v-mn)/(mx-mn)*190;
+ const line=(a,col)=>'<polyline fill="none" stroke="var('+col+')" stroke-width="2.5" points="'+C.map((c,i)=>{const r=at(a,c.date);return r?X(i)+','+Y(r.v):''}).filter(Boolean).join(' ')+'"/>';
+ document.getElementById('ch').innerHTML='<line x1="40" x2="680" y1="'+Y(100)+'" y2="'+Y(100)+'" stroke="var(--line)" stroke-dasharray="4"/><text x="4" y="'+(Y(100)+4)+'" fill="var(--mute)" font-size="12">100</text>'+line(B,'--c2')+line(U,'--c3')+line(C,'--c1');
+ let p='<tr><th>Titel</th><th>Stück</th><th>Kaufkurs €</th><th>Aktuell €</th><th>±</th><th>Wert €</th><th>Anteil</th><th>Stop</th></tr>';
+ d.positions.forEach(r=>{p+='<tr><td>'+r.name+'</td><td>'+f(r.qty,r.qty%1?2:0)+'</td><td>'+f(r.buy)+'</td><td>'+f(r.price)+'</td><td>'+pc(r.pct)+'</td><td>'+f(r.value)+'</td><td>'+f(r.weight,1)+' %</td><td>'+(r.stop?'−'+Math.round(r.stop*100)+' %':'–')+'</td></tr>'});
+ document.getElementById('pos').innerHTML=p;
+ let t='<tr><th>Datum</th><th>Art</th><th>Titel</th><th>Stück</th><th>Kurs €</th><th>Hinweis</th></tr>';
+ d.trades.forEach(r=>{t+='<tr><td>'+r.date+'</td><td>'+r.side+'</td><td>'+r.name+'</td><td>'+f(r.qty,r.qty%1?2:0)+'</td><td>'+f(r.price)+'</td><td>'+(r.note||'')+'</td></tr>'});
+ document.getElementById('trd').innerHTML=t;
+ document.getElementById('warn').textContent=d.warnings.length?'Hinweise: '+d.warnings.join(' '):'';
+}).catch(e=>{document.getElementById('upd').textContent='Daten konnten nicht geladen werden: '+e});
+</script>
+</body></html>

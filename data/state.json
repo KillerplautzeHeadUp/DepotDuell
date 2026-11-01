@@ -1,0 +1,253 @@
+{
+ "start_date": "2026-10-23",
+ "start_capital": 279700,
+ "reserve": 30000,
+ "weekly_rate": 365,
+ "savings_from": "2026-11-02",
+ "fee": 1.0,
+ "cash": 33300.58,
+ "last_deposit": "",
+ "benchmark": {
+  "name": "iShares Core MSCI World",
+  "ticker": "EUNL.DE",
+  "start_price": 129.59
+ },
+ "watch": [
+  "MSFT",
+  "NVDA",
+  "NOVO-B.CO"
+ ],
+ "positions": [
+  {
+   "name": "iShares Core MSCI World",
+   "ticker": "EUNL.DE",
+   "ccy": "EUR",
+   "qty": 503,
+   "buy": 129.59,
+   "stop": null,
+   "last": 129.46
+  },
+  {
+   "name": "iShares Core MSCI EM IMI",
+   "ticker": "IS3N.DE",
+   "ccy": "EUR",
+   "qty": 615,
+   "buy": 45.4,
+   "stop": null,
+   "last": 45.0
+  },
+  {
+   "name": "Xetra-Gold",
+   "ticker": "4GLD.DE",
+   "ccy": "EUR",
+   "qty": 205,
+   "buy": 116.37,
+   "stop": null,
+   "last": 111.8
+  },
+  {
+   "name": "ASML",
+   "ticker": "ASML.AS",
+   "ccy": "EUR",
+   "qty": 19,
+   "buy": 1393.2,
+   "stop": 0.25,
+   "last": 1429.4
+  },
+  {
+   "name": "Eli Lilly",
+   "ticker": "LLY",
+   "ccy": "USD",
+   "qty": 19,
+   "buy": 1143.57,
+   "stop": 0.22,
+   "last": 1283.0
+  },
+  {
+   "name": "TotalEnergies",
+   "ticker": "TTE.PA",
+   "ccy": "EUR",
+   "qty": 280,
+   "buy": 81.54,
+   "stop": 0.2,
+   "last": 85.55
+  },
+  {
+   "name": "JPMorgan Chase",
+   "ticker": "JPM",
+   "ccy": "USD",
+   "qty": 40,
+   "buy": 295.95,
+   "stop": 0.2,
+   "last": 302.35
+  },
+  {
+   "name": "TSMC",
+   "ticker": "TSM",
+   "ccy": "USD",
+   "qty": 30,
+   "buy": 373.54,
+   "stop": 0.25,
+   "last": 359.5
+  },
+  {
+   "name": "Siemens",
+   "ticker": "SIE.DE",
+   "ccy": "EUR",
+   "qty": 45,
+   "buy": 256.8,
+   "stop": 0.2,
+   "last": 266.05
+  },
+  {
+   "name": "Bitcoin",
+   "ticker": "BTC-EUR",
+   "ccy": "EUR",
+   "qty": 0.15,
+   "buy": 71923.82,
+   "stop": 0.35,
+   "last": 68663.0
+  },
+  {
+   "name": "Alphabet (Klasse A)",
+   "ticker": "GOOGL",
+   "ccy": "USD",
+   "qty": 22,
+   "buy": 262.7,
+   "stop": 0.25,
+   "last": 252.4
+  },
+  {
+   "name": "iShares Core MSCI Japan IMI",
+   "ticker": "",
+   "isin": "IE00B4L5YX21",
+   "ccy": "EUR",
+   "qty": 118,
+   "buy": 73.02,
+   "stop": null,
+   "last": 73.02
+  }
+ ],
+ "trades": [
+  {
+   "date": "2026-10-23",
+   "side": "Kauf",
+   "name": "iShares Core MSCI World",
+   "qty": 503,
+   "price": 129.59,
+   "fee": 1,
+   "note": "Start"
+  },
+  {
+   "date": "2026-10-23",
+   "side": "Kauf",
+   "name": "iShares Core MSCI EM IMI",
+   "qty": 615,
+   "price": 45.4,
+   "fee": 1,
+   "note": "Start"
+  },
+  {
+   "date": "2026-10-23",
+   "side": "Kauf",
+   "name": "Xetra-Gold",
+   "qty": 205,
+   "price": 116.37,
+   "fee": 1,
+   "note": "Start"
+  },
+  {
+   "date": "2026-10-23",
+   "side": "Kauf",
+   "name": "ASML",
+   "qty": 19,
+   "price": 1393.2,
+   "fee": 1,
+   "note": "Start"
+  },
+  {
+   "date": "2026-10-23",
+   "side": "Kauf",
+   "name": "Eli Lilly",
+   "qty": 19,
+   "price": 1143.57,
+   "fee": 1,
+   "note": "Start"
+  },
+  {
+   "date": "2026-10-23",
+   "side": "Kauf",
+   "name": "TotalEnergies",
+   "qty": 280,
+   "price": 81.54,
+   "fee": 1,
+   "note": "Start"
+  },
+  {
+   "date": "2026-10-23",
+   "side": "Kauf",
+   "name": "JPMorgan Chase",
+   "qty": 40,
+   "price": 295.95,
+   "fee": 1,
+   "note": "eigene Recherche"
+  },
+  {
+   "date": "2026-10-23",
+   "side": "Kauf",
+   "name": "TSMC",
+   "qty": 30,
+   "price": 373.54,
+   "fee": 1,
+   "note": "eigene Recherche"
+  },
+  {
+   "date": "2026-10-23",
+   "side": "Kauf",
+   "name": "Siemens",
+   "qty": 45,
+   "price": 256.8,
+   "fee": 1,
+   "note": "eigene Recherche"
+  },
+  {
+   "date": "2026-10-24",
+   "side": "Kauf",
+   "name": "Bitcoin",
+   "qty": 0.15,
+   "price": 71923.82,
+   "fee": 1,
+   "note": "plus Spread ca. 54 EUR"
+  },
+  {
+   "date": "2026-10-29",
+   "side": "Kauf",
+   "name": "Alphabet (Klasse A)",
+   "qty": 22,
+   "price": 262.7,
+   "fee": 1,
+   "note": "durch Nutzerthema angestossen, maessige Ueberzeugung"
+  },
+  {
+   "date": "2026-10-30",
+   "side": "Kauf",
+   "name": "iShares Core MSCI Japan IMI",
+   "qty": 118,
+   "price": 73.02,
+   "fee": 1,
+   "note": "eigene Recherche"
+  }
+ ],
+ "deposits": [
+  {
+   "date": "2026-10-29",
+   "amount": 1076.5,
+   "note": "Zuschuss"
+  },
+  {
+   "date": "2026-10-29",
+   "amount": 365.0,
+   "note": "Wochenrate"
+  }
+ ]
+}
