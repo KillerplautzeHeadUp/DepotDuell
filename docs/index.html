@@ -20,12 +20,30 @@ th:first-child,td:first-child{text-align:left}th{color:var(--mute);font-size:13p
 .up{color:var(--gain)}.dn{color:var(--loss)}
 svg{width:100%;height:auto;display:block}
 .leg span{margin-right:14px;font-size:13px}.leg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px}
+details.help{margin-top:14px}details.help summary{cursor:pointer;font-weight:600}details.help ul{margin:8px 0 0;padding-left:18px}details.help li{margin:3px 0;font-size:14px}details.help h3{font-size:14px;margin:12px 0 2px}code{background:var(--line);padding:1px 5px;border-radius:4px;font-size:13px}
 </style>
 </head>
 <body><main>
 <h1>Depot-Duell: Du gegen Claude</h1>
 <p class="mute" id="upd">Lade Daten …</p>
 <div class="card"><div class="mute">Depotwert Claude</div><div class="big" id="val"></div><div class="mute" id="sub"></div></div>
+<details class="card help"><summary>Anleitung: So liest du die Seite</summary>
+<h3>Kopfzeile</h3><ul>
+<li><b>Cash</b> ist nicht investiertes Geld. Die <b>Backup-Reserve</b> (30.000 €) liegt getrennt und wird nur bei einer außergewöhnlichen Chance genutzt.</li>
+<li><b>Kern-Sparplan</b>: Der Prozentwert ist der Anteil der Wochenrate, der automatisch in die Kern-ETFs geht. Steht eine Regel dahinter, hat der Autopilot den Anteil gerade geändert.</li></ul>
+<h3>Zahlen</h3><ul>
+<li><b>Entwicklung</b>: Rendite in Prozent, bereinigt um Einzahlungen. „Du“ ist dein Depot, „Welt-ETF“ der Vergleichswert.</li>
+<li><b>Verlauf</b> und <b>Letzte Tage</b>: Index mit Start = 100. Über 100 ist im Plus.</li>
+<li><b>Positionen</b>: „±“ ist die Veränderung seit Kauf. „Stop“ heißt: Verkauf, wenn der Kurs so viel unter dem Kaufkurs liegt.</li>
+<li><b>Risiko</b>: Größter Rückgang ist der stärkste Verlust vom Hoch bis zum Tief. Beta 1 bedeutet: schwankt wie der Welt-ETF, über 1 stärker.</li>
+<li><b>Offene Aufträge</b>: „≤“ kauft, wenn der Kurs auf die Grenze fällt. „≥“ verkauft, wenn er sie erreicht.</li></ul>
+<h3>Befehle (als Issue mit Titel „Order“)</h3><ul>
+<li><code>KERN;ANTEIL;0,3</code>: Die Zahl ist der Anteil der Wochenrate für die Kern-ETFs. 0,3 sind 30 %, 0,5 sind 50 %, 1 ist alles. Der Rest bleibt Cash.</li>
+<li><code>KERN;PAUSE</code> stoppt den Kern-Sparplan, <code>KERN;AN</code> setzt ihn fort.</li>
+<li><code>KERN;AUTO;AUS</code> schaltet den Autopiloten ab, <code>KERN;AUTO;AN</code> wieder ein. Er erhöht den Anteil auf 80 %, wenn der Welt-ETF über 10 % unter dem Jahreshoch liegt, und passt ihn bei hohem oder niedrigem Cash an (70 % bzw. 30 %). Bei einem Tagesverlust über 7 % pausiert er den Sparplan.</li></ul>
+<h3>Telegram</h3><ul>
+<li><code>DEPOT 280650</code> meldet deinen Depotwert. Mit neuem Geld: <code>DEPOT 281015 EINZAHLUNG 365</code>. Zahlen ohne Tausenderpunkt.</li></ul>
+</details>
 <h2>Entwicklung</h2><div class="wrap"><table id="per"></table></div>
 <h2>Verlauf (Start = 100)</h2><div class="card"><svg id="ch" viewBox="0 0 700 240"></svg>
 <div class="leg"><span><i style="background:var(--c1)"></i>Claude</span><span><i style="background:var(--c2)"></i>Welt-ETF</span><span><i style="background:var(--c3)"></i>Du</span></div></div>
