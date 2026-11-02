@@ -14,7 +14,7 @@ def save(obj, *a):
 
 def notify(text):
     print("MELDUNG:", text)
-    tok, chat = os.environ.get("TELEGRAM_TOKEN"), os.environ.get("TELEGRAM_CHAT_ID")
+    tok, chat = (os.environ.get("TELEGRAM_TOKEN") or "").strip(), (os.environ.get("TELEGRAM_CHAT_ID") or "").strip()
     if not (tok and chat):
         return
     try:
@@ -47,6 +47,55 @@ def fetch(tickers):
         out[t] = (last, prev)
     return out
 
+def process_telegram():
+    """Liest Nachrichten deines Bots (nur von deiner Chat-ID): DEPOT <Wert> [EINZAHLUNG <Betrag>]."""
+    tok = (os.environ.get("TELEGRAM_TOKEN") or "").strip()
+    chat = (os.environ.get("TELEGRAM_CHAT_ID") or "").strip()
+    if not chat:
+        return
+    if os.environ.get("FAKE_TG"):
+        updates = json.loads(os.environ["FAKE_TG"])
+    elif tok:
+        try:
+            off = load("data", "tg_offset.json").get("offset")
+        except Exception:
+            off = None
+        url = f"https://api.telegram.org/bot{tok}/getUpdates" + (f"?offset={off}" if off else "")
+        try:
+            updates = json.load(urllib.request.urlopen(url, timeout=20))["result"]
+        except Exception as e:
+            print("Telegram-Abruf-Fehler:", e)
+            return
+    else:
+        return
+    if not updates:
+        return
+    try:
+        meta = load("data", "user_meta.json")
+    except Exception:
+        meta = {"start": load("data", "state.json")["start_capital"], "deposits": 1441.5}
+    usr = load("data", "user.json")
+    today = dt.date.today().isoformat()
+    for u in updates:
+        m = u.get("message") or {}
+        if str(m.get("chat", {}).get("id")) != chat:
+            continue
+        w = (m.get("text") or "").upper().replace(",", ".").replace("€", "").split()
+        try:
+            val = float(w[w.index("DEPOT") + 1])
+            dep = float(w[w.index("EINZAHLUNG") + 1]) if "EINZAHLUNG" in w else 0.0
+        except Exception:
+            notify("Nicht verstanden. Schreibe z. B.: DEPOT 280650   oder   DEPOT 281015 EINZAHLUNG 365")
+            continue
+        meta["deposits"] = round(meta["deposits"] + dep, 2)
+        idx = round((val - meta["deposits"]) / meta["start"] * 100, 2)
+        usr = [x for x in usr if x["date"] != today] + [{"date": today, "idx": idx}]
+        usr.sort(key=lambda x: x["date"])
+        notify(f"Dein Depot: Index {idx:.2f} ({idx - 100:+.2f} %) seit Start, bereinigt um {meta['deposits']:.2f} EUR Einzahlungen.")
+    save(usr, "data", "user.json")
+    save(meta, "data", "user_meta.json")
+    save({"offset": max(u["update_id"] for u in updates) + 1}, "data", "tg_offset.json")
+
 def get_dividends(ticker):
     """Liste von (Ex-Tag, Betrag je Stueck in Handelswaehrung)."""
     if os.environ.get("FAKE"):
@@ -59,6 +108,7 @@ def get_dividends(ticker):
         return []
 
 def main():
+    process_telegram()
     st, hist, usr = load("data", "state.json"), load("data", "history.json"), load("data", "user.json")
     today = dt.date.today()
     ds = today.isoformat()
