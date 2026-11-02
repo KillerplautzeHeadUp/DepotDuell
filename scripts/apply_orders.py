@@ -82,6 +82,13 @@ def main():
             elif cmd == "LOESCHEN":  # LOESCHEN;Name  (entfernt offene Auftraege dieses Titels)
                 n = len(st["orders"]); st["orders"] = [o for o in st["orders"] if o["name"].lower() != a[1].lower()]
                 out.append(f"OK {n - len(st['orders'])} Auftrag/Auftraege fuer {a[1]} geloescht")
+            elif cmd == "KERN":  # KERN;PAUSE  |  KERN;AN  |  KERN;ANTEIL;0,3
+                c = common.core(st)
+                if a[1].upper() == "PAUSE": c["paused"] = True
+                elif a[1].upper() == "AN": c["paused"] = False
+                elif a[1].upper() == "ANTEIL": c["share"] = num(a[2])
+                else: raise ValueError("PAUSE, AN oder ANTEIL")
+                out.append(f"OK Kern-Sparplan: {'pausiert' if c['paused'] else 'aktiv'}, Anteil {c['share']:.0%}")
             else:
                 out.append(f"UNBEKANNT: {line}")
         except Exception as e:

@@ -40,3 +40,8 @@ def tax_on(st, taxable):
 
 def spread(cls):
     return 0.005 if cls == "crypto" else 0.0
+
+def core(st):
+    """Kern-Sparplan: Anteil der Wochenrate, Zielgewichte (von Claude festgelegt) und Pause-Schalter."""
+    return st.setdefault("core", {"share": 0.5, "paused": False, "targets": {
+        "iShares Core MSCI World": 0.6, "iShares Core MSCI EM IMI": 0.2, "iShares Core MSCI Japan IMI": 0.2}})

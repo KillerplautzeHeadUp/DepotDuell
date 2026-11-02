@@ -110,7 +110,7 @@ def get_dividends(ticker):
 def main():
     process_telegram()
     st, hist, usr = load("data", "state.json"), load("data", "history.json"), load("data", "user.json")
-    today = dt.date.today()
+    today = dt.date.fromisoformat(os.environ["FAKE_TODAY"]) if os.environ.get("FAKE_TODAY") else dt.date.today()
     ds = today.isoformat()
     warn, fee = [], st["fee"]
 
@@ -131,7 +131,7 @@ def main():
         st["deposits"].append({"date": ds, "amount": st["weekly_rate"], "note": "Wochenrate"})
         st["last_deposit"] = ds
         dep_today += st["weekly_rate"]
-        notify(f"Wochenrate {st['weekly_rate']} EUR gebucht. Claude setzt sie beim naechsten Check-in ein.")
+        notify(f"Wochenrate {st['weekly_rate']} EUR gebucht. Ein Teil geht in den Kern-Sparplan, der Rest bleibt Cash fuer den naechsten Check-in.")
 
     # Dividenden (Steuer wird sofort abgezogen)
     chk = st.get("div_checked", st["start_date"])
@@ -195,6 +195,27 @@ def main():
         pending.append(o)
     st["orders"] = pending
 
+    # Kern-Sparplan: Teil der Wochenrate geht automatisch in den am staerksten untergewichteten Kern-ETF (Sparplan ohne Gebuehr)
+    cr = common.core(st)
+    if st.get("last_deposit") == ds and st.get("last_core") != ds and not cr["paused"]:
+        st["last_core"] = ds
+        amt = round(min(st["weekly_rate"] * cr["share"], st["cash"]), 2)
+        tg = {}
+        for p in st["positions"]:
+            if p["name"] in cr["targets"]:
+                tg[p["name"]] = (p, price_of(p.get("ticker"), p["ccy"]) or p.get("last", p["buy"]))
+        if tg and amt > 0:
+            tot = sum(p["qty"] * pr for p, pr in tg.values()) + amt
+            name = max(tg, key=lambda n: cr["targets"][n] * tot - tg[n][0]["qty"] * tg[n][1])
+            p, pr = tg[name]
+            qty = round(amt / pr, 4); cost = round(qty * pr, 2)
+            p["buy"] = round((p["qty"] * p["buy"] + cost) / (p["qty"] + qty), 4)
+            p["qty"] = round(p["qty"] + qty, 8)
+            st["cash"] = round(st["cash"] - cost, 2)
+            st["trades"].append({"date": ds, "side": "Kauf", "name": name, "qty": qty, "price": round(pr, 2), "fee": 0,
+                                 "note": "Kern-Sparplan"})
+            notify(f"KERN-SPARPLAN: {qty:g} x {name} zu {pr:.2f} EUR ({cost:.2f} EUR).")
+
     rows, keep = [], []
     for p in st["positions"]:
         last, prev = px.get(p.get("ticker"), (None, None)) if p.get("ticker") else (None, None)
@@ -241,10 +262,28 @@ def main():
     bench = round(bl / st["benchmark"]["start_price"] * 100, 2) if bl else (hist[-1]["bench"] if hist else 100.0)
     hist = [h for h in hist if h["date"] != ds] + [{"date": ds, "value": value, "idx": idx, "bench": bench}]
 
+    # Wochenbericht freitags abends per Telegram
+    now_b = dt.datetime.now(__import__("zoneinfo").ZoneInfo("Europe/Berlin"))
+    hour = int(os.environ.get("FAKE_HOUR", now_b.hour))
+    if today.weekday() == 4 and hour >= 19 and st.get("last_report") != ds:
+        st["last_report"] = ds
+        srt = sorted(rows, key=lambda r: r["pct"])
+        u = usr[-1]["idx"] if usr else None
+        pi = st.get("report_idx")
+        wk = f"{100 * (idx / pi - 1):+.2f} %" if pi else "–"
+        st["report_idx"] = idx
+        eu = lambda x: f"{x:,.0f}".replace(",", ".")
+        fmt = lambda r: f"{r['name']} {r['pct']:+.1f} %"
+        notify(f"Wochenbericht {ds}\nDepot: {eu(value)} EUR, Cash {eu(st['cash'])} EUR\n"
+               f"Claude: {idx - 100:+.2f} % seit Start (Woche {wk})\nWelt-ETF: {bench - 100:+.2f} %\n"
+               f"Du: {'–' if u is None else format(u - 100, '+.2f') + ' %'}\n"
+               f"Beste: {', '.join(fmt(r) for r in srt[::-1][:3])}\nSchwaechste: {', '.join(fmt(r) for r in srt[:3])}\n"
+               f"Steuern bisher: {st['tax']['paid']:.2f} EUR")
+
     out = {"updated": dt.datetime.now(__import__("zoneinfo").ZoneInfo("Europe/Berlin")).strftime("%d.%m.%Y %H:%M Uhr"), "value": value,
            "cash": round(st["cash"], 2), "reserve": st["reserve"], "rate": st["weekly_rate"],
            "series": hist, "user": usr, "positions": rows, "trades": st["trades"][::-1][:60],
-           "deposits": st["deposits"], "orders": st["orders"], "tax_paid": st["tax"]["paid"], "warnings": warn}
+           "deposits": st["deposits"], "orders": st["orders"], "tax_paid": st["tax"]["paid"], "core": st["core"], "warnings": warn}
     save(st, "data", "state.json"); save(hist, "data", "history.json"); save(out, "docs", "data.json")
     print(f"Fertig: Wert {value} EUR, Index {idx}, Benchmark {bench}, Warnungen: {len(warn)}")
 
