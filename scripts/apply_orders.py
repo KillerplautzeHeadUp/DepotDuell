@@ -87,8 +87,11 @@ def main():
                 if a[1].upper() == "PAUSE": c["paused"] = True
                 elif a[1].upper() == "AN": c["paused"] = False
                 elif a[1].upper() == "ANTEIL": c["share"] = num(a[2])
-                else: raise ValueError("PAUSE, AN oder ANTEIL")
+                elif a[1].upper() == "AUTO": c["auto"] = a[2].upper() == "AN"
+                else: raise ValueError("PAUSE, AN, ANTEIL oder AUTO")
                 out.append(f"OK Kern-Sparplan: {'pausiert' if c['paused'] else 'aktiv'}, Anteil {c['share']:.0%}")
+            elif cmd == "INFO":  # INFO;Name;Region;Branche
+                p = find(a[1]); p["region"], p["sector"] = a[2], a[3]; out.append(f"OK Info {a[1]}: {a[2]}, {a[3]}")
             else:
                 out.append(f"UNBEKANNT: {line}")
         except Exception as e:

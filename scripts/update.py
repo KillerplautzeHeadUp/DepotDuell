@@ -96,6 +96,16 @@ def process_telegram():
     save(meta, "data", "user_meta.json")
     save({"offset": max(u["update_id"] for u in updates) + 1}, "data", "tg_offset.json")
 
+def year_high(ticker):
+    if os.environ.get("FAKE"):
+        return json.loads(os.environ.get("FAKE_HIGH", "{}")).get(ticker)
+    try:
+        import yfinance as yf
+        h = yf.Ticker(ticker).history(period="1y")["Close"].dropna()
+        return float(h.max()) if len(h) else None
+    except Exception:
+        return None
+
 def get_dividends(ticker):
     """Liste von (Ex-Tag, Betrag je Stueck in Handelswaehrung)."""
     if os.environ.get("FAKE"):
@@ -199,7 +209,18 @@ def main():
     cr = common.core(st)
     if st.get("last_deposit") == ds and st.get("last_core") != ds and not cr["paused"]:
         st["last_core"] = ds
-        amt = round(min(st["weekly_rate"] * cr["share"], st["cash"]), 2)
+        share, rule = cr["share"], "Basis"
+        if cr.get("auto", True):  # Autopilot-Regeln (von Claude festgelegt)
+            q = st["cash"] / max(1.0, st["cash"] + sum(p["qty"] * p.get("last", p["buy"]) for p in st["positions"]))
+            hi, bp = year_high(st["benchmark"]["ticker"]), price_of(st["benchmark"]["ticker"], "EUR")
+            if hi and bp and bp / hi - 1 <= -0.10:
+                share, rule = 0.8, "Welt-ETF über 10 % unter Jahreshoch"
+            elif q > 0.25:
+                share, rule = 0.7, "Cash-Quote über 25 %"
+            elif q < 0.10:
+                share, rule = 0.3, "Cash-Quote unter 10 %"
+        cr["effective"], cr["rule"] = share, rule
+        amt = round(min(st["weekly_rate"] * share, st["cash"]), 2)
         tg = {}
         for p in st["positions"]:
             if p["name"] in cr["targets"]:
@@ -214,7 +235,7 @@ def main():
             st["cash"] = round(st["cash"] - cost, 2)
             st["trades"].append({"date": ds, "side": "Kauf", "name": name, "qty": qty, "price": round(pr, 2), "fee": 0,
                                  "note": "Kern-Sparplan"})
-            notify(f"KERN-SPARPLAN: {qty:g} x {name} zu {pr:.2f} EUR ({cost:.2f} EUR).")
+            notify(f"KERN-SPARPLAN: {qty:g} x {name} zu {pr:.2f} EUR ({cost:.2f} EUR). Anteil {share:.0%} ({rule}).")
 
     rows, keep = [], []
     for p in st["positions"]:
@@ -242,7 +263,9 @@ def main():
             notify(f"Starker Tagesverlust bei {p['name']}: {100*(last/prev-1):.1f} %. Claude prueft beim Check-in.")
         rows.append({"name": p["name"], "ticker": p.get("ticker", ""), "qty": p["qty"], "buy": p["buy"],
                      "price": round(price, 2), "pct": round((price / p["buy"] - 1) * 100, 2),
-                     "value": round(p["qty"] * price, 2), "stop": p.get("stop")})
+                     "value": round(p["qty"] * price, 2), "stop": p.get("stop"),
+                     "gain": round(p["qty"] * (price - p["buy"]), 2), "region": common.meta(p)[0],
+                     "sector": common.meta(p)[1], "origin": common.origin(st, p["name"])})
     st["positions"] = keep
 
     # Chancen-Hinweis fuer die Backup-Reserve (Watchlist, Tagesverlust ab 10 %)
@@ -280,10 +303,50 @@ def main():
                f"Beste: {', '.join(fmt(r) for r in srt[::-1][:3])}\nSchwaechste: {', '.join(fmt(r) for r in srt[:3])}\n"
                f"Steuern bisher: {st['tax']['paid']:.2f} EUR")
 
+    # Stress-Pause: Tagesverlust ueber 7 % stoppt den Kern-Sparplan bis zum naechsten Check-in
+    if idx / prev_rec["idx"] - 1 <= -0.07 and not cr["paused"]:
+        cr["paused"] = True
+        notify(f"Kern-Sparplan pausiert: Tagesverlust {100 * (idx / prev_rec['idx'] - 1):.1f} %. Claude entscheidet beim naechsten Check-in.")
+
+    # Auswertung: Risiko, Aufteilung, Herkunft der Entscheidungen, Tagesverlauf
+    ser, bs = [h["idx"] for h in hist], [h["bench"] for h in hist]
+    def mdd(a):
+        peak, m = a[0], 0.0
+        for x in a:
+            peak = max(peak, x); m = min(m, x / peak - 1)
+        return round(m * 100, 2)
+    risk = {"n": len(ser), "mdd": mdd(ser), "mdd_b": mdd(bs), "vol": None, "beta": None}
+    if len(ser) >= 21:
+        import statistics as S
+        r1 = [ser[i] / ser[i - 1] - 1 for i in range(1, len(ser))]; r2 = [bs[i] / bs[i - 1] - 1 for i in range(1, len(bs))]
+        risk["vol"] = round(S.pstdev(r1) * (252 ** 0.5) * 100, 1)
+        vb = S.pvariance(r2)
+        if vb > 0:
+            m1, m2 = S.mean(r1), S.mean(r2)
+            risk["beta"] = round(sum((x - m1) * (y - m2) for x, y in zip(r1, r2)) / len(r1) / vb, 2)
+    reg, sec, og = {"Cash": round(st["cash"] / value * 100, 1)}, {"Cash": round(st["cash"] / value * 100, 1)}, {}
+    for r in rows:
+        reg[r["region"]] = round(reg.get(r["region"], 0) + r["weight"], 1)
+        sec[r["sector"]] = round(sec.get(r["sector"], 0) + r["weight"], 1)
+        g = og.setdefault(r["origin"], {"cost": 0.0, "gain": 0.0, "n": 0})
+        g["cost"] += r["qty"] * r["buy"]; g["gain"] += r["gain"]; g["n"] += 1
+    origin = [{"name": k, "n": v["n"], "cost": round(v["cost"]), "gain": round(v["gain"], 2),
+               "pct": round(v["gain"] / v["cost"] * 100, 2) if v["cost"] else 0} for k, v in og.items()]
+    try:
+        intr = load("data", "intraday.json")
+    except Exception:
+        intr = []
+    now_i = dt.datetime.now(__import__("zoneinfo").ZoneInfo("Europe/Berlin"))
+    intr.append({"t": now_i.strftime("%Y-%m-%d %H:%M"), "v": idx, "b": bench})
+    cut = (today - dt.timedelta(days=7)).isoformat()
+    intr = [x for x in intr if x["t"][:10] >= cut]
+    save(intr, "data", "intraday.json")
+
     out = {"updated": dt.datetime.now(__import__("zoneinfo").ZoneInfo("Europe/Berlin")).strftime("%d.%m.%Y %H:%M Uhr"), "value": value,
            "cash": round(st["cash"], 2), "reserve": st["reserve"], "rate": st["weekly_rate"],
            "series": hist, "user": usr, "positions": rows, "trades": st["trades"][::-1][:60],
-           "deposits": st["deposits"], "orders": st["orders"], "tax_paid": st["tax"]["paid"], "core": st["core"], "warnings": warn}
+           "deposits": st["deposits"], "orders": st["orders"], "tax_paid": st["tax"]["paid"], "core": st["core"], "risk": risk,
+           "alloc": {"region": reg, "sector": sec}, "origin": origin, "intraday": intr, "start": st["start_capital"], "warnings": warn}
     save(st, "data", "state.json"); save(hist, "data", "history.json"); save(out, "docs", "data.json")
     print(f"Fertig: Wert {value} EUR, Index {idx}, Benchmark {bench}, Warnungen: {len(warn)}")
 

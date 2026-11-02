@@ -45,3 +45,22 @@ def core(st):
     """Kern-Sparplan: Anteil der Wochenrate, Zielgewichte (von Claude festgelegt) und Pause-Schalter."""
     return st.setdefault("core", {"share": 0.5, "paused": False, "targets": {
         "iShares Core MSCI World": 0.6, "iShares Core MSCI EM IMI": 0.2, "iShares Core MSCI Japan IMI": 0.2}})
+
+META = {  # Region, Branche (breite ETFs zaehlen als eigene Gruppe)
+    "iShares Core MSCI World": ("Welt", "ETF breit"), "iShares Core MSCI EM IMI": ("Schwellenländer", "ETF breit"),
+    "iShares Core MSCI Japan IMI": ("Japan", "ETF breit"), "Xetra-Gold": ("Global", "Gold"), "Bitcoin": ("Global", "Krypto"),
+    "ASML": ("Europa", "Technologie"), "TSMC": ("Asien", "Technologie"), "Alphabet (Klasse A)": ("USA", "Technologie"),
+    "Eli Lilly": ("USA", "Gesundheit"), "JPMorgan Chase": ("USA", "Finanzen"), "TotalEnergies": ("Europa", "Energie"),
+    "Siemens": ("Europa", "Industrie"),
+}
+
+def meta(p):
+    m = META.get(p["name"], ("Sonstige", "Sonstige"))
+    return p.get("region", m[0]), p.get("sector", m[1])
+
+def origin(st, name):
+    for t in st["trades"]:
+        if t["name"] == name and t["side"] == "Kauf":
+            n = t.get("note", "").lower()
+            return "durch Nutzerthema angestoßen" if "nutzerthema" in n else "Kern-Sparplan" if "kern-sparplan" in n else "eigene Recherche"
+    return "eigene Recherche"
