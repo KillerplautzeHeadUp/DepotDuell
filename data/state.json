@@ -25,7 +25,7 @@
    "qty": 503,
    "buy": 129.59,
    "stop": null,
-   "last": 130.2
+   "last": 129.93
   },
   {
    "name": "iShares Core MSCI EM IMI",
@@ -34,7 +34,7 @@
    "qty": 615,
    "buy": 45.4,
    "stop": null,
-   "last": 45.515
+   "last": 45.386
   },
   {
    "name": "Xetra-Gold",
@@ -43,7 +43,7 @@
    "qty": 205,
    "buy": 116.37,
    "stop": null,
-   "last": 113.4
+   "last": 113.92
   },
   {
    "name": "ASML",
@@ -52,7 +52,7 @@
    "qty": 19,
    "buy": 1393.2,
    "stop": 0.25,
-   "last": 1425.4
+   "last": 1408.0
   },
   {
    "name": "Eli Lilly",
@@ -61,7 +61,7 @@
    "qty": 19,
    "buy": 1143.57,
    "stop": 0.22,
-   "last": 1255.955
+   "last": 1256.7113
   },
   {
    "name": "TotalEnergies",
@@ -70,7 +70,7 @@
    "qty": 280,
    "buy": 81.54,
    "stop": 0.2,
-   "last": 83.54
+   "last": 83.61
   },
   {
    "name": "JPMorgan Chase",
@@ -79,7 +79,7 @@
    "qty": 40,
    "buy": 295.95,
    "stop": 0.2,
-   "last": 304.9746
+   "last": 304.3916
   },
   {
    "name": "TSMC",
@@ -88,7 +88,7 @@
    "qty": 30,
    "buy": 373.54,
    "stop": 0.25,
-   "last": 364.9841
+   "last": 362.9663
   },
   {
    "name": "Siemens",
@@ -97,7 +97,7 @@
    "qty": 45,
    "buy": 256.8,
    "stop": 0.2,
-   "last": 271.9
+   "last": 270.35
   },
   {
    "name": "Bitcoin",
@@ -106,7 +106,7 @@
    "qty": 0.15,
    "buy": 71923.82,
    "stop": 0.35,
-   "last": 69527.6797
+   "last": 69138.8516
   },
   {
    "name": "Alphabet (Klasse A)",
@@ -115,7 +115,7 @@
    "qty": 22,
    "buy": 262.7,
    "stop": 0.25,
-   "last": 254.6945
+   "last": 252.5686
   },
   {
    "name": "iShares Core MSCI Japan IMI",
@@ -125,7 +125,7 @@
    "qty": 118,
    "buy": 73.02,
    "stop": null,
-   "last": 72.29
+   "last": 72.23
   }
  ],
  "trades": [
@@ -255,6 +255,6 @@
    "note": "Test"
   }
  ],
- "last_fx": 1.1203227043151855,
+ "last_fx": 1.1204482316970825,
  "orders": []
 }

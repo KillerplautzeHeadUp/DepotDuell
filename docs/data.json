@@ -1,6 +1,6 @@
 {
- "updated": "02.11.2026 16:48 Uhr",
- "value": 284313.51,
+ "updated": "02.11.2026 17:51 Uhr",
+ "value": 283642.55,
  "cash": 33300.58,
  "reserve": 30000,
  "rate": 365,
@@ -31,9 +31,9 @@
   },
   {
    "date": "2026-11-02",
-   "value": 284313.51,
-   "idx": 101.13,
-   "bench": 100.47
+   "value": 283642.55,
+   "idx": 100.89,
+   "bench": 100.26
   }
  ],
  "user": [
@@ -56,9 +56,9 @@
    "ticker": "EUNL.DE",
    "qty": 503,
    "buy": 129.59,
-   "price": 130.2,
-   "pct": 0.47,
-   "value": 65490.6,
+   "price": 129.93,
+   "pct": 0.26,
+   "value": 65354.79,
    "stop": null,
    "weight": 23.0
   },
@@ -67,9 +67,9 @@
    "ticker": "IS3N.DE",
    "qty": 615,
    "buy": 45.4,
-   "price": 45.51,
-   "pct": 0.25,
-   "value": 27991.72,
+   "price": 45.39,
+   "pct": -0.03,
+   "value": 27912.39,
    "stop": null,
    "weight": 9.8
   },
@@ -78,9 +78,9 @@
    "ticker": "4GLD.DE",
    "qty": 205,
    "buy": 116.37,
-   "price": 113.4,
-   "pct": -2.55,
-   "value": 23247.0,
+   "price": 113.92,
+   "pct": -2.11,
+   "value": 23353.6,
    "stop": null,
    "weight": 8.2
   },
@@ -89,20 +89,20 @@
    "ticker": "ASML.AS",
    "qty": 19,
    "buy": 1393.2,
-   "price": 1425.4,
-   "pct": 2.31,
-   "value": 27082.6,
+   "price": 1408.0,
+   "pct": 1.06,
+   "value": 26752.0,
    "stop": 0.25,
-   "weight": 9.5
+   "weight": 9.4
   },
   {
    "name": "Eli Lilly",
    "ticker": "LLY",
    "qty": 19,
    "buy": 1143.57,
-   "price": 1255.96,
-   "pct": 9.83,
-   "value": 23863.15,
+   "price": 1256.71,
+   "pct": 9.89,
+   "value": 23877.51,
    "stop": 0.22,
    "weight": 8.4
   },
@@ -111,20 +111,20 @@
    "ticker": "TTE.PA",
    "qty": 280,
    "buy": 81.54,
-   "price": 83.54,
-   "pct": 2.45,
-   "value": 23391.2,
+   "price": 83.61,
+   "pct": 2.54,
+   "value": 23410.8,
    "stop": 0.2,
-   "weight": 8.2
+   "weight": 8.3
   },
   {
    "name": "JPMorgan Chase",
    "ticker": "JPM",
    "qty": 40,
    "buy": 295.95,
-   "price": 304.97,
-   "pct": 3.05,
-   "value": 12198.99,
+   "price": 304.39,
+   "pct": 2.85,
+   "value": 12175.66,
    "stop": 0.2,
    "weight": 4.3
   },
@@ -133,20 +133,20 @@
    "ticker": "TSM",
    "qty": 30,
    "buy": 373.54,
-   "price": 364.98,
-   "pct": -2.29,
-   "value": 10949.52,
+   "price": 362.97,
+   "pct": -2.83,
+   "value": 10888.99,
    "stop": 0.25,
-   "weight": 3.9
+   "weight": 3.8
   },
   {
    "name": "Siemens",
    "ticker": "SIE.DE",
    "qty": 45,
    "buy": 256.8,
-   "price": 271.9,
-   "pct": 5.88,
-   "value": 12235.5,
+   "price": 270.35,
+   "pct": 5.28,
+   "value": 12165.75,
    "stop": 0.2,
    "weight": 4.3
   },
@@ -155,9 +155,9 @@
    "ticker": "BTC-EUR",
    "qty": 0.15,
    "buy": 71923.82,
-   "price": 69527.68,
-   "pct": -3.33,
-   "value": 10429.15,
+   "price": 69138.85,
+   "pct": -3.87,
+   "value": 10370.83,
    "stop": 0.35,
    "weight": 3.7
   },
@@ -166,9 +166,9 @@
    "ticker": "GOOGL",
    "qty": 22,
    "buy": 262.7,
-   "price": 254.69,
-   "pct": -3.05,
-   "value": 5603.28,
+   "price": 252.57,
+   "pct": -3.86,
+   "value": 5556.51,
    "stop": 0.25,
    "weight": 2.0
   },
@@ -177,9 +177,9 @@
    "ticker": "EUNN.DE",
    "qty": 118,
    "buy": 73.02,
-   "price": 72.29,
-   "pct": -1.0,
-   "value": 8530.22,
+   "price": 72.23,
+   "pct": -1.08,
+   "value": 8523.14,
    "stop": null,
    "weight": 3.0
   }
