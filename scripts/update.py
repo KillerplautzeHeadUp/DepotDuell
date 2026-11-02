@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Taegliches Update des Depot-Duells: Kurse holen, bewerten, Stop-Loss pruefen, Daten schreiben."""
-import json, os, datetime as dt, urllib.request, urllib.parse
+import json, os, sys, datetime as dt, urllib.request, urllib.parse
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import common
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 P = lambda *a: os.path.join(ROOT, *a)
@@ -25,7 +27,7 @@ def fetch(tickers):
     """Gibt {ticker: (letzter Kurs, Vortagesschluss)} zurueck; None bei Fehlern."""
     if os.environ.get("FAKE"):
         fake = json.loads(os.environ.get("FAKE_PX", "{}"))
-        return {t: (fake.get(t), None) for t in tickers}
+        return {t: (tuple(fake[t]) if isinstance(fake.get(t), list) else (fake.get(t), None)) for t in tickers}
     import yfinance as yf
     out = {}
     for t in tickers:
@@ -45,6 +47,17 @@ def fetch(tickers):
         out[t] = (last, prev)
     return out
 
+def get_dividends(ticker):
+    """Liste von (Ex-Tag, Betrag je Stueck in Handelswaehrung)."""
+    if os.environ.get("FAKE"):
+        return [tuple(x) for x in json.loads(os.environ.get("FAKE_DIV", "{}")).get(ticker, [])]
+    try:
+        import yfinance as yf
+        return [(d.strftime("%Y-%m-%d"), float(v)) for d, v in yf.Ticker(ticker).dividends.items()]
+    except Exception as e:
+        print("Dividendenfehler", ticker, e)
+        return []
+
 def main():
     st, hist, usr = load("data", "state.json"), load("data", "history.json"), load("data", "user.json")
     today = dt.date.today()
@@ -54,6 +67,7 @@ def main():
     tickers = {p["ticker"] for p in st["positions"] if p.get("ticker")}
     tickers |= {st["benchmark"]["ticker"], "EURUSD=X"} | set(st.get("watch", []))
     st.setdefault("orders", [])
+    common.ensure(st)
     tickers |= {o["ticker"] for o in st["orders"] if o.get("ticker")}
     px = fetch(sorted(tickers))
     fx = px["EURUSD=X"][0] or st.get("last_fx", 1.12)
@@ -69,6 +83,22 @@ def main():
         dep_today += st["weekly_rate"]
         notify(f"Wochenrate {st['weekly_rate']} EUR gebucht. Claude setzt sie beim naechsten Check-in ein.")
 
+    # Dividenden (Steuer wird sofort abgezogen)
+    chk = st.get("div_checked", st["start_date"])
+    for p in st["positions"]:
+        if p["cls"] not in ("stock", "etf") or not p.get("ticker"):
+            continue
+        for d, amt in get_dividends(p["ticker"]):
+            if chk < d <= ds and d > p["since"]:
+                per = eur(p["ccy"], amt)
+                gross = round(p["qty"] * per, 2)
+                st["cash"] = round(st["cash"] + gross, 2)
+                tx = common.tax_on(st, gross * common.factor(p, today))
+                st["trades"].append({"date": ds, "side": "Dividende", "name": p["name"], "qty": p["qty"], "price": round(per, 4),
+                                     "fee": 0, "note": f"Ex-Tag {d}, brutto {gross:.2f} EUR, Steuer {tx:.2f} EUR"})
+                notify(f"DIVIDENDE {p['name']}: brutto {gross:.2f} EUR, Steuer {tx:.2f} EUR.")
+    st["div_checked"] = ds
+
     # Bedingte Auftraege (Limit-Orders)
     def price_of(tk, ccy):
         l = px.get(tk, (None, None))[0] if tk else None
@@ -82,32 +112,35 @@ def main():
         if o["side"] == "KAUF":
             pr = price_of(o["ticker"], o["ccy"])
             if pr is not None and pr <= o["limit"]:
-                cost = o["qty"] * pr + fee
+                epr = pr * (1 + common.spread(common.cls_of(o["name"])))
+                cost = o["qty"] * epr + fee
                 if cost > st["cash"] or (ex is None and len(st["positions"]) >= 90):
                     notify(f"Auftrag nicht ausgefuehrt (Cash oder 90-Positionen-Grenze): Kauf {o['name']}")
                     pending.append(o); continue
                 if ex:
-                    ex["buy"] = round((ex["qty"] * ex["buy"] + o["qty"] * pr) / (ex["qty"] + o["qty"]), 4)
+                    ex["buy"] = round((ex["qty"] * ex["buy"] + o["qty"] * epr) / (ex["qty"] + o["qty"]), 4)
                     ex["qty"] = round(ex["qty"] + o["qty"], 8); ex["last"] = round(pr, 4)
                 else:
                     st["positions"].append({"name": o["name"], "ticker": o["ticker"], "ccy": o["ccy"], "qty": o["qty"],
-                                            "buy": round(pr, 4), "stop": o.get("stop"), "last": round(pr, 4)})
+                                            "buy": round(epr, 4), "stop": o.get("stop"), "last": round(pr, 4),
+                                            "cls": common.cls_of(o["name"]), "since": ds})
                 st["cash"] = round(st["cash"] - cost, 2)
-                st["trades"].append({"date": ds, "side": "Kauf", "name": o["name"], "qty": o["qty"], "price": round(pr, 2),
+                st["trades"].append({"date": ds, "side": "Kauf", "name": o["name"], "qty": o["qty"], "price": round(epr, 2),
                                      "fee": fee, "note": "Limit-Auftrag. " + o.get("note", "")})
-                notify(f"AUFTRAG ausgefuehrt: Kauf {o['qty']:g} x {o['name']} zu {pr:.2f} EUR (Grenze {o['limit']}).")
+                notify(f"AUFTRAG ausgefuehrt: Kauf {o['qty']:g} x {o['name']} zu {epr:.2f} EUR (Grenze {o['limit']}).")
                 continue
         elif ex and ex.get("ticker"):
             pr = price_of(ex["ticker"], ex["ccy"])
             if pr is not None and pr >= o["limit"]:
-                q = min(o["qty"], ex["qty"])
-                st["cash"] = round(st["cash"] + q * pr - fee, 2)
+                q = min(o["qty"], ex["qty"]); epr = pr * (1 - common.spread(ex["cls"]))
+                st["cash"] = round(st["cash"] + q * epr - fee, 2)
+                tx = common.tax_on(st, (q * (epr - ex["buy"]) - fee) * common.factor(ex, today))
                 ex["qty"] = round(ex["qty"] - q, 8)
                 if ex["qty"] <= 1e-9:
                     st["positions"].remove(ex)
-                st["trades"].append({"date": ds, "side": "Verkauf", "name": o["name"], "qty": q, "price": round(pr, 2),
-                                     "fee": fee, "note": "Limit-Auftrag. " + o.get("note", "")})
-                notify(f"AUFTRAG ausgefuehrt: Verkauf {q:g} x {o['name']} zu {pr:.2f} EUR (Grenze {o['limit']}).")
+                st["trades"].append({"date": ds, "side": "Verkauf", "name": o["name"], "qty": q, "price": round(epr, 2),
+                                     "fee": fee, "note": f"Limit-Auftrag, Steuer {tx:.2f} EUR. " + o.get("note", "")})
+                notify(f"AUFTRAG ausgefuehrt: Verkauf {q:g} x {o['name']} zu {epr:.2f} EUR, Steuer {tx:.2f} EUR.")
                 continue
         pending.append(o)
     st["orders"] = pending
@@ -115,6 +148,9 @@ def main():
     rows, keep = [], []
     for p in st["positions"]:
         last, prev = px.get(p.get("ticker"), (None, None)) if p.get("ticker") else (None, None)
+        if last is not None and prev and abs(last / prev - 1) > 0.30:
+            warn.append(f"Unplausibler Kurssprung bei {p['name']} ({100*(last/prev-1):.0f} %), Kurs ignoriert.")
+            last = None
         if last is None:
             price = p.get("last", p["buy"])
             warn.append(f"Kein Kurs fuer {p['name']} (Ticker '{p.get('ticker', '')}'), letzter bekannter Wert genutzt.")
@@ -123,10 +159,12 @@ def main():
             p["last"] = round(price, 4)
         # Stop-Loss
         if p.get("stop") and price <= p["buy"] * (1 - p["stop"]):
-            st["cash"] += p["qty"] * price - fee
-            st["trades"].append({"date": ds, "side": "Verkauf", "name": p["name"], "qty": p["qty"],
-                                 "price": round(price, 2), "fee": fee, "note": f"Stop-Loss -{int(p['stop']*100)} %"})
-            notify(f"STOP-LOSS: {p['name']} verkauft zu {price:.2f} EUR (Kauf {p['buy']:.2f}).")
+            epr = price * (1 - common.spread(p["cls"]))
+            st["cash"] = round(st["cash"] + p["qty"] * epr - fee, 2)
+            tx = common.tax_on(st, (p["qty"] * (epr - p["buy"]) - fee) * common.factor(p, today))
+            st["trades"].append({"date": ds, "side": "Verkauf", "name": p["name"], "qty": p["qty"], "price": round(epr, 2),
+                                 "fee": fee, "note": f"Stop-Loss -{int(p['stop']*100)} %, Steuer {tx:.2f} EUR"})
+            notify(f"STOP-LOSS: {p['name']} verkauft zu {epr:.2f} EUR (Kauf {p['buy']:.2f}), Steuer {tx:.2f} EUR.")
             continue
         keep.append(p)
         if last and prev and last / prev - 1 <= -0.08:
@@ -156,7 +194,7 @@ def main():
     out = {"updated": dt.datetime.now(__import__("zoneinfo").ZoneInfo("Europe/Berlin")).strftime("%d.%m.%Y %H:%M Uhr"), "value": value,
            "cash": round(st["cash"], 2), "reserve": st["reserve"], "rate": st["weekly_rate"],
            "series": hist, "user": usr, "positions": rows, "trades": st["trades"][::-1][:60],
-           "deposits": st["deposits"], "orders": st["orders"], "warnings": warn}
+           "deposits": st["deposits"], "orders": st["orders"], "tax_paid": st["tax"]["paid"], "warnings": warn}
     save(st, "data", "state.json"); save(hist, "data", "history.json"); save(out, "docs", "data.json")
     print(f"Fertig: Wert {value} EUR, Index {idx}, Benchmark {bench}, Warnungen: {len(warn)}")
 

@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Bucht Orders aus einem GitHub-Issue (Text in ISSUE_BODY) in data/state.json."""
-import json, os, datetime as dt
+import json, os, sys, datetime as dt
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import common
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 P = lambda *a: os.path.join(ROOT, *a)
@@ -17,6 +19,7 @@ def main():
     st, usr = load("data", "state.json"), load("data", "user.json")
     today, fee, out = dt.date.today().isoformat(), load("data", "state.json")["fee"], []
     st.setdefault("orders", [])
+    common.ensure(st)
     find = lambda n: next((p for p in st["positions"] if p["name"].lower() == n.lower()), None)
     for raw in body.splitlines():
         line = raw.strip()
@@ -27,6 +30,7 @@ def main():
         try:
             if cmd == "KAUF":  # KAUF;Name;Ticker;Waehrung;Stueck;Kurs_EUR;Stop;Hinweis
                 name, tick, ccy, qty, price = a[1], a[2], a[3] or "EUR", num(a[4]), num(a[5])
+                price = round(price * (1 + common.spread(common.cls_of(name))), 4)
                 cost = qty * price + fee
                 if cost > st["cash"]:
                     out.append(f"FEHLER: {line} (Cash {st['cash']:.2f} reicht nicht)"); continue
@@ -37,7 +41,8 @@ def main():
                     if tick: p["ticker"] = tick
                 else:
                     st["positions"].append({"name": name, "ticker": tick, "ccy": ccy, "qty": qty, "buy": price,
-                                            "stop": num(a[6]) if a[6] else None, "last": price})
+                                            "stop": num(a[6]) if a[6] else None, "last": price,
+                                            "cls": common.cls_of(name), "since": today})
                 st["cash"] = round(st["cash"] - cost, 2)
                 st["trades"].append({"date": today, "side": "Kauf", "name": name, "qty": qty, "price": price, "fee": fee, "note": a[7]})
                 out.append(f"OK Kauf {qty:g} x {name} zu {price:.2f} EUR")
@@ -45,11 +50,13 @@ def main():
                 p = find(a[1]); qty, price = num(a[2]), num(a[3])
                 if not p or qty > p["qty"] + 1e-9:
                     out.append(f"FEHLER: {line} (Position oder Stueckzahl passt nicht)"); continue
+                price = round(price * (1 - common.spread(p.get("cls", "stock"))), 4)
                 st["cash"] = round(st["cash"] + qty * price - fee, 2)
+                tx = common.tax_on(st, (qty * (price - p["buy"]) - fee) * common.factor(p, dt.date.today()))
                 p["qty"] = round(p["qty"] - qty, 8)
                 if p["qty"] <= 1e-9: st["positions"].remove(p)
                 st["trades"].append({"date": today, "side": "Verkauf", "name": a[1], "qty": qty, "price": price, "fee": fee, "note": a[4]})
-                out.append(f"OK Verkauf {qty:g} x {a[1]} zu {price:.2f} EUR")
+                out.append(f"OK Verkauf {qty:g} x {a[1]} zu {price:.2f} EUR, Steuer {tx:.2f} EUR")
             elif cmd == "EINZAHLUNG":  # EINZAHLUNG;Betrag;Hinweis
                 amt = num(a[1]); st["cash"] = round(st["cash"] + amt, 2)
                 st["deposits"].append({"date": today, "amount": amt, "note": a[2]})
