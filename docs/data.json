@@ -1,7 +1,7 @@
 {
- "updated": "02.11.2026 21:36 Uhr",
- "value": 283561.92,
- "cash": 33300.58,
+ "updated": "02.11.2026 21:56 Uhr",
+ "value": 283425.61,
+ "cash": 33336.3,
  "reserve": 30000,
  "rate": 365,
  "series": [
@@ -31,8 +31,8 @@
   },
   {
    "date": "2026-11-02",
-   "value": 283561.92,
-   "idx": 100.87,
+   "value": 283425.61,
+   "idx": 100.82,
    "bench": 100.26
   }
  ],
@@ -60,7 +60,7 @@
    "pct": 0.26,
    "value": 65354.79,
    "stop": null,
-   "weight": 23.0
+   "weight": 23.1
   },
   {
    "name": "iShares Core MSCI EM IMI",
@@ -100,9 +100,9 @@
    "ticker": "LLY",
    "qty": 19,
    "buy": 1143.57,
-   "price": 1265.96,
-   "pct": 10.7,
-   "value": 24053.33,
+   "price": 1261.28,
+   "pct": 10.29,
+   "value": 23964.36,
    "stop": 0.22,
    "weight": 8.5
   },
@@ -122,9 +122,9 @@
    "ticker": "JPM",
    "qty": 40,
    "buy": 295.95,
-   "price": 305.05,
-   "pct": 3.07,
-   "value": 12201.89,
+   "price": 304.98,
+   "pct": 3.05,
+   "value": 12199.09,
    "stop": 0.2,
    "weight": 4.3
   },
@@ -133,9 +133,9 @@
    "ticker": "TSM",
    "qty": 30,
    "buy": 373.54,
-   "price": 357.03,
-   "pct": -4.42,
-   "value": 10711.04,
+   "price": 356.34,
+   "pct": -4.6,
+   "value": 10690.28,
    "stop": 0.25,
    "weight": 3.8
   },
@@ -155,9 +155,9 @@
    "ticker": "BTC-EUR",
    "qty": 0.15,
    "buy": 71923.82,
-   "price": 68596.53,
-   "pct": -4.63,
-   "value": 10289.48,
+   "price": 68523.0,
+   "pct": -4.73,
+   "value": 10278.45,
    "stop": 0.35,
    "weight": 3.6
   },
@@ -166,11 +166,11 @@
    "ticker": "GOOGL",
    "qty": 22,
    "buy": 262.7,
-   "price": 251.51,
-   "pct": -4.26,
-   "value": 5533.13,
+   "price": 249.3,
+   "pct": -5.1,
+   "value": 5484.66,
    "stop": 0.25,
-   "weight": 2.0
+   "weight": 1.9
   },
   {
    "name": "iShares Core MSCI Japan IMI",
@@ -185,6 +185,15 @@
   }
  ],
  "trades": [
+  {
+   "date": "2026-11-02",
+   "side": "Dividende",
+   "name": "ASML",
+   "qty": 19,
+   "price": 1.88,
+   "fee": 0,
+   "note": "Ex-Tag 2026-10-26, brutto 35.72 EUR, Steuer 0.00 EUR"
+  },
   {
    "date": "2026-10-30",
    "side": "Kauf",
@@ -312,5 +321,6 @@
   }
  ],
  "orders": [],
+ "tax_paid": 0.0,
  "warnings": []
 }

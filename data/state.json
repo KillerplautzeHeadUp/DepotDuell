@@ -5,7 +5,7 @@
  "weekly_rate": 365,
  "savings_from": "2026-11-02",
  "fee": 1.0,
- "cash": 33300.58,
+ "cash": 33336.3,
  "last_deposit": "",
  "benchmark": {
   "name": "iShares Core MSCI World",
@@ -25,7 +25,9 @@
    "qty": 503,
    "buy": 129.59,
    "stop": null,
-   "last": 129.93
+   "last": 129.93,
+   "cls": "etf",
+   "since": "2026-10-23"
   },
   {
    "name": "iShares Core MSCI EM IMI",
@@ -34,7 +36,9 @@
    "qty": 615,
    "buy": 45.4,
    "stop": null,
-   "last": 45.386
+   "last": 45.386,
+   "cls": "etf",
+   "since": "2026-10-23"
   },
   {
    "name": "Xetra-Gold",
@@ -43,7 +47,9 @@
    "qty": 205,
    "buy": 116.37,
    "stop": null,
-   "last": 113.92
+   "last": 113.92,
+   "cls": "gold",
+   "since": "2026-10-23"
   },
   {
    "name": "ASML",
@@ -52,7 +58,9 @@
    "qty": 19,
    "buy": 1393.2,
    "stop": 0.25,
-   "last": 1408.0
+   "last": 1408.0,
+   "cls": "stock",
+   "since": "2026-10-23"
   },
   {
    "name": "Eli Lilly",
@@ -61,7 +69,9 @@
    "qty": 19,
    "buy": 1143.57,
    "stop": 0.22,
-   "last": 1265.9648
+   "last": 1261.2822,
+   "cls": "stock",
+   "since": "2026-10-23"
   },
   {
    "name": "TotalEnergies",
@@ -70,7 +80,9 @@
    "qty": 280,
    "buy": 81.54,
    "stop": 0.2,
-   "last": 83.61
+   "last": 83.61,
+   "cls": "stock",
+   "since": "2026-10-23"
   },
   {
    "name": "JPMorgan Chase",
@@ -79,7 +91,9 @@
    "qty": 40,
    "buy": 295.95,
    "stop": 0.2,
-   "last": 305.0472
+   "last": 304.9773,
+   "cls": "stock",
+   "since": "2026-10-23"
   },
   {
    "name": "TSMC",
@@ -88,7 +102,9 @@
    "qty": 30,
    "buy": 373.54,
    "stop": 0.25,
-   "last": 357.0346
+   "last": 356.3427,
+   "cls": "stock",
+   "since": "2026-10-23"
   },
   {
    "name": "Siemens",
@@ -97,7 +113,9 @@
    "qty": 45,
    "buy": 256.8,
    "stop": 0.2,
-   "last": 270.35
+   "last": 270.35,
+   "cls": "stock",
+   "since": "2026-10-23"
   },
   {
    "name": "Bitcoin",
@@ -106,7 +124,9 @@
    "qty": 0.15,
    "buy": 71923.82,
    "stop": 0.35,
-   "last": 68596.5312
+   "last": 68523.0,
+   "cls": "crypto",
+   "since": "2026-10-24"
   },
   {
    "name": "Alphabet (Klasse A)",
@@ -115,7 +135,9 @@
    "qty": 22,
    "buy": 262.7,
    "stop": 0.25,
-   "last": 251.5059
+   "last": 249.3026,
+   "cls": "stock",
+   "since": "2026-10-29"
   },
   {
    "name": "iShares Core MSCI Japan IMI",
@@ -125,7 +147,9 @@
    "qty": 118,
    "buy": 73.02,
    "stop": null,
-   "last": 72.23
+   "last": 72.23,
+   "cls": "etf",
+   "since": "2026-10-30"
   }
  ],
  "trades": [
@@ -236,6 +260,15 @@
    "price": 73.02,
    "fee": 1,
    "note": "eigene Recherche"
+  },
+  {
+   "date": "2026-11-02",
+   "side": "Dividende",
+   "name": "ASML",
+   "qty": 19,
+   "price": 1.88,
+   "fee": 0,
+   "note": "Ex-Tag 2026-10-26, brutto 35.72 EUR, Steuer 0.00 EUR"
   }
  ],
  "deposits": [
@@ -255,6 +288,14 @@
    "note": "Test"
   }
  ],
- "last_fx": 1.1196954250335693,
- "orders": []
+ "last_fx": 1.1198208332061768,
+ "orders": [],
+ "tax": {
+  "year": 2026,
+  "rate": 0.26375,
+  "allowance": 1000.0,
+  "base": 35.72,
+  "paid": 0.0
+ },
+ "div_checked": "2026-11-02"
 }
