@@ -61,7 +61,7 @@
    "qty": 19,
    "buy": 1143.57,
    "stop": 0.22,
-   "last": 1256.6118
+   "last": 1260.5801
   },
   {
    "name": "TotalEnergies",
@@ -79,7 +79,7 @@
    "qty": 40,
    "buy": 295.95,
    "stop": 0.2,
-   "last": 304.7251
+   "last": 304.6575
   },
   {
    "name": "TSMC",
@@ -88,7 +88,7 @@
    "qty": 30,
    "buy": 373.54,
    "stop": 0.25,
-   "last": 360.4466
+   "last": 357.5663
   },
   {
    "name": "Siemens",
@@ -106,7 +106,7 @@
    "qty": 0.15,
    "buy": 71923.82,
    "stop": 0.35,
-   "last": 68642.9688
+   "last": 68458.5625
   },
   {
    "name": "Alphabet (Klasse A)",
@@ -115,7 +115,7 @@
    "qty": 22,
    "buy": 262.7,
    "stop": 0.25,
-   "last": 253.9692
+   "last": 251.4496
   },
   {
    "name": "iShares Core MSCI Japan IMI",
@@ -255,6 +255,6 @@
    "note": "Test"
   }
  ],
- "last_fx": 1.1198208332061768,
+ "last_fx": 1.1199462413787842,
  "orders": []
 }
