@@ -1,6 +1,6 @@
 {
- "updated": "02.11.2026 20:44 Uhr",
- "value": 283438.03,
+ "updated": "02.11.2026 21:36 Uhr",
+ "value": 283561.92,
  "cash": 33300.58,
  "reserve": 30000,
  "rate": 365,
@@ -31,8 +31,8 @@
   },
   {
    "date": "2026-11-02",
-   "value": 283438.03,
-   "idx": 100.82,
+   "value": 283561.92,
+   "idx": 100.87,
    "bench": 100.26
   }
  ],
@@ -60,7 +60,7 @@
    "pct": 0.26,
    "value": 65354.79,
    "stop": null,
-   "weight": 23.1
+   "weight": 23.0
   },
   {
    "name": "iShares Core MSCI EM IMI",
@@ -100,9 +100,9 @@
    "ticker": "LLY",
    "qty": 19,
    "buy": 1143.57,
-   "price": 1260.58,
-   "pct": 10.23,
-   "value": 23951.02,
+   "price": 1265.96,
+   "pct": 10.7,
+   "value": 24053.33,
    "stop": 0.22,
    "weight": 8.5
   },
@@ -122,9 +122,9 @@
    "ticker": "JPM",
    "qty": 40,
    "buy": 295.95,
-   "price": 304.66,
-   "pct": 2.94,
-   "value": 12186.3,
+   "price": 305.05,
+   "pct": 3.07,
+   "value": 12201.89,
    "stop": 0.2,
    "weight": 4.3
   },
@@ -133,9 +133,9 @@
    "ticker": "TSM",
    "qty": 30,
    "buy": 373.54,
-   "price": 357.57,
-   "pct": -4.28,
-   "value": 10726.99,
+   "price": 357.03,
+   "pct": -4.42,
+   "value": 10711.04,
    "stop": 0.25,
    "weight": 3.8
   },
@@ -155,9 +155,9 @@
    "ticker": "BTC-EUR",
    "qty": 0.15,
    "buy": 71923.82,
-   "price": 68458.56,
-   "pct": -4.82,
-   "value": 10268.78,
+   "price": 68596.53,
+   "pct": -4.63,
+   "value": 10289.48,
    "stop": 0.35,
    "weight": 3.6
   },
@@ -166,9 +166,9 @@
    "ticker": "GOOGL",
    "qty": 22,
    "buy": 262.7,
-   "price": 251.45,
-   "pct": -4.28,
-   "value": 5531.89,
+   "price": 251.51,
+   "pct": -4.26,
+   "value": 5533.13,
    "stop": 0.25,
    "weight": 2.0
   },
