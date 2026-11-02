@@ -30,6 +30,11 @@ svg{width:100%;height:auto;display:block}
 <h2>Verlauf (Start = 100)</h2><div class="card"><svg id="ch" viewBox="0 0 700 240"></svg>
 <div class="leg"><span><i style="background:var(--c1)"></i>Claude</span><span><i style="background:var(--c2)"></i>Welt-ETF</span><span><i style="background:var(--c3)"></i>Du</span></div></div>
 <h2>Positionen</h2><div class="wrap"><table id="pos"></table></div>
+<h2>Letzte Tage (alle 30 Minuten)</h2><div class="card"><svg id="ch2" viewBox="0 0 700 200"></svg></div>
+<h2>Risiko</h2><div class="wrap"><table id="risk"></table></div>
+<h2>Aufteilung</h2><div class="card" id="alloc"></div>
+<h2>Beitrag je Position</h2><div class="wrap"><table id="ctb"></table></div>
+<h2>Entscheidungen im Vergleich</h2><div class="wrap"><table id="org"></table></div>
 <h2>Orderbuch</h2><div class="wrap"><table id="trd"></table></div>
 <h2>Offene Aufträge</h2><div class="wrap"><table id="ord"></table></div>
 <p class="mute" id="warn"></p>
@@ -43,7 +48,7 @@ const perf=(a,ref)=>{const b=at(a,ref);return b?(a[a.length-1].v/b.v-1)*100:null
 fetch('data.json?'+Date.now()).then(r=>r.json()).then(d=>{
  document.getElementById('upd').textContent='Stand: '+d.updated;
  document.getElementById('val').textContent=f(d.value)+' €';
- document.getElementById('sub').textContent='Cash '+f(d.cash)+' € · Backup-Reserve '+f(d.reserve)+' € · Wochenrate '+f(d.rate,0)+' € · Steuern bisher '+f(d.tax_paid||0)+' € · Kern-Sparplan '+(d.core&&!d.core.paused?'an ('+Math.round(d.core.share*100)+' %)':'pausiert');
+ document.getElementById('sub').textContent='Cash '+f(d.cash)+' € · Backup-Reserve '+f(d.reserve)+' € · Wochenrate '+f(d.rate,0)+' € · Steuern bisher '+f(d.tax_paid||0)+' € · Kern-Sparplan '+(d.core&&!d.core.paused?'an ('+Math.round((d.core.effective||d.core.share)*100)+' %'+(d.core.rule&&d.core.rule!='Basis'?', '+d.core.rule:'')+')':'pausiert');
  const C=d.series.map(s=>({date:s.date,v:s.idx})),B=d.series.map(s=>({date:s.date,v:s.bench})),U=d.user.map(s=>({date:s.date,v:s.idx}));
  const L=C[C.length-1].date,dt=new Date(L),iso=x=>x.toISOString().slice(0,10);
  const refs=[['Heute',C.length>1?C[C.length-2].date:'0'],['Monat',iso(new Date(dt.getFullYear(),dt.getMonth(),0))],
@@ -61,6 +66,20 @@ fetch('data.json?'+Date.now()).then(r=>r.json()).then(d=>{
  let t='<tr><th>Datum</th><th>Art</th><th>Titel</th><th>Stück</th><th>Kurs €</th><th>Hinweis</th></tr>';
  d.trades.forEach(r=>{t+='<tr><td>'+r.date+'</td><td>'+r.side+'</td><td>'+r.name+'</td><td>'+f(r.qty,r.qty%1?2:0)+'</td><td>'+f(r.price)+'</td><td>'+(r.note||'')+'</td></tr>'});
  document.getElementById('trd').innerHTML=t;
+ const R=d.risk||{};let k='<tr><th>Kennzahl</th><th>Claude</th><th>Welt-ETF</th></tr>';
+ k+='<tr><td>Größter Rückgang</td><td>'+pc(R.mdd)+'</td><td>'+pc(R.mdd_b)+'</td></tr>';
+ k+='<tr><td>Schwankung (p. a.)</td><td>'+(R.vol==null?'ab 20 Handelstagen':f(R.vol,1)+' %')+'</td><td></td></tr>';
+ k+='<tr><td>Beta zum Welt-ETF</td><td>'+(R.beta==null?'ab 20 Handelstagen':f(R.beta))+'</td><td>1,00</td></tr>';
+ document.getElementById('risk').innerHTML=k;
+ const bars=(m,t)=>'<div class="mute" style="margin-top:6px">'+t+'</div>'+Object.entries(m).sort((a,b)=>b[1]-a[1]).map(([n,v])=>'<div style="display:flex;align-items:center;gap:8px;margin:3px 0"><span style="width:120px">'+n+'</span><div style="flex:1;background:var(--line);border-radius:4px;height:8px"><div style="width:'+Math.min(v,100)+'%;height:8px;border-radius:4px;background:var(--c1)"></div></div><span style="width:52px;text-align:right">'+f(v,1)+' %</span></div>').join('');
+ document.getElementById('alloc').innerHTML=bars((d.alloc||{}).region||{},'Nach Region')+bars((d.alloc||{}).sector||{},'Nach Branche')+'<p class="mute">Breite ETFs zähle ich als eigene Gruppe, nicht aufgeschlüsselt.</p>';
+ let c='<tr><th>Titel</th><th>Gewinn/Verlust €</th><th>Beitrag (Punkte)</th></tr>';
+ [...d.positions].sort((a,b)=>b.gain-a.gain).forEach(r=>{c+='<tr><td>'+r.name+'</td><td>'+f(r.gain)+'</td><td>'+pc(r.gain/d.start*100)+'</td></tr>'});
+ document.getElementById('ctb').innerHTML=c;
+ let g='<tr><th>Herkunft</th><th>Positionen</th><th>Einsatz €</th><th>Gewinn €</th><th>Rendite</th></tr>';
+ (d.origin||[]).forEach(r=>{g+='<tr><td>'+r.name+'</td><td>'+r.n+'</td><td>'+f(r.cost,0)+'</td><td>'+f(r.gain)+'</td><td>'+pc(r.pct)+'</td></tr>'});
+ document.getElementById('org').innerHTML=g;
+ const I=d.intraday||[];if(I.length>1){const vs=I.map(x=>x.v).concat(I.map(x=>x.b)),a=Math.min(...vs)-0.2,z=Math.max(...vs)+0.2,Xi=i=>40+i*(640/(I.length-1)),Yi=v=>180-(v-a)/(z-a)*160,pl=(k,col)=>'<polyline fill="none" stroke="var('+col+')" stroke-width="2" points="'+I.map((x,i)=>Xi(i)+','+Yi(x[k])).join(' ')+'"/>';document.getElementById('ch2').innerHTML=pl('b','--c2')+pl('v','--c1')}
  let o='<tr><th>Art</th><th>Titel</th><th>Grenze €</th><th>Stück</th><th>Gültig bis</th><th>Hinweis</th></tr>';
  (d.orders||[]).forEach(r=>{o+='<tr><td>'+r.side+'</td><td>'+r.name+'</td><td>'+(r.side=='KAUF'?'≤ ':'≥ ')+f(r.limit)+'</td><td>'+f(r.qty,r.qty%1?2:0)+'</td><td>'+r.valid_until+'</td><td>'+(r.note||'')+'</td></tr>'});
  if(!(d.orders||[]).length)o+='<tr><td colspan="6">Keine offenen Aufträge</td></tr>';
