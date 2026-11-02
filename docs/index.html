@@ -43,7 +43,7 @@ const perf=(a,ref)=>{const b=at(a,ref);return b?(a[a.length-1].v/b.v-1)*100:null
 fetch('data.json?'+Date.now()).then(r=>r.json()).then(d=>{
  document.getElementById('upd').textContent='Stand: '+d.updated;
  document.getElementById('val').textContent=f(d.value)+' €';
- document.getElementById('sub').textContent='Cash '+f(d.cash)+' € · Backup-Reserve '+f(d.reserve)+' € · Wochenrate '+f(d.rate,0)+' € · Steuern bisher '+f(d.tax_paid||0)+' €';
+ document.getElementById('sub').textContent='Cash '+f(d.cash)+' € · Backup-Reserve '+f(d.reserve)+' € · Wochenrate '+f(d.rate,0)+' € · Steuern bisher '+f(d.tax_paid||0)+' € · Kern-Sparplan '+(d.core&&!d.core.paused?'an ('+Math.round(d.core.share*100)+' %)':'pausiert');
  const C=d.series.map(s=>({date:s.date,v:s.idx})),B=d.series.map(s=>({date:s.date,v:s.bench})),U=d.user.map(s=>({date:s.date,v:s.idx}));
  const L=C[C.length-1].date,dt=new Date(L),iso=x=>x.toISOString().slice(0,10);
  const refs=[['Heute',C.length>1?C[C.length-2].date:'0'],['Monat',iso(new Date(dt.getFullYear(),dt.getMonth(),0))],
