@@ -1,6 +1,6 @@
 {
- "updated": "03.11.2026 18:40 Uhr",
- "value": 281845.9,
+ "updated": "03.11.2026 19:37 Uhr",
+ "value": 281948.11,
  "cash": 33336.3,
  "reserve": 30000,
  "rate": 365,
@@ -37,8 +37,8 @@
   },
   {
    "date": "2026-11-03",
-   "value": 281845.9,
-   "idx": 100.26,
+   "value": 281948.11,
+   "idx": 100.29,
    "bench": 99.53
   }
  ],
@@ -126,11 +126,11 @@
    "ticker": "LLY",
    "qty": 19,
    "buy": 1143.57,
-   "price": 1269.61,
-   "pct": 11.02,
-   "value": 24122.68,
+   "price": 1269.28,
+   "pct": 10.99,
+   "value": 24116.29,
    "stop": 0.22,
-   "gain": 2394.85,
+   "gain": 2388.46,
    "region": "USA",
    "sector": "Gesundheit",
    "origin": "eigene Recherche",
@@ -156,11 +156,11 @@
    "ticker": "JPM",
    "qty": 40,
    "buy": 295.95,
-   "price": 300.3,
-   "pct": 1.47,
-   "value": 12012.18,
+   "price": 301.71,
+   "pct": 1.95,
+   "value": 12068.44,
    "stop": 0.2,
-   "gain": 174.18,
+   "gain": 230.44,
    "region": "USA",
    "sector": "Finanzen",
    "origin": "eigene Recherche",
@@ -171,11 +171,11 @@
    "ticker": "TSM",
    "qty": 30,
    "buy": 373.54,
-   "price": 361.92,
-   "pct": -3.11,
-   "value": 10857.71,
+   "price": 363.12,
+   "pct": -2.79,
+   "value": 10893.73,
    "stop": 0.25,
-   "gain": -348.49,
+   "gain": -312.47,
    "region": "Asien",
    "sector": "Technologie",
    "origin": "eigene Recherche",
@@ -201,11 +201,11 @@
    "ticker": "BTC-EUR",
    "qty": 0.15,
    "buy": 71923.82,
-   "price": 69359.0,
-   "pct": -3.57,
-   "value": 10403.85,
+   "price": 69486.13,
+   "pct": -3.39,
+   "value": 10422.92,
    "stop": 0.35,
-   "gain": -384.72,
+   "gain": -365.65,
    "region": "Global",
    "sector": "Krypto",
    "origin": "eigene Recherche",
@@ -216,11 +216,11 @@
    "ticker": "GOOGL",
    "qty": 22,
    "buy": 262.7,
-   "price": 250.35,
-   "pct": -4.7,
-   "value": 5507.63,
+   "price": 250.22,
+   "pct": -4.75,
+   "value": 5504.88,
    "stop": 0.25,
-   "gain": -271.77,
+   "gain": -274.52,
    "region": "USA",
    "sector": "Technologie",
    "origin": "durch Nutzerthema angestoßen",
@@ -391,7 +391,7 @@
  },
  "risk": {
   "n": 6,
-  "mdd": -1.8,
+  "mdd": -1.77,
   "mdd_b": -2.08,
   "vol": null,
   "beta": null
@@ -424,15 +424,15 @@
    "name": "eigene Recherche",
    "n": 11,
    "cost": 241996,
-   "gain": 1006.39,
-   "pct": 0.42
+   "gain": 1111.35,
+   "pct": 0.46
   },
   {
    "name": "durch Nutzerthema angestoßen",
    "n": 1,
    "cost": 5779,
-   "gain": -271.77,
-   "pct": -4.7
+   "gain": -274.52,
+   "pct": -4.75
   }
  ],
  "intraday": [
@@ -504,6 +504,11 @@
   {
    "t": "2026-11-03 18:40",
    "v": 100.26,
+   "b": 99.53
+  },
+  {
+   "t": "2026-11-03 19:37",
+   "v": 100.29,
    "b": 99.53
   }
  ],
