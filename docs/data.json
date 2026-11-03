@@ -1,6 +1,6 @@
 {
- "updated": "03.11.2026 21:36 Uhr",
- "value": 281598.8,
+ "updated": "03.11.2026 22:32 Uhr",
+ "value": 281714.79,
  "cash": 33336.3,
  "reserve": 30000,
  "rate": 365,
@@ -37,8 +37,8 @@
   },
   {
    "date": "2026-11-03",
-   "value": 281598.8,
-   "idx": 100.17,
+   "value": 281714.79,
+   "idx": 100.21,
    "bench": 99.53
   }
  ],
@@ -126,11 +126,11 @@
    "ticker": "LLY",
    "qty": 19,
    "buy": 1143.57,
-   "price": 1256.41,
-   "pct": 9.87,
-   "value": 23871.81,
+   "price": 1258.86,
+   "pct": 10.08,
+   "value": 23918.31,
    "stop": 0.22,
-   "gain": 2143.98,
+   "gain": 2190.48,
    "region": "USA",
    "sector": "Gesundheit",
    "origin": "eigene Recherche",
@@ -156,11 +156,11 @@
    "ticker": "JPM",
    "qty": 40,
    "buy": 295.95,
-   "price": 300.68,
-   "pct": 1.6,
-   "value": 12027.12,
+   "price": 301.88,
+   "pct": 2.0,
+   "value": 12075.35,
    "stop": 0.2,
-   "gain": 189.12,
+   "gain": 237.35,
    "region": "USA",
    "sector": "Finanzen",
    "origin": "eigene Recherche",
@@ -171,11 +171,11 @@
    "ticker": "TSM",
    "qty": 30,
    "buy": 373.54,
-   "price": 362.09,
-   "pct": -3.06,
-   "value": 10862.83,
+   "price": 361.57,
+   "pct": -3.21,
+   "value": 10847.02,
    "stop": 0.25,
-   "gain": -343.37,
+   "gain": -359.18,
    "region": "Asien",
    "sector": "Technologie",
    "origin": "eigene Recherche",
@@ -201,11 +201,11 @@
    "ticker": "BTC-EUR",
    "qty": 0.15,
    "buy": 71923.82,
-   "price": 69422.81,
-   "pct": -3.48,
-   "value": 10413.42,
+   "price": 69530.39,
+   "pct": -3.33,
+   "value": 10429.56,
    "stop": 0.35,
-   "gain": -375.15,
+   "gain": -359.01,
    "region": "Global",
    "sector": "Krypto",
    "origin": "eigene Recherche",
@@ -216,15 +216,15 @@
    "ticker": "GOOGL",
    "qty": 22,
    "buy": 262.7,
-   "price": 249.17,
-   "pct": -5.15,
-   "value": 5481.77,
+   "price": 250.12,
+   "pct": -4.79,
+   "value": 5502.7,
    "stop": 0.25,
-   "gain": -297.63,
+   "gain": -276.7,
    "region": "USA",
    "sector": "Technologie",
    "origin": "durch Nutzerthema angestoßen",
-   "weight": 1.9
+   "weight": 2.0
   },
   {
    "name": "iShares Core MSCI Japan IMI",
@@ -391,7 +391,7 @@
  },
  "risk": {
   "n": 6,
-  "mdd": -1.89,
+  "mdd": -1.85,
   "mdd_b": -2.08,
   "vol": null,
   "beta": null
@@ -403,7 +403,7 @@
    "Schwellenländer": 9.8,
    "Global": 11.9,
    "Europa": 21.8,
-   "USA": 14.7,
+   "USA": 14.8,
    "Asien": 3.9,
    "Japan": 3.0
   },
@@ -411,7 +411,7 @@
    "Cash": 11.8,
    "ETF breit": 35.8,
    "Gold": 8.2,
-   "Technologie": 15.1,
+   "Technologie": 15.2,
    "Gesundheit": 8.5,
    "Energie": 8.2,
    "Finanzen": 4.3,
@@ -424,15 +424,15 @@
    "name": "eigene Recherche",
    "n": 11,
    "cost": 241996,
-   "gain": 785.15,
-   "pct": 0.32
+   "gain": 880.21,
+   "pct": 0.36
   },
   {
    "name": "durch Nutzerthema angestoßen",
    "n": 1,
    "cost": 5779,
-   "gain": -297.63,
-   "pct": -5.15
+   "gain": -276.7,
+   "pct": -4.79
   }
  ],
  "intraday": [
@@ -519,6 +519,11 @@
   {
    "t": "2026-11-03 21:36",
    "v": 100.17,
+   "b": 99.53
+  },
+  {
+   "t": "2026-11-03 22:32",
+   "v": 100.21,
    "b": 99.53
   }
  ],
