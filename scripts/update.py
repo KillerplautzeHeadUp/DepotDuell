@@ -47,6 +47,29 @@ def fetch(tickers):
         out[t] = (last, prev)
     return out
 
+def _today():
+    return dt.date.fromisoformat(os.environ["FAKE_TODAY"]) if os.environ.get("FAKE_TODAY") else dt.date.today()
+
+def load_meta():
+    try:
+        m = load("data", "user_meta.json")
+    except Exception:
+        m = {"start": load("data", "state.json")["start_capital"], "deposits": 1441.5}
+    m.setdefault("weekly", 365.0); m.setdefault("from", "2026-11-02"); m.setdefault("last_counted", "2026-10-26")
+    return m
+
+def accrue_user_deposits():
+    """Zaehlt deinen Sparplan (montags) automatisch als Einzahlung."""
+    m, today = load_meta(), _today()
+    d, n = dt.date.fromisoformat(m["last_counted"]) + dt.timedelta(days=7), 0
+    while d <= today:
+        if d.isoformat() >= m["from"] and m["weekly"] > 0:
+            m["deposits"] = round(m["deposits"] + m["weekly"], 2); n += 1
+        m["last_counted"] = d.isoformat(); d += dt.timedelta(days=7)
+    save(m, "data", "user_meta.json")
+    if n:
+        notify(f"Dein Sparplan: {n} Rate(n) a {m['weekly']:.0f} EUR als Einzahlung gezaehlt (Summe {m['deposits']:.2f} EUR).")
+
 def process_telegram():
     """Liest Nachrichten deines Bots (nur von deiner Chat-ID): DEPOT <Wert> [EINZAHLUNG <Betrag>]."""
     tok = (os.environ.get("TELEGRAM_TOKEN") or "").strip()
@@ -70,10 +93,7 @@ def process_telegram():
         return
     if not updates:
         return
-    try:
-        meta = load("data", "user_meta.json")
-    except Exception:
-        meta = {"start": load("data", "state.json")["start_capital"], "deposits": 1441.5}
+    meta = load_meta()
     usr = load("data", "user.json")
     today = dt.date.today().isoformat()
     for u in updates:
@@ -81,6 +101,14 @@ def process_telegram():
         if str(m.get("chat", {}).get("id")) != chat:
             continue
         w = (m.get("text") or "").upper().replace(",", ".").replace("€", "").split()
+        if "SPARPLAN" in w:
+            try:
+                i = w.index("SPARPLAN"); meta["weekly"] = 0.0 if w[i + 1] == "AUS" else float(w[i + 1])
+                notify(f"Dein Sparplan: {meta['weekly']:.2f} EUR pro Woche (montags).")
+            except Exception:
+                notify("Nicht verstanden. Schreibe z. B.: SPARPLAN 365   oder   SPARPLAN AUS")
+            if "DEPOT" not in w:
+                continue
         try:
             val = float(w[w.index("DEPOT") + 1])
             dep = float(w[w.index("EINZAHLUNG") + 1]) if "EINZAHLUNG" in w else 0.0
@@ -118,6 +146,7 @@ def get_dividends(ticker):
         return []
 
 def main():
+    accrue_user_deposits()
     process_telegram()
     st, hist, usr = load("data", "state.json"), load("data", "history.json"), load("data", "user.json")
     today = dt.date.fromisoformat(os.environ["FAKE_TODAY"]) if os.environ.get("FAKE_TODAY") else dt.date.today()
