@@ -21,6 +21,7 @@ th:first-child,td:first-child{text-align:left}th{color:var(--mute);font-size:13p
 svg{width:100%;height:auto;display:block}
 .leg span{margin-right:14px;font-size:13px}.leg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px}
 details.help{margin-top:14px}details.help summary{cursor:pointer;font-weight:600}details.help ul{margin:8px 0 0;padding-left:18px}details.help li{margin:3px 0;font-size:14px}details.help h3{font-size:14px;margin:12px 0 2px}code{background:var(--line);padding:1px 5px;border-radius:4px;font-size:13px}
+#rng{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}#rng button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 14px;font:inherit;font-size:14px;cursor:pointer}#rng button.on{background:var(--c1);color:#fff;border-color:var(--c1)}svg#ch{touch-action:pan-y;user-select:none}
 </style>
 </head>
 <body><main>
@@ -33,7 +34,7 @@ details.help{margin-top:14px}details.help summary{cursor:pointer;font-weight:600
 <li><b>Kern-Sparplan</b>: Der Prozentwert ist der Anteil der Wochenrate, der automatisch in die Kern-ETFs geht. Steht eine Regel dahinter, hat der Autopilot den Anteil gerade geändert.</li></ul>
 <h3>Zahlen</h3><ul>
 <li><b>Entwicklung</b>: Rendite in Prozent, bereinigt um Einzahlungen. „Du“ ist dein Depot, „Welt-ETF“ der Vergleichswert.</li>
-<li><b>Verlauf</b> und <b>Letzte Tage</b>: Index mit Start = 100. Über 100 ist im Plus.</li>
+<li><b>Verlauf</b>: Die Tasten wählen den Zeitraum, Antippen zeigt die Werte. Alle Linien starten bei 0 %. ▲ Kauf, ▼ Verkauf, graue Punkte Einzahlungen. Der untere Streifen zeigt, wie weit Claude vor (grün) oder hinter (rot) dem Welt-ETF liegt.</li>
 <li><b>Positionen</b>: „±“ ist die Veränderung seit Kauf. „Stop“ heißt: Verkauf, wenn der Kurs so viel unter dem Kaufkurs liegt.</li>
 <li><b>Risiko</b>: Größter Rückgang ist der stärkste Verlust vom Hoch bis zum Tief. Beta 1 bedeutet: schwankt wie der Welt-ETF, über 1 stärker.</li>
 <li><b>Offene Aufträge</b>: „≤“ kauft, wenn der Kurs auf die Grenze fällt. „≥“ verkauft, wenn er sie erreicht.</li></ul>
@@ -46,10 +47,9 @@ details.help{margin-top:14px}details.help summary{cursor:pointer;font-weight:600
 <li>Dein Sparplan (365 €, montags) wird automatisch als Einzahlung gezählt. Ändern: <code>SPARPLAN 340</code> oder <code>SPARPLAN AUS</code>.</li></ul>
 </details>
 <h2>Entwicklung</h2><div class="wrap"><table id="per"></table></div>
-<h2>Verlauf (Start = 100)</h2><div class="card"><svg id="ch" viewBox="0 0 700 240"></svg>
-<div class="leg"><span><i style="background:var(--c1)"></i>Claude</span><span><i style="background:var(--c2)"></i>Welt-ETF</span><span><i style="background:var(--c3)"></i>Du</span></div></div>
+<h2>Verlauf (in % seit Beginn des Zeitraums)</h2><div class="card"><div id="rng"></div><svg id="ch" viewBox="0 0 600 340"></svg>
+<div class="leg"><span><i style="background:var(--c1)"></i>Claude</span><span><i style="background:var(--c2)"></i>Welt-ETF</span><span><i style="background:var(--c3)"></i>Du</span><span style="color:var(--gain)">▲ Kauf</span><span style="color:var(--loss)">▼ Verkauf</span><span>● Einzahlung</span></div></div>
 <h2>Positionen</h2><div class="wrap"><table id="pos"></table></div>
-<h2>Letzte Tage (alle 30 Minuten)</h2><div class="card"><svg id="ch2" viewBox="0 0 700 200"></svg></div>
 <h2>Risiko</h2><div class="wrap"><table id="risk"></table></div>
 <h2>Aufteilung</h2><div class="card" id="alloc"></div>
 <h2>Beitrag je Position</h2><div class="wrap"><table id="ctb"></table></div>
@@ -64,6 +64,60 @@ const f=(n,d=2)=>n.toLocaleString('de-DE',{minimumFractionDigits:d,maximumFracti
 const pc=v=>v==null?'–':'<span class="'+(v>=0?'up':'dn')+'">'+(v>=0?'+':'−')+f(Math.abs(v))+' %</span>';
 const at=(a,ref)=>{let r=null;for(const x of a){if(x.date<=ref)r=x}return r};
 const perf=(a,ref)=>{const b=at(a,ref);return b?(a[a.length-1].v/b.v-1)*100:null};
+function initChart(d,C,B,U){
+ const svg=document.getElementById('ch'),bar=document.getElementById('rng');
+ const ms=x=>new Date(x.length<=10?x+'T12:00:00':x.replace(' ','T')).getTime();
+ const ds=t=>new Date(t).toLocaleDateString('sv-SE');
+ const uAt=day=>{let r=null;for(const x of U){if(x.date<=day)r=x.v}return r};
+ const I=(d.intraday||[]).map(x=>({t:ms(x.t),c:x.v,b:x.b,u:null}));
+ const D=C.map((x,i)=>({t:ms(x.date),c:x.v,b:B[i].v,u:uAt(x.date)}));
+ const yr=new Date().getFullYear();
+ const sets={Tag:()=>{if(!I.length)return[];const l=ds(I[I.length-1].t);return I.filter(p=>ds(p.t)==l)},Woche:()=>I,Monat:()=>D.slice(-22),YTD:()=>D.filter(p=>ds(p.t)>=yr+'-01-01'),Alles:()=>D};
+ let cur='Alles';
+ bar.innerHTML=Object.keys(sets).map(k=>'<button data-k="'+k+'">'+k+'</button>').join('');
+ bar.onclick=e=>{const k=e.target.dataset&&e.target.dataset.k;if(k){cur=k;draw()}};
+ function draw(){
+  [...bar.children].forEach(b=>{b.className=b.dataset.k==cur?'on':''});
+  const P=sets[cur]();
+  if(P.length<2){svg.innerHTML='<text x="300" y="170" text-anchor="middle" style="fill:var(--mute);font-size:16px">Noch zu wenige Daten für diesen Zeitraum</text>';return}
+  const W=600,L=46,R=84,T=16,Bt=236,G0=270,G1=322,intra=cur=='Tag'||cur=='Woche';
+  const t0=P[0].t,t1=P[P.length-1].t,span=Math.max(t1-t0,1),X=t=>L+(t-t0)/span*(W-L-R);
+  const hasU=P.every(p=>p.u!=null);
+  const sr=k=>P.map(p=>(p[k]/P[0][k]-1)*100),ser={c:sr('c'),b:sr('b')};if(hasU)ser.u=sr('u');
+  const all=Object.values(ser).flat(),lo=Math.min(...all,0),hi=Math.max(...all,0),pad=Math.max((hi-lo)*0.12,0.15),mn=lo-pad,mx=hi+pad;
+  const Y=v=>Bt-(v-mn)/(mx-mn)*(Bt-T),dec=(mx-mn)<3?2:1,col={c:'--c1',b:'--c2',u:'--c3'},sg=v=>(v>=0?'+':'−')+f(Math.abs(v),2);
+  let h='';
+  for(let i=0;i<=4;i++){const v=mn+(mx-mn)*i/4,y=Y(v);h+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y+'" y2="'+y+'" style="stroke:var(--line)"/><text x="'+(L-6)+'" y="'+(y+5)+'" text-anchor="end" style="fill:var(--mute);font-size:14px">'+f(v,dec)+'</text>'}
+  h+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(0)+'" y2="'+Y(0)+'" style="stroke:var(--mute)" stroke-dasharray="5 4"/>';
+  const hm=q=>q.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'}),dm=q=>q.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'});
+  const fx=t=>{const q=new Date(t);return intra?(cur=='Tag'?hm(q):dm(q)+' '+hm(q)):dm(q)};
+  for(let i=0;i<4;i++){const t=t0+span*i/3;h+='<text x="'+X(t)+'" y="'+(Bt+22)+'" text-anchor="'+(i==0?'start':i==3?'end':'middle')+'" style="fill:var(--mute);font-size:14px">'+fx(t)+'</text>'}
+  for(const k of ['b','u','c'])if(ser[k])h+='<polyline fill="none" style="stroke:var('+col[k]+')" stroke-width="'+(k=='c'?3.5:2.5)+'" stroke-linejoin="round" points="'+ser[k].map((v,i)=>X(P[i].t)+','+Y(v)).join(' ')+'"/>';
+  const near=tm=>{let b=0;for(let i=1;i<P.length;i++)if(Math.abs(P[i].t-tm)<Math.abs(P[b].t-tm))b=i;return b};
+  (d.trades||[]).forEach(r=>{const tm=ms(r.date);if(tm<t0-432e5||tm>t1+432e5)return;const i=near(tm),x=X(P[i].t),y=Y(ser.c[i]);
+   if(r.side=='Kauf')h+='<path d="M'+x+' '+(y-10)+' l6 10 h-12 z" style="fill:var(--gain)"/>';
+   else if(r.side=='Verkauf')h+='<path d="M'+x+' '+(y+10)+' l6 -10 h-12 z" style="fill:var(--loss)"/>';
+   else h+='<circle cx="'+x+'" cy="'+y+'" r="4" style="fill:var(--c3)"/>'});
+  (d.deposits||[]).forEach(r=>{const tm=ms(r.date);if(tm<t0-432e5||tm>t1+432e5)return;h+='<circle cx="'+X(P[near(tm)].t)+'" cy="'+(Bt-5)+'" r="3.5" style="fill:var(--mute)"/>'});
+  const ends=Object.keys(ser).map(k=>({k,v:ser[k][P.length-1],y:Y(ser[k][P.length-1])})).sort((a,b)=>a.y-b.y);
+  for(let i=1;i<ends.length;i++)if(ends[i].y-ends[i-1].y<18)ends[i].y=ends[i-1].y+18;
+  ends.forEach(e=>{h+='<text x="'+(W-R+6)+'" y="'+(e.y+5)+'" style="fill:var('+col[e.k]+');font-size:15px;font-weight:600">'+sg(e.v)+' %</text>'});
+  const g=P.map((p,i)=>ser.c[i]-ser.b[i]),gl=Math.min(...g,0),gh=Math.max(...g,0),gp=Math.max((gh-gl)*0.15,0.1),Gy=v=>G1-(v-(gl-gp))/((gh+gp)-(gl-gp))*(G1-G0),ge=g[g.length-1];
+  h+='<text x="'+L+'" y="'+(G0-8)+'" style="fill:var(--mute);font-size:14px">Abstand zum Welt-ETF (Prozentpunkte)</text><line x1="'+L+'" x2="'+(W-R)+'" y1="'+Gy(0)+'" y2="'+Gy(0)+'" style="stroke:var(--mute)" stroke-dasharray="5 4"/>';
+  h+='<polyline fill="none" style="stroke:'+(ge>=0?'var(--gain)':'var(--loss)')+'" stroke-width="2.5" stroke-linejoin="round" points="'+g.map((v,i)=>X(P[i].t)+','+Gy(v)).join(' ')+'"/><text x="'+(W-R+6)+'" y="'+(Gy(ge)+5)+'" style="fill:var(--ink);font-size:15px;font-weight:600">'+sg(ge)+' Pkt</text>';
+  h+='<g id="tip" style="display:none;pointer-events:none"><line id="tl" y1="'+T+'" y2="'+G1+'" style="stroke:var(--ink)" stroke-opacity=".35"/><rect id="tr" rx="6" ry="6" width="196" height="80" style="fill:var(--card);stroke:var(--line)"/><text id="t0" style="fill:var(--mute);font-size:14px"></text><text id="t1" style="fill:var(--c1);font-size:15px;font-weight:600"></text><text id="t2" style="fill:var(--c2);font-size:15px;font-weight:600"></text><text id="t3" style="fill:var(--c3);font-size:15px;font-weight:600"></text></g>';
+  svg.innerHTML=h;
+  const q=id=>svg.querySelector('#'+id),tip=q('tip');
+  const mv=e=>{const r=svg.getBoundingClientRect(),px=(e.clientX-r.left)/r.width*W;let b=0;
+   for(let i=1;i<P.length;i++)if(Math.abs(X(P[i].t)-px)<Math.abs(X(P[b].t)-px))b=i;
+   const x=X(P[b].t),bx=x>W/2?x-206:x+10,dd=new Date(P[b].t);
+   tip.style.display='';q('tl').setAttribute('x1',x);q('tl').setAttribute('x2',x);q('tr').setAttribute('x',bx);q('tr').setAttribute('y',T+4);
+   const tx=[intra?dm(dd)+' '+hm(dd):dd.toLocaleDateString('de-DE'),'Claude '+sg(ser.c[b])+' %','Welt-ETF '+sg(ser.b[b])+' %',ser.u?'Du '+sg(ser.u[b])+' %':''];
+   tx.forEach((t,i)=>{const el=q('t'+i);el.setAttribute('x',bx+10);el.setAttribute('y',T+24+i*19);el.textContent=t})};
+  svg.onpointermove=mv;svg.onpointerdown=mv;svg.onpointerleave=()=>{tip.style.display='none'};
+ }
+ draw();
+}
 fetch('data.json?'+Date.now()).then(r=>r.json()).then(d=>{
  document.getElementById('upd').textContent='Stand: '+d.updated;
  document.getElementById('val').textContent=f(d.value)+' €';
@@ -75,10 +129,7 @@ fetch('data.json?'+Date.now()).then(r=>r.json()).then(d=>{
  let h='<tr><th>Zeitraum</th><th>Claude</th><th>Welt-ETF</th><th>Du</th></tr>';
  refs.forEach(r=>{h+='<tr><td>'+r[0]+'</td><td>'+pc(perf(C,r[1]))+'</td><td>'+pc(perf(B,r[1]))+'</td><td>'+pc(U.length?perf(U,r[1]):null)+'</td></tr>'});
  document.getElementById('per').innerHTML=h;
- const all=[...C,...B,...U].map(x=>x.v),mn=Math.min(...all)-0.5,mx=Math.max(...all)+0.5,n=C.length;
- const X=i=>40+i*(640/Math.max(n-1,1)),Y=v=>210-(v-mn)/(mx-mn)*190;
- const line=(a,col)=>'<polyline fill="none" stroke="var('+col+')" stroke-width="2.5" points="'+C.map((c,i)=>{const r=at(a,c.date);return r?X(i)+','+Y(r.v):''}).filter(Boolean).join(' ')+'"/>';
- document.getElementById('ch').innerHTML='<line x1="40" x2="680" y1="'+Y(100)+'" y2="'+Y(100)+'" stroke="var(--line)" stroke-dasharray="4"/><text x="4" y="'+(Y(100)+4)+'" fill="var(--mute)" font-size="12">100</text>'+line(B,'--c2')+line(U,'--c3')+line(C,'--c1');
+ initChart(d,C,B,U);
  let p='<tr><th>Titel</th><th>Stück</th><th>Kaufkurs €</th><th>Aktuell €</th><th>±</th><th>Wert €</th><th>Anteil</th><th>Stop</th></tr>';
  d.positions.forEach(r=>{p+='<tr><td>'+r.name+'</td><td>'+f(r.qty,r.qty%1?2:0)+'</td><td>'+f(r.buy)+'</td><td>'+f(r.price)+'</td><td>'+pc(r.pct)+'</td><td>'+f(r.value)+'</td><td>'+f(r.weight,1)+' %</td><td>'+(r.stop?'−'+Math.round(r.stop*100)+' %':'–')+'</td></tr>'});
  document.getElementById('pos').innerHTML=p;
@@ -98,7 +149,6 @@ fetch('data.json?'+Date.now()).then(r=>r.json()).then(d=>{
  let g='<tr><th>Herkunft</th><th>Positionen</th><th>Einsatz €</th><th>Gewinn €</th><th>Rendite</th></tr>';
  (d.origin||[]).forEach(r=>{g+='<tr><td>'+r.name+'</td><td>'+r.n+'</td><td>'+f(r.cost,0)+'</td><td>'+f(r.gain)+'</td><td>'+pc(r.pct)+'</td></tr>'});
  document.getElementById('org').innerHTML=g;
- const I=d.intraday||[];if(I.length>1){const vs=I.map(x=>x.v).concat(I.map(x=>x.b)),a=Math.min(...vs)-0.2,z=Math.max(...vs)+0.2,Xi=i=>40+i*(640/(I.length-1)),Yi=v=>180-(v-a)/(z-a)*160,pl=(k,col)=>'<polyline fill="none" stroke="var('+col+')" stroke-width="2" points="'+I.map((x,i)=>Xi(i)+','+Yi(x[k])).join(' ')+'"/>';document.getElementById('ch2').innerHTML=pl('b','--c2')+pl('v','--c1')}
  let o='<tr><th>Art</th><th>Titel</th><th>Grenze €</th><th>Stück</th><th>Gültig bis</th><th>Hinweis</th></tr>';
  (d.orders||[]).forEach(r=>{o+='<tr><td>'+r.side+'</td><td>'+r.name+'</td><td>'+(r.side=='KAUF'?'≤ ':'≥ ')+f(r.limit)+'</td><td>'+f(r.qty,r.qty%1?2:0)+'</td><td>'+r.valid_until+'</td><td>'+(r.note||'')+'</td></tr>'});
  if(!(d.orders||[]).length)o+='<tr><td colspan="6">Keine offenen Aufträge</td></tr>';
