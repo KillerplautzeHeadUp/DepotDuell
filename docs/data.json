@@ -1,6 +1,6 @@
 {
- "updated": "06.11.2026 20:43 Uhr",
- "value": 276673.13,
+ "updated": "06.11.2026 21:37 Uhr",
+ "value": 276642.56,
  "cash": 33518.8,
  "reserve": 30000,
  "rate": 365,
@@ -55,8 +55,8 @@
   },
   {
    "date": "2026-11-06",
-   "value": 276673.13,
-   "idx": 98.29,
+   "value": 276642.56,
+   "idx": 98.27,
    "bench": 98.24
   }
  ],
@@ -156,11 +156,11 @@
    "ticker": "LLY",
    "qty": 19,
    "buy": 1143.57,
-   "price": 1222.5,
-   "pct": 6.9,
-   "value": 23227.46,
+   "price": 1221.69,
+   "pct": 6.83,
+   "value": 23212.06,
    "stop": 0.22,
-   "gain": 1499.63,
+   "gain": 1484.23,
    "region": "USA",
    "sector": "Gesundheit",
    "origin": "eigene Recherche",
@@ -186,11 +186,11 @@
    "ticker": "JPM",
    "qty": 40,
    "buy": 295.95,
-   "price": 302.26,
-   "pct": 2.13,
-   "value": 12090.51,
+   "price": 300.95,
+   "pct": 1.69,
+   "value": 12038.18,
    "stop": 0.2,
-   "gain": 252.51,
+   "gain": 200.18,
    "region": "USA",
    "sector": "Finanzen",
    "origin": "eigene Recherche",
@@ -201,15 +201,15 @@
    "ticker": "TSM",
    "qty": 30,
    "buy": 373.54,
-   "price": 336.34,
-   "pct": -9.96,
-   "value": 10090.27,
+   "price": 336.89,
+   "pct": -9.81,
+   "value": 10106.75,
    "stop": 0.25,
-   "gain": -1115.93,
+   "gain": -1099.45,
    "region": "Asien",
    "sector": "Technologie",
    "origin": "eigene Recherche",
-   "weight": 3.6
+   "weight": 3.7
   },
   {
    "name": "Siemens",
@@ -231,11 +231,11 @@
    "ticker": "BTC-EUR",
    "qty": 0.15,
    "buy": 71923.82,
-   "price": 67935.98,
-   "pct": -5.54,
-   "value": 10190.4,
+   "price": 68047.87,
+   "pct": -5.39,
+   "value": 10207.18,
    "stop": 0.35,
-   "gain": -598.18,
+   "gain": -581.39,
    "region": "Global",
    "sector": "Krypto",
    "origin": "eigene Recherche",
@@ -246,11 +246,11 @@
    "ticker": "GOOGL",
    "qty": 22,
    "buy": 262.7,
-   "price": 256.43,
-   "pct": -2.39,
-   "value": 5641.43,
+   "price": 256.61,
+   "pct": -2.32,
+   "value": 5645.33,
    "stop": 0.25,
-   "gain": -137.97,
+   "gain": -134.07,
    "region": "USA",
    "sector": "Technologie",
    "origin": "durch Nutzerthema angestoßen",
@@ -450,14 +450,14 @@
    "Global": 12.4,
    "Europa": 21.2,
    "USA": 14.8,
-   "Asien": 3.6,
+   "Asien": 3.7,
    "Japan": 3.0
   },
   "sector": {
    "Cash": 12.1,
    "ETF breit": 35.8,
    "Gold": 8.7,
-   "Technologie": 14.4,
+   "Technologie": 14.5,
    "Gesundheit": 8.4,
    "Energie": 8.1,
    "Finanzen": 4.4,
@@ -470,15 +470,15 @@
    "name": "eigene Recherche",
    "n": 11,
    "cost": 242178,
-   "gain": -4665.19,
-   "pct": -1.93
+   "gain": -4699.65,
+   "pct": -1.94
   },
   {
    "name": "durch Nutzerthema angestoßen",
    "n": 1,
    "cost": 5779,
-   "gain": -137.97,
-   "pct": -2.39
+   "gain": -134.07,
+   "pct": -2.32
   }
  ],
  "intraday": [
@@ -795,6 +795,11 @@
   {
    "t": "2026-11-06 20:43",
    "v": 98.29,
+   "b": 98.24
+  },
+  {
+   "t": "2026-11-06 21:37",
+   "v": 98.27,
    "b": 98.24
   }
  ],
