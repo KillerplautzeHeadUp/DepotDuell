@@ -90,6 +90,19 @@ def main():
                 elif a[1].upper() == "AUTO": c["auto"] = a[2].upper() == "AN"
                 else: raise ValueError("PAUSE, AN, ANTEIL oder AUTO")
                 out.append(f"OK Kern-Sparplan: {'pausiert' if c['paused'] else 'aktiv'}, Anteil {c['share']:.0%}")
+            elif cmd == "ZUSAMMENFUEHREN":  # ZUSAMMENFUEHREN;Alter Name;Ziel-Name (fuehrt doppelte Positionen zusammen)
+                src, dst = find(a[1]), find(a[2])
+                if not src or not dst or src is dst:
+                    raise ValueError("Position nicht gefunden")
+                tot = src["qty"] + dst["qty"]
+                dst["buy"] = round((src["qty"] * src["buy"] + dst["qty"] * dst["buy"]) / tot, 4)
+                dst["qty"] = round(tot, 8)
+                dst["since"] = min(src.get("since", dst["since"]), dst["since"])
+                st["positions"].remove(src)
+                for t in st["trades"]:
+                    if t["name"] == src["name"]:
+                        t["name"] = dst["name"]
+                out.append(f"OK {a[1]} in {a[2]} zusammengefuehrt: {dst['qty']:g} Stueck, Schnitt {dst['buy']:.2f} EUR")
             elif cmd == "INFO":  # INFO;Name;Region;Branche
                 p = find(a[1]); p["region"], p["sector"] = a[2], a[3]; out.append(f"OK Info {a[1]}: {a[2]}, {a[3]}")
             else:
