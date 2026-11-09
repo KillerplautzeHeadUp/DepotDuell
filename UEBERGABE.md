@@ -13,7 +13,7 @@ Dieses Dokument ersetzt das Gedächtnis eines alten Chats. Ein neuer Chat liest 
 
 ## Grenzen von Claude
 - Handelt nur, wenn der Nutzer schreibt. Kein Hintergrund-Agent. Kein Zugriff auf das echte Trade-Republic-Depot. Schreibzugriff auf GitHub nur über Issues des Nutzers.
-- Beim Lesen von Dateien den Link mit ?v=Zahl am Ende verwenden, sonst kann eine alte Kopie erscheinen. Im Zweifel Screenshot der Seite verlangen.
+- Der Lesezugriff auf raw.githubusercontent.com liefert oft eine alte Kopie, auch mit ?v=Zahl (der Zusatz wird entfernt). Verlässlich sind: den Inhalt von data/state.json vom Nutzer einfügen lassen, ein Screenshot der Seite, oder die GitHub-Pages-Adresse der data.json (muss der Nutzer in die Nachricht schreiben). Vor jedem Check-in Stand und Zeitpunkt der gelesenen Daten prüfen.
 
 ## Technik
 - Repository killerplautzeheadup/DepotDuell (öffentlich), Seite per GitHub Pages. Skript alle 30 Minuten an Börsentagen (Kurse von Yahoo Finance, Stop-Loss, bedingte Aufträge, Dividenden, Steuern, Kern-Sparplan mit Autopilot, Wochenbericht freitags abends per Telegram).
