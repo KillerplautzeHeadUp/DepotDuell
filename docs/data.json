@@ -1,7 +1,7 @@
 {
- "updated": "09.11.2026 20:26 Uhr",
- "value": 280198.87,
- "cash": 33518.8,
+ "updated": "09.11.2026 20:27 Uhr",
+ "value": 280276.95,
+ "cash": 27555.38,
  "reserve": 30000,
  "rate": 365,
  "series": [
@@ -61,8 +61,8 @@
   },
   {
    "date": "2026-11-09",
-   "value": 280198.87,
-   "idx": 99.54,
+   "value": 280276.95,
+   "idx": 99.57,
    "bench": 99.12
   }
  ],
@@ -162,11 +162,11 @@
    "ticker": "LLY",
    "qty": 19,
    "buy": 1143.57,
-   "price": 1261.29,
-   "pct": 10.29,
-   "value": 23964.53,
+   "price": 1261.6,
+   "pct": 10.32,
+   "value": 23970.4,
    "stop": 0.22,
-   "gain": 2236.7,
+   "gain": 2242.57,
    "region": "USA",
    "sector": "Gesundheit",
    "origin": "eigene Recherche",
@@ -192,11 +192,11 @@
    "ticker": "JPM",
    "qty": 40,
    "buy": 295.95,
-   "price": 305.06,
-   "pct": 3.08,
-   "value": 12202.5,
+   "price": 305.03,
+   "pct": 3.07,
+   "value": 12201.31,
    "stop": 0.2,
-   "gain": 364.5,
+   "gain": 363.31,
    "region": "USA",
    "sector": "Finanzen",
    "origin": "eigene Recherche",
@@ -209,9 +209,9 @@
    "buy": 373.54,
    "price": 347.16,
    "pct": -7.06,
-   "value": 10414.82,
+   "value": 10414.72,
    "stop": 0.25,
-   "gain": -791.38,
+   "gain": -791.48,
    "region": "Asien",
    "sector": "Technologie",
    "origin": "eigene Recherche",
@@ -237,11 +237,11 @@
    "ticker": "BTC-EUR",
    "qty": 0.15,
    "buy": 71923.82,
-   "price": 66556.0,
-   "pct": -7.46,
-   "value": 9983.4,
+   "price": 66547.07,
+   "pct": -7.48,
+   "value": 9982.06,
    "stop": 0.35,
-   "gain": -805.17,
+   "gain": -806.51,
    "region": "Global",
    "sector": "Krypto",
    "origin": "eigene Recherche",
@@ -252,11 +252,11 @@
    "ticker": "GOOGL",
    "qty": 22,
    "buy": 262.7,
-   "price": 258.61,
-   "pct": -1.56,
-   "value": 5689.42,
+   "price": 258.67,
+   "pct": -1.53,
+   "value": 5690.76,
    "stop": 0.25,
-   "gain": -89.98,
+   "gain": -88.64,
    "region": "USA",
    "sector": "Technologie",
    "origin": "durch Nutzerthema angestoßen",
@@ -276,9 +276,33 @@
    "sector": "ETF breit",
    "origin": "eigene Recherche",
    "weight": 3.0
+  },
+  {
+   "name": "Welt-ETF",
+   "ticker": "EUNL.DE",
+   "qty": 47.0,
+   "buy": 126.86,
+   "price": 128.45,
+   "pct": 1.25,
+   "value": 6036.92,
+   "stop": 0.0,
+   "gain": 74.5,
+   "region": "Sonstige",
+   "sector": "Sonstige",
+   "origin": "eigene Recherche",
+   "weight": 2.2
   }
  ],
  "trades": [
+  {
+   "date": "2026-11-09",
+   "side": "Kauf",
+   "name": "Welt-ETF",
+   "qty": 47.0,
+   "price": 126.86,
+   "fee": 1.0,
+   "note": "eigene Recherche"
+  },
   {
    "date": "2026-11-06",
    "side": "Kauf",
@@ -450,17 +474,18 @@
  },
  "alloc": {
   "region": {
-   "Cash": 12.0,
+   "Cash": 9.8,
    "Welt": 23.1,
    "Schwellenländer": 9.8,
    "Global": 12.2,
    "Europa": 21.4,
    "USA": 15.0,
    "Asien": 3.7,
-   "Japan": 3.0
+   "Japan": 3.0,
+   "Sonstige": 2.2
   },
   "sector": {
-   "Cash": 12.0,
+   "Cash": 9.8,
    "ETF breit": 35.9,
    "Gold": 8.6,
    "Technologie": 14.8,
@@ -468,23 +493,24 @@
    "Energie": 7.9,
    "Finanzen": 4.4,
    "Industrie": 4.4,
-   "Krypto": 3.6
+   "Krypto": 3.6,
+   "Sonstige": 2.2
   }
  },
  "origin": [
   {
    "name": "eigene Recherche",
-   "n": 11,
-   "cost": 242178,
-   "gain": -1187.43,
-   "pct": -0.49
+   "n": 12,
+   "cost": 248140,
+   "gain": -1109.69,
+   "pct": -0.45
   },
   {
    "name": "durch Nutzerthema angestoßen",
    "n": 1,
    "cost": 5779,
-   "gain": -89.98,
-   "pct": -1.56
+   "gain": -88.64,
+   "pct": -1.53
   }
  ],
  "intraday": [
@@ -871,6 +897,11 @@
   {
    "t": "2026-11-09 20:26",
    "v": 99.54,
+   "b": 99.12
+  },
+  {
+   "t": "2026-11-09 20:27",
+   "v": 99.57,
    "b": 99.12
   }
  ],
