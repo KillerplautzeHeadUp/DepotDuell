@@ -117,7 +117,9 @@ def process_telegram():
             continue
         meta["deposits"] = round(meta["deposits"] + dep, 2)
         idx = round((val - meta["deposits"]) / meta["start"] * 100, 2)
-        usr = [x for x in usr if x["date"] != today] + [{"date": today, "idx": idx}]
+        # NEU: Depotwert und Einzahlungssumme je Meldung mitspeichern (steht dann in data.json)
+        usr = [x for x in usr if x["date"] != today] + [{"date": today, "idx": idx, "value": round(val, 2),
+                                                          "deposits": meta["deposits"]}]
         usr.sort(key=lambda x: x["date"])
         notify(f"Dein Depot: Index {idx:.2f} ({idx - 100:+.2f} %) seit Start, bereinigt um {meta['deposits']:.2f} EUR Einzahlungen.")
     save(usr, "data", "user.json")
@@ -373,7 +375,8 @@ def main():
 
     out = {"updated": dt.datetime.now(__import__("zoneinfo").ZoneInfo("Europe/Berlin")).strftime("%d.%m.%Y %H:%M Uhr"), "value": value,
            "cash": round(st["cash"], 2), "reserve": st["reserve"], "rate": st["weekly_rate"],
-           "series": hist, "user": usr, "positions": rows, "trades": st["trades"][::-1][:60],
+           "series": hist, "user": usr, "user_meta": load_meta(),  # NEU: Einzahlungen des Nutzers in data.json
+           "positions": rows, "trades": st["trades"][::-1][:60],
            "deposits": st["deposits"], "orders": st["orders"], "tax_paid": st["tax"]["paid"], "core": st["core"], "risk": risk,
            "alloc": {"region": reg, "sector": sec}, "origin": origin, "intraday": intr, "start": st["start_capital"], "warnings": warn}
     save(st, "data", "state.json"); save(hist, "data", "history.json"); save(out, "docs", "data.json")
