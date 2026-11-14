@@ -49,6 +49,7 @@ details.help{margin-top:14px}details.help summary{cursor:pointer;font-weight:600
 <li><b>Offene Aufträge</b>: „≤“ kauft, wenn der Kurs auf die Grenze fällt. „≥“ verkauft, wenn er sie erreicht.</li></ul>
 <h3>Befehle (als Issue mit Titel „Order“)</h3><ul>
 <li><code>KERN;ANTEIL;0,3</code>: Die Zahl ist der Anteil der Wochenrate für die Kern-ETFs. 0,3 sind 30 %, 0,5 sind 50 %, 1 ist alles. Der Rest bleibt Cash.</li>
+<li><code>STOP;Eli Lilly;0,2</code> setzt einen festen Stop (20 % unter Kaufkurs), <code>MITLAUFEND;Eli Lilly;0,12</code> einen Stop 12 % unter dem höchsten Kurs. Namen müssen genau stimmen, sonst nennt der Bot den passenden. Neue Positionen mit ähnlichem Namen oder gleichem Kürzel wie eine vorhandene lehnt der Bot ab, es sei denn, die KAUF-Zeile endet auf <code>;NEU</code>.</li>
 <li><code>KERN;PAUSE</code> stoppt den Kern-Sparplan, <code>KERN;AN</code> setzt ihn fort.</li>
 <li><code>KERN;AUTO;AUS</code> schaltet den Autopiloten ab, <code>KERN;AUTO;AN</code> wieder ein. Er erhöht den Anteil auf 80 %, wenn der Welt-ETF über 10 % unter dem Jahreshoch liegt, und passt ihn bei hohem oder niedrigem Cash an (70 % bzw. 30 %). Bei einem Tagesverlust über 7 % pausiert er den Sparplan.</li></ul>
 <h3>Telegram</h3><ul>
