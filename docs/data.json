@@ -1,6 +1,6 @@
 {
- "updated": "14.11.2026 09:05 Uhr",
- "value": 283409.14,
+ "updated": "14.11.2026 09:27 Uhr",
+ "value": 283402.02,
  "cash": 27808.88,
  "reserve": 30000,
  "rate": 365,
@@ -91,8 +91,8 @@
   },
   {
    "date": "2026-11-14",
-   "value": 283409.14,
-   "idx": 100.55,
+   "value": 283402.02,
+   "idx": 100.54,
    "bench": 100.66
   }
  ],
@@ -169,6 +169,9 @@
    "region": "Welt",
    "sector": "ETF breit",
    "origin": "eigene Recherche",
+   "trail": false,
+   "stop_price": null,
+   "stop_dist": null,
    "weight": 25.3
   },
   {
@@ -184,6 +187,9 @@
    "region": "Schwellenländer",
    "sector": "ETF breit",
    "origin": "eigene Recherche",
+   "trail": false,
+   "stop_price": null,
+   "stop_dist": null,
    "weight": 9.8
   },
   {
@@ -199,6 +205,9 @@
    "region": "Global",
    "sector": "Gold",
    "origin": "eigene Recherche",
+   "trail": false,
+   "stop_price": null,
+   "stop_dist": null,
    "weight": 8.2
   },
   {
@@ -214,6 +223,9 @@
    "region": "Europa",
    "sector": "Technologie",
    "origin": "eigene Recherche",
+   "trail": false,
+   "stop_price": 1044.9,
+   "stop_dist": 22.0,
    "weight": 9.0
   },
   {
@@ -229,6 +241,9 @@
    "region": "USA",
    "sector": "Gesundheit",
    "origin": "eigene Recherche",
+   "trail": false,
+   "stop_price": 1086.39,
+   "stop_dist": 16.8,
    "weight": 8.8
   },
   {
@@ -244,6 +259,9 @@
    "region": "Europa",
    "sector": "Energie",
    "origin": "eigene Recherche",
+   "trail": false,
+   "stop_price": 65.23,
+   "stop_dist": 20.6,
    "weight": 8.1
   },
   {
@@ -259,6 +277,9 @@
    "region": "USA",
    "sector": "Finanzen",
    "origin": "eigene Recherche",
+   "trail": false,
+   "stop_price": 236.76,
+   "stop_dist": 24.4,
    "weight": 4.4
   },
   {
@@ -274,6 +295,9 @@
    "region": "Asien",
    "sector": "Technologie",
    "origin": "eigene Recherche",
+   "trail": false,
+   "stop_price": 280.16,
+   "stop_dist": 22.4,
    "weight": 3.8
   },
   {
@@ -289,6 +313,9 @@
    "region": "Europa",
    "sector": "Industrie",
    "origin": "eigene Recherche",
+   "trail": false,
+   "stop_price": 205.44,
+   "stop_dist": 26.5,
    "weight": 4.4
   },
   {
@@ -296,14 +323,17 @@
    "ticker": "BTC-EUR",
    "qty": 0.15,
    "buy": 71923.82,
-   "price": 61012.5,
-   "pct": -15.17,
-   "value": 9151.88,
+   "price": 60965.08,
+   "pct": -15.24,
+   "value": 9144.76,
    "stop": 0.35,
-   "gain": -1636.7,
+   "gain": -1643.81,
    "region": "Global",
    "sector": "Krypto",
    "origin": "eigene Recherche",
+   "trail": false,
+   "stop_price": 46750.48,
+   "stop_dist": 23.3,
    "weight": 3.2
   },
   {
@@ -319,6 +349,9 @@
    "region": "USA",
    "sector": "Technologie",
    "origin": "durch Nutzerthema angestoßen",
+   "trail": false,
+   "stop_price": 197.02,
+   "stop_dist": 26.4,
    "weight": 2.1
   },
   {
@@ -334,6 +367,9 @@
    "region": "Japan",
    "sector": "ETF breit",
    "origin": "eigene Recherche",
+   "trail": false,
+   "stop_price": null,
+   "stop_dist": null,
    "weight": 3.1
   }
  ],
@@ -576,7 +612,7 @@
    "name": "eigene Recherche",
    "n": 11,
    "cost": 248250,
-   "gain": 1461.74,
+   "gain": 1454.63,
    "pct": 0.59
   },
   {
@@ -1051,6 +1087,11 @@
   {
    "t": "2026-11-14 09:05",
    "v": 100.55,
+   "b": 100.66
+  },
+  {
+   "t": "2026-11-14 09:27",
+   "v": 100.54,
    "b": 100.66
   }
  ],
