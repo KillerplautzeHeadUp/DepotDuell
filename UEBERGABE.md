@@ -49,8 +49,11 @@ Alle Nutzerdaten (Index, Depotwert, Einzahlungen) stehen in der data.json der Se
   - Beide Workflows teilen die Gruppe "depot" und laufen nie gleichzeitig. Geplante Läufe starten bei GitHub oft verspätet.
 - Das Skript liefert: Kurse von Yahoo Finance, Stop-Loss, bedingte Aufträge, Dividenden, Steuern, Kern-Sparplan mit Autopilot, Telegram-Auswertung, Wochenbericht freitags ab 19 Uhr per Telegram.
 - Wahrheit: data/state.json. Verlauf: data/history.json, Nutzer-Index: data/user.json, Einzahlungen des Nutzers: data/user_meta.json. Telegram-Position: data/tg_offset.json. Tagesverlauf: data/intraday.json. Veröffentlicht wird docs/data.json.
-- Telegram wird nur bei den Läufen Montag bis Freitag ausgewertet. Meldungen vom Wochenende erscheinen erst am Montag mit dem Datum von Montag.
-- Stop-Loss: Der Stop ist ein fester Abstand vom Kaufkurs (Kurs fällt auf Kaufkurs mal 1 minus Anteil), er läuft nicht mit. Bei Gewinnern schützt er deshalb den Gewinn nicht, solange er nicht angehoben wird.
+- Telegram: Montag bis Freitag im update-Lauf, am Wochenende im eigenen Workflow telegram.yml (scripts/tg_only.py, ohne Kursabruf). Eine DEPOT-Meldung bekommt das Datum der Nachricht.
+- Neue Dateien (14.11.): docs/checkin.json (kompakter Stand, klein, bevorzugt abrufen statt der großen data.json), scripts/tg_only.py, .github/workflows/telegram.yml.
+- Neue Telegram-Befehle: CHECKIN (Bot schickt den kompakten Stand), PRIVAT AN/AUS (Depotwert und Einzahlungen aus Seite und docs-Dateien ausblenden, Rohdateien in data/ bleiben bei öffentlichem Repository sichtbar), MITLAUFEND;Name;Anteil (Stop vom Hoch), FEST;Name;Anteil (Stop vom Kaufkurs). Der Name wird ohne Beachtung der Schreibweise gesucht.
+- Stop mitlaufend: Position bekommt "trail" und "high" in state.json. Warnung per Telegram, wenn ein Kurs 4 Läufe fehlt (Kursausfall).
+- Stop-Loss: Standard ist ein fester Abstand vom Kaufkurs. Optional mitlaufend vom höchsten Kurs seit Aktivierung (Telegram-Befehl MITLAUFEND). Die Seite zeigt Stop-Kurs und Puffer je Position.
 - Orders per Issue mit Titel "Order", eine Zeile je Befehl:
   - `KAUF;Name;Ticker;Währung;Stück;Kurs;Stop;Hinweis`
   - `VERKAUF;Name;Stück;Kurs;Hinweis`
