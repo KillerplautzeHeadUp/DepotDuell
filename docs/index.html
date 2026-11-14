@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Depot-Duell: Du gegen Claude</title>
 <style>
-:root{--bg:#eef1ef;--card:#fbfcfb;--ink:#14201c;--mute:#5b6a64;--line:#d5dcd8;--gain:#0e7c66;--loss:#b3392b;--c1:#0e7c66;--c2:#2f5d8a;--c3:#7a4f8f}
-@media (prefers-color-scheme:dark){:root{--bg:#0f1714;--card:#17211d;--ink:#e6eeea;--mute:#93a39b;--line:#2b3832;--gain:#4cc2a5;--loss:#ef7d6e;--c1:#4cc2a5;--c2:#6ea3d6;--c3:#b48ac7}}
+:root{--bg:#eef1ef;--card:#fbfcfb;--ink:#14201c;--mute:#5b6a64;--line:#d5dcd8;--gain:#0e7c66;--loss:#b3392b;--warn:#b7791f;--c1:#0e7c66;--c2:#2f5d8a;--c3:#7a4f8f}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1714;--card:#17211d;--ink:#e6eeea;--mute:#93a39b;--line:#2b3832;--gain:#4cc2a5;--loss:#ef7d6e;--warn:#e0b050;--c1:#4cc2a5;--c2:#6ea3d6;--c3:#b48ac7}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;padding-top:env(safe-area-inset-top,0)}
 main{max-width:820px;margin:0 auto;padding:18px 14px 48px}
@@ -17,25 +17,34 @@ h1{font:600 26px/1.15 Georgia,serif;margin:0}h2{font:600 19px Georgia,serif;marg
 table{border-collapse:collapse;width:100%;min-width:560px;font-variant-numeric:tabular-nums}
 th,td{padding:8px 11px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
 th:first-child,td:first-child{text-align:left}th{color:var(--mute);font-size:13px}tr:last-child td{border:0}
-.up{color:var(--gain)}.dn{color:var(--loss)}
+.up{color:var(--gain)}.dn{color:var(--loss)}.wn{color:var(--warn)}
 svg{width:100%;height:auto;display:block}
 .leg span{margin-right:14px;font-size:13px}.leg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px}
 details.help{margin-top:14px}details.help summary{cursor:pointer;font-weight:600}details.help ul{margin:8px 0 0;padding-left:18px}details.help li{margin:3px 0;font-size:14px}details.help h3{font-size:14px;margin:12px 0 2px}code{background:var(--line);padding:1px 5px;border-radius:4px;font-size:13px}
 #rng{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}#rng button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 14px;font:inherit;font-size:14px;cursor:pointer}#rng button.on{background:var(--c1);color:#fff;border-color:var(--c1)}svg#ch{touch-action:pan-y;user-select:none}
+.chip{display:inline-block;border-radius:999px;padding:2px 10px;font-size:12px;border:1px solid var(--line);margin-left:6px}
+.chip.ok{color:var(--gain);border-color:var(--gain)}.chip.bad{color:var(--loss);border-color:var(--loss)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:12px 0}
+.tile{padding:12px 14px}.tv{font:600 24px/1.2 Georgia,serif}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.pc{padding:12px 14px}.ph{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.bar{height:6px;background:var(--line);border-radius:4px;margin:5px 0 3px}.bar div{height:6px;border-radius:4px}
 </style>
 </head>
 <body><main>
 <h1>Depot-Duell: Du gegen Claude</h1>
-<p class="mute" id="upd">Lade Daten …</p>
+<p class="mute"><span id="upd">Lade Daten …</span><span class="chip" id="age" hidden></span></p>
 <div class="card"><div class="mute">Depotwert Claude</div><div class="big" id="val"></div><div class="mute" id="sub"></div></div>
+<div class="tiles" id="tiles"></div>
 <details class="card help"><summary>Anleitung: So liest du die Seite</summary>
 <h3>Kopfzeile</h3><ul>
 <li><b>Cash</b> ist nicht investiertes Geld. Die <b>Backup-Reserve</b> (30.000 €) liegt getrennt und wird nur bei einer außergewöhnlichen Chance genutzt.</li>
-<li><b>Kern-Sparplan</b>: Der Prozentwert ist der Anteil der Wochenrate, der automatisch in die Kern-ETFs geht. Steht eine Regel dahinter, hat der Autopilot den Anteil gerade geändert.</li></ul>
+<li><b>Kern-Sparplan</b>: Der Prozentwert ist der Anteil der Wochenrate, der automatisch in die Kern-ETFs geht. Steht eine Regel dahinter, hat der Autopilot den Anteil gerade geändert.</li>
+<li><b>Daten-Alter</b>: Grün heißt aktuell. Rot erscheint, wenn an Börsentagen länger als zwei Stunden kein Lauf stattfand. Am Wochenende gibt es keine neuen Kurse.</li></ul>
 <h3>Zahlen</h3><ul>
-<li><b>Entwicklung</b>: Rendite in Prozent, bereinigt um Einzahlungen. „Du“ ist dein Depot, „Welt-ETF“ der Vergleichswert.</li>
-<li><b>Verlauf</b>: Die Tasten wählen den Zeitraum, Antippen zeigt die Werte. Alle Linien starten bei 0 %. ▲ Kauf, ▼ Verkauf, graue Punkte Einzahlungen. Der untere Streifen zeigt, wie weit Claude vor (grün) oder hinter (rot) dem Welt-ETF liegt.</li>
-<li><b>Positionen</b>: „±“ ist die Veränderung seit Kauf. „Stop“ heißt: Verkauf, wenn der Kurs so viel unter dem Kaufkurs liegt.</li>
+<li><b>Kacheln</b>: Rendite in Prozent seit Start, bereinigt um Einzahlungen. „Du“ ist dein Depot (so, wie du es zuletzt gemeldet hast), „Welt-ETF“ der Vergleichswert.</li>
+<li><b>Verlauf</b>: Die Tasten wählen den Zeitraum, Antippen zeigt die Werte. Alle Linien starten bei 0 %. Deine Linie ist gestrichelt, weil du nur einmal am Tag meldest. ▲ Kauf, ▼ Verkauf, graue Punkte Einzahlungen. Der untere Streifen zeigt, wie weit Claude vor (grün) oder hinter (rot) dem Welt-ETF liegt.</li>
+<li><b>Positionen</b>: „±“ ist die Veränderung seit Kauf. Der Balken zeigt das Gewicht im Depot. „Stop“ heißt: Verkauf, wenn der Kurs so viel unter dem Kaufkurs liegt (fest) oder unter dem höchsten Kurs seit Aktivierung (mitlaufend). „Puffer“ ist der Abstand des Kurses bis zum Stop, unter 5 % wird er rot.</li>
 <li><b>Risiko</b>: Größter Rückgang ist der stärkste Verlust vom Hoch bis zum Tief. Beta 1 bedeutet: schwankt wie der Welt-ETF, über 1 stärker.</li>
 <li><b>Offene Aufträge</b>: „≤“ kauft, wenn der Kurs auf die Grenze fällt. „≥“ verkauft, wenn er sie erreicht.</li></ul>
 <h3>Befehle (als Issue mit Titel „Order“)</h3><ul>
@@ -43,13 +52,16 @@ details.help{margin-top:14px}details.help summary{cursor:pointer;font-weight:600
 <li><code>KERN;PAUSE</code> stoppt den Kern-Sparplan, <code>KERN;AN</code> setzt ihn fort.</li>
 <li><code>KERN;AUTO;AUS</code> schaltet den Autopiloten ab, <code>KERN;AUTO;AN</code> wieder ein. Er erhöht den Anteil auf 80 %, wenn der Welt-ETF über 10 % unter dem Jahreshoch liegt, und passt ihn bei hohem oder niedrigem Cash an (70 % bzw. 30 %). Bei einem Tagesverlust über 7 % pausiert er den Sparplan.</li></ul>
 <h3>Telegram</h3><ul>
-<li><code>DEPOT 280650</code> meldet deinen Depotwert. Mit neuem Geld: <code>DEPOT 281015 EINZAHLUNG 365</code>. Zahlen ohne Tausenderpunkt.</li>
-<li>Dein Sparplan (365 €, montags) wird automatisch als Einzahlung gezählt. Ändern: <code>SPARPLAN 340</code> oder <code>SPARPLAN AUS</code>.</li></ul>
+<li><code>DEPOT 280650</code> meldet deinen Depotwert. Mit neuem Geld: <code>DEPOT 281015 EINZAHLUNG 365</code>. Zahlen ohne Tausenderpunkt. Die Meldung bekommt das Datum der Nachricht und wird auch am Wochenende ausgewertet.</li>
+<li>Dein Sparplan (365 €, montags) wird automatisch als Einzahlung gezählt. Ändern: <code>SPARPLAN 340</code> oder <code>SPARPLAN AUS</code>.</li>
+<li><code>CHECKIN</code> schickt dir den kompakten Stand als Nachricht (Depot, Cash, Renditen, Puffer bis Stop).</li>
+<li><code>MITLAUFEND;Eli Lilly;0,12</code> setzt einen Stop 12 % unter dem höchsten Kurs. <code>FEST;Eli Lilly;0,2</code> setzt ihn wieder fest auf 20 % unter den Kaufkurs. Der Name wird unabhängig von Groß- und Kleinschreibung gesucht, bei einem Tippfehler zeigt der Bot die vorhandenen Namen.</li>
+<li><code>PRIVAT AN</code> blendet Depotwert und Einzahlungen auf der Seite aus, es bleibt nur dein Index. <code>PRIVAT AUS</code> zeigt sie wieder. Die Rohdateien im Repository bleiben bei einem öffentlichen Repository sichtbar.</li></ul>
 </details>
 <h2>Entwicklung</h2><div class="wrap"><table id="per"></table></div>
 <h2>Verlauf (in % seit Beginn des Zeitraums)</h2><div class="card"><div id="rng"></div><svg id="ch" viewBox="0 0 600 340"></svg>
-<div class="leg"><span><i style="background:var(--c1)"></i>Claude</span><span><i style="background:var(--c2)"></i>Welt-ETF</span><span><i style="background:var(--c3)"></i>Du</span><span style="color:var(--gain)">▲ Kauf</span><span style="color:var(--loss)">▼ Verkauf</span><span>● Einzahlung</span></div></div>
-<h2>Positionen</h2><div class="wrap"><table id="pos"></table></div>
+<div class="leg"><span><i style="background:var(--c1)"></i>Claude</span><span><i style="background:var(--c2)"></i>Welt-ETF</span><span><i style="background:var(--c3)"></i>Du (gestrichelt)</span><span style="color:var(--gain)">▲ Kauf</span><span style="color:var(--loss)">▼ Verkauf</span><span>● Einzahlung</span></div></div>
+<h2>Positionen</h2><div class="cards" id="pos"></div>
 <h2>Risiko</h2><div class="wrap"><table id="risk"></table></div>
 <h2>Aufteilung</h2><div class="card" id="alloc"></div>
 <h2>Beitrag je Position</h2><div class="wrap"><table id="ctb"></table></div>
@@ -92,7 +104,7 @@ function initChart(d,C,B,U){
   const hm=q=>q.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'}),dm=q=>q.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'});
   const fx=t=>{const q=new Date(t);return intra?(cur=='Tag'?hm(q):dm(q)+' '+hm(q)):dm(q)};
   for(let i=0;i<4;i++){const t=t0+span*i/3;h+='<text x="'+X(t)+'" y="'+(Bt+22)+'" text-anchor="'+(i==0?'start':i==3?'end':'middle')+'" style="fill:var(--mute);font-size:14px">'+fx(t)+'</text>'}
-  for(const k of ['b','u','c'])if(ser[k])h+='<polyline fill="none" style="stroke:var('+col[k]+')" stroke-width="'+(k=='c'?3.5:2.5)+'" stroke-linejoin="round" points="'+ser[k].map((v,i)=>X(P[i].t)+','+Y(v)).join(' ')+'"/>';
+  for(const k of ['b','u','c'])if(ser[k])h+='<polyline fill="none" style="stroke:var('+col[k]+')" stroke-width="'+(k=='c'?3.5:2.5)+'"'+(k=='u'?' stroke-dasharray="7 4"':'')+' stroke-linejoin="round" points="'+ser[k].map((v,i)=>X(P[i].t)+','+Y(v)).join(' ')+'"/>';
   const near=tm=>{let b=0;for(let i=1;i<P.length;i++)if(Math.abs(P[i].t-tm)<Math.abs(P[b].t-tm))b=i;return b};
   (d.trades||[]).forEach(r=>{const tm=ms(r.date);if(tm<t0-432e5||tm>t1+432e5)return;const i=near(tm),x=X(P[i].t),y=Y(ser.c[i]);
    if(r.side=='Kauf')h+='<path d="M'+x+' '+(y-10)+' l6 10 h-12 z" style="fill:var(--gain)"/>';
@@ -118,11 +130,30 @@ function initChart(d,C,B,U){
  }
  draw();
 }
+function freshness(updated){
+ const el=document.getElementById('age'),m=(updated||'').match(/(\d+)\.(\d+)\.(\d+) (\d+):(\d+)/);if(!m)return;
+ const p=n=>String(n).padStart(2,'0'),naive=s=>new Date(s.replace(' ','T')).getTime();
+ const t=naive(m[3]+'-'+p(m[2])+'-'+p(m[1])+' '+p(m[4])+':'+p(m[5])+':00');
+ const nowB=new Date(new Date().toLocaleString('sv-SE',{timeZone:'Europe/Berlin'}).replace(' ','T'));
+ const mins=Math.round((nowB.getTime()-t)/60000),dow=nowB.getDay(),hr=nowB.getHours()+nowB.getMinutes()/60;
+ const live=dow>=1&&dow<=5&&hr>=7.75&&hr<=22.5;
+ el.hidden=false;
+ const age=mins<60?mins+' Min.':Math.floor(mins/60)+' Std.';
+ if(live&&mins>120){el.className='chip bad';el.textContent='Daten veraltet: '+age}
+ else if(live){el.className='chip ok';el.textContent='aktuell ('+age+')'}
+ else{el.className='chip';el.textContent='Börse zu, Stand vor '+age}
+}
 fetch('data.json?'+Date.now()).then(r=>r.json()).then(d=>{
  document.getElementById('upd').textContent='Stand: '+d.updated;
+ freshness(d.updated);
  document.getElementById('val').textContent=f(d.value)+' €';
  document.getElementById('sub').textContent='Cash '+f(d.cash)+' € · Backup-Reserve '+f(d.reserve)+' € · Wochenrate '+f(d.rate,0)+' € · Steuern bisher '+f(d.tax_paid||0)+' € · Kern-Sparplan '+(d.core&&!d.core.paused?'an ('+Math.round((d.core.effective||d.core.share)*100)+' %'+(d.core.rule&&d.core.rule!='Basis'?', '+d.core.rule:'')+')':'pausiert');
  const C=d.series.map(s=>({date:s.date,v:s.idx})),B=d.series.map(s=>({date:s.date,v:s.bench})),U=d.user.map(s=>({date:s.date,v:s.idx}));
+ const cc=C[C.length-1].v-100,bb=B[B.length-1].v-100,uu=U.length?U[U.length-1].v-100:null,cq=d.cash/d.value*100;
+ const tile=(t,v,s)=>'<div class="card tile"><div class="mute">'+t+'</div><div class="tv">'+v+'</div><div class="mute">'+s+'</div></div>';
+ document.getElementById('tiles').innerHTML=tile('Claude',pc(cc),'seit Start')+tile('Du',pc(uu),U.length?'gemeldet '+U[U.length-1].date.split('-').reverse().join('.'):'noch keine Meldung')+tile('Welt-ETF',pc(bb),'seit Start')
+  +tile('Abstand Claude–Welt','<span class="'+(cc-bb>=0?'up':'dn')+'">'+(cc-bb>=0?'+':'−')+f(Math.abs(cc-bb))+' Pkt</span>','Prozentpunkte')
+  +tile('Cash-Quote','<span class="'+(cq<10?'wn':'')+'">'+f(cq,1)+' %</span>',cq<10?'unter 10 % (Untergrenze)':'vom Depotwert');
  const L=C[C.length-1].date,dt=new Date(L),iso=x=>x.toISOString().slice(0,10);
  const refs=[['Heute',C.length>1?C[C.length-2].date:'0'],['Monat',iso(new Date(dt.getFullYear(),dt.getMonth(),0))],
   ['Jahr (12 Monate)',iso(new Date(dt.getFullYear()-1,dt.getMonth(),dt.getDate()))],['Seit 01.01. (YTD)',(dt.getFullYear()-1)+'-12-31'],['Gesamt seit Start',C[0].date]];
@@ -130,9 +161,15 @@ fetch('data.json?'+Date.now()).then(r=>r.json()).then(d=>{
  refs.forEach(r=>{h+='<tr><td>'+r[0]+'</td><td>'+pc(perf(C,r[1]))+'</td><td>'+pc(perf(B,r[1]))+'</td><td>'+pc(U.length?perf(U,r[1]):null)+'</td></tr>'});
  document.getElementById('per').innerHTML=h;
  initChart(d,C,B,U);
- let p='<tr><th>Titel</th><th>Stück</th><th>Kaufkurs €</th><th>Aktuell €</th><th>±</th><th>Wert €</th><th>Anteil</th><th>Stop</th></tr>';
- d.positions.forEach(r=>{p+='<tr><td>'+r.name+'</td><td>'+f(r.qty,r.qty%1?2:0)+'</td><td>'+f(r.buy)+'</td><td>'+f(r.price)+'</td><td>'+pc(r.pct)+'</td><td>'+f(r.value)+'</td><td>'+f(r.weight,1)+' %</td><td>'+(r.stop?'−'+Math.round(r.stop*100)+' %':'–')+'</td></tr>'});
- document.getElementById('pos').innerHTML=p;
+ document.getElementById('pos').innerHTML=d.positions.map(r=>{
+  const col=r.stop_dist==null?'':(r.stop_dist<5?'var(--loss)':'var(--gain)');
+  const stop=r.stop?'Stop '+f(r.stop_price)+' € ('+(r.trail?'mitlaufend':'fest')+', −'+Math.round(r.stop*100)+' %) · Puffer <b'+(r.stop_dist<5?' class="dn"':'')+'>'+f(r.stop_dist,1)+' %</b>':'kein Stop';
+  return '<div class="card pc"><div class="ph"><b>'+r.name+'</b><span>'+pc(r.pct)+'</span></div>'
+   +'<div class="mute">'+f(r.qty,r.qty%1?2:0)+' Stück · Kauf '+f(r.buy)+' € · jetzt '+f(r.price)+' €</div>'
+   +'<div class="mute">Wert '+f(r.value)+' € · Gewinn '+f(r.gain)+' €</div>'
+   +'<div class="bar"><div style="width:'+Math.min(r.weight*3,100)+'%;background:var(--c1)"></div></div><div class="mute">Gewicht '+f(r.weight,1)+' %</div>'
+   +(r.stop?'<div class="bar"><div style="width:'+Math.min((r.stop_dist||0)*3,100)+'%;background:'+col+'"></div></div>':'')
+   +'<div class="mute">'+stop+'</div></div>'}).join('');
  let t='<tr><th>Datum</th><th>Art</th><th>Titel</th><th>Stück</th><th>Kurs €</th><th>Hinweis</th></tr>';
  d.trades.forEach(r=>{t+='<tr><td>'+r.date+'</td><td>'+r.side+'</td><td>'+r.name+'</td><td>'+f(r.qty,r.qty%1?2:0)+'</td><td>'+f(r.price)+'</td><td>'+(r.note||'')+'</td></tr>'});
  document.getElementById('trd').innerHTML=t;
