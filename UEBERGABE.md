@@ -58,7 +58,8 @@ Alle Nutzerdaten (Index, Depotwert, Einzahlungen) stehen in der data.json der Se
   - `KAUF;Name;Ticker;Währung;Stück;Kurs;Stop;Hinweis`
   - `VERKAUF;Name;Stück;Kurs;Hinweis`
   - `EINZAHLUNG;Betrag;Hinweis`
-  - `STOP;Name;Anteil`
+  - `STOP;Name;Anteil` (fest vom Kaufkurs)
+  - `MITLAUFEND;Name;Anteil` (vom Hoch seit Aktivierung), `FEST;Name;Anteil`
   - `TICKER;Name;Kürzel`
   - `USER;Datum;Index`
   - `LIMITKAUF;Name;Ticker;Währung;Grenze;Stück;GültigBis;Stop;Hinweis`
@@ -67,6 +68,7 @@ Alle Nutzerdaten (Index, Depotwert, Einzahlungen) stehen in der data.json der Se
   - `INFO;Name;Region;Branche`
   - `ZUSAMMENFUEHREN;Alter Name;Ziel-Name`
   - `KERN;PAUSE`, `KERN;AN`, `KERN;ANTEIL;0,3`, `KERN;AUTO;AN` oder `AUS`
+- Namensschutz (apply_orders.py, 14.11.): Unbekannte Namen bei VERKAUF, STOP, TICKER, INFO, LIMITVERKAUF und ZUSAMMENFUEHREN werden mit Vorschlag abgelehnt. Ein KAUF mit neuem Namen, aber gleichem Ticker oder sehr ähnlichem Namen wie eine vorhandene Position wird abgelehnt, außer die Zeile endet auf `;NEU`.
 - Wichtig: Der Name muss exakt wie in der Positionsliste stehen (zum Beispiel "iShares Core MSCI World"), sonst entsteht eine zweite Position. Dann hilft ZUSAMMENFUEHREN.
 - Telegram-Bot: "DEPOT 280650", "DEPOT 281500 EINZAHLUNG 610,80", "SPARPLAN 365" oder "SPARPLAN AUS".
 - Autopilot: Kern-Anteil 80 % bei Welt-ETF über 10 % unter Jahreshoch, 70 % bei Cash über 25 %, 30 % bei Cash unter 10 %. Tagesverlust über 7 % pausiert den Sparplan.
