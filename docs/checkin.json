@@ -1,6 +1,6 @@
 {
- "updated": "14.11.2026 09:55 Uhr",
- "value": 283375.63,
+ "updated": "14.11.2026 09:56 Uhr",
+ "value": 283376.1,
  "cash": 27808.88,
  "cash_pct": 9.8,
  "claude_idx": 100.53,
@@ -113,7 +113,7 @@
   },
   {
    "name": "Bitcoin",
-   "price": 60789.14,
+   "price": 60792.26,
    "pct": -15.48,
    "weight": 3.2,
    "stop_price": 46750.48,
