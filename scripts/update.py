@@ -70,8 +70,48 @@ def accrue_user_deposits():
     if n:
         notify(f"Dein Sparplan: {n} Rate(n) a {m['weekly']:.0f} EUR als Einzahlung gezaehlt (Summe {m['deposits']:.2f} EUR).")
 
+WANT_CHECKIN = False
+
+def de(x, d=0):
+    return f"{x:,.{d}f}".replace(",", "X").replace(".", ",").replace("X", ".")
+
+def msg_date(m):
+    """Datum der Telegram-Nachricht (deutsche Zeit), sonst heutiges Datum."""
+    try:
+        z = __import__("zoneinfo").ZoneInfo("Europe/Berlin")
+        return dt.datetime.fromtimestamp(m["date"], z).date().isoformat()
+    except Exception:
+        return dt.date.today().isoformat()
+
+def public_user(usr, meta):
+    """Nutzerdaten fuer die oeffentlichen Dateien. Mit PRIVAT AN nur der Index."""
+    if meta.get("private"):
+        return [{"date": x["date"], "idx": x["idx"]} for x in usr], {"private": True}
+    keys = ("start", "deposits", "weekly", "from", "last_counted")
+    return usr, {k: meta[k] for k in keys if k in meta}
+
+def set_stop(name, share, trail):
+    """Telegram: MITLAUFEND;Name;Anteil (vom Hoch) oder FEST;Name;Anteil (vom Kaufkurs)."""
+    st = load("data", "state.json")
+    p = next((x for x in st["positions"] if x["name"].lower() == name.strip().lower()), None)
+    if p is None:
+        notify("Position nicht gefunden: " + name + ". Vorhanden: " + ", ".join(x["name"] for x in st["positions"]))
+        return
+    p["stop"] = share
+    if trail:
+        p["trail"] = True
+        p["high"] = max(p.get("last", p["buy"]), p["buy"])
+    else:
+        p.pop("trail", None); p.pop("high", None)
+    save(st, "data", "state.json")
+    ref = p["high"] if trail else p["buy"]
+    notify(f"Stop {p['name']}: -{share * 100:.0f} % {'vom Hoch (mitlaufend)' if trail else 'vom Kaufkurs (fest)'}, aktuell bei {ref * (1 - share):.2f} EUR.")
+
 def process_telegram():
-    """Liest Nachrichten deines Bots (nur von deiner Chat-ID): DEPOT <Wert> [EINZAHLUNG <Betrag>]."""
+    """Liest Nachrichten deines Bots (nur von deiner Chat-ID).
+    DEPOT <Wert> [EINZAHLUNG <Betrag>], SPARPLAN <Betrag|AUS>, CHECKIN, PRIVAT AN|AUS,
+    MITLAUFEND;Name;Anteil, FEST;Name;Anteil."""
+    global WANT_CHECKIN
     tok = (os.environ.get("TELEGRAM_TOKEN") or "").strip()
     chat = (os.environ.get("TELEGRAM_CHAT_ID") or "").strip()
     if not chat:
@@ -95,12 +135,32 @@ def process_telegram():
         return
     meta = load_meta()
     usr = load("data", "user.json")
-    today = dt.date.today().isoformat()
     for u in updates:
         m = u.get("message") or {}
         if str(m.get("chat", {}).get("id")) != chat:
             continue
-        w = (m.get("text") or "").upper().replace(",", ".").replace("€", "").split()
+        raw = (m.get("text") or "").strip()
+        if raw.upper().startswith(("MITLAUFEND;", "FEST;")):
+            try:
+                cmd, name, share = [x.strip() for x in raw.split(";")[:3]]
+                sh = float(share.replace(",", "."))
+                if not 0 < sh < 1:
+                    raise ValueError
+                set_stop(name, sh, cmd.upper() == "MITLAUFEND")
+            except Exception:
+                notify("Nicht verstanden. Schreibe z. B.: MITLAUFEND;Eli Lilly;0,12   oder   FEST;Eli Lilly;0,20")
+            continue
+        w = raw.upper().replace(",", ".").replace("€", "").split()
+        if "CHECKIN" in w:
+            WANT_CHECKIN = True
+            continue
+        if "PRIVAT" in w:
+            try:
+                meta["private"] = w[w.index("PRIVAT") + 1] == "AN"
+                notify("Privat-Modus " + ("AN: Depotwert und Einzahlungen stehen nicht mehr in der Seite. Hinweis: data/user.json und data/user_meta.json im Repository bleiben sichtbar, solange das Repository oeffentlich ist." if meta["private"] else "AUS: Depotwert und Einzahlungen stehen wieder in der Seite."))
+            except Exception:
+                notify("Nicht verstanden. Schreibe: PRIVAT AN   oder   PRIVAT AUS")
+            continue
         if "SPARPLAN" in w:
             try:
                 i = w.index("SPARPLAN"); meta["weekly"] = 0.0 if w[i + 1] == "AUS" else float(w[i + 1])
@@ -117,14 +177,57 @@ def process_telegram():
             continue
         meta["deposits"] = round(meta["deposits"] + dep, 2)
         idx = round((val - meta["deposits"]) / meta["start"] * 100, 2)
-        # NEU: Depotwert und Einzahlungssumme je Meldung mitspeichern (steht dann in data.json)
-        usr = [x for x in usr if x["date"] != today] + [{"date": today, "idx": idx, "value": round(val, 2),
-                                                          "deposits": meta["deposits"]}]
+        day = msg_date(m)  # Datum der Nachricht, nicht des Laufs
+        usr = [x for x in usr if x["date"] != day] + [{"date": day, "idx": idx, "value": round(val, 2),
+                                                        "deposits": meta["deposits"]}]
         usr.sort(key=lambda x: x["date"])
         notify(f"Dein Depot: Index {idx:.2f} ({idx - 100:+.2f} %) seit Start, bereinigt um {meta['deposits']:.2f} EUR Einzahlungen.")
     save(usr, "data", "user.json")
     save(meta, "data", "user_meta.json")
     save({"offset": max(u["update_id"] for u in updates) + 1}, "data", "tg_offset.json")
+
+def patch_public_files():
+    """Schreibt Nutzerdaten (Index, Depotwert, Einzahlungen) in docs/data.json und docs/checkin.json neu,
+    ohne Kurse abzurufen (fuer den Telegram-Lauf am Wochenende)."""
+    meta, usr = load_meta(), load("data", "user.json")
+    pu, pm = public_user(usr, meta)
+    for fn in ("data.json", "checkin.json"):
+        try:
+            d = load("docs", fn)
+        except Exception:
+            continue
+        d["user"] = pu if fn == "data.json" else (pu[-1] if pu else None)
+        d["user_meta"] = pm
+        save(d, "docs", fn)
+
+def checkin_text(ck):
+    u = ck.get("user")
+    sg = lambda x: f"{x:+.2f}".replace(".", ",")
+    L = [f"Check-in, Stand {ck['updated']}",
+         f"Depot {de(ck['value'])} EUR, Cash {de(ck['cash'])} EUR ({de(ck['cash_pct'], 1)} %)",
+         f"Claude {sg(ck['claude_idx'] - 100)} %, Welt-ETF {sg(ck['bench_idx'] - 100)} %" +
+         (f", Du {sg(u['idx'] - 100)} % ({u['date']})" if u else "")]
+    if u and u.get("value") is not None:
+        L.append(f"Dein Depot {de(u['value'])} EUR, Einzahlungen {de(u['deposits'], 2)} EUR")
+    L.append("Positionen (Veraenderung, Puffer bis Stop):")
+    for p in sorted(ck["positions"], key=lambda r: -r["weight"]):
+        sd = "kein Stop" if p["stop_dist"] is None else f"Stop {p['stop_dist']:.1f} %" + (" mitlaufend" if p["trail"] else "")
+        L.append(f"{p['name']} {p['pct']:+.1f} %, {sd}".replace(".", ","))
+    if ck["orders"]:
+        L.append("Offene Auftraege: " + ", ".join(f"{o['side']} {o['name']}" for o in ck["orders"]))
+    if ck["warnings"]:
+        L.append("Hinweise: " + " ".join(ck["warnings"]))
+    return "\n".join(L)
+
+def flush_checkin():
+    """Schickt auf Wunsch (Telegram: CHECKIN) den kompakten Stand zurueck."""
+    global WANT_CHECKIN
+    if WANT_CHECKIN:
+        try:
+            notify(checkin_text(load("docs", "checkin.json")))
+        except Exception as e:
+            notify("Check-in nicht verfuegbar: " + str(e))
+        WANT_CHECKIN = False
 
 def year_high(ticker):
     if os.environ.get("FAKE"):
@@ -277,16 +380,24 @@ def main():
         if last is None:
             price = p.get("last", p["buy"])
             warn.append(f"Kein Kurs fuer {p['name']} (Ticker '{p.get('ticker', '')}'), letzter bekannter Wert genutzt.")
+            p["miss"] = p.get("miss", 0) + 1
+            if p["miss"] == 4:  # etwa zwei Stunden ohne Kurs
+                notify(f"KURSAUSFALL: {p['name']} seit {p['miss']} Laeufen ohne Kurs (Yahoo). Werte sind veraltet.")
         else:
             price = eur(p["ccy"], last)
             p["last"] = round(price, 4)
-        # Stop-Loss
-        if p.get("stop") and price <= p["buy"] * (1 - p["stop"]):
+            p.pop("miss", None)
+        # Stop-Loss (fest vom Kaufkurs, oder mitlaufend vom Hoch seit Aktivierung)
+        ref = p["buy"]
+        if p.get("trail"):
+            p["high"] = max(p.get("high", p["buy"]), price)
+            ref = p["high"]
+        if p.get("stop") and price <= ref * (1 - p["stop"]):
             epr = price * (1 - common.spread(p["cls"]))
             st["cash"] = round(st["cash"] + p["qty"] * epr - fee, 2)
             tx = common.tax_on(st, (p["qty"] * (epr - p["buy"]) - fee) * common.factor(p, today))
             st["trades"].append({"date": ds, "side": "Verkauf", "name": p["name"], "qty": p["qty"], "price": round(epr, 2),
-                                 "fee": fee, "note": f"Stop-Loss -{int(p['stop']*100)} %, Steuer {tx:.2f} EUR"})
+                                 "fee": fee, "note": f"Stop-Loss -{int(p['stop']*100)} %{' vom Hoch' if p.get('trail') else ''}, Steuer {tx:.2f} EUR"})
             notify(f"STOP-LOSS: {p['name']} verkauft zu {epr:.2f} EUR (Kauf {p['buy']:.2f}), Steuer {tx:.2f} EUR.")
             continue
         keep.append(p)
@@ -296,7 +407,10 @@ def main():
                      "price": round(price, 2), "pct": round((price / p["buy"] - 1) * 100, 2),
                      "value": round(p["qty"] * price, 2), "stop": p.get("stop"),
                      "gain": round(p["qty"] * (price - p["buy"]), 2), "region": common.meta(p)[0],
-                     "sector": common.meta(p)[1], "origin": common.origin(st, p["name"])})
+                     "sector": common.meta(p)[1], "origin": common.origin(st, p["name"]),
+                     "trail": bool(p.get("trail")),
+                     "stop_price": round(ref * (1 - p["stop"]), 2) if p.get("stop") else None,
+                     "stop_dist": round((1 - ref * (1 - p["stop"]) / price) * 100, 1) if p.get("stop") and price else None})
     st["positions"] = keep
 
     # Chancen-Hinweis fuer die Backup-Reserve (Watchlist, Tagesverlust ab 10 %)
@@ -373,14 +487,21 @@ def main():
     intr = [x for x in intr if x["t"][:10] >= cut]
     save(intr, "data", "intraday.json")
 
+    pu, pm = public_user(usr, load_meta())
     out = {"updated": dt.datetime.now(__import__("zoneinfo").ZoneInfo("Europe/Berlin")).strftime("%d.%m.%Y %H:%M Uhr"), "value": value,
            "cash": round(st["cash"], 2), "reserve": st["reserve"], "rate": st["weekly_rate"],
-           "series": hist, "user": usr, "user_meta": load_meta(),  # NEU: Einzahlungen des Nutzers in data.json
+           "series": hist, "user": pu, "user_meta": pm,  # Einzahlungen des Nutzers (bei PRIVAT AN nur Index)
            "positions": rows, "trades": st["trades"][::-1][:60],
            "deposits": st["deposits"], "orders": st["orders"], "tax_paid": st["tax"]["paid"], "core": st["core"], "risk": risk,
            "alloc": {"region": reg, "sector": sec}, "origin": origin, "intraday": intr, "start": st["start_capital"], "warnings": warn}
-    save(st, "data", "state.json"); save(hist, "data", "history.json"); save(out, "docs", "data.json")
+    ck = {"updated": out["updated"], "value": value, "cash": out["cash"], "cash_pct": round(st["cash"] / value * 100, 1),
+          "claude_idx": idx, "bench_idx": bench, "user": pu[-1] if pu else None, "user_meta": pm, "core": st["core"],
+          "positions": [{"name": r["name"], "price": r["price"], "pct": r["pct"], "weight": r["weight"], "stop_price": r["stop_price"],
+                         "stop_dist": r["stop_dist"], "trail": r["trail"]} for r in rows],
+          "trades": st["trades"][::-1][:5], "orders": st["orders"], "warnings": warn}
+    save(st, "data", "state.json"); save(hist, "data", "history.json"); save(out, "docs", "data.json"); save(ck, "docs", "checkin.json")
     print(f"Fertig: Wert {value} EUR, Index {idx}, Benchmark {bench}, Warnungen: {len(warn)}")
+    flush_checkin()
 
 if __name__ == "__main__":
     main()
