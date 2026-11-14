@@ -1,6 +1,6 @@
 {
- "updated": "14.11.2026 09:27 Uhr",
- "value": 283402.02,
+ "updated": "14.11.2026 09:35 Uhr",
+ "value": 283388.09,
  "cash": 27808.88,
  "reserve": 30000,
  "rate": 365,
@@ -91,7 +91,7 @@
   },
   {
    "date": "2026-11-14",
-   "value": 283402.02,
+   "value": 283388.09,
    "idx": 100.54,
    "bench": 100.66
   }
@@ -236,14 +236,14 @@
    "price": 1306.31,
    "pct": 14.23,
    "value": 24819.88,
-   "stop": 0.05,
+   "stop": 0.12,
    "gain": 3092.05,
    "region": "USA",
    "sector": "Gesundheit",
    "origin": "eigene Recherche",
-   "trail": false,
-   "stop_price": 1086.39,
-   "stop_dist": 16.8,
+   "trail": true,
+   "stop_price": 1149.55,
+   "stop_dist": 12.0,
    "weight": 8.8
   },
   {
@@ -323,17 +323,17 @@
    "ticker": "BTC-EUR",
    "qty": 0.15,
    "buy": 71923.82,
-   "price": 60965.08,
-   "pct": -15.24,
-   "value": 9144.76,
+   "price": 60872.2,
+   "pct": -15.37,
+   "value": 9130.83,
    "stop": 0.35,
-   "gain": -1643.81,
+   "gain": -1657.74,
    "region": "Global",
    "sector": "Krypto",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 46750.48,
-   "stop_dist": 23.3,
+   "stop_dist": 23.2,
    "weight": 3.2
   },
   {
@@ -612,8 +612,8 @@
    "name": "eigene Recherche",
    "n": 11,
    "cost": 248250,
-   "gain": 1454.63,
-   "pct": 0.59
+   "gain": 1440.7,
+   "pct": 0.58
   },
   {
    "name": "durch Nutzerthema angestoßen",
@@ -1091,6 +1091,11 @@
   },
   {
    "t": "2026-11-14 09:27",
+   "v": 100.54,
+   "b": 100.66
+  },
+  {
+   "t": "2026-11-14 09:35",
    "v": 100.54,
    "b": 100.66
   }

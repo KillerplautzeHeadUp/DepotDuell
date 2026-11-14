@@ -1,6 +1,6 @@
 {
- "updated": "14.11.2026 09:27 Uhr",
- "value": 283402.02,
+ "updated": "14.11.2026 09:35 Uhr",
+ "value": 283388.09,
  "cash": 27808.88,
  "cash_pct": 9.8,
  "claude_idx": 100.54,
@@ -71,9 +71,9 @@
    "price": 1306.31,
    "pct": 14.23,
    "weight": 8.8,
-   "stop_price": 1086.39,
-   "stop_dist": 16.8,
-   "trail": false
+   "stop_price": 1149.55,
+   "stop_dist": 12.0,
+   "trail": true
   },
   {
    "name": "TotalEnergies",
@@ -113,11 +113,11 @@
   },
   {
    "name": "Bitcoin",
-   "price": 60965.08,
-   "pct": -15.24,
+   "price": 60872.2,
+   "pct": -15.37,
    "weight": 3.2,
    "stop_price": 46750.48,
-   "stop_dist": 23.3,
+   "stop_dist": 23.2,
    "trail": false
   },
   {
