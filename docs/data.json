@@ -1,6 +1,6 @@
 {
- "updated": "14.11.2026 10:05 Uhr",
- "value": 283390.63,
+ "updated": "15.11.2026 19:34 Uhr",
+ "value": 283060.71,
  "cash": 27808.88,
  "reserve": 30000,
  "rate": 365,
@@ -93,6 +93,12 @@
    "date": "2026-11-14",
    "value": 283390.63,
    "idx": 100.54,
+   "bench": 100.66
+  },
+  {
+   "date": "2026-11-15",
+   "value": 283060.71,
+   "idx": 100.42,
    "bench": 100.66
   }
  ],
@@ -323,18 +329,18 @@
    "ticker": "BTC-EUR",
    "qty": 0.15,
    "buy": 71923.82,
-   "price": 60889.12,
-   "pct": -15.34,
-   "value": 9133.37,
+   "price": 58689.68,
+   "pct": -18.4,
+   "value": 8803.45,
    "stop": 0.35,
-   "gain": -1655.2,
+   "gain": -1985.12,
    "region": "Global",
    "sector": "Krypto",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 46750.48,
-   "stop_dist": 23.2,
-   "weight": 3.2
+   "stop_dist": 20.3,
+   "weight": 3.1
   },
   {
    "name": "Alphabet (Klasse A)",
@@ -578,7 +584,7 @@
   "rule": "Cash-Quote unter 10 %"
  },
  "risk": {
-  "n": 15,
+  "n": 16,
   "mdd": -3.98,
   "mdd_b": -3.35,
   "vol": null,
@@ -589,7 +595,7 @@
    "Cash": 9.8,
    "Welt": 25.3,
    "Schwellenländer": 9.8,
-   "Global": 11.4,
+   "Global": 11.3,
    "Europa": 21.5,
    "USA": 15.3,
    "Asien": 3.8,
@@ -604,7 +610,7 @@
    "Energie": 8.1,
    "Finanzen": 4.4,
    "Industrie": 4.4,
-   "Krypto": 3.2
+   "Krypto": 3.1
   }
  },
  "origin": [
@@ -612,8 +618,8 @@
    "name": "eigene Recherche",
    "n": 11,
    "cost": 248250,
-   "gain": 1443.24,
-   "pct": 0.58
+   "gain": 1113.32,
+   "pct": 0.45
   },
   {
    "name": "durch Nutzerthema angestoßen",
@@ -1117,6 +1123,11 @@
   {
    "t": "2026-11-14 10:05",
    "v": 100.54,
+   "b": 100.66
+  },
+  {
+   "t": "2026-11-15 19:34",
+   "v": 100.42,
    "b": 100.66
   }
  ],
