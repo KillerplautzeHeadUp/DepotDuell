@@ -1,6 +1,6 @@
 # Übergabe: Depot-Duell (Claude gegen Nutzer)
 
-Stand: 13.11.2026, abends (bei jedem Check-in aktualisieren)
+Stand: 15.11.2026 (Technik ergänzt, Depotstand noch 13.11.) (bei jedem Check-in aktualisieren)
 
 Dieses Dokument ersetzt das Gedächtnis eines alten Chats. Ein neuer Chat liest es per Link und kennt danach Regeln, Technik und Entscheidungen.
 
@@ -51,18 +51,20 @@ Alle Nutzerdaten (Index, Depotwert, Einzahlungen) stehen in der data.json der Se
 - Wahrheit: data/state.json. Verlauf: data/history.json, Nutzer-Index: data/user.json, Einzahlungen des Nutzers: data/user_meta.json. Telegram-Position: data/tg_offset.json. Tagesverlauf: data/intraday.json. Veröffentlicht wird docs/data.json.
 - Telegram: Montag bis Freitag im update-Lauf, am Wochenende im eigenen Workflow telegram.yml (scripts/tg_only.py, ohne Kursabruf). Eine DEPOT-Meldung bekommt das Datum der Nachricht.
 - Neue Dateien (14.11.): docs/checkin.json (kompakter Stand, klein, bevorzugt abrufen statt der großen data.json), scripts/tg_only.py, .github/workflows/telegram.yml.
+- Zweite Kursquelle (seit 15.11.): Lang & Schwarz (ls-tc.de, inoffizielle Website-Schnittstelle, Kurse in EUR) für alle Titel mit ISIN (Feld "isin" je Position; die Tabelle ISINS in update.py ist nur die Startbelegung für die ersten Titel), Twelve Data (Schlüssel als GitHub-Secret TWELVE_DATA_KEY, kostenlose Stufe) nur für Bitcoin. Yahoo bleibt Hauptquelle. Fehlt ein Yahoo-Kurs, nimmt das Skript die Zweitquelle. Bei mehr als 3 % Abweichung kommt eine Telegram-Warnung (KURSABWEICHUNG, einmal pro Tag und Titel). Die L&S-Kennungen stehen in data/ls_ids.json. Twelve Data liefert in der kostenlosen Stufe nur US-Titel und Krypto, für Europa kam HTTP 404.
+- Probelauf 15.11. (Workflow "Kursquellen pruefen", scripts/ls_probe.py): Yahoo und L&S lagen bei den Europa-Titeln innerhalb von etwa 1 % (ASML am weitesten, +0,9 %). US-Titel passten nach Umrechnung mit dem Dollarkurs (etwa 1,105) auf etwa 0,3 %. Twelve Data und Yahoo lagen bei US-Titeln und Bitcoin auf Cent genau.
 - Neue Telegram-Befehle: CHECKIN (Bot schickt den kompakten Stand), PRIVAT AN/AUS (Depotwert und Einzahlungen aus Seite und docs-Dateien ausblenden, Rohdateien in data/ bleiben bei öffentlichem Repository sichtbar), MITLAUFEND;Name;Anteil (Stop vom Hoch), FEST;Name;Anteil (Stop vom Kaufkurs). Der Name wird ohne Beachtung der Schreibweise gesucht.
 - Stop mitlaufend: Position bekommt "trail" und "high" in state.json. Warnung per Telegram, wenn ein Kurs 4 Läufe fehlt (Kursausfall).
 - Stop-Loss: Standard ist ein fester Abstand vom Kaufkurs. Optional mitlaufend vom höchsten Kurs seit Aktivierung (Telegram-Befehl MITLAUFEND). Die Seite zeigt Stop-Kurs und Puffer je Position.
 - Orders per Issue mit Titel "Order", eine Zeile je Befehl:
-  - `KAUF;Name;Ticker;Währung;Stück;Kurs;Stop;Hinweis`
+  - `KAUF;Name;Ticker;Währung;Stück;Kurs;Stop;Hinweis;NEU oder leer;ISIN` (Claude trägt bei jedem Kauf die ISIN in die Zeile ein, geprüft per Suche; ohne ISIN gibt es keine Zweitquelle für den Titel)
   - `VERKAUF;Name;Stück;Kurs;Hinweis`
   - `EINZAHLUNG;Betrag;Hinweis`
   - `STOP;Name;Anteil` (fest vom Kaufkurs)
   - `MITLAUFEND;Name;Anteil` (vom Hoch seit Aktivierung), `FEST;Name;Anteil`
   - `TICKER;Name;Kürzel`
   - `USER;Datum;Index`
-  - `LIMITKAUF;Name;Ticker;Währung;Grenze;Stück;GültigBis;Stop;Hinweis`
+  - `LIMITKAUF;Name;Ticker;Währung;Grenze;Stück;GültigBis;Stop;Hinweis;ISIN`
   - `LIMITVERKAUF;Name;Grenze;Stück;GültigBis;Hinweis`
   - `LOESCHEN;Name`
   - `INFO;Name;Region;Branche`
@@ -120,5 +122,5 @@ Marktlage 13.11.: Brent etwa 96 $ (Wochenverlust, aber wieder steigend, weil Tru
 - Alibaba nach den Zahlen am 24.11. prüfen.
 - Anthropic-IPO: Preisfestlegung 18.11., Handelsbeginn 19.11. (Nasdaq, Kürzel ANT). Kein Kauf durch Claude.
 - Depotwert und Einzahlungen des Nutzers abfragen (zuletzt Stand 11.11.).
-- Zweiter Kursanbieter als Ersatz für Yahoo. Feedback zum neuen Graphen.
+- Feedback zum neuen Graphen. Zweitquelle beobachten (Hinweise und KURSABWEICHUNG-Meldungen), nach einigen Wochen prüfen, ob L&S als Hauptquelle taugt.
 - Optional später: echter KI-Agent über die API (grob 0,50 bis 10 $ pro Monat), vorerst kostenlose Variante.
