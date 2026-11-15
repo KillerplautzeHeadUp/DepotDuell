@@ -47,6 +47,98 @@ def fetch(tickers):
         out[t] = (last, prev)
     return out
 
+# ISINs fuer Lang & Schwarz (Schluessel = Yahoo-Ticker). Neue Titel hier ergaenzen, sonst gibt es keine Zweitquelle.
+ISINS = {"EUNL.DE": "IE00B4L5Y983", "IS3N.DE": "IE00BKM4GZ66", "4GLD.DE": "DE000A0S9GB0", "ASML.AS": "NL0010273215",
+         "LLY": "US5324571083", "TTE.PA": "FR0000120271", "JPM": "US46625H1005", "TSM": "US8740391003",
+         "SIE.DE": "DE0007236101", "GOOGL": "US02079K3059", "EUNN.DE": "IE00B4L5YX21"}
+LS_BASE = "https://www.ls-tc.de/_rpc/json/"
+LS_HDR = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/124 Safari/537.36",
+          "Referer": "https://www.ls-tc.de/", "Accept": "application/json, text/plain, */*"}
+
+def _get_json(url, headers=None):
+    with urllib.request.urlopen(urllib.request.Request(url, headers=headers or {}), timeout=25) as r:
+        return json.loads(r.read().decode("utf-8"))
+
+def _find_key(o, key):
+    if isinstance(o, dict):
+        for k, v in o.items():
+            if k == key and v not in (None, ""):
+                return v
+            r = _find_key(v, key)
+            if r is not None:
+                return r
+    elif isinstance(o, list):
+        for v in o:
+            r = _find_key(v, key)
+            if r is not None:
+                return r
+    return None
+
+def ls_price(isin, cache):
+    """Letzter Kurs in EUR bei Lang & Schwarz (ls-tc.de), None bei Fehler. Die Kennung wird in cache gemerkt."""
+    if os.environ.get("FAKE"):
+        return json.loads(os.environ.get("FAKE_LS", "{}")).get(isin)
+    try:
+        iid = cache.get(isin)
+        if not iid:
+            res = _get_json(LS_BASE + ".lstc/instrument/search/main?" + urllib.parse.urlencode({"q": isin, "localeId": 2}), LS_HDR)
+            iid = _find_key(res, "instrumentId")
+            if iid is None:
+                return None
+            cache[isin] = iid
+        q = urllib.parse.urlencode({"container": "chart1", "instrumentId": iid, "marketId": 1, "quotetype": "mid",
+                                    "series": "intraday,history", "type": "", "localeId": 2})
+        ser = _get_json(LS_BASE + "instrument/chart/dataForInstrument?" + q, LS_HDR).get("series", {})
+        rows = (ser.get("intraday") or {}).get("data") or (ser.get("history") or {}).get("data") or []
+        v = float(rows[-1][1]) if rows else None
+        return v if v and v > 0 else None
+    except Exception as e:
+        print("L&S-Fehler", isin, e)
+        return None
+
+def td_price(symbol):
+    """Letzter Kurs bei Twelve Data (nur mit Schluessel TWELVE_DATA_KEY), None bei Fehler."""
+    if os.environ.get("FAKE"):
+        return json.loads(os.environ.get("FAKE_TD", "{}")).get(symbol)
+    key = (os.environ.get("TWELVE_DATA_KEY") or "").strip()
+    if not key:
+        return None
+    try:
+        v = float(_get_json("https://api.twelvedata.com/price?" + urllib.parse.urlencode({"symbol": symbol, "apikey": key}))["price"])
+        return v if v > 0 else None
+    except Exception as e:
+        print("Twelve-Data-Fehler", symbol, e)
+        return None
+
+def second_source(st, px, fx, warn, ds):
+    """Zweite Kursquelle: Lang & Schwarz (EUR) fuer Titel mit ISIN, Twelve Data fuer Bitcoin.
+    Ersetzt einen fehlenden Yahoo-Kurs und warnt bei mehr als 3 % Abweichung."""
+    try:
+        cache = load("data", "ls_ids.json")
+    except Exception:
+        cache = {}
+    before = dict(cache)
+    for p in st["positions"]:
+        t = p.get("ticker")
+        if not t:
+            continue
+        isin = ISINS.get(t)
+        alt = ls_price(isin, cache) if isin else (td_price("BTC/EUR") if "BTC" in t.upper() else None)
+        if alt is None:
+            continue
+        usd = p["ccy"] == "USD"
+        ylast = px.get(t, (None, None))[0]
+        if ylast is None:
+            px[t] = (alt * fx if usd else alt, None)
+            warn.append(f"{p['name']}: Kein Yahoo-Kurs, Kurs der Zweitquelle genutzt.")
+            continue
+        dev = (ylast / fx if usd else ylast) / alt - 1
+        if abs(dev) > 0.03 and p.get("dev_alert") != ds:
+            p["dev_alert"] = ds
+            notify(f"KURSABWEICHUNG {p['name']}: Yahoo {(ylast / fx if usd else ylast):.2f} EUR, Zweitquelle {alt:.2f} EUR ({dev * 100:+.1f} %). Bitte pruefen.")
+    if cache != before:
+        save(cache, "data", "ls_ids.json")
+
 def _today():
     return dt.date.fromisoformat(os.environ["FAKE_TODAY"]) if os.environ.get("FAKE_TODAY") else dt.date.today()
 
@@ -267,6 +359,10 @@ def main():
     fx = px["EURUSD=X"][0] or st.get("last_fx", 1.12)
     st["last_fx"] = fx
     eur = lambda ccy, v: v / fx if ccy == "USD" else v
+    try:
+        second_source(st, px, fx, warn, ds)
+    except Exception as e:
+        print("Zweitquelle uebersprungen:", e)
 
     # Wochenrate jeden Freitag ab savings_from
     dep_today = sum(d["amount"] for d in st["deposits"] if d["date"] == ds)
