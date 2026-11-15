@@ -1,0 +1,30 @@
+name: Depot aktualisieren
+on:
+  schedule:
+    - cron: "*/30 6-21 * * 1-5"   # alle 30 Minuten, ca. 7 bis 22 Uhr deutscher Zeit
+  workflow_dispatch: {}
+permissions:
+  contents: write
+concurrency:
+  group: depot
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python scripts/update.py
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TWELVE_DATA_KEY: ${{ secrets.TWELVE_DATA_KEY }}
+      - name: Aenderungen speichern
+        run: |
+          git config user.name "depot-bot"
+          git config user.email "depot-bot@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "Update $(date -u +%F\ %H:%M)"
+          git push
