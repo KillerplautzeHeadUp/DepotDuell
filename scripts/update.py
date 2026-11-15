@@ -122,7 +122,9 @@ def second_source(st, px, fx, warn, ds):
         t = p.get("ticker")
         if not t:
             continue
-        isin = ISINS.get(t)
+        isin = p.get("isin") or ISINS.get(t)
+        if isin and not p.get("isin"):
+            p["isin"] = isin  # ISIN beim Titel merken
         alt = ls_price(isin, cache) if isin else (td_price("BTC/EUR") if "BTC" in t.upper() else None)
         if alt is None:
             continue
@@ -410,10 +412,11 @@ def main():
                 if ex:
                     ex["buy"] = round((ex["qty"] * ex["buy"] + o["qty"] * epr) / (ex["qty"] + o["qty"]), 4)
                     ex["qty"] = round(ex["qty"] + o["qty"], 8); ex["last"] = round(pr, 4)
+                    if o.get("isin") and not ex.get("isin"): ex["isin"] = o["isin"]
                 else:
                     st["positions"].append({"name": o["name"], "ticker": o["ticker"], "ccy": o["ccy"], "qty": o["qty"],
                                             "buy": round(epr, 4), "stop": o.get("stop"), "last": round(pr, 4),
-                                            "cls": common.cls_of(o["name"]), "since": ds})
+                                            "cls": common.cls_of(o["name"]), "since": ds, "isin": o.get("isin")})
                 st["cash"] = round(st["cash"] - cost, 2)
                 st["trades"].append({"date": ds, "side": "Kauf", "name": o["name"], "qty": o["qty"], "price": round(epr, 2),
                                      "fee": fee, "note": "Limit-Auftrag. " + o.get("note", "")})

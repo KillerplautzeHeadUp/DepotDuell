@@ -42,10 +42,10 @@ def main():
         line = raw.strip()
         if not line or line.startswith("#"):
             continue
-        a = [x.strip() for x in line.split(";")] + [""] * 9
+        a = [x.strip() for x in line.split(";")] + [""] * 10
         cmd = a[0].upper()
         try:
-            if cmd == "KAUF":  # KAUF;Name;Ticker;Waehrung;Stueck;Kurs_EUR;Stop;Hinweis[;NEU]
+            if cmd == "KAUF":  # KAUF;Name;Ticker;Waehrung;Stueck;Kurs_EUR;Stop;Hinweis[;NEU oder leer[;ISIN]]
                 name, tick, ccy, qty, price = a[1], a[2], a[3] or "EUR", num(a[4]), num(a[5])
                 if not find(name) and a[8].upper() != "NEU":
                     # Schutz vor Doppelpositionen durch falschen Namen: gleicher Ticker oder sehr aehnlicher Name
@@ -65,10 +65,11 @@ def main():
                     p["buy"] = round((p["qty"] * p["buy"] + qty * price) / (p["qty"] + qty), 4)
                     p["qty"] = round(p["qty"] + qty, 8)
                     if tick: p["ticker"] = tick
+                    if a[9]: p["isin"] = a[9].upper()
                 else:
                     st["positions"].append({"name": name, "ticker": tick, "ccy": ccy, "qty": qty, "buy": price,
                                             "stop": num(a[6]) if a[6] else None, "last": price,
-                                            "cls": common.cls_of(name), "since": today})
+                                            "cls": common.cls_of(name), "since": today, "isin": a[9].upper() or None})
                 st["cash"] = round(st["cash"] - cost, 2)
                 st["trades"].append({"date": today, "side": "Kauf", "name": name, "qty": qty, "price": price, "fee": fee, "note": a[7]})
                 out.append(f"OK Kauf {qty:g} x {name} zu {price:.2f} EUR")
@@ -108,7 +109,8 @@ def main():
             elif cmd == "LIMITKAUF":  # LIMITKAUF;Name;Ticker;Waehrung;Grenze_EUR;Stueck;GueltigBis;Stop;Hinweis
                 dt.date.fromisoformat(a[6])
                 st["orders"].append({"side": "KAUF", "name": a[1], "ticker": a[2], "ccy": a[3] or "EUR", "limit": num(a[4]),
-                                     "qty": num(a[5]), "valid_until": a[6], "stop": num(a[7]) if a[7] else None, "note": a[8]})
+                                     "qty": num(a[5]), "valid_until": a[6], "stop": num(a[7]) if a[7] else None, "note": a[8],
+                                     "isin": a[9].upper() or None})
                 out.append(f"OK Auftrag: Kauf {a[5]} x {a[1]} bei <= {a[4]} EUR, gueltig bis {a[6]}")
             elif cmd == "LIMITVERKAUF":  # LIMITVERKAUF;Name;Grenze_EUR;Stueck;GueltigBis;Hinweis
                 p = need(a[1]); dt.date.fromisoformat(a[4])
