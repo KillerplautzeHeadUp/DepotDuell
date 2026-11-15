@@ -1,6 +1,6 @@
 {
- "updated": "15.11.2026 19:34 Uhr",
- "value": 283060.71,
+ "updated": "15.11.2026 20:03 Uhr",
+ "value": 283081.7,
  "cash": 27808.88,
  "reserve": 30000,
  "rate": 365,
@@ -97,8 +97,8 @@
   },
   {
    "date": "2026-11-15",
-   "value": 283060.71,
-   "idx": 100.42,
+   "value": 283081.7,
+   "idx": 100.43,
    "bench": 100.66
   }
  ],
@@ -329,17 +329,17 @@
    "ticker": "BTC-EUR",
    "qty": 0.15,
    "buy": 71923.82,
-   "price": 58689.68,
-   "pct": -18.4,
-   "value": 8803.45,
+   "price": 58829.62,
+   "pct": -18.21,
+   "value": 8824.44,
    "stop": 0.35,
-   "gain": -1985.12,
+   "gain": -1964.13,
    "region": "Global",
    "sector": "Krypto",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 46750.48,
-   "stop_dist": 20.3,
+   "stop_dist": 20.5,
    "weight": 3.1
   },
   {
@@ -618,8 +618,8 @@
    "name": "eigene Recherche",
    "n": 11,
    "cost": 248250,
-   "gain": 1113.32,
-   "pct": 0.45
+   "gain": 1134.31,
+   "pct": 0.46
   },
   {
    "name": "durch Nutzerthema angestoßen",
@@ -1128,6 +1128,11 @@
   {
    "t": "2026-11-15 19:34",
    "v": 100.42,
+   "b": 100.66
+  },
+  {
+   "t": "2026-11-15 20:03",
+   "v": 100.43,
    "b": 100.66
   }
  ],
