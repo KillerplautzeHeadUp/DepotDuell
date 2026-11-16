@@ -1,6 +1,6 @@
 {
- "updated": "16.11.2026 21:40 Uhr",
- "value": 280131.11,
+ "updated": "16.11.2026 22:40 Uhr",
+ "value": 280196.54,
  "cash": 27808.88,
  "reserve": 30000,
  "rate": 365,
@@ -103,8 +103,8 @@
   },
   {
    "date": "2026-11-16",
-   "value": 280131.11,
-   "idx": 99.38,
+   "value": 280196.54,
+   "idx": 99.41,
    "bench": 100.3
   }
  ],
@@ -257,11 +257,11 @@
    "ticker": "LLY",
    "qty": 19,
    "buy": 1143.57,
-   "price": 1301.78,
-   "pct": 13.83,
-   "value": 24733.76,
+   "price": 1301.39,
+   "pct": 13.8,
+   "value": 24726.37,
    "stop": 0.12,
-   "gain": 3005.93,
+   "gain": 2998.54,
    "region": "USA",
    "sector": "Gesundheit",
    "origin": "eigene Recherche",
@@ -293,17 +293,17 @@
    "ticker": "JPM",
    "qty": 40,
    "buy": 295.95,
-   "price": 306.31,
-   "pct": 3.5,
-   "value": 12252.59,
+   "price": 307.43,
+   "pct": 3.88,
+   "value": 12297.31,
    "stop": 0.2,
-   "gain": 414.59,
+   "gain": 459.31,
    "region": "USA",
    "sector": "Finanzen",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 236.76,
-   "stop_dist": 22.7,
+   "stop_dist": 23.0,
    "weight": 4.4
   },
   {
@@ -311,11 +311,11 @@
    "ticker": "TSM",
    "qty": 30,
    "buy": 373.54,
-   "price": 339.55,
-   "pct": -9.1,
-   "value": 10186.37,
+   "price": 339.47,
+   "pct": -9.12,
+   "value": 10183.98,
    "stop": 0.25,
-   "gain": -1019.83,
+   "gain": -1022.22,
    "region": "Asien",
    "sector": "Technologie",
    "origin": "eigene Recherche",
@@ -347,17 +347,17 @@
    "ticker": "BTC-EUR",
    "qty": 0.15,
    "buy": 71923.82,
-   "price": 59062.87,
-   "pct": -17.88,
-   "value": 8859.43,
+   "price": 59342.15,
+   "pct": -17.49,
+   "value": 8901.32,
    "stop": 0.35,
-   "gain": -1929.14,
+   "gain": -1887.25,
    "region": "Global",
    "sector": "Krypto",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 46750.48,
-   "stop_dist": 20.8,
+   "stop_dist": 21.2,
    "weight": 3.2
   },
   {
@@ -365,17 +365,17 @@
    "ticker": "GOOGL",
    "qty": 22,
    "buy": 262.7,
-   "price": 258.42,
-   "pct": -1.63,
-   "value": 5685.23,
+   "price": 257.9,
+   "pct": -1.83,
+   "value": 5673.83,
    "stop": 0.25,
-   "gain": -94.17,
+   "gain": -105.57,
    "region": "USA",
    "sector": "Technologie",
    "origin": "durch Nutzerthema angestoßen",
    "trail": false,
    "stop_price": 197.02,
-   "stop_dist": 23.8,
+   "stop_dist": 23.6,
    "weight": 2.0
   },
   {
@@ -636,15 +636,15 @@
    "name": "eigene Recherche",
    "n": 11,
    "cost": 248250,
-   "gain": -1612.99,
-   "pct": -0.65
+   "gain": -1536.16,
+   "pct": -0.62
   },
   {
    "name": "durch Nutzerthema angestoßen",
    "n": 1,
    "cost": 5779,
-   "gain": -94.17,
-   "pct": -1.63
+   "gain": -105.57,
+   "pct": -1.83
   }
  ],
  "intraday": [
@@ -1196,6 +1196,11 @@
   {
    "t": "2026-11-16 21:40",
    "v": 99.38,
+   "b": 100.3
+  },
+  {
+   "t": "2026-11-16 22:40",
+   "v": 99.41,
    "b": 100.3
   }
  ],
