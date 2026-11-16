@@ -1,6 +1,6 @@
 {
- "updated": "16.11.2026 18:51 Uhr",
- "value": 280685.12,
+ "updated": "16.11.2026 19:44 Uhr",
+ "value": 280440.79,
  "cash": 27808.88,
  "reserve": 30000,
  "rate": 365,
@@ -103,8 +103,8 @@
   },
   {
    "date": "2026-11-16",
-   "value": 280685.12,
-   "idx": 99.58,
+   "value": 280440.79,
+   "idx": 99.49,
    "bench": 100.3
   }
  ],
@@ -164,6 +164,12 @@
    "idx": 100.52,
    "value": 285150.0,
    "deposits": 3984.3
+  },
+  {
+   "date": "2026-11-16",
+   "idx": 99.52,
+   "value": 282700.0,
+   "deposits": 4349.3
   }
  ],
  "user_meta": {
@@ -244,24 +250,24 @@
    "trail": false,
    "stop_price": 1044.9,
    "stop_dist": 20.0,
-   "weight": 8.8
+   "weight": 8.9
   },
   {
    "name": "Eli Lilly",
    "ticker": "LLY",
    "qty": 19,
    "buy": 1143.57,
-   "price": 1313.76,
-   "pct": 14.88,
-   "value": 24961.35,
+   "price": 1310.86,
+   "pct": 14.63,
+   "value": 24906.3,
    "stop": 0.12,
-   "gain": 3233.52,
+   "gain": 3178.47,
    "region": "USA",
    "sector": "Gesundheit",
    "origin": "eigene Recherche",
    "trail": true,
    "stop_price": 1171.01,
-   "stop_dist": 10.9,
+   "stop_dist": 10.7,
    "weight": 8.9
   },
   {
@@ -287,17 +293,17 @@
    "ticker": "JPM",
    "qty": 40,
    "buy": 295.95,
-   "price": 310.66,
-   "pct": 4.97,
-   "value": 12426.55,
+   "price": 307.4,
+   "pct": 3.87,
+   "value": 12295.89,
    "stop": 0.2,
-   "gain": 588.55,
+   "gain": 457.89,
    "region": "USA",
    "sector": "Finanzen",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 236.76,
-   "stop_dist": 23.8,
+   "stop_dist": 23.0,
    "weight": 4.4
   },
   {
@@ -305,17 +311,17 @@
    "ticker": "TSM",
    "qty": 30,
    "buy": 373.54,
-   "price": 342.87,
-   "pct": -8.21,
-   "value": 10286.04,
+   "price": 341.9,
+   "pct": -8.47,
+   "value": 10256.98,
    "stop": 0.25,
-   "gain": -920.16,
+   "gain": -949.22,
    "region": "Asien",
    "sector": "Technologie",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 280.16,
-   "stop_dist": 18.3,
+   "stop_dist": 18.1,
    "weight": 3.7
   },
   {
@@ -341,11 +347,11 @@
    "ticker": "BTC-EUR",
    "qty": 0.15,
    "buy": 71923.82,
-   "price": 59069.34,
-   "pct": -17.87,
-   "value": 8860.4,
+   "price": 59084.83,
+   "pct": -17.85,
+   "value": 8862.72,
    "stop": 0.35,
-   "gain": -1928.17,
+   "gain": -1925.85,
    "region": "Global",
    "sector": "Krypto",
    "origin": "eigene Recherche",
@@ -359,17 +365,17 @@
    "ticker": "GOOGL",
    "qty": 22,
    "buy": 262.7,
-   "price": 260.78,
-   "pct": -0.73,
-   "value": 5737.05,
+   "price": 259.33,
+   "pct": -1.28,
+   "value": 5705.17,
    "stop": 0.25,
-   "gain": -42.35,
+   "gain": -74.23,
    "region": "USA",
    "sector": "Technologie",
    "origin": "durch Nutzerthema angestoßen",
    "trail": false,
    "stop_price": 197.02,
-   "stop_dist": 24.4,
+   "stop_dist": 24.0,
    "weight": 2.0
   },
   {
@@ -608,7 +614,7 @@
    "Welt": 25.5,
    "Schwellenländer": 9.7,
    "Global": 11.4,
-   "Europa": 21.4,
+   "Europa": 21.5,
    "USA": 15.3,
    "Asien": 3.7,
    "Japan": 3.1
@@ -617,7 +623,7 @@
    "Cash": 9.9,
    "ETF breit": 38.3,
    "Gold": 8.2,
-   "Technologie": 14.5,
+   "Technologie": 14.6,
    "Gesundheit": 8.9,
    "Energie": 8.2,
    "Finanzen": 4.4,
@@ -630,15 +636,15 @@
    "name": "eigene Recherche",
    "n": 11,
    "cost": 248250,
-   "gain": -1110.8,
-   "pct": -0.45
+   "gain": -1323.25,
+   "pct": -0.53
   },
   {
    "name": "durch Nutzerthema angestoßen",
    "n": 1,
    "cost": 5779,
-   "gain": -42.35,
-   "pct": -0.73
+   "gain": -74.23,
+   "pct": -1.28
   }
  ],
  "intraday": [
@@ -1175,6 +1181,11 @@
   {
    "t": "2026-11-16 18:51",
    "v": 99.58,
+   "b": 100.3
+  },
+  {
+   "t": "2026-11-16 19:44",
+   "v": 99.49,
    "b": 100.3
   }
  ],
