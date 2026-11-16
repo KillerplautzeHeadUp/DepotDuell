@@ -1,6 +1,6 @@
 {
- "updated": "15.11.2026 20:03 Uhr",
- "value": 283081.7,
+ "updated": "16.11.2026 09:07 Uhr",
+ "value": 283242.8,
  "cash": 27808.88,
  "reserve": 30000,
  "rate": 365,
@@ -100,6 +100,12 @@
    "value": 283081.7,
    "idx": 100.43,
    "bench": 100.66
+  },
+  {
+   "date": "2026-11-16",
+   "value": 283242.8,
+   "idx": 100.49,
+   "bench": 100.66
   }
  ],
  "user": [
@@ -162,10 +168,10 @@
  ],
  "user_meta": {
   "start": 279700,
-  "deposits": 3984.3,
+  "deposits": 4349.3,
   "weekly": 365.0,
   "from": "2026-11-02",
-  "last_counted": "2026-11-09"
+  "last_counted": "2026-11-16"
  },
  "positions": [
   {
@@ -245,16 +251,16 @@
    "ticker": "LLY",
    "qty": 19,
    "buy": 1143.57,
-   "price": 1306.31,
-   "pct": 14.23,
-   "value": 24819.88,
+   "price": 1310.55,
+   "pct": 14.6,
+   "value": 24900.52,
    "stop": 0.12,
-   "gain": 3092.05,
+   "gain": 3172.69,
    "region": "USA",
    "sector": "Gesundheit",
    "origin": "eigene Recherche",
    "trail": true,
-   "stop_price": 1149.55,
+   "stop_price": 1153.29,
    "stop_dist": 12.0,
    "weight": 8.8
   },
@@ -281,17 +287,17 @@
    "ticker": "JPM",
    "qty": 40,
    "buy": 295.95,
-   "price": 313.29,
-   "pct": 5.86,
-   "value": 12531.52,
+   "price": 314.31,
+   "pct": 6.2,
+   "value": 12572.24,
    "stop": 0.2,
-   "gain": 693.52,
+   "gain": 734.24,
    "region": "USA",
    "sector": "Finanzen",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 236.76,
-   "stop_dist": 24.4,
+   "stop_dist": 24.7,
    "weight": 4.4
   },
   {
@@ -299,17 +305,17 @@
    "ticker": "TSM",
    "qty": 30,
    "buy": 373.54,
-   "price": 360.83,
-   "pct": -3.4,
-   "value": 10825.04,
+   "price": 362.01,
+   "pct": -3.09,
+   "value": 10860.21,
    "stop": 0.25,
-   "gain": -381.16,
+   "gain": -345.99,
    "region": "Asien",
    "sector": "Technologie",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 280.16,
-   "stop_dist": 22.4,
+   "stop_dist": 22.6,
    "weight": 3.8
   },
   {
@@ -335,17 +341,17 @@
    "ticker": "BTC-EUR",
    "qty": 0.15,
    "buy": 71923.82,
-   "price": 58829.62,
-   "pct": -18.21,
-   "value": 8824.44,
+   "price": 58732.55,
+   "pct": -18.34,
+   "value": 8809.88,
    "stop": 0.35,
-   "gain": -1964.13,
+   "gain": -1978.69,
    "region": "Global",
    "sector": "Krypto",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 46750.48,
-   "stop_dist": 20.5,
+   "stop_dist": 20.4,
    "weight": 3.1
   },
   {
@@ -353,17 +359,17 @@
    "ticker": "GOOGL",
    "qty": 22,
    "buy": 262.7,
-   "price": 267.66,
-   "pct": 1.89,
-   "value": 5888.52,
+   "price": 268.53,
+   "pct": 2.22,
+   "value": 5907.65,
    "stop": 0.25,
-   "gain": 109.12,
+   "gain": 128.25,
    "region": "USA",
    "sector": "Technologie",
    "origin": "durch Nutzerthema angestoßen",
    "trail": false,
    "stop_price": 197.02,
-   "stop_dist": 26.4,
+   "stop_dist": 26.6,
    "weight": 2.1
   },
   {
@@ -590,7 +596,7 @@
   "rule": "Cash-Quote unter 10 %"
  },
  "risk": {
-  "n": 16,
+  "n": 17,
   "mdd": -3.98,
   "mdd_b": -3.35,
   "vol": null,
@@ -624,15 +630,15 @@
    "name": "eigene Recherche",
    "n": 11,
    "cost": 248250,
-   "gain": 1134.31,
-   "pct": 0.46
+   "gain": 1276.28,
+   "pct": 0.51
   },
   {
    "name": "durch Nutzerthema angestoßen",
    "n": 1,
    "cost": 5779,
-   "gain": 109.12,
-   "pct": 1.89
+   "gain": 128.25,
+   "pct": 2.22
   }
  ],
  "intraday": [
@@ -1139,6 +1145,11 @@
   {
    "t": "2026-11-15 20:03",
    "v": 100.43,
+   "b": 100.66
+  },
+  {
+   "t": "2026-11-16 09:07",
+   "v": 100.49,
    "b": 100.66
   }
  ],
