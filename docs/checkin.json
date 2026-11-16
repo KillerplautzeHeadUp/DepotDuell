@@ -1,10 +1,10 @@
 {
- "updated": "16.11.2026 17:31 Uhr",
- "value": 280803.76,
+ "updated": "16.11.2026 18:51 Uhr",
+ "value": 280685.12,
  "cash": 27808.88,
  "cash_pct": 9.9,
- "claude_idx": 99.62,
- "bench_idx": 100.19,
+ "claude_idx": 99.58,
+ "bench_idx": 100.3,
  "user": {
   "date": "2026-11-15",
   "idx": 100.52,
@@ -32,17 +32,17 @@
  "positions": [
   {
    "name": "iShares Core MSCI World",
-   "price": 129.84,
-   "pct": 0.37,
-   "weight": 25.4,
+   "price": 129.98,
+   "pct": 0.48,
+   "weight": 25.5,
    "stop_price": null,
    "stop_dist": null,
    "trail": false
   },
   {
    "name": "iShares Core MSCI EM IMI",
-   "price": 44.26,
-   "pct": -2.52,
+   "price": 44.32,
+   "pct": -2.37,
    "weight": 9.7,
    "stop_price": null,
    "stop_dist": null,
@@ -50,8 +50,8 @@
   },
   {
    "name": "Xetra-Gold",
-   "price": 112.73,
-   "pct": -3.13,
+   "price": 112.7,
+   "pct": -3.15,
    "weight": 8.2,
    "stop_price": null,
    "stop_dist": null,
@@ -59,8 +59,8 @@
   },
   {
    "name": "ASML",
-   "price": 1306.0,
-   "pct": -6.26,
+   "price": 1306.6,
+   "pct": -6.22,
    "weight": 8.8,
    "stop_price": 1044.9,
    "stop_dist": 20.0,
@@ -68,71 +68,71 @@
   },
   {
    "name": "Eli Lilly",
-   "price": 1320.87,
-   "pct": 15.5,
+   "price": 1313.76,
+   "pct": 14.88,
    "weight": 8.9,
    "stop_price": 1171.01,
-   "stop_dist": 11.3,
+   "stop_dist": 10.9,
    "trail": true
   },
   {
    "name": "TotalEnergies",
-   "price": 82.14,
-   "pct": 0.74,
+   "price": 81.96,
+   "pct": 0.52,
    "weight": 8.2,
    "stop_price": 65.23,
-   "stop_dist": 20.6,
-   "trail": false
-  },
-  {
-   "name": "JPMorgan Chase",
-   "price": 311.58,
-   "pct": 5.28,
-   "weight": 4.4,
-   "stop_price": 236.76,
-   "stop_dist": 24.0,
-   "trail": false
-  },
-  {
-   "name": "TSMC",
-   "price": 344.83,
-   "pct": -7.68,
-   "weight": 3.7,
-   "stop_price": 280.16,
-   "stop_dist": 18.8,
-   "trail": false
-  },
-  {
-   "name": "Siemens",
-   "price": 272.0,
-   "pct": 5.92,
-   "weight": 4.4,
-   "stop_price": 205.44,
-   "stop_dist": 24.5,
-   "trail": false
-  },
-  {
-   "name": "Bitcoin",
-   "price": 58759.27,
-   "pct": -18.3,
-   "weight": 3.1,
-   "stop_price": 46750.48,
    "stop_dist": 20.4,
    "trail": false
   },
   {
+   "name": "JPMorgan Chase",
+   "price": 310.66,
+   "pct": 4.97,
+   "weight": 4.4,
+   "stop_price": 236.76,
+   "stop_dist": 23.8,
+   "trail": false
+  },
+  {
+   "name": "TSMC",
+   "price": 342.87,
+   "pct": -8.21,
+   "weight": 3.7,
+   "stop_price": 280.16,
+   "stop_dist": 18.3,
+   "trail": false
+  },
+  {
+   "name": "Siemens",
+   "price": 272.55,
+   "pct": 6.13,
+   "weight": 4.4,
+   "stop_price": 205.44,
+   "stop_dist": 24.6,
+   "trail": false
+  },
+  {
+   "name": "Bitcoin",
+   "price": 59069.34,
+   "pct": -17.87,
+   "weight": 3.2,
+   "stop_price": 46750.48,
+   "stop_dist": 20.9,
+   "trail": false
+  },
+  {
    "name": "Alphabet (Klasse A)",
-   "price": 262.32,
-   "pct": -0.14,
-   "weight": 2.1,
+   "price": 260.78,
+   "pct": -0.73,
+   "weight": 2.0,
    "stop_price": 197.02,
-   "stop_dist": 24.9,
+   "stop_dist": 24.4,
    "trail": false
   },
   {
    "name": "iShares Core MSCI Japan IMI",
-   "price": 71.34,
-   "pct": -2.19,
+   "price": 71.38,
+   "pct": -2.14,
    "weight": 3.1,
    "stop_price": null,
    "stop_dist": null,
