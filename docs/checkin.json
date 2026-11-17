@@ -1,9 +1,9 @@
 {
- "updated": "17.11.2026 18:28 Uhr",
- "value": 275109.62,
+ "updated": "17.11.2026 19:21 Uhr",
+ "value": 275004.89,
  "cash": 27808.88,
  "cash_pct": 10.1,
- "claude_idx": 97.61,
+ "claude_idx": 97.57,
  "bench_idx": 98.06,
  "user": {
   "date": "2026-11-16",
@@ -68,11 +68,11 @@
   },
   {
    "name": "Eli Lilly",
-   "price": 1287.18,
-   "pct": 12.56,
+   "price": 1284.7,
+   "pct": 12.34,
    "weight": 8.9,
    "stop_price": 1171.01,
-   "stop_dist": 9.0,
+   "stop_dist": 8.8,
    "trail": true
   },
   {
@@ -86,20 +86,20 @@
   },
   {
    "name": "JPMorgan Chase",
-   "price": 300.25,
-   "pct": 1.45,
+   "price": 299.36,
+   "pct": 1.15,
    "weight": 4.4,
    "stop_price": 236.76,
-   "stop_dist": 21.1,
+   "stop_dist": 20.9,
    "trail": false
   },
   {
    "name": "TSMC",
-   "price": 326.83,
-   "pct": -12.51,
+   "price": 326.43,
+   "pct": -12.61,
    "weight": 3.6,
    "stop_price": 280.16,
-   "stop_dist": 14.3,
+   "stop_dist": 14.2,
    "trail": false
   },
   {
@@ -113,8 +113,8 @@
   },
   {
    "name": "Bitcoin",
-   "price": 57859.13,
-   "pct": -19.55,
+   "price": 57888.6,
+   "pct": -19.51,
    "weight": 3.2,
    "stop_price": 46750.48,
    "stop_dist": 19.2,
@@ -122,11 +122,11 @@
   },
   {
    "name": "Alphabet (Klasse A)",
-   "price": 256.11,
-   "pct": -2.51,
+   "price": 255.44,
+   "pct": -2.76,
    "weight": 2.0,
    "stop_price": 197.02,
-   "stop_dist": 23.1,
+   "stop_dist": 22.9,
    "trail": false
   },
   {
