@@ -1,6 +1,6 @@
 {
- "updated": "17.11.2026 07:57 Uhr",
- "value": 280048.47,
+ "updated": "17.11.2026 09:15 Uhr",
+ "value": 279834.14,
  "cash": 27808.88,
  "reserve": 30000,
  "rate": 365,
@@ -109,8 +109,8 @@
   },
   {
    "date": "2026-11-17",
-   "value": 280048.47,
-   "idx": 99.36,
+   "value": 279834.14,
+   "idx": 99.28,
    "bench": 100.3
   }
  ],
@@ -238,42 +238,42 @@
    "trail": false,
    "stop_price": null,
    "stop_dist": null,
-   "weight": 8.2
+   "weight": 8.3
   },
   {
    "name": "ASML",
    "ticker": "ASML.AS",
    "qty": 19,
    "buy": 1393.2,
-   "price": 1306.6,
-   "pct": -6.22,
-   "value": 24825.4,
+   "price": 1293.2,
+   "pct": -7.18,
+   "value": 24570.8,
    "stop": 0.25,
-   "gain": -1645.4,
+   "gain": -1900.0,
    "region": "Europa",
    "sector": "Technologie",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 1044.9,
-   "stop_dist": 20.0,
-   "weight": 8.9
+   "stop_dist": 19.2,
+   "weight": 8.8
   },
   {
    "name": "Eli Lilly",
    "ticker": "LLY",
    "qty": 19,
    "buy": 1143.57,
-   "price": 1300.39,
-   "pct": 13.71,
-   "value": 24707.33,
+   "price": 1301.1,
+   "pct": 13.78,
+   "value": 24720.93,
    "stop": 0.12,
-   "gain": 2979.5,
+   "gain": 2993.1,
    "region": "USA",
    "sector": "Gesundheit",
    "origin": "eigene Recherche",
    "trail": true,
    "stop_price": 1171.01,
-   "stop_dist": 9.9,
+   "stop_dist": 10.0,
    "weight": 8.8
   },
   {
@@ -299,17 +299,17 @@
    "ticker": "JPM",
    "qty": 40,
    "buy": 295.95,
-   "price": 307.2,
-   "pct": 3.8,
-   "value": 12287.84,
+   "price": 307.37,
+   "pct": 3.86,
+   "value": 12294.61,
    "stop": 0.2,
-   "gain": 449.84,
+   "gain": 456.61,
    "region": "USA",
    "sector": "Finanzen",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 236.76,
-   "stop_dist": 22.9,
+   "stop_dist": 23.0,
    "weight": 4.4
   },
   {
@@ -317,17 +317,17 @@
    "ticker": "TSM",
    "qty": 30,
    "buy": 373.54,
-   "price": 339.2,
-   "pct": -9.19,
-   "value": 10176.14,
+   "price": 339.39,
+   "pct": -9.14,
+   "value": 10181.74,
    "stop": 0.25,
-   "gain": -1030.06,
+   "gain": -1024.46,
    "region": "Asien",
    "sector": "Technologie",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 280.16,
-   "stop_dist": 17.4,
+   "stop_dist": 17.5,
    "weight": 3.6
   },
   {
@@ -353,17 +353,17 @@
    "ticker": "BTC-EUR",
    "qty": 0.15,
    "buy": 71923.82,
-   "price": 58626.45,
-   "pct": -18.49,
-   "value": 8793.97,
+   "price": 58701.01,
+   "pct": -18.38,
+   "value": 8805.15,
    "stop": 0.35,
-   "gain": -1994.61,
+   "gain": -1983.42,
    "region": "Global",
    "sector": "Krypto",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 46750.48,
-   "stop_dist": 20.3,
+   "stop_dist": 20.4,
    "weight": 3.1
   },
   {
@@ -371,17 +371,17 @@
    "ticker": "GOOGL",
    "qty": 22,
    "buy": 262.7,
-   "price": 257.7,
-   "pct": -1.9,
-   "value": 5669.46,
+   "price": 257.84,
+   "pct": -1.85,
+   "value": 5672.58,
    "stop": 0.25,
-   "gain": -109.94,
+   "gain": -106.82,
    "region": "USA",
    "sector": "Technologie",
    "origin": "durch Nutzerthema angestoßen",
    "trail": false,
    "stop_price": 197.02,
-   "stop_dist": 23.5,
+   "stop_dist": 23.6,
    "weight": 2.0
   },
   {
@@ -619,8 +619,8 @@
    "Cash": 9.9,
    "Welt": 25.5,
    "Schwellenländer": 9.7,
-   "Global": 11.3,
-   "Europa": 21.5,
+   "Global": 11.4,
+   "Europa": 21.4,
    "USA": 15.2,
    "Asien": 3.6,
    "Japan": 3.1
@@ -628,8 +628,8 @@
   "sector": {
    "Cash": 9.9,
    "ETF breit": 38.3,
-   "Gold": 8.2,
-   "Technologie": 14.5,
+   "Gold": 8.3,
+   "Technologie": 14.4,
    "Gesundheit": 8.8,
    "Energie": 8.2,
    "Finanzen": 4.4,
@@ -642,15 +642,15 @@
    "name": "eigene Recherche",
    "n": 11,
    "cost": 248250,
-   "gain": -1679.87,
-   "pct": -0.68
+   "gain": -1897.31,
+   "pct": -0.76
   },
   {
    "name": "durch Nutzerthema angestoßen",
    "n": 1,
    "cost": 5779,
-   "gain": -109.94,
-   "pct": -1.9
+   "gain": -106.82,
+   "pct": -1.85
   }
  ],
  "intraday": [
@@ -1072,6 +1072,11 @@
   {
    "t": "2026-11-17 07:57",
    "v": 99.36,
+   "b": 100.3
+  },
+  {
+   "t": "2026-11-17 09:15",
+   "v": 99.28,
    "b": 100.3
   }
  ],
