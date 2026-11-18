@@ -1,6 +1,6 @@
 {
- "updated": "18.11.2026 19:42 Uhr",
- "value": 273784.75,
+ "updated": "18.11.2026 20:49 Uhr",
+ "value": 273426.94,
  "cash": 27808.88,
  "reserve": 30000,
  "rate": 365,
@@ -115,8 +115,8 @@
   },
   {
    "date": "2026-11-18",
-   "value": 273784.75,
-   "idx": 97.14,
+   "value": 273426.94,
+   "idx": 97.01,
    "bench": 98.08
   }
  ],
@@ -191,8 +191,8 @@
   },
   {
    "date": "2026-11-18",
-   "idx": 63.23,
-   "value": 181200.0,
+   "idx": 98.19,
+   "value": 279000.0,
    "deposits": 4349.3
   }
  ],
@@ -220,7 +220,7 @@
    "trail": false,
    "stop_price": null,
    "stop_dist": null,
-   "weight": 25.5
+   "weight": 25.6
   },
   {
    "name": "iShares Core MSCI EM IMI",
@@ -274,24 +274,24 @@
    "trail": false,
    "stop_price": 1044.9,
    "stop_dist": 17.1,
-   "weight": 8.7
+   "weight": 8.8
   },
   {
    "name": "Eli Lilly",
    "ticker": "LLY",
    "qty": 19,
    "buy": 1143.57,
-   "price": 1271.51,
-   "pct": 11.19,
-   "value": 24158.64,
+   "price": 1260.23,
+   "pct": 10.2,
+   "value": 23944.32,
    "stop": 0.12,
-   "gain": 2430.81,
+   "gain": 2216.49,
    "region": "USA",
    "sector": "Gesundheit",
    "origin": "eigene Recherche",
    "trail": true,
    "stop_price": 1171.01,
-   "stop_dist": 7.9,
+   "stop_dist": 7.1,
    "weight": 8.8
   },
   {
@@ -317,17 +317,17 @@
    "ticker": "JPM",
    "qty": 40,
    "buy": 295.95,
-   "price": 297.27,
-   "pct": 0.44,
-   "value": 11890.61,
+   "price": 296.29,
+   "pct": 0.12,
+   "value": 11851.78,
    "stop": 0.2,
-   "gain": 52.61,
+   "gain": 13.78,
    "region": "USA",
    "sector": "Finanzen",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 236.76,
-   "stop_dist": 20.4,
+   "stop_dist": 20.1,
    "weight": 4.3
   },
   {
@@ -335,17 +335,17 @@
    "ticker": "TSM",
    "qty": 30,
    "buy": 373.54,
-   "price": 329.11,
-   "pct": -11.89,
-   "value": 9873.27,
+   "price": 328.07,
+   "pct": -12.17,
+   "value": 9842.23,
    "stop": 0.25,
-   "gain": -1332.93,
+   "gain": -1363.97,
    "region": "Asien",
    "sector": "Technologie",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 280.16,
-   "stop_dist": 14.9,
+   "stop_dist": 14.6,
    "weight": 3.6
   },
   {
@@ -371,29 +371,29 @@
    "ticker": "BTC-EUR",
    "qty": 0.15,
    "buy": 71923.82,
-   "price": 57575.93,
-   "pct": -19.95,
-   "value": 8636.39,
+   "price": 57107.26,
+   "pct": -20.6,
+   "value": 8566.09,
    "stop": 0.35,
-   "gain": -2152.18,
+   "gain": -2222.48,
    "region": "Global",
    "sector": "Krypto",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 46750.48,
-   "stop_dist": 18.8,
-   "weight": 3.2
+   "stop_dist": 18.1,
+   "weight": 3.1
   },
   {
    "name": "Alphabet (Klasse A)",
    "ticker": "GOOGL",
    "qty": 22,
    "buy": 262.7,
-   "price": 258.34,
-   "pct": -1.66,
-   "value": 5683.42,
+   "price": 258.19,
+   "pct": -1.72,
+   "value": 5680.1,
    "stop": 0.25,
-   "gain": -95.98,
+   "gain": -99.3,
    "region": "USA",
    "sector": "Technologie",
    "origin": "durch Nutzerthema angestoßen",
@@ -627,7 +627,7 @@
  },
  "risk": {
   "n": 19,
-  "mdd": -4.86,
+  "mdd": -4.99,
   "mdd_b": -3.52,
   "vol": null,
   "beta": null
@@ -635,24 +635,24 @@
  "alloc": {
   "region": {
    "Cash": 10.2,
-   "Welt": 25.5,
+   "Welt": 25.6,
    "Schwellenländer": 9.7,
-   "Global": 11.4,
-   "Europa": 21.3,
+   "Global": 11.3,
+   "Europa": 21.4,
    "USA": 15.2,
    "Asien": 3.6,
    "Japan": 3.1
   },
   "sector": {
    "Cash": 10.2,
-   "ETF breit": 38.3,
+   "ETF breit": 38.4,
    "Gold": 8.2,
-   "Technologie": 14.4,
+   "Technologie": 14.5,
    "Gesundheit": 8.8,
    "Energie": 8.2,
    "Finanzen": 4.3,
    "Industrie": 4.4,
-   "Krypto": 3.2
+   "Krypto": 3.1
   }
  },
  "origin": [
@@ -660,15 +660,15 @@
    "name": "eigene Recherche",
    "n": 11,
    "cost": 248250,
-   "gain": -7957.53,
-   "pct": -3.21
+   "gain": -8312.02,
+   "pct": -3.35
   },
   {
    "name": "durch Nutzerthema angestoßen",
    "n": 1,
    "cost": 5779,
-   "gain": -95.98,
-   "pct": -1.66
+   "gain": -99.3,
+   "pct": -1.72
   }
  ],
  "intraday": [
@@ -1125,6 +1125,11 @@
   {
    "t": "2026-11-18 19:42",
    "v": 97.14,
+   "b": 98.08
+  },
+  {
+   "t": "2026-11-18 20:49",
+   "v": 97.01,
    "b": 98.08
   }
  ],
