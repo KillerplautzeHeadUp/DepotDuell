@@ -1,9 +1,9 @@
 {
- "updated": "19.11.2026 07:57 Uhr",
- "value": 273593.36,
+ "updated": "19.11.2026 09:18 Uhr",
+ "value": 274506.13,
  "cash": 27808.88,
- "cash_pct": 10.2,
- "claude_idx": 97.07,
+ "cash_pct": 10.1,
+ "claude_idx": 97.4,
  "bench_idx": 98.08,
  "user": {
   "date": "2026-11-18",
@@ -34,7 +34,7 @@
    "name": "iShares Core MSCI World",
    "price": 127.11,
    "pct": -1.74,
-   "weight": 25.6,
+   "weight": 25.5,
    "stop_price": null,
    "stop_dist": null,
    "trail": false
@@ -59,74 +59,74 @@
   },
   {
    "name": "ASML",
-   "price": 1260.8,
-   "pct": -9.5,
-   "weight": 8.8,
+   "price": 1304.8,
+   "pct": -6.35,
+   "weight": 9.0,
    "stop_price": 1044.9,
-   "stop_dist": 17.1,
-   "trail": false
-  },
-  {
-   "name": "Eli Lilly",
-   "price": 1260.51,
-   "pct": 10.23,
-   "weight": 8.8,
-   "stop_price": 1171.01,
-   "stop_dist": 7.1,
-   "trail": true
-  },
-  {
-   "name": "TotalEnergies",
-   "price": 79.81,
-   "pct": -2.12,
-   "weight": 8.2,
-   "stop_price": 65.23,
-   "stop_dist": 18.3,
-   "trail": false
-  },
-  {
-   "name": "JPMorgan Chase",
-   "price": 295.46,
-   "pct": -0.17,
-   "weight": 4.3,
-   "stop_price": 236.76,
    "stop_dist": 19.9,
    "trail": false
   },
   {
+   "name": "Eli Lilly",
+   "price": 1258.44,
+   "pct": 10.04,
+   "weight": 8.7,
+   "stop_price": 1171.01,
+   "stop_dist": 6.9,
+   "trail": true
+  },
+  {
+   "name": "TotalEnergies",
+   "price": 79.73,
+   "pct": -2.22,
+   "weight": 8.1,
+   "stop_price": 65.23,
+   "stop_dist": 18.2,
+   "trail": false
+  },
+  {
+   "name": "JPMorgan Chase",
+   "price": 294.97,
+   "pct": -0.33,
+   "weight": 4.3,
+   "stop_price": 236.76,
+   "stop_dist": 19.7,
+   "trail": false
+  },
+  {
    "name": "TSMC",
-   "price": 330.56,
-   "pct": -11.5,
+   "price": 330.02,
+   "pct": -11.65,
    "weight": 3.6,
    "stop_price": 280.16,
-   "stop_dist": 15.2,
+   "stop_dist": 15.1,
    "trail": false
   },
   {
    "name": "Siemens",
-   "price": 266.0,
-   "pct": 3.58,
+   "price": 269.95,
+   "pct": 5.12,
    "weight": 4.4,
    "stop_price": 205.44,
-   "stop_dist": 22.8,
+   "stop_dist": 23.9,
    "trail": false
   },
   {
    "name": "Bitcoin",
-   "price": 58009.89,
-   "pct": -19.35,
+   "price": 58049.36,
+   "pct": -19.29,
    "weight": 3.2,
    "stop_price": 46750.48,
-   "stop_dist": 19.4,
+   "stop_dist": 19.5,
    "trail": false
   },
   {
    "name": "Alphabet (Klasse A)",
-   "price": 257.47,
-   "pct": -1.99,
+   "price": 257.05,
+   "pct": -2.15,
    "weight": 2.1,
    "stop_price": 197.02,
-   "stop_dist": 23.5,
+   "stop_dist": 23.4,
    "trail": false
   },
   {
