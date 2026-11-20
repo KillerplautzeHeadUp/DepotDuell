@@ -1,10 +1,10 @@
 {
- "updated": "20.11.2026 12:27 Uhr",
- "value": 267277.48,
+ "updated": "20.11.2026 13:23 Uhr",
+ "value": 266611.37,
  "cash": 27991.38,
  "cash_pct": 10.5,
- "claude_idx": 94.7,
- "bench_idx": 95.97,
+ "claude_idx": 94.47,
+ "bench_idx": 95.57,
  "user": {
   "date": "2026-11-19",
   "idx": 95.42,
@@ -32,17 +32,17 @@
  "positions": [
   {
    "name": "iShares Core MSCI World",
-   "price": 124.36,
-   "pct": -3.86,
-   "weight": 25.6,
+   "price": 123.85,
+   "pct": -4.26,
+   "weight": 25.5,
    "stop_price": null,
    "stop_dist": null,
    "trail": false
   },
   {
    "name": "iShares Core MSCI EM IMI",
-   "price": 41.7,
-   "pct": -8.15,
+   "price": 41.51,
+   "pct": -8.57,
    "weight": 9.6,
    "stop_price": null,
    "stop_dist": null,
@@ -50,20 +50,20 @@
   },
   {
    "name": "Xetra-Gold",
-   "price": 105.3,
-   "pct": -9.51,
-   "weight": 8.1,
+   "price": 104.69,
+   "pct": -10.04,
+   "weight": 8.0,
    "stop_price": null,
    "stop_dist": null,
    "trail": false
   },
   {
    "name": "ASML",
-   "price": 1210.8,
-   "pct": -13.09,
+   "price": 1207.2,
+   "pct": -13.35,
    "weight": 8.6,
    "stop_price": 1044.9,
-   "stop_dist": 13.7,
+   "stop_dist": 13.4,
    "trail": false
   },
   {
@@ -77,11 +77,11 @@
   },
   {
    "name": "TotalEnergies",
-   "price": 78.18,
-   "pct": -4.12,
+   "price": 78.55,
+   "pct": -3.67,
    "weight": 8.2,
    "stop_price": 65.23,
-   "stop_dist": 16.6,
+   "stop_dist": 17.0,
    "trail": false
   },
   {
@@ -104,35 +104,35 @@
   },
   {
    "name": "Siemens",
-   "price": 258.1,
-   "pct": 0.51,
+   "price": 256.4,
+   "pct": -0.16,
    "weight": 4.3,
    "stop_price": 205.44,
-   "stop_dist": 20.4,
+   "stop_dist": 19.9,
    "trail": false
   },
   {
    "name": "Bitcoin",
-   "price": 56348.25,
-   "pct": -21.66,
+   "price": 56087.22,
+   "pct": -22.02,
    "weight": 3.2,
    "stop_price": 46750.48,
-   "stop_dist": 17.0,
+   "stop_dist": 16.6,
    "trail": false
   },
   {
    "name": "Alphabet (Klasse A)",
    "price": 248.61,
    "pct": -5.36,
-   "weight": 2.0,
+   "weight": 2.1,
    "stop_price": 197.02,
    "stop_dist": 20.7,
    "trail": false
   },
   {
    "name": "iShares Core MSCI Japan IMI",
-   "price": 68.16,
-   "pct": -6.46,
+   "price": 67.68,
+   "pct": -7.12,
    "weight": 3.2,
    "stop_price": null,
    "stop_dist": null,
