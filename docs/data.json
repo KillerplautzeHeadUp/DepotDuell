@@ -1,6 +1,6 @@
 {
- "updated": "20.11.2026 20:51 Uhr",
- "value": 262887.85,
+ "updated": "20.11.2026 21:42 Uhr",
+ "value": 262620.05,
  "cash": 27991.38,
  "reserve": 30000,
  "rate": 365,
@@ -127,8 +127,8 @@
   },
   {
    "date": "2026-11-20",
-   "value": 262887.85,
-   "idx": 93.15,
+   "value": 262620.05,
+   "idx": 93.05,
    "bench": 94.69
   }
  ],
@@ -292,24 +292,24 @@
    "trail": false,
    "stop_price": 1044.9,
    "stop_dist": 10.5,
-   "weight": 8.4
+   "weight": 8.5
   },
   {
    "name": "Eli Lilly",
    "ticker": "LLY",
    "qty": 19,
    "buy": 1143.57,
-   "price": 1233.06,
-   "pct": 7.83,
-   "value": 23428.12,
+   "price": 1227.65,
+   "pct": 7.35,
+   "value": 23325.38,
    "stop": 0.12,
-   "gain": 1700.29,
+   "gain": 1597.55,
    "region": "USA",
    "sector": "Gesundheit",
    "origin": "eigene Recherche",
    "trail": true,
    "stop_price": 1171.01,
-   "stop_dist": 5.0,
+   "stop_dist": 4.6,
    "weight": 8.9
   },
   {
@@ -335,17 +335,17 @@
    "ticker": "JPM",
    "qty": 40,
    "buy": 295.95,
-   "price": 284.4,
-   "pct": -3.9,
-   "value": 11376.07,
+   "price": 283.17,
+   "pct": -4.32,
+   "value": 11327.0,
    "stop": 0.2,
-   "gain": -461.93,
+   "gain": -511.0,
    "region": "USA",
    "sector": "Finanzen",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 236.76,
-   "stop_dist": 16.8,
+   "stop_dist": 16.4,
    "weight": 4.3
   },
   {
@@ -353,17 +353,17 @@
    "ticker": "TSM",
    "qty": 30,
    "buy": 373.54,
-   "price": 292.96,
-   "pct": -21.57,
-   "value": 8788.82,
+   "price": 291.99,
+   "pct": -21.83,
+   "value": 8759.56,
    "stop": 0.25,
-   "gain": -2417.38,
+   "gain": -2446.64,
    "region": "Asien",
    "sector": "Technologie",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 280.16,
-   "stop_dist": 4.4,
+   "stop_dist": 4.1,
    "weight": 3.3
   },
   {
@@ -389,36 +389,36 @@
    "ticker": "BTC-EUR",
    "qty": 0.15,
    "buy": 71923.82,
-   "price": 53381.39,
-   "pct": -25.78,
-   "value": 8007.21,
+   "price": 53429.58,
+   "pct": -25.71,
+   "value": 8014.44,
    "stop": 0.35,
-   "gain": -2781.36,
+   "gain": -2774.14,
    "region": "Global",
    "sector": "Krypto",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 46750.48,
-   "stop_dist": 12.4,
-   "weight": 3.0
+   "stop_dist": 12.5,
+   "weight": 3.1
   },
   {
    "name": "Alphabet (Klasse A)",
    "ticker": "GOOGL",
    "qty": 22,
    "buy": 262.7,
-   "price": 246.98,
-   "pct": -5.98,
-   "value": 5433.56,
+   "price": 242.71,
+   "pct": -7.61,
+   "value": 5339.6,
    "stop": 0.25,
-   "gain": -345.84,
+   "gain": -439.8,
    "region": "USA",
    "sector": "Technologie",
    "origin": "durch Nutzerthema angestoßen",
    "trail": false,
    "stop_price": 197.02,
-   "stop_dist": 20.2,
-   "weight": 2.1
+   "stop_dist": 18.8,
+   "weight": 2.0
   },
   {
    "name": "iShares Core MSCI Japan IMI",
@@ -659,24 +659,24 @@
  },
  "risk": {
   "n": 21,
-  "mdd": -8.77,
+  "mdd": -8.86,
   "mdd_b": -6.84,
-  "vol": 20.4,
-  "beta": 0.96
+  "vol": 20.6,
+  "beta": 0.97
  },
  "alloc": {
   "region": {
-   "Cash": 10.6,
+   "Cash": 10.7,
    "Welt": 25.7,
    "Schwellenländer": 9.6,
-   "Global": 11.1,
-   "Europa": 21.1,
-   "USA": 15.3,
+   "Global": 11.2,
+   "Europa": 21.2,
+   "USA": 15.2,
    "Asien": 3.3,
    "Japan": 3.2
   },
   "sector": {
-   "Cash": 10.6,
+   "Cash": 10.7,
    "ETF breit": 38.5,
    "Gold": 8.1,
    "Technologie": 13.8,
@@ -684,7 +684,7 @@
    "Energie": 8.3,
    "Finanzen": 4.3,
    "Industrie": 4.4,
-   "Krypto": 3.0
+   "Krypto": 3.1
   }
  },
  "origin": [
@@ -692,15 +692,15 @@
    "name": "eigene Recherche",
    "n": 11,
    "cost": 248432,
-   "gain": -18969.59,
-   "pct": -7.64
+   "gain": -19143.44,
+   "pct": -7.71
   },
   {
    "name": "durch Nutzerthema angestoßen",
    "n": 1,
    "cost": 5779,
-   "gain": -345.84,
-   "pct": -5.98
+   "gain": -439.8,
+   "pct": -7.61
   }
  ],
  "intraday": [
@@ -1162,6 +1162,11 @@
   {
    "t": "2026-11-20 20:51",
    "v": 93.15,
+   "b": 94.69
+  },
+  {
+   "t": "2026-11-20 21:42",
+   "v": 93.05,
    "b": 94.69
   }
  ],
