@@ -1,7 +1,7 @@
 {
- "updated": "19.11.2026 23:16 Uhr",
- "value": 271918.69,
- "cash": 27808.88,
+ "updated": "20.11.2026 07:56 Uhr",
+ "value": 272221.57,
+ "cash": 27991.38,
  "reserve": 30000,
  "rate": 365,
  "series": [
@@ -123,6 +123,12 @@
    "date": "2026-11-19",
    "value": 271918.69,
    "idx": 96.48,
+   "bench": 97.84
+  },
+  {
+   "date": "2026-11-20",
+   "value": 272221.57,
+   "idx": 96.46,
    "bench": 97.84
   }
  ],
@@ -293,17 +299,17 @@
    "ticker": "LLY",
    "qty": 19,
    "buy": 1143.57,
-   "price": 1231.41,
-   "pct": 7.68,
-   "value": 23396.81,
+   "price": 1229.52,
+   "pct": 7.52,
+   "value": 23360.87,
    "stop": 0.12,
-   "gain": 1668.98,
+   "gain": 1633.04,
    "region": "USA",
    "sector": "Gesundheit",
    "origin": "eigene Recherche",
    "trail": true,
    "stop_price": 1171.01,
-   "stop_dist": 4.9,
+   "stop_dist": 4.8,
    "weight": 8.6
   },
   {
@@ -322,24 +328,24 @@
    "trail": false,
    "stop_price": 65.23,
    "stop_dist": 17.6,
-   "weight": 8.2
+   "weight": 8.1
   },
   {
    "name": "JPMorgan Chase",
    "ticker": "JPM",
    "qty": 40,
    "buy": 295.95,
-   "price": 291.85,
-   "pct": -1.39,
-   "value": 11673.94,
+   "price": 291.4,
+   "pct": -1.54,
+   "value": 11656.01,
    "stop": 0.2,
-   "gain": -164.06,
+   "gain": -181.99,
    "region": "USA",
    "sector": "Finanzen",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 236.76,
-   "stop_dist": 18.9,
+   "stop_dist": 18.8,
    "weight": 4.3
   },
   {
@@ -347,17 +353,17 @@
    "ticker": "TSM",
    "qty": 30,
    "buy": 373.54,
-   "price": 320.89,
-   "pct": -14.09,
-   "value": 9626.85,
+   "price": 320.4,
+   "pct": -14.23,
+   "value": 9612.06,
    "stop": 0.25,
-   "gain": -1579.35,
+   "gain": -1594.14,
    "region": "Asien",
    "sector": "Technologie",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 280.16,
-   "stop_dist": 12.7,
+   "stop_dist": 12.6,
    "weight": 3.5
   },
   {
@@ -383,17 +389,17 @@
    "ticker": "BTC-EUR",
    "qty": 0.15,
    "buy": 71923.82,
-   "price": 56303.32,
-   "pct": -21.72,
-   "value": 8445.5,
+   "price": 56402.84,
+   "pct": -21.58,
+   "value": 8460.43,
    "stop": 0.35,
-   "gain": -2343.07,
+   "gain": -2328.15,
    "region": "Global",
    "sector": "Krypto",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 46750.48,
-   "stop_dist": 17.0,
+   "stop_dist": 17.1,
    "weight": 3.1
   },
   {
@@ -401,27 +407,27 @@
    "ticker": "GOOGL",
    "qty": 22,
    "buy": 262.7,
-   "price": 248.5,
-   "pct": -5.4,
-   "value": 5467.05,
+   "price": 248.12,
+   "pct": -5.55,
+   "value": 5458.65,
    "stop": 0.25,
-   "gain": -312.35,
+   "gain": -320.75,
    "region": "USA",
    "sector": "Technologie",
    "origin": "durch Nutzerthema angestoßen",
    "trail": false,
    "stop_price": 197.02,
-   "stop_dist": 20.7,
+   "stop_dist": 20.6,
    "weight": 2.0
   },
   {
    "name": "iShares Core MSCI Japan IMI",
    "ticker": "EUNN.DE",
-   "qty": 122.1367,
-   "buy": 72.9376,
+   "qty": 124.7615,
+   "buy": 72.8659,
    "price": 69.53,
-   "pct": -4.67,
-   "value": 8492.16,
+   "pct": -4.58,
+   "value": 8674.67,
    "stop": null,
    "gain": -416.19,
    "region": "Japan",
@@ -430,10 +436,19 @@
    "trail": false,
    "stop_price": null,
    "stop_dist": null,
-   "weight": 3.1
+   "weight": 3.2
   }
  ],
  "trades": [
+  {
+   "date": "2026-11-20",
+   "side": "Kauf",
+   "name": "iShares Core MSCI Japan IMI",
+   "qty": 2.6248,
+   "price": 69.53,
+   "fee": 0,
+   "note": "Kern-Sparplan"
+  },
   {
    "date": "2026-11-13",
    "side": "Kauf",
@@ -622,6 +637,11 @@
    "date": "2026-11-13",
    "amount": 365,
    "note": "Wochenrate"
+  },
+  {
+   "date": "2026-11-20",
+   "amount": 365,
+   "note": "Wochenrate"
   }
  ],
  "orders": [],
@@ -634,34 +654,34 @@
    "iShares Core MSCI EM IMI": 0.2,
    "iShares Core MSCI Japan IMI": 0.2
   },
-  "effective": 0.3,
-  "rule": "Cash-Quote unter 10 %"
+  "effective": 0.5,
+  "rule": "Basis"
  },
  "risk": {
-  "n": 20,
-  "mdd": -5.5,
+  "n": 21,
+  "mdd": -5.52,
   "mdd_b": -3.74,
-  "vol": null,
-  "beta": null
+  "vol": 17.0,
+  "beta": 0.93
  },
  "alloc": {
   "region": {
-   "Cash": 10.2,
+   "Cash": 10.3,
    "Welt": 25.6,
    "Schwellenländer": 9.7,
    "Global": 11.2,
-   "Europa": 21.6,
+   "Europa": 21.5,
    "USA": 14.9,
    "Asien": 3.5,
-   "Japan": 3.1
+   "Japan": 3.2
   },
   "sector": {
-   "Cash": 10.2,
-   "ETF breit": 38.4,
+   "Cash": 10.3,
+   "ETF breit": 38.5,
    "Gold": 8.1,
    "Technologie": 14.5,
    "Gesundheit": 8.6,
-   "Energie": 8.2,
+   "Energie": 8.1,
    "Finanzen": 4.3,
    "Industrie": 4.4,
    "Krypto": 3.1
@@ -671,94 +691,19 @@
   {
    "name": "eigene Recherche",
    "n": 11,
-   "cost": 248250,
-   "gain": -9607.22,
-   "pct": -3.87
+   "cost": 248432,
+   "gain": -9660.96,
+   "pct": -3.89
   },
   {
    "name": "durch Nutzerthema angestoßen",
    "n": 1,
    "cost": 5779,
-   "gain": -312.35,
-   "pct": -5.4
+   "gain": -320.75,
+   "pct": -5.55
   }
  ],
  "intraday": [
-  {
-   "t": "2026-11-12 07:56",
-   "v": 101.5,
-   "b": 101.05
-  },
-  {
-   "t": "2026-11-12 09:13",
-   "v": 101.47,
-   "b": 101.05
-  },
-  {
-   "t": "2026-11-12 10:26",
-   "v": 101.04,
-   "b": 100.92
-  },
-  {
-   "t": "2026-11-12 11:28",
-   "v": 101.13,
-   "b": 100.98
-  },
-  {
-   "t": "2026-11-12 12:26",
-   "v": 101.12,
-   "b": 100.98
-  },
-  {
-   "t": "2026-11-12 13:21",
-   "v": 100.99,
-   "b": 100.91
-  },
-  {
-   "t": "2026-11-12 14:42",
-   "v": 100.74,
-   "b": 100.62
-  },
-  {
-   "t": "2026-11-12 15:46",
-   "v": 100.62,
-   "b": 100.63
-  },
-  {
-   "t": "2026-11-12 16:48",
-   "v": 100.9,
-   "b": 101.07
-  },
-  {
-   "t": "2026-11-12 17:50",
-   "v": 101.35,
-   "b": 101.62
-  },
-  {
-   "t": "2026-11-12 18:43",
-   "v": 101.32,
-   "b": 101.57
-  },
-  {
-   "t": "2026-11-12 19:41",
-   "v": 101.26,
-   "b": 101.57
-  },
-  {
-   "t": "2026-11-12 20:44",
-   "v": 101.18,
-   "b": 101.57
-  },
-  {
-   "t": "2026-11-12 21:39",
-   "v": 101.16,
-   "b": 101.57
-  },
-  {
-   "t": "2026-11-12 22:37",
-   "v": 101.1,
-   "b": 101.57
-  },
   {
    "t": "2026-11-13 07:54",
    "v": 100.96,
@@ -1152,6 +1097,11 @@
   {
    "t": "2026-11-19 23:16",
    "v": 96.48,
+   "b": 97.84
+  },
+  {
+   "t": "2026-11-20 07:56",
+   "v": 96.46,
    "b": 97.84
   }
  ],

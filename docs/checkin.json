@@ -1,9 +1,9 @@
 {
- "updated": "19.11.2026 23:16 Uhr",
- "value": 271918.69,
- "cash": 27808.88,
- "cash_pct": 10.2,
- "claude_idx": 96.48,
+ "updated": "20.11.2026 07:56 Uhr",
+ "value": 272221.57,
+ "cash": 27991.38,
+ "cash_pct": 10.3,
+ "claude_idx": 96.46,
  "bench_idx": 97.84,
  "user": {
   "date": "2026-11-19",
@@ -26,8 +26,8 @@
    "iShares Core MSCI EM IMI": 0.2,
    "iShares Core MSCI Japan IMI": 0.2
   },
-  "effective": 0.3,
-  "rule": "Cash-Quote unter 10 %"
+  "effective": 0.5,
+  "rule": "Basis"
  },
  "positions": [
   {
@@ -68,38 +68,38 @@
   },
   {
    "name": "Eli Lilly",
-   "price": 1231.41,
-   "pct": 7.68,
+   "price": 1229.52,
+   "pct": 7.52,
    "weight": 8.6,
    "stop_price": 1171.01,
-   "stop_dist": 4.9,
+   "stop_dist": 4.8,
    "trail": true
   },
   {
    "name": "TotalEnergies",
    "price": 79.16,
    "pct": -2.92,
-   "weight": 8.2,
+   "weight": 8.1,
    "stop_price": 65.23,
    "stop_dist": 17.6,
    "trail": false
   },
   {
    "name": "JPMorgan Chase",
-   "price": 291.85,
-   "pct": -1.39,
+   "price": 291.4,
+   "pct": -1.54,
    "weight": 4.3,
    "stop_price": 236.76,
-   "stop_dist": 18.9,
+   "stop_dist": 18.8,
    "trail": false
   },
   {
    "name": "TSMC",
-   "price": 320.89,
-   "pct": -14.09,
+   "price": 320.4,
+   "pct": -14.23,
    "weight": 3.5,
    "stop_price": 280.16,
-   "stop_dist": 12.7,
+   "stop_dist": 12.6,
    "trail": false
   },
   {
@@ -113,33 +113,42 @@
   },
   {
    "name": "Bitcoin",
-   "price": 56303.32,
-   "pct": -21.72,
+   "price": 56402.84,
+   "pct": -21.58,
    "weight": 3.1,
    "stop_price": 46750.48,
-   "stop_dist": 17.0,
+   "stop_dist": 17.1,
    "trail": false
   },
   {
    "name": "Alphabet (Klasse A)",
-   "price": 248.5,
-   "pct": -5.4,
+   "price": 248.12,
+   "pct": -5.55,
    "weight": 2.0,
    "stop_price": 197.02,
-   "stop_dist": 20.7,
+   "stop_dist": 20.6,
    "trail": false
   },
   {
    "name": "iShares Core MSCI Japan IMI",
    "price": 69.53,
-   "pct": -4.67,
-   "weight": 3.1,
+   "pct": -4.58,
+   "weight": 3.2,
    "stop_price": null,
    "stop_dist": null,
    "trail": false
   }
  ],
  "trades": [
+  {
+   "date": "2026-11-20",
+   "side": "Kauf",
+   "name": "iShares Core MSCI Japan IMI",
+   "qty": 2.6248,
+   "price": 69.53,
+   "fee": 0,
+   "note": "Kern-Sparplan"
+  },
   {
    "date": "2026-11-13",
    "side": "Kauf",
@@ -175,15 +184,6 @@
    "price": 126.86,
    "fee": 1.0,
    "note": "eigene Recherche"
-  },
-  {
-   "date": "2026-11-06",
-   "side": "Kauf",
-   "name": "iShares Core MSCI Japan IMI",
-   "qty": 2.6101,
-   "price": 69.92,
-   "fee": 0,
-   "note": "Kern-Sparplan"
   }
  ],
  "orders": [],
