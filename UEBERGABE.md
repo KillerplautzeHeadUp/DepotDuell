@@ -1,6 +1,6 @@
 # Übergabe: Depot-Duell (Claude gegen Nutzer)
 
-Stand: 15.11.2026 (Technik ergänzt, Depotstand noch 13.11.) (bei jedem Check-in aktualisieren)
+Stand: 21.11.2026 (Depotstand 20.11. 22:38 Uhr, Nutzer 263.000 € laut Nutzer) (bei jedem Check-in aktualisieren)
 
 Dieses Dokument ersetzt das Gedächtnis eines alten Chats. Ein neuer Chat liest es per Link und kennt danach Regeln, Technik und Entscheidungen.
 
@@ -12,7 +12,7 @@ Dieses Dokument ersetzt das Gedächtnis eines alten Chats. Ein neuer Chat liest 
 - Zustand (kann eine alte Kopie sein): https://raw.githubusercontent.com/killerplautzeheadup/DepotDuell/main/data/state.json
 - Diese Übergabe: https://raw.githubusercontent.com/killerplautzeheadup/DepotDuell/main/UEBERGABE.md
 
-Alle Nutzerdaten (Index, Depotwert, Einzahlungen) stehen in der data.json der Seite (Felder "user" und "user_meta", geprüft am 13.11.). Die Raw-Links zu user.json und user_meta.json nicht verwenden, sie liefern oft eine alte Kopie.
+Alle Nutzerdaten (Index, Depotwert, Einzahlungen) stehen in der data.json der Seite (Felder "user" und "user_meta", zuletzt geprüft am 21.11.). Die Raw-Links zu user.json und user_meta.json nicht verwenden, sie liefern oft eine alte Kopie.
 
 ## Ablauf eines Check-ins (für Claude)
 
@@ -30,7 +30,7 @@ Alle Nutzerdaten (Index, Depotwert, Einzahlungen) stehen in der data.json der Se
 - Kursregel: Bei jedem Gespräch alle Positionen mit den letzten Kursen der Handelsplätze von Trade Republic (gettex, Lang & Schwarz, Tradegate, Stuttgart, Xetra) vergleichen. Nicht auf fehlende Schlusskurse verweisen. Quelle und Zeitpunkt nennen, Schätzungen kennzeichnen.
 - Sparrate: 365 € pro Woche für beide. Claude: freitags, 50 % davon automatisch in Kern-ETFs (Welt 60 %, Schwellenländer 20 %, Japan 20 %), Rest Cash. Nutzer: montags, das Skript zählt sie automatisch als Einzahlung.
 - Steuern (Näherung): 26,375 %, ohne Kirchensteuer, Freibetrag 1.000 €, 30 % Teilfreistellung bei Aktien-ETFs, Gold und Bitcoin nach einem Jahr steuerfrei.
-- Vergleich: Rendite in Prozent seit Start, bereinigt um Einzahlungen (Nutzer-Zuschuss 1.076,50 € für PepsiCo, 610,80 € aus seiner Reserve für Booking, 501 € am 10.11. für ASML, Sparpläne).
+- Vergleich: Rendite in Prozent seit Start, bereinigt um Einzahlungen (Nutzer-Zuschuss 1.076,50 € für PepsiCo, 610,80 € aus seiner Reserve für Booking, 501 € am 10.11. und 1.251 € am 19.11. für ASML, Sparpläne). Die ASML-Käufe des Nutzers werden dem Nutzer als Einzahlung gezählt (Meldung per Telegram, "EINZAHLUNG").
 - Stil: Deutsch, kurz, handytauglich, ehrlich. Keine erfundenen Zahlen, Annahmen kennzeichnen, Fehler offen nennen.
 - Interessenkonflikt: Claude ist von Anthropic. Anthropic-Aktie (IPO, Kürzel ANT) wird im Duell nicht von Claude gekauft.
 
@@ -50,10 +50,10 @@ Alle Nutzerdaten (Index, Depotwert, Einzahlungen) stehen in der data.json der Se
 - Das Skript liefert: Kurse von Yahoo Finance, Stop-Loss, bedingte Aufträge, Dividenden, Steuern, Kern-Sparplan mit Autopilot, Telegram-Auswertung, Wochenbericht freitags ab 19 Uhr per Telegram.
 - Wahrheit: data/state.json. Verlauf: data/history.json, Nutzer-Index: data/user.json, Einzahlungen des Nutzers: data/user_meta.json. Telegram-Position: data/tg_offset.json. Tagesverlauf: data/intraday.json. Veröffentlicht wird docs/data.json.
 - Telegram: Montag bis Freitag im update-Lauf, am Wochenende im eigenen Workflow telegram.yml (scripts/tg_only.py, ohne Kursabruf). Eine DEPOT-Meldung bekommt das Datum der Nachricht.
-- Neue Dateien (14.11.): docs/checkin.json (kompakter Stand, klein, bevorzugt abrufen statt der großen data.json), scripts/tg_only.py, .github/workflows/telegram.yml.
+- Dateien (14.11.): docs/checkin.json (kompakter Stand, klein, bevorzugt abrufen statt der großen data.json), scripts/tg_only.py, .github/workflows/telegram.yml.
 - Zweite Kursquelle (seit 15.11.): Lang & Schwarz (ls-tc.de, inoffizielle Website-Schnittstelle, Kurse in EUR) für alle Titel mit ISIN (Feld "isin" je Position; die Tabelle ISINS in update.py ist nur die Startbelegung für die ersten Titel), Twelve Data (Schlüssel als GitHub-Secret TWELVE_DATA_KEY, kostenlose Stufe) nur für Bitcoin. Yahoo bleibt Hauptquelle. Fehlt ein Yahoo-Kurs, nimmt das Skript die Zweitquelle. Bei mehr als 3 % Abweichung kommt eine Telegram-Warnung (KURSABWEICHUNG, einmal pro Tag und Titel). Die L&S-Kennungen stehen in data/ls_ids.json. Twelve Data liefert in der kostenlosen Stufe nur US-Titel und Krypto, für Europa kam HTTP 404.
 - Probelauf 15.11. (Workflow "Kursquellen pruefen", scripts/ls_probe.py): Yahoo und L&S lagen bei den Europa-Titeln innerhalb von etwa 1 % (ASML am weitesten, +0,9 %). US-Titel passten nach Umrechnung mit dem Dollarkurs (etwa 1,105) auf etwa 0,3 %. Twelve Data und Yahoo lagen bei US-Titeln und Bitcoin auf Cent genau.
-- Neue Telegram-Befehle: CHECKIN (Bot schickt den kompakten Stand), PRIVAT AN/AUS (Depotwert und Einzahlungen aus Seite und docs-Dateien ausblenden, Rohdateien in data/ bleiben bei öffentlichem Repository sichtbar), MITLAUFEND;Name;Anteil (Stop vom Hoch), FEST;Name;Anteil (Stop vom Kaufkurs). Der Name wird ohne Beachtung der Schreibweise gesucht.
+- Telegram-Befehle: CHECKIN (Bot schickt den kompakten Stand), PRIVAT AN/AUS (Depotwert und Einzahlungen aus Seite und docs-Dateien ausblenden, Rohdateien in data/ bleiben bei öffentlichem Repository sichtbar), MITLAUFEND;Name;Anteil (Stop vom Hoch), FEST;Name;Anteil (Stop vom Kaufkurs). Der Name wird ohne Beachtung der Schreibweise gesucht.
 - Stop mitlaufend: Position bekommt "trail" und "high" in state.json. Warnung per Telegram, wenn ein Kurs 4 Läufe fehlt (Kursausfall).
 - Stop-Loss: Standard ist ein fester Abstand vom Kaufkurs. Optional mitlaufend vom höchsten Kurs seit Aktivierung (Telegram-Befehl MITLAUFEND). Die Seite zeigt Stop-Kurs und Puffer je Position.
 - Orders per Issue mit Titel "Order", eine Zeile je Befehl:
@@ -83,44 +83,50 @@ Alle Nutzerdaten (Index, Depotwert, Einzahlungen) stehen in der data.json der Se
 - 9.11.: Doppelbuchung "Welt-ETF" (falscher Name) per VERKAUF;Welt-ETF;47;126,86 korrigiert. Lehre: Namen in Orders exakt aus der Positionsliste kopieren.
 - 10.11.: Check-in, keine Trades. Cash mit 9,8 % an der Untergrenze, US-Inflationsdaten standen an. Skript erweitert (user_meta und Depotwert in data.json).
 - 10. bis 12.11. auf Anfrage des Nutzers geprüft, kein Kauf: ASML und TSMC nicht nachkaufen (stark korrelierte AI-Wette, zusammen 12,9 %), GE Vernova (Watchlist, hängt am selben AI-Strom-Thema, Bewertung hoch, Kurs schwankt 4 bis 9 % pro Tag), Anthropic-IPO (Interessenkonflikt, nicht kaufen).
-- 13.11.: Check-in, keine Käufe. Kern-Sparplan automatisch: 109,50 € (30 % der Wochenrate wegen Cash unter 10 %) in iShares Core MSCI Japan IMI, 1,5266 Stück zu 71,73 €. Indien trotz Ölpreis unter 100 $ nicht gekauft (Sensex etwa 12 % im Monat gestiegen, Zuflüsse ausländischer Anleger über 8 Mrd $, Inflation in Indien 6,09 %, Ölpreis wieder steigend, kein geprüfter ETF-Kurs). Vorschlag: Stop bei Eli Lilly von 22 % auf 5 % unter Kaufkurs anheben (Gewinn von etwa 14 % schützen), siehe Offen.
+- 13.11.: Check-in, keine Käufe. Kern-Sparplan automatisch: 109,50 € (30 % der Wochenrate wegen Cash unter 10 %) in iShares Core MSCI Japan IMI, 1,5266 Stück zu 71,73 €. Indien trotz Ölpreis unter 100 $ nicht gekauft (Sensex etwa 12 % im Monat gestiegen, Zuflüsse ausländischer Anleger über 8 Mrd $, Inflation in Indien 6,09 %, Ölpreis wieder steigend, kein geprüfter ETF-Kurs).
+- Eli Lilly: Stop wurde danach auf mitlaufend 12 % vom Hoch umgestellt (Stand 20.11.: Stop-Kurs 1.171,01, Puffer 4,7 %). Vorschlag "fest 5 %" vom 13.11. ist damit erledigt.
 - Korrektur 13.11.: Die Angabe "Brent-Hoch 118 $ am 30.10." war falsch. Das Jahreshoch von 118,35 $ war am 31.3.2026. Im November lag Brent bisher zwischen 91 und 105 $.
+- 20.11.: Kern-Sparplan automatisch, 2,6248 Stück Japan-ETF zu 69,53 € (Basis-Anteil 50 %).
+- 21.11.: Check-in nach dem Ausverkauf vom 20.11. Keine Käufe, keine Verkäufe, Stops unverändert (eigene Recherche). Gründe: Cash 10,7 % knapp über der Untergrenze, Treiber des Ausverkaufs (Zinsangst, KI-Zweifel, SEC-Prüfung bei Nvidia) nicht gedreht, kein fallendes Messer fangen. Backup-Reserve unangetastet, keine außergewöhnliche Chance. TSMC-Stop wird nicht gesenkt. Anthropic-IPO (Handelsbeginn 19.11.) nicht gekauft, Interessenkonflikt.
+- Nutzer: ASML-Kauf über 1.251 € am 19.11. per Telegram als Einzahlung gemeldet, in der Summe 5.600,30 € enthalten.
 
-## Stand am 13.11.2026 (data.json, updated 13.11.2026 17:42 Uhr)
+## Stand am 20.11.2026 (data.json, updated 20.11.2026 22:38 Uhr)
 
-- Depotwert 283.210,81 €, Cash 27.808,88 € (9,8 %).
-- Seit Start (bereinigt um Einzahlungen): Claude +0,48 % (Index 100,48), Welt-ETF +0,61 %, Nutzer +1,12 % (Index 101,12 am 11.11., Depotwert 286.120 €, Einzahlungen 3.283,30 €).
-- Risiko laut Skript: maximaler Rückgang Claude −3,98 %, Vergleichsindex −3,35 %.
-- Kern-Sparplan: Basis-Anteil 50 %, wirksam 30 % (Regel "Cash-Quote unter 10 %").
-- Einzahlungen des Nutzers bis 11.11.: 3.283,30 € (Start 1.441,50 €, Montagsraten 2. und 9.11., 610,80 € Booking, 501 € für ASML am 10.11.). Nächste Montagsrate am 16.11. wird automatisch gezählt.
+- Depotwert 262.617,87 €, Cash 27.991,38 € (10,7 %).
+- Seit Start (bereinigt um Einzahlungen): Claude −6,95 % (Index 93,05), Vergleichsindex Welt-ETF −5,31 % (94,69), Nutzer etwa −7,97 % (Index etwa 92,03, Depotwert 263.000 € laut Nutzer, Einzahlungen 5.600,30 €; letzter Eintrag in data.json: 19.11., 272.500 €, Index 95,42).
+- Verlauf Claude-Index: 15.11. 100,43, 16.11. 99,41, 17.11. 97,62, 18.11. 96,99, 19.11. 96,48, 20.11. 93,05.
+- Risiko laut Skript: maximaler Rückgang Claude −8,86 %, Vergleichsindex −6,84 %, Volatilität 20,6 %, Beta 0,97.
+- Kern-Sparplan: Basis-Anteil 50 %, wirksam 50 % (Regel "Basis").
+- Einzahlungen des Nutzers bis 19.11.: 5.600,30 €. Letzte automatisch gezählte Montagsrate: 16.11. Nächste am 23.11.
 
-Positionen (Stück, Kaufkurs, Skript-Kurs 13.11. 17:42, Gewicht):
+Positionen (Stück, Kaufkurs, Skript-Kurs 20.11. 22:38, Veränderung seit Kauf, Gewicht):
 
 | Position | Stück | Kauf | Kurs | Veränderung | Gewicht |
 |---|---|---|---|---|---|
-| iShares Core MSCI World | 550 | 129,36 | 130,38 | +0,8 % | 25,3 % |
-| iShares Core MSCI EM IMI | 615 | 45,40 | 44,94 | −1,0 % | 9,8 % |
-| Xetra-Gold | 205 | 116,37 | 113,13 | −2,8 % | 8,2 % |
-| ASML | 19 | 1.393,20 | 1.337,40 | −4,0 % | 9,0 % |
-| Eli Lilly | 19 | 1.143,57 | 1.305,46 | +14,2 % | 8,8 % |
-| TotalEnergies | 280 | 81,54 | 82,06 | +0,6 % | 8,1 % |
-| JPMorgan Chase | 40 | 295,95 | 312,25 | +5,5 % | 4,4 % |
-| TSMC | 30 | 373,54 | 356,82 | −4,5 % | 3,8 % |
-| Siemens | 45 | 256,80 | 278,95 | +8,6 % | 4,4 % |
-| Bitcoin | 0,15 | 71.923,82 | 62.277,99 | −13,4 % | 3,3 % |
-| Alphabet (Klasse A) | 22 | 262,70 | 266,23 | +1,3 % | 2,1 % |
-| iShares Core MSCI Japan IMI | 122,1367 | 72,94 | 71,46 | −2,0 % | 3,1 % |
+| iShares Core MSCI World | 550 | 129,36 | 122,71 | −5,1 % | 25,7 % |
+| iShares Core MSCI EM IMI | 615 | 45,40 | 40,96 | −9,8 % | 9,6 % |
+| Xetra-Gold | 205 | 116,37 | 103,78 | −10,8 % | 8,1 % |
+| ASML | 19 | 1.393,20 | 1.168,00 | −16,2 % | 8,5 % |
+| Eli Lilly | 19 | 1.143,57 | 1.228,56 | +7,4 % | 8,9 % |
+| TotalEnergies | 280 | 81,54 | 78,19 | −4,1 % | 8,3 % |
+| JPMorgan Chase | 40 | 295,95 | 283,20 | −4,3 % | 4,3 % |
+| TSMC | 30 | 373,54 | 290,66 | −22,2 % | 3,3 % |
+| Siemens | 45 | 256,80 | 254,65 | −0,8 % | 4,4 % |
+| Bitcoin | 0,15 | 71.923,82 | 53.668,42 | −25,4 % | 3,1 % |
+| Alphabet (Klasse A) | 22 | 262,70 | 241,94 | −7,9 % | 2,0 % |
+| iShares Core MSCI Japan IMI | 124,7615 | 72,87 | 67,03 | −8,0 % | 3,2 % |
 
-Stops (fester Abstand vom Kaufkurs): ASML 25 %, Eli Lilly 22 %, TotalEnergies 20 %, JPMorgan 20 %, TSMC 25 %, Siemens 20 %, Bitcoin 35 %, Alphabet 25 %. ETFs und Gold ohne Stop. Keine Position ist nahe am Stop.
+Stops: ASML fest 25 % (Stop-Kurs 1.044,90, Puffer 10,5 %), Eli Lilly mitlaufend 12 % (Stop-Kurs 1.171,01, Puffer 4,7 %), TotalEnergies fest 20 % (Puffer 16,6 %), JPMorgan fest 20 % (Puffer 16,4 %), TSMC fest 25 % (Stop-Kurs 280,16, **Puffer 3,6 %**), Siemens fest 20 % (Puffer 19,3 %), Bitcoin fest 35 % (Stop-Kurs 46.750,48, Puffer 12,9 %), Alphabet fest 25 % (Puffer 18,6 %). ETFs und Gold ohne Stop.
 
-Marktlage 13.11.: Brent etwa 96 $ (Wochenverlust, aber wieder steigend, weil Trump ein Abkommen mit dem Iran offenlässt). Gold etwa 3.890 $ je Unze (passt zu Xetra-Gold 113,13 €). Bitcoin etwa 69.000 bis 70.000 $ (etwa 63.000 €, Skript 62.278 € um 17:42). DAX Schluss 26.739 Punkte. US-Techwerte mit neuen Verkaufswellen, Halbleiter und KI schwanken stark. Fed: Zinserhöhung im Dezember wird eingepreist, die Erzeugerpreise waren leicht unter Erwartung. Einzelkurse der Aktien nicht unabhängig geprüft.
+Marktlage 20.11. (Quellen: dpa-AFX/ARIVA, finanzen.net, goldesel.de; Einzelkurse der Positionen nicht unabhängig geprüft): Ausverkauf an der Wall Street. Nasdaq 100 −5,61 % auf 25.028,98, S&P 500 −3,70 % auf 6.910,39, Dow Jones −1,93 % auf 48.147,33. Nvidia etwa −14 % nach Bericht über SEC-Prüfung der Bilanzierung. Nasdaq Composite über 16 % unter dem Hoch vom 6.10., Jahresgewinn aufgebraucht. Treiber: Inflations- und Zinsängste (Fed, mögliche weitere Zinserhöhungen), Zweifel am KI-Investitionsboom, Nahost-Konflikt (USA, Israel, Iran). Anthropic-IPO (Handelsbeginn 19.11.) ohne Rückenwind. Gold und Bitcoin gaben laut Skript-Kursen ebenfalls deutlich nach (Xetra-Gold −8 %, Bitcoin −14 % seit 13.11.).
 
 ## Offen
 
-- Eli Lilly: Stop auf 5 % anheben, falls der Nutzer zustimmt: Issue "Order" mit der Zeile `STOP;Eli Lilly;0,05`. Danach ist die Wirkung in data.json zu prüfen (Stop-Feld bei Lilly).
-- Indien weiter beobachten, nächster Blick am 27.11.: Rücksetzer im Sensex, Ölpreis unter 100 $ stabil, Inflationsdaten Indien. Dann mit frischem Live-Kurs den iShares MSCI India UCITS ETF (ISIN IE00BZCQB185) mit etwa 2 % prüfen, Cash-Quote beachten (Untergrenze 10 %).
-- Alibaba nach den Zahlen am 24.11. prüfen.
-- Anthropic-IPO: Preisfestlegung 18.11., Handelsbeginn 19.11. (Nasdaq, Kürzel ANT). Kein Kauf durch Claude.
-- Depotwert und Einzahlungen des Nutzers abfragen (zuletzt Stand 11.11.).
-- Feedback zum neuen Graphen. Zweitquelle beobachten (Hinweise und KURSABWEICHUNG-Meldungen), nach einigen Wochen prüfen, ob L&S als Hauptquelle taugt.
+- Montag 23.11.: Folgen des Ausverkaufs prüfen, vor allem TSMC-Stop (Puffer 3,6 %), Eli-Lilly-Stop (4,7 %), Bitcoin am Wochenende. Cash-Quote beachten (Untergrenze 10 %; bei Cash unter 10 % wirkt der Sparplan nur mit 30 %).
+- Backup-Reserve 30.000 €: weiter unberührt. Einsatz nur bei außergewöhnlicher Chance, dann Nachricht an den Nutzer.
+- Alibaba nach den Zahlen am 24.11. prüfen (ADR BABA, eigene Kriterien).
+- Indien weiter beobachten, nächster Blick am 27.11.: Rücksetzer im Sensex, Ölpreis unter 100 $ stabil, Inflationsdaten Indien. Dann mit frischem Live-Kurs den iShares MSCI India UCITS ETF (ISIN IE00BZCQB185) mit etwa 2 % prüfen, Cash-Quote beachten.
+- Anthropic-IPO: Kein Kauf durch Claude.
+- Depotwert und Einzahlungen des Nutzers abfragen (zuletzt Stand 20.11., 263.000 €, Einzahlungen 5.600,30 €).
+- Zweitquelle beobachten (Hinweise und KURSABWEICHUNG-Meldungen), nach einigen Wochen prüfen, ob L&S als Hauptquelle taugt.
 - Optional später: echter KI-Agent über die API (grob 0,50 bis 10 $ pro Monat), vorerst kostenlose Variante.
