@@ -1,0 +1,22 @@
+{
+ "name": "Depot-Duell: Du gegen Claude",
+ "short_name": "Depot-Duell",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "background_color": "#0f1714",
+ "theme_color": "#0e7c66",
+ "lang": "de",
+ "icons": [
+  {
+   "src": "icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  }
+ ]
+}
