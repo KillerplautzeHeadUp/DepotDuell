@@ -75,9 +75,11 @@ def _find_key(o, key):
     return None
 
 def ls_price(isin, cache):
-    """Letzter Kurs in EUR bei Lang & Schwarz (ls-tc.de), None bei Fehler. Die Kennung wird in cache gemerkt."""
+    """Letzter Kurs in EUR bei Lang & Schwarz (ls-tc.de) als (Kurs, Alter in Minuten), None bei Fehler.
+    Die Kennung wird in cache gemerkt."""
     if os.environ.get("FAKE"):
-        return json.loads(os.environ.get("FAKE_LS", "{}")).get(isin)
+        v = json.loads(os.environ.get("FAKE_LS", "{}")).get(isin)
+        return None if v is None else (tuple(v) if isinstance(v, list) else (v, 0))
     try:
         iid = cache.get(isin)
         if not iid:
@@ -91,7 +93,10 @@ def ls_price(isin, cache):
         ser = _get_json(LS_BASE + "instrument/chart/dataForInstrument?" + q, LS_HDR).get("series", {})
         rows = (ser.get("intraday") or {}).get("data") or (ser.get("history") or {}).get("data") or []
         v = float(rows[-1][1]) if rows else None
-        return v if v and v > 0 else None
+        if not v or v <= 0:
+            return None
+        age = (dt.datetime.now(dt.timezone.utc).timestamp() - rows[-1][0] / 1000) / 60
+        return v, round(age)
     except Exception as e:
         print("L&S-Fehler", isin, e)
         return None
@@ -125,19 +130,24 @@ def second_source(st, px, fx, warn, ds):
         isin = p.get("isin") or ISINS.get(t)
         if isin and not p.get("isin"):
             p["isin"] = isin  # ISIN beim Titel merken
-        alt = ls_price(isin, cache) if isin else (td_price("BTC/EUR") if "BTC" in t.upper() else None)
+        if isin:
+            r = ls_price(isin, cache)
+            alt, age = r if r else (None, None)
+        else:
+            alt, age = (td_price("BTC/EUR") if "BTC" in t.upper() else None), 0
         if alt is None:
             continue
         usd = p["ccy"] == "USD"
         ylast = px.get(t, (None, None))[0]
         if ylast is None:
             px[t] = (alt * fx if usd else alt, None)
-            warn.append(f"{p['name']}: Kein Yahoo-Kurs, Kurs der Zweitquelle genutzt.")
+            warn.append(f"{p['name']}: Kein Yahoo-Kurs, Kurs der Zweitquelle genutzt (Alter {age} Min.).")
             continue
         dev = (ylast / fx if usd else ylast) / alt - 1
-        if abs(dev) > 0.03 and p.get("dev_alert") != ds:
+        # Nur vergleichen, wenn der Zweitkurs frisch ist: die L&S-Reihe kann in schnellen Maerkten hinterherhinken
+        if age is not None and age <= 30 and abs(dev) > 0.03 and p.get("dev_alert") != ds:
             p["dev_alert"] = ds
-            notify(f"KURSABWEICHUNG {p['name']}: Yahoo {(ylast / fx if usd else ylast):.2f} EUR, Zweitquelle {alt:.2f} EUR ({dev * 100:+.1f} %). Bitte pruefen.")
+            notify(f"KURSABWEICHUNG {p['name']}: Yahoo {(ylast / fx if usd else ylast):.2f} EUR, Zweitquelle {alt:.2f} EUR ({dev * 100:+.1f} %, Zweitkurs {age} Min. alt). Bitte pruefen.")
     if cache != before:
         save(cache, "data", "ls_ids.json")
 
@@ -165,6 +175,10 @@ def accrue_user_deposits():
         notify(f"Dein Sparplan: {n} Rate(n) a {m['weekly']:.0f} EUR als Einzahlung gezaehlt (Summe {m['deposits']:.2f} EUR).")
 
 WANT_CHECKIN = False
+WANT_WATCH = False
+# Anzeigenamen und ISINs der urspruenglichen Skript-Watchlist (geprueft per Suche); weitere Titel kommen per WATCH-Befehl
+WATCH_SEED = {"MSFT": ("Microsoft", "US5949181045"), "NVDA": ("Nvidia", "US67066G1040"),
+              "NOVO-B.CO": ("Novo Nordisk B", "DK0062498333")}
 
 def de(x, d=0):
     return f"{x:,.{d}f}".replace(",", "X").replace(".", ",").replace("X", ".")
@@ -205,7 +219,7 @@ def process_telegram():
     """Liest Nachrichten deines Bots (nur von deiner Chat-ID).
     DEPOT <Wert> [EINZAHLUNG <Betrag>], SPARPLAN <Betrag|AUS>, CHECKIN, PRIVAT AN|AUS,
     MITLAUFEND;Name;Anteil, FEST;Name;Anteil."""
-    global WANT_CHECKIN
+    global WANT_CHECKIN, WANT_WATCH
     tok = (os.environ.get("TELEGRAM_TOKEN") or "").strip()
     chat = (os.environ.get("TELEGRAM_CHAT_ID") or "").strip()
     if not chat:
@@ -247,6 +261,9 @@ def process_telegram():
         w = raw.upper().replace(",", ".").replace("€", "").split()
         if "CHECKIN" in w:
             WANT_CHECKIN = True
+            continue
+        if "WATCHLIST" in w:
+            WANT_WATCH = True
             continue
         if "PRIVAT" in w:
             try:
@@ -294,6 +311,51 @@ def patch_public_files():
         d["user_meta"] = pm
         save(d, "docs", fn)
 
+def watch_stats(t):
+    """Kurs, Vortag, 52-Wochen-Hoch und Waehrung eines Watchlist-Titels (Yahoo)."""
+    if os.environ.get("FAKE"):
+        return json.loads(os.environ.get("FAKE_WATCH", "{}")).get(t)
+    try:
+        import yfinance as yf
+        fi = yf.Ticker(t).fast_info
+        return {"last": float(fi["last_price"]), "prev": float(fi["previous_close"]),
+                "high": float(fi["year_high"]), "ccy": str(fi["currency"])}
+    except Exception as e:
+        print("Watchlist-Fehler", t, e)
+        return None
+
+def watch_rows(st, cache):
+    """Zeilen fuer die Watchlist: Kurs, Veraenderung heute, Abstand zum 52-Wochen-Hoch, Kurs bei Lang & Schwarz."""
+    rows, info = [], st.get("watch_info", {})
+    for t in st.get("watch", []):
+        name, isin = WATCH_SEED.get(t, (t, None))
+        inf = info.get(t, {})
+        name, isin, reason = inf.get("name", name), inf.get("isin", isin), inf.get("reason", "")
+        s = watch_stats(t) or {}
+        ls = ls_price(isin, cache) if isin else None
+        ok = s.get("last") and s.get("prev")
+        rows.append({"ticker": t, "name": name, "isin": isin, "reason": reason, "ccy": s.get("ccy"),
+                     "price": round(s["last"], 2) if s.get("last") else None,
+                     "day": round((s["last"] / s["prev"] - 1) * 100, 2) if ok else None,
+                     "below_high": round((s["last"] / s["high"] - 1) * 100, 1) if s.get("last") and s.get("high") else None,
+                     "ls_eur": round(ls[0], 2) if ls else None, "ls_age": ls[1] if ls else None})
+    return rows
+
+def watch_text(ck):
+    L = []
+    for w in ck.get("watch") or []:
+        b = []
+        if w.get("price") is not None:
+            b.append(f"{de(w['price'], 2)} {w.get('ccy') or ''}".strip())
+        if w.get("day") is not None:
+            b.append(f"{w['day']:+.1f} % heute".replace(".", ","))
+        if w.get("below_high") is not None:
+            b.append("am 52W-Hoch" if w["below_high"] >= 0 else f"{abs(w['below_high']):.0f} % unter 52W-Hoch")
+        if w.get("ls_eur") is not None:
+            b.append(f"L&S {de(w['ls_eur'], 2)} EUR ({w['ls_age']} Min.)")
+        L.append(f"{w['name']}: " + (", ".join(b) or "kein Kurs"))
+    return L
+
 def checkin_text(ck):
     u = ck.get("user")
     sg = lambda x: f"{x:+.2f}".replace(".", ",")
@@ -307,6 +369,9 @@ def checkin_text(ck):
     for p in sorted(ck["positions"], key=lambda r: -r["weight"]):
         sd = "kein Stop" if p["stop_dist"] is None else f"Stop {p['stop_dist']:.1f} %" + (" mitlaufend" if p["trail"] else "")
         L.append(f"{p['name']} {p['pct']:+.1f} %, {sd}".replace(".", ","))
+    if ck.get("watch"):
+        L.append("Watchlist:")
+        L += watch_text(ck)
     if ck["orders"]:
         L.append("Offene Auftraege: " + ", ".join(f"{o['side']} {o['name']}" for o in ck["orders"]))
     if ck["warnings"]:
@@ -315,13 +380,17 @@ def checkin_text(ck):
 
 def flush_checkin():
     """Schickt auf Wunsch (Telegram: CHECKIN) den kompakten Stand zurueck."""
-    global WANT_CHECKIN
-    if WANT_CHECKIN:
+    global WANT_CHECKIN, WANT_WATCH
+    if WANT_CHECKIN or WANT_WATCH:
         try:
-            notify(checkin_text(load("docs", "checkin.json")))
+            ck = load("docs", "checkin.json")
+            if WANT_CHECKIN:
+                notify(checkin_text(ck))
+            else:
+                notify("Watchlist (letzte Kurse):\n" + ("\n".join(watch_text(ck)) or "leer"))
         except Exception as e:
-            notify("Check-in nicht verfuegbar: " + str(e))
-        WANT_CHECKIN = False
+            notify("Auswertung nicht verfuegbar: " + str(e))
+        WANT_CHECKIN = WANT_WATCH = False
 
 def year_high(ticker):
     if os.environ.get("FAKE"):
@@ -510,6 +579,10 @@ def main():
                      "trail": bool(p.get("trail")),
                      "stop_price": round(ref * (1 - p["stop"]), 2) if p.get("stop") else None,
                      "stop_dist": round((1 - ref * (1 - p["stop"]) / price) * 100, 1) if p.get("stop") and price else None})
+        sd = rows[-1]["stop_dist"]
+        if sd is not None and sd < 5 and p.get("stop_alert") != ds:
+            p["stop_alert"] = ds  # hoechstens eine Warnung pro Tag und Titel
+            notify(f"STOP-NAEHE {p['name']}: nur noch {sd:.1f} % bis zum Stop bei {rows[-1]['stop_price']:.2f} EUR.")
     st["positions"] = keep
 
     # Chancen-Hinweis fuer die Backup-Reserve (Watchlist, Tagesverlust ab 10 %)
@@ -543,7 +616,7 @@ def main():
         fmt = lambda r: f"{r['name']} {r['pct']:+.1f} %"
         notify(f"Wochenbericht {ds}\nDepot: {eu(value)} EUR, Cash {eu(st['cash'])} EUR\n"
                f"Claude: {idx - 100:+.2f} % seit Start (Woche {wk})\nWelt-ETF: {bench - 100:+.2f} %\n"
-               f"Du: {'–' if u is None else format(u - 100, '+.2f') + ' %'}\n"
+               f"Du: {'–' if u is None else format(u - 100, '+.2f') + ' % (Stand ' + usr[-1]['date'] + ')'}\n"
                f"Beste: {', '.join(fmt(r) for r in srt[::-1][:3])}\nSchwaechste: {', '.join(fmt(r) for r in srt[:3])}\n"
                f"Steuern bisher: {st['tax']['paid']:.2f} EUR")
 
@@ -587,17 +660,29 @@ def main():
     save(intr, "data", "intraday.json")
 
     pu, pm = public_user(usr, load_meta())
+    try:
+        wc = load("data", "ls_ids.json")
+    except Exception:
+        wc = {}
+    wc0 = dict(wc)
+    try:
+        wrows = watch_rows(st, wc)
+    except Exception as e:
+        print("Watchlist uebersprungen:", e)
+        wrows = []
+    if wc != wc0:
+        save(wc, "data", "ls_ids.json")
     out = {"updated": dt.datetime.now(__import__("zoneinfo").ZoneInfo("Europe/Berlin")).strftime("%d.%m.%Y %H:%M Uhr"), "value": value,
            "cash": round(st["cash"], 2), "reserve": st["reserve"], "rate": st["weekly_rate"],
            "series": hist, "user": pu, "user_meta": pm,  # Einzahlungen des Nutzers (bei PRIVAT AN nur Index)
            "positions": rows, "trades": st["trades"][::-1][:60],
            "deposits": st["deposits"], "orders": st["orders"], "tax_paid": st["tax"]["paid"], "core": st["core"], "risk": risk,
-           "alloc": {"region": reg, "sector": sec}, "origin": origin, "intraday": intr, "start": st["start_capital"], "warnings": warn}
+           "alloc": {"region": reg, "sector": sec}, "watch": wrows, "origin": origin, "intraday": intr, "start": st["start_capital"], "warnings": warn}
     ck = {"updated": out["updated"], "value": value, "cash": out["cash"], "cash_pct": round(st["cash"] / value * 100, 1),
           "claude_idx": idx, "bench_idx": bench, "user": pu[-1] if pu else None, "user_meta": pm, "core": st["core"],
           "positions": [{"name": r["name"], "price": r["price"], "pct": r["pct"], "weight": r["weight"], "stop_price": r["stop_price"],
                          "stop_dist": r["stop_dist"], "trail": r["trail"]} for r in rows],
-          "trades": st["trades"][::-1][:5], "orders": st["orders"], "warnings": warn}
+          "trades": st["trades"][::-1][:5], "orders": st["orders"], "warnings": warn, "watch": wrows}
     save(st, "data", "state.json"); save(hist, "data", "history.json"); save(out, "docs", "data.json"); save(ck, "docs", "checkin.json")
     print(f"Fertig: Wert {value} EUR, Index {idx}, Benchmark {bench}, Warnungen: {len(warn)}")
     flush_checkin()
