@@ -1,6 +1,6 @@
 {
- "updated": "20.11.2026 22:38 Uhr",
- "value": 262617.87,
+ "updated": "22.11.2026 15:18 Uhr",
+ "value": 262850.33,
  "cash": 27991.38,
  "reserve": 30000,
  "rate": 365,
@@ -129,6 +129,12 @@
    "date": "2026-11-20",
    "value": 262617.87,
    "idx": 93.05,
+   "bench": 94.69
+  },
+  {
+   "date": "2026-11-22",
+   "value": 262850.33,
+   "idx": 93.13,
    "bench": 94.69
   }
  ],
@@ -298,24 +304,24 @@
    "trail": false,
    "stop_price": 1044.9,
    "stop_dist": 10.5,
-   "weight": 8.5
+   "weight": 8.4
   },
   {
    "name": "Eli Lilly",
    "ticker": "LLY",
    "qty": 19,
    "buy": 1143.57,
-   "price": 1228.56,
-   "pct": 7.43,
-   "value": 23342.72,
+   "price": 1228.03,
+   "pct": 7.39,
+   "value": 23332.48,
    "stop": 0.12,
-   "gain": 1614.89,
+   "gain": 1604.65,
    "region": "USA",
    "sector": "Gesundheit",
    "origin": "eigene Recherche",
    "trail": true,
    "stop_price": 1171.01,
-   "stop_dist": 4.7,
+   "stop_dist": 4.6,
    "weight": 8.9
   },
   {
@@ -341,11 +347,11 @@
    "ticker": "JPM",
    "qty": 40,
    "buy": 295.95,
-   "price": 283.2,
-   "pct": -4.31,
-   "value": 11328.13,
+   "price": 283.08,
+   "pct": -4.35,
+   "value": 11323.17,
    "stop": 0.2,
-   "gain": -509.87,
+   "gain": -514.83,
    "region": "USA",
    "sector": "Finanzen",
    "origin": "eigene Recherche",
@@ -359,11 +365,11 @@
    "ticker": "TSM",
    "qty": 30,
    "buy": 373.54,
-   "price": 290.66,
-   "pct": -22.19,
-   "value": 8719.91,
+   "price": 290.54,
+   "pct": -22.22,
+   "value": 8716.08,
    "stop": 0.25,
-   "gain": -2486.29,
+   "gain": -2490.12,
    "region": "Asien",
    "sector": "Technologie",
    "origin": "eigene Recherche",
@@ -395,35 +401,35 @@
    "ticker": "BTC-EUR",
    "qty": 0.15,
    "buy": 71923.82,
-   "price": 53668.42,
-   "pct": -25.38,
-   "value": 8050.26,
+   "price": 55360.62,
+   "pct": -23.03,
+   "value": 8304.09,
    "stop": 0.35,
-   "gain": -2738.31,
+   "gain": -2484.48,
    "region": "Global",
    "sector": "Krypto",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 46750.48,
-   "stop_dist": 12.9,
-   "weight": 3.1
+   "stop_dist": 15.6,
+   "weight": 3.2
   },
   {
    "name": "Alphabet (Klasse A)",
    "ticker": "GOOGL",
    "qty": 22,
    "buy": 262.7,
-   "price": 241.94,
-   "pct": -7.9,
-   "value": 5322.78,
+   "price": 241.84,
+   "pct": -7.94,
+   "value": 5320.44,
    "stop": 0.25,
-   "gain": -456.62,
+   "gain": -458.96,
    "region": "USA",
    "sector": "Technologie",
    "origin": "durch Nutzerthema angestoßen",
    "trail": false,
    "stop_price": 197.02,
-   "stop_dist": 18.6,
+   "stop_dist": 18.5,
    "weight": 2.0
   },
   {
@@ -664,167 +670,90 @@
   "rule": "Basis"
  },
  "risk": {
-  "n": 21,
+  "n": 22,
   "mdd": -8.86,
   "mdd_b": -6.84,
-  "vol": 20.6,
+  "vol": 20.2,
   "beta": 0.97
  },
  "alloc": {
   "region": {
-   "Cash": 10.7,
+   "Cash": 10.6,
    "Welt": 25.7,
    "Schwellenländer": 9.6,
-   "Global": 11.2,
-   "Europa": 21.2,
+   "Global": 11.3,
+   "Europa": 21.1,
    "USA": 15.2,
    "Asien": 3.3,
    "Japan": 3.2
   },
   "sector": {
-   "Cash": 10.7,
+   "Cash": 10.6,
    "ETF breit": 38.5,
    "Gold": 8.1,
-   "Technologie": 13.8,
+   "Technologie": 13.7,
    "Gesundheit": 8.9,
    "Energie": 8.3,
    "Finanzen": 4.3,
    "Industrie": 4.4,
-   "Krypto": 3.1
+   "Krypto": 3.2
   }
  },
+ "watch": [
+  {
+   "ticker": "MSFT",
+   "name": "Microsoft",
+   "isin": "US5949181045",
+   "reason": "",
+   "ccy": "USD",
+   "price": 484.52,
+   "day": -2.58,
+   "below_high": -13.3,
+   "ls_eur": 446.02,
+   "ls_age": 1520
+  },
+  {
+   "ticker": "NVDA",
+   "name": "Nvidia",
+   "isin": "US67066G1040",
+   "reason": "",
+   "ccy": "USD",
+   "price": 125.53,
+   "day": -13.93,
+   "below_high": -48.4,
+   "ls_eur": 117.45,
+   "ls_age": 1519
+  },
+  {
+   "ticker": "NOVO-B.CO",
+   "name": "Novo Nordisk B",
+   "isin": "DK0062498333",
+   "reason": "",
+   "ccy": "DKK",
+   "price": 264.5,
+   "day": -0.25,
+   "below_high": -35.5,
+   "ls_eur": 34.59,
+   "ls_age": 1521
+  }
+ ],
  "origin": [
   {
    "name": "eigene Recherche",
    "n": 11,
    "cost": 248432,
-   "gain": -19128.79,
-   "pct": -7.7
+   "gain": -18893.99,
+   "pct": -7.61
   },
   {
    "name": "durch Nutzerthema angestoßen",
    "n": 1,
    "cost": 5779,
-   "gain": -456.62,
-   "pct": -7.9
+   "gain": -458.96,
+   "pct": -7.94
   }
  ],
  "intraday": [
-  {
-   "t": "2026-11-13 07:54",
-   "v": 100.96,
-   "b": 101.57
-  },
-  {
-   "t": "2026-11-13 09:11",
-   "v": 100.95,
-   "b": 101.57
-  },
-  {
-   "t": "2026-11-13 10:25",
-   "v": 100.73,
-   "b": 101.05
-  },
-  {
-   "t": "2026-11-13 11:25",
-   "v": 100.91,
-   "b": 101.27
-  },
-  {
-   "t": "2026-11-13 12:21",
-   "v": 101.02,
-   "b": 101.38
-  },
-  {
-   "t": "2026-11-13 13:19",
-   "v": 101.03,
-   "b": 101.4
-  },
-  {
-   "t": "2026-11-13 14:39",
-   "v": 100.88,
-   "b": 101.4
-  },
-  {
-   "t": "2026-11-13 15:43",
-   "v": 100.94,
-   "b": 101.52
-  },
-  {
-   "t": "2026-11-13 16:37",
-   "v": 100.24,
-   "b": 100.22
-  },
-  {
-   "t": "2026-11-13 17:42",
-   "v": 100.48,
-   "b": 100.61
-  },
-  {
-   "t": "2026-11-13 18:26",
-   "v": 100.56,
-   "b": 100.66
-  },
-  {
-   "t": "2026-11-13 18:40",
-   "v": 100.59,
-   "b": 100.66
-  },
-  {
-   "t": "2026-11-13 19:39",
-   "v": 100.64,
-   "b": 100.66
-  },
-  {
-   "t": "2026-11-13 20:44",
-   "v": 100.68,
-   "b": 100.66
-  },
-  {
-   "t": "2026-11-13 21:42",
-   "v": 100.65,
-   "b": 100.66
-  },
-  {
-   "t": "2026-11-13 22:38",
-   "v": 100.64,
-   "b": 100.66
-  },
-  {
-   "t": "2026-11-14 09:05",
-   "v": 100.55,
-   "b": 100.66
-  },
-  {
-   "t": "2026-11-14 09:27",
-   "v": 100.54,
-   "b": 100.66
-  },
-  {
-   "t": "2026-11-14 09:35",
-   "v": 100.54,
-   "b": 100.66
-  },
-  {
-   "t": "2026-11-14 09:44",
-   "v": 100.54,
-   "b": 100.66
-  },
-  {
-   "t": "2026-11-14 09:55",
-   "v": 100.53,
-   "b": 100.66
-  },
-  {
-   "t": "2026-11-14 09:56",
-   "v": 100.53,
-   "b": 100.66
-  },
-  {
-   "t": "2026-11-14 10:05",
-   "v": 100.54,
-   "b": 100.66
-  },
   {
    "t": "2026-11-15 19:34",
    "v": 100.42,
@@ -1178,6 +1107,11 @@
   {
    "t": "2026-11-20 22:38",
    "v": 93.05,
+   "b": 94.69
+  },
+  {
+   "t": "2026-11-22 15:18",
+   "v": 93.13,
    "b": 94.69
   }
  ],
