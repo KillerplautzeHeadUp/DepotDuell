@@ -25,7 +25,7 @@
    "qty": 550.0,
    "buy": 129.3567,
    "stop": null,
-   "last": 123.15,
+   "last": 123.215,
    "cls": "etf",
    "since": "2026-10-23",
    "isin": "IE00B4L5Y983"
@@ -37,7 +37,7 @@
    "qty": 615,
    "buy": 45.4,
    "stop": null,
-   "last": 41.599,
+   "last": 41.645,
    "cls": "etf",
    "since": "2026-10-23",
    "isin": "IE00BKM4GZ66",
@@ -50,7 +50,7 @@
    "qty": 205,
    "buy": 116.37,
    "stop": null,
-   "last": 105.5,
+   "last": 105.63,
    "cls": "gold",
    "since": "2026-10-23",
    "isin": "DE000A0S9GB0",
@@ -63,7 +63,7 @@
    "qty": 19,
    "buy": 1393.2,
    "stop": 0.25,
-   "last": 1222.6,
+   "last": 1224.0,
    "cls": "stock",
    "since": "2026-10-23",
    "isin": "NL0010273215",
@@ -91,7 +91,7 @@
    "qty": 280,
    "buy": 81.54,
    "stop": 0.2,
-   "last": 78.27,
+   "last": 78.43,
    "cls": "stock",
    "since": "2026-10-23",
    "isin": "FR0000120271"
@@ -129,7 +129,7 @@
    "qty": 45,
    "buy": 256.8,
    "stop": 0.2,
-   "last": 258.4,
+   "last": 258.7,
    "cls": "stock",
    "since": "2026-10-23",
    "isin": "DE0007236101",
@@ -142,7 +142,7 @@
    "qty": 0.15,
    "buy": 71923.82,
    "stop": 0.35,
-   "last": 55910.1211,
+   "last": 55909.3789,
    "cls": "crypto",
    "since": "2026-10-24"
   },
@@ -401,5 +401,31 @@
  },
  "last_core": "2026-11-20",
  "last_report": "2026-11-20",
- "report_idx": 93.18
+ "report_idx": 93.18,
+ "watch_info": {
+  "MSFT": {
+   "name": "Microsoft",
+   "isin": "US5949181045",
+   "reason": "Azure wächst 48 %, Auftragsbestand 677 Mrd $, KGV etwa 24 gegen 33 im 5-Jahres-Schnitt. Risiko: gleiche KI-Wette wie ASML, TSMC und Alphabet, dazu Konkurrenz durch Anthropic (Interessenkonflikt von Claude).",
+   "entry": 490.0,
+   "entry_note": "Kursgrenze für Tranche 1. Erst kaufen, wenn sich der Nasdaq stabilisiert (5 Handelstage nicht unter dem Tief vom 20.11.). Tranche 1 etwa 1 % des Depots, Tranche 2 nach der Fed-Entscheidung im Dezember.",
+   "added": "2026-11-23"
+  },
+  "NVDA": {
+   "name": "Nvidia",
+   "isin": "US67066G1040",
+   "reason": "Quartalsumsatz +103 %, Aktie etwa 48 % unter dem Rekord. Aber die SEC prüft die Bilanzierung, dazu Untersuchung in Kalifornien und Führungswechsel. Umfang offen.",
+   "entry": null,
+   "entry_note": "Kein Einstiegskurs. Neu bewerten, wenn SEC oder Nvidia den Umfang der Prüfung klären (Frist des Kongresses am 2.12.).",
+   "added": "2026-11-23"
+  },
+  "NOVO-B.CO": {
+   "name": "Novo Nordisk B",
+   "isin": "DK0062498333",
+   "reason": "KGV etwa 10, Dividende etwa 4,5 %, über 70 % unter dem Hoch. Aber Wegovy-Listenpreis in den USA ab Januar etwa 50 % niedriger, 2027 kaum Gewinnwachstum erwartet, Mehrheit der Analysten bei Halten.",
+   "entry": 224.0,
+   "entry_note": "Einstieg bei etwa 30 € (224 DKK, rund 15 % unter dem Kurs vom 20.11.). Nicht vor den Jahreszahlen im Februar 2027.",
+   "added": "2026-11-23"
+  }
+ }
 }
