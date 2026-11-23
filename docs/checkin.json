@@ -1,9 +1,9 @@
 {
- "updated": "23.11.2026 08:11 Uhr",
- "value": 262788.63,
+ "updated": "23.11.2026 09:17 Uhr",
+ "value": 263686.85,
  "cash": 27991.38,
- "cash_pct": 10.7,
- "claude_idx": 93.11,
+ "cash_pct": 10.6,
+ "claude_idx": 93.43,
  "bench_idx": 94.69,
  "user": {
   "date": "2026-11-22",
@@ -32,16 +32,16 @@
  "positions": [
   {
    "name": "iShares Core MSCI World",
-   "price": 122.71,
+   "price": 122.72,
    "pct": -5.13,
-   "weight": 25.7,
+   "weight": 25.6,
    "stop_price": null,
    "stop_dist": null,
    "trail": false
   },
   {
    "name": "iShares Core MSCI EM IMI",
-   "price": 40.96,
+   "price": 40.95,
    "pct": -9.79,
    "weight": 9.6,
    "stop_price": null,
@@ -59,26 +59,26 @@
   },
   {
    "name": "ASML",
-   "price": 1168.0,
-   "pct": -16.16,
-   "weight": 8.4,
+   "price": 1209.4,
+   "pct": -13.19,
+   "weight": 8.7,
    "stop_price": 1044.9,
-   "stop_dist": 10.5,
+   "stop_dist": 13.6,
    "trail": false
   },
   {
    "name": "Eli Lilly",
-   "price": 1224.52,
-   "pct": 7.08,
-   "weight": 8.9,
+   "price": 1225.33,
+   "pct": 7.15,
+   "weight": 8.8,
    "stop_price": 1171.01,
    "stop_dist": 4.4,
    "trail": true
   },
   {
    "name": "TotalEnergies",
-   "price": 78.19,
-   "pct": -4.11,
+   "price": 78.25,
+   "pct": -4.03,
    "weight": 8.3,
    "stop_price": 65.23,
    "stop_dist": 16.6,
@@ -86,47 +86,47 @@
   },
   {
    "name": "JPMorgan Chase",
-   "price": 282.27,
-   "pct": -4.62,
+   "price": 282.46,
+   "pct": -4.56,
    "weight": 4.3,
    "stop_price": 236.76,
-   "stop_dist": 16.1,
+   "stop_dist": 16.2,
    "trail": false
   },
   {
    "name": "TSMC",
-   "price": 289.71,
-   "pct": -22.44,
+   "price": 289.9,
+   "pct": -22.39,
    "weight": 3.3,
    "stop_price": 280.16,
-   "stop_dist": 3.3,
+   "stop_dist": 3.4,
    "trail": false
   },
   {
    "name": "Siemens",
-   "price": 254.65,
-   "pct": -0.84,
+   "price": 257.0,
+   "pct": 0.08,
    "weight": 4.4,
    "stop_price": 205.44,
-   "stop_dist": 19.3,
+   "stop_dist": 20.1,
    "trail": false
   },
   {
    "name": "Bitcoin",
-   "price": 55875.07,
-   "pct": -22.31,
+   "price": 55588.61,
+   "pct": -22.71,
    "weight": 3.2,
    "stop_price": 46750.48,
-   "stop_dist": 16.3,
+   "stop_dist": 15.9,
    "trail": false
   },
   {
    "name": "Alphabet (Klasse A)",
-   "price": 241.15,
-   "pct": -8.2,
+   "price": 241.31,
+   "pct": -8.14,
    "weight": 2.0,
    "stop_price": 197.02,
-   "stop_dist": 18.3,
+   "stop_dist": 18.4,
    "trail": false
   },
   {
@@ -195,10 +195,13 @@
    "isin": "US5949181045",
    "reason": "",
    "ccy": "USD",
+   "entry": null,
+   "entry_note": "",
+   "to_entry": null,
    "price": 484.52,
    "day": -2.58,
    "below_high": -13.3,
-   "ls_eur": 451.1,
+   "ls_eur": 452.7,
    "ls_age": -54
   },
   {
@@ -207,10 +210,13 @@
    "isin": "US67066G1040",
    "reason": "",
    "ccy": "USD",
+   "entry": null,
+   "entry_note": "",
+   "to_entry": null,
    "price": 125.53,
    "day": -13.93,
    "below_high": -48.4,
-   "ls_eur": 122.0,
+   "ls_eur": 122.92,
    "ls_age": -54
   },
   {
@@ -219,11 +225,14 @@
    "isin": "DK0062498333",
    "reason": "",
    "ccy": "DKK",
-   "price": 264.5,
-   "day": -0.25,
-   "below_high": -35.5,
-   "ls_eur": 34.77,
-   "ls_age": -57
+   "entry": null,
+   "entry_note": "",
+   "to_entry": null,
+   "price": 261.85,
+   "day": -1.0,
+   "below_high": -36.1,
+   "ls_eur": 35.0,
+   "ls_age": -56
   }
  ]
 }
