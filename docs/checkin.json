@@ -1,14 +1,14 @@
 {
- "updated": "23.11.2026 15:52 Uhr",
- "value": 272093.09,
+ "updated": "23.11.2026 16:54 Uhr",
+ "value": 274067.94,
  "cash": 27991.38,
- "cash_pct": 10.3,
- "claude_idx": 96.4,
- "bench_idx": 96.81,
+ "cash_pct": 10.2,
+ "claude_idx": 97.1,
+ "bench_idx": 98.06,
  "user": {
   "date": "2026-11-23",
-  "idx": 94.4,
-  "value": 270000.0,
+  "idx": 96.04,
+  "value": 274600.0,
   "deposits": 5965.3
  },
  "user_meta": {
@@ -32,17 +32,17 @@
  "positions": [
   {
    "name": "iShares Core MSCI World",
-   "price": 125.46,
-   "pct": -3.01,
-   "weight": 25.4,
+   "price": 127.07,
+   "pct": -1.76,
+   "weight": 25.5,
    "stop_price": null,
    "stop_dist": null,
    "trail": false
   },
   {
    "name": "iShares Core MSCI EM IMI",
-   "price": 43.99,
-   "pct": -3.09,
+   "price": 43.9,
+   "pct": -3.3,
    "weight": 9.9,
    "stop_price": null,
    "stop_dist": null,
@@ -50,8 +50,8 @@
   },
   {
    "name": "Xetra-Gold",
-   "price": 107.85,
-   "pct": -7.32,
+   "price": 108.2,
+   "pct": -7.02,
    "weight": 8.1,
    "stop_price": null,
    "stop_dist": null,
@@ -59,80 +59,80 @@
   },
   {
    "name": "ASML",
-   "price": 1275.0,
-   "pct": -8.48,
+   "price": 1288.6,
+   "pct": -7.51,
    "weight": 8.9,
    "stop_price": 1044.9,
-   "stop_dist": 18.0,
+   "stop_dist": 18.9,
    "trail": false
   },
   {
    "name": "Eli Lilly",
-   "price": 1251.46,
-   "pct": 9.43,
+   "price": 1261.71,
+   "pct": 10.33,
    "weight": 8.7,
    "stop_price": 1171.01,
-   "stop_dist": 6.4,
+   "stop_dist": 7.2,
    "trail": true
   },
   {
    "name": "TotalEnergies",
-   "price": 77.53,
-   "pct": -4.92,
-   "weight": 8.0,
+   "price": 77.54,
+   "pct": -4.91,
+   "weight": 7.9,
    "stop_price": 65.23,
    "stop_dist": 15.9,
    "trail": false
   },
   {
    "name": "JPMorgan Chase",
-   "price": 290.29,
-   "pct": -1.91,
+   "price": 292.71,
+   "pct": -1.1,
    "weight": 4.3,
    "stop_price": 236.76,
-   "stop_dist": 18.4,
+   "stop_dist": 19.1,
    "trail": false
   },
   {
    "name": "TSMC",
-   "price": 331.75,
-   "pct": -11.19,
+   "price": 337.89,
+   "pct": -9.54,
    "weight": 3.7,
    "stop_price": 280.16,
-   "stop_dist": 15.6,
+   "stop_dist": 17.1,
    "trail": false
   },
   {
    "name": "Siemens",
-   "price": 263.55,
-   "pct": 2.63,
+   "price": 265.5,
+   "pct": 3.39,
    "weight": 4.4,
    "stop_price": 205.44,
-   "stop_dist": 22.0,
+   "stop_dist": 22.6,
    "trail": false
   },
   {
    "name": "Bitcoin",
-   "price": 57354.31,
-   "pct": -20.26,
+   "price": 57623.35,
+   "pct": -19.88,
    "weight": 3.2,
    "stop_price": 46750.48,
-   "stop_dist": 18.5,
+   "stop_dist": 18.9,
    "trail": false
   },
   {
    "name": "Alphabet (Klasse A)",
-   "price": 253.16,
-   "pct": -3.63,
-   "weight": 2.0,
+   "price": 258.84,
+   "pct": -1.47,
+   "weight": 2.1,
    "stop_price": 197.02,
-   "stop_dist": 22.2,
+   "stop_dist": 23.9,
    "trail": false
   },
   {
    "name": "iShares Core MSCI Japan IMI",
-   "price": 69.13,
-   "pct": -5.13,
+   "price": 69.8,
+   "pct": -4.21,
    "weight": 3.2,
    "stop_price": null,
    "stop_dist": null,
@@ -197,11 +197,11 @@
    "ccy": "USD",
    "entry": 490.0,
    "entry_note": "Kursgrenze für Tranche 1. Erst kaufen, wenn sich der Nasdaq stabilisiert (5 Handelstage nicht unter dem Tief vom 20.11.). Tranche 1 etwa 1 % des Depots, Tranche 2 nach der Fed-Entscheidung im Dezember.",
-   "to_entry": 2.4,
-   "price": 501.95,
-   "day": 2.93,
-   "below_high": -10.2,
-   "ls_eur": 458.77,
+   "to_entry": 1.9,
+   "price": 499.24,
+   "day": 2.38,
+   "below_high": -10.7,
+   "ls_eur": 458.55,
    "ls_age": -55
   },
   {
@@ -213,11 +213,11 @@
    "entry": null,
    "entry_note": "Kein Einstiegskurs. Neu bewerten, wenn SEC oder Nvidia den Umfang der Prüfung klären (Frist des Kongresses am 2.12.).",
    "to_entry": null,
-   "price": 162.48,
-   "day": 25.57,
-   "below_high": -33.2,
-   "ls_eur": 148.84,
-   "ls_age": -53
+   "price": 168.29,
+   "day": 30.06,
+   "below_high": -30.9,
+   "ls_eur": 154.59,
+   "ls_age": -58
   },
   {
    "ticker": "NOVO-B.CO",
@@ -227,12 +227,12 @@
    "ccy": "DKK",
    "entry": 224.0,
    "entry_note": "Einstieg bei etwa 30 € (224 DKK, rund 15 % unter dem Kurs vom 20.11.). Nicht vor den Jahreszahlen im Februar 2027.",
-   "to_entry": 18.3,
-   "price": 265.0,
-   "day": 0.19,
-   "below_high": -35.4,
-   "ls_eur": 35.37,
-   "ls_age": -54
+   "to_entry": 19.2,
+   "price": 267.1,
+   "day": 0.98,
+   "below_high": -34.8,
+   "ls_eur": 35.75,
+   "ls_age": -59
   }
  ]
 }
