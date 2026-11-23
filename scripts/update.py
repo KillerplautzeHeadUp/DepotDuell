@@ -334,7 +334,10 @@ def watch_rows(st, cache):
         s = watch_stats(t) or {}
         ls = ls_price(isin, cache) if isin else None
         ok = s.get("last") and s.get("prev")
+        entry = inf.get("entry")
         rows.append({"ticker": t, "name": name, "isin": isin, "reason": reason, "ccy": s.get("ccy"),
+                     "entry": entry, "entry_note": inf.get("entry_note", ""),
+                     "to_entry": round((s["last"] / entry - 1) * 100, 1) if entry and s.get("last") else None,
                      "price": round(s["last"], 2) if s.get("last") else None,
                      "day": round((s["last"] / s["prev"] - 1) * 100, 2) if ok else None,
                      "below_high": round((s["last"] / s["high"] - 1) * 100, 1) if s.get("last") and s.get("high") else None,
@@ -353,6 +356,10 @@ def watch_text(ck):
             b.append("am 52W-Hoch" if w["below_high"] >= 0 else f"{abs(w['below_high']):.0f} % unter 52W-Hoch")
         if w.get("ls_eur") is not None:
             b.append(f"L&S {de(w['ls_eur'], 2)} EUR ({w['ls_age']} Min.)")
+        if w.get("entry"):
+            hit = w.get("to_entry") is not None and w["to_entry"] <= 0
+            b.append(f"Einstieg bis {de(w['entry'], 2)} " + ("(Kursgrenze erreicht)" if hit else
+                     f"(Kurs {w['to_entry']:.0f} % darueber)" if w.get("to_entry") is not None else ""))
         L.append(f"{w['name']}: " + (", ".join(b) or "kein Kurs"))
     return L
 

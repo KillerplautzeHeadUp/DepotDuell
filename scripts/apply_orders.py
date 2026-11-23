@@ -141,13 +141,14 @@ def main():
                     if t["name"] == src["name"]:
                         t["name"] = dst["name"]
                 out.append(f"OK {a[1]} in {a[2]} zusammengefuehrt: {dst['qty']:g} Stueck, Schnitt {dst['buy']:.2f} EUR")
-            elif cmd == "WATCH":  # WATCH;Ticker;Name;ISIN;Grund
+            elif cmd == "WATCH":  # WATCH;Ticker;Name;ISIN;Ueberlegung;Einstiegskurs;Bedingung
                 t = a[1]
                 if not t:
                     raise ValueError("Ticker fehlt")
                 st.setdefault("watch", []); st.setdefault("watch_info", {})
                 if t not in st["watch"]: st["watch"].append(t)
-                st["watch_info"][t] = {"name": a[2] or t, "isin": a[3].upper() or None, "reason": a[4], "added": today}
+                st["watch_info"][t] = {"name": a[2] or t, "isin": a[3].upper() or None, "reason": a[4],
+                                       "entry": num(a[5]) if a[5] else None, "entry_note": a[6], "added": today}
                 out.append(f"OK Watchlist: {t} ({a[2] or t}) aufgenommen, jetzt {len(st['watch'])} Titel")
             elif cmd == "UNWATCH":  # UNWATCH;Ticker
                 t = next((x for x in st.get("watch", []) if x.lower() == a[1].lower()), None)
