@@ -1,6 +1,6 @@
 {
- "updated": "23.11.2026 20:33 Uhr",
- "value": 272929.01,
+ "updated": "23.11.2026 20:35 Uhr",
+ "value": 272938.26,
  "cash": 27991.38,
  "reserve": 30000,
  "rate": 365,
@@ -139,7 +139,7 @@
   },
   {
    "date": "2026-11-23",
-   "value": 272929.01,
+   "value": 272938.26,
    "idx": 96.7,
    "bench": 97.73
   }
@@ -329,11 +329,11 @@
    "ticker": "LLY",
    "qty": 19,
    "buy": 1143.57,
-   "price": 1252.16,
-   "pct": 9.5,
-   "value": 23791.05,
+   "price": 1252.15,
+   "pct": 9.49,
+   "value": 23790.76,
    "stop": 0.12,
-   "gain": 2063.22,
+   "gain": 2062.93,
    "region": "USA",
    "sector": "Gesundheit",
    "origin": "eigene Recherche",
@@ -365,17 +365,17 @@
    "ticker": "JPM",
    "qty": 40,
    "buy": 295.95,
-   "price": 292.06,
-   "pct": -1.31,
-   "value": 11682.55,
+   "price": 292.13,
+   "pct": -1.29,
+   "value": 11685.11,
    "stop": 0.2,
-   "gain": -155.45,
+   "gain": -152.89,
    "region": "USA",
    "sector": "Finanzen",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 236.76,
-   "stop_dist": 18.9,
+   "stop_dist": 19.0,
    "weight": 4.3
   },
   {
@@ -383,17 +383,17 @@
    "ticker": "TSM",
    "qty": 30,
    "buy": 373.54,
-   "price": 335.32,
-   "pct": -10.23,
-   "value": 10059.57,
+   "price": 335.3,
+   "pct": -10.24,
+   "value": 10059.02,
    "stop": 0.25,
-   "gain": -1146.63,
+   "gain": -1147.18,
    "region": "Asien",
    "sector": "Technologie",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 280.16,
-   "stop_dist": 16.5,
+   "stop_dist": 16.4,
    "weight": 3.7
   },
   {
@@ -419,11 +419,11 @@
    "ticker": "BTC-EUR",
    "qty": 0.15,
    "buy": 71923.82,
-   "price": 56293.61,
-   "pct": -21.73,
-   "value": 8444.04,
+   "price": 56321.44,
+   "pct": -21.69,
+   "value": 8448.22,
    "stop": 0.35,
-   "gain": -2344.53,
+   "gain": -2340.36,
    "region": "Global",
    "sector": "Krypto",
    "origin": "eigene Recherche",
@@ -437,11 +437,11 @@
    "ticker": "GOOGL",
    "qty": 22,
    "buy": 262.7,
-   "price": 260.11,
-   "pct": -0.99,
-   "value": 5722.41,
+   "price": 260.26,
+   "pct": -0.93,
+   "value": 5725.76,
    "stop": 0.25,
-   "gain": -56.99,
+   "gain": -53.64,
    "region": "USA",
    "sector": "Technologie",
    "origin": "durch Nutzerthema angestoßen",
@@ -727,26 +727,26 @@
    "entry": 490.0,
    "entry_note": "Kursgrenze für Tranche 1. Erst kaufen, wenn sich der Nasdaq stabilisiert (5 Handelstage nicht unter dem Tief vom 20.11.). Tranche 1 etwa 1 % des Depots, Tranche 2 nach der Fed-Entscheidung im Dezember.",
    "to_entry": 1.3,
-   "price": 496.27,
-   "day": 1.77,
+   "price": 496.4,
+   "day": 1.79,
    "below_high": -11.2,
    "ls_eur": 455.27,
-   "ls_age": -59
+   "ls_age": -56
   },
   {
    "ticker": "NVDA",
    "name": "Nvidia",
    "isin": "US67066G1040",
-   "reason": "Quartalsumsatz +103 %, Aktie etwa 48 % unter dem Rekord. Aber die SEC prüft die Bilanzierung, dazu Untersuchung in Kalifornien und Führungswechsel. Umfang offen.",
+   "reason": "Quartalsumsatz +103 %. Huang ist seit 23.11. wieder CEO, die Aktie sprang um etwa 30 % auf rund 165 $. Aber die interne Untersuchung läuft weiter und die SEC-Bilanzprüfung ist nach letztem Stand offen.",
    "ccy": "USD",
    "entry": null,
-   "entry_note": "Kein Einstiegskurs. Neu bewerten, wenn SEC oder Nvidia den Umfang der Prüfung klären (Frist des Kongresses am 2.12.).",
+   "entry_note": "Kein Einstiegskurs. Nicht dem Kurssprung hinterherlaufen. Neu bewerten, wenn die Untersuchungen abgeschlossen sind oder der Kurs deutlich zurückkommt.",
    "to_entry": null,
-   "price": 165.0,
-   "day": 27.52,
+   "price": 164.94,
+   "day": 27.47,
    "below_high": -32.2,
-   "ls_eur": 151.48,
-   "ls_age": -55
+   "ls_eur": 151.42,
+   "ls_age": -57
   },
   {
    "ticker": "NOVO-B.CO",
@@ -760,8 +760,38 @@
    "price": 266.35,
    "day": 0.7,
    "below_high": -35.0,
-   "ls_eur": 35.96,
-   "ls_age": -54
+   "ls_eur": 35.94,
+   "ls_age": -58
+  },
+  {
+   "ticker": "MUV2.DE",
+   "name": "Münchener Rück",
+   "isin": "DE0008430026",
+   "reason": "Rückversicherer mit KGV etwa 10 bis 11, Dividende etwa 4,5 %, Eigenkapitalrendite von etwa 22 % und kaum KI-Bezug. Aber Quartalsgewinn zuletzt minus 13 %, Preise in der Rückversicherung sinken, Kurs nahe dem Rekordhoch von 602,80 €.",
+   "ccy": "EUR",
+   "entry": 540.0,
+   "entry_note": "Rücksetzer von etwa 10 % abwarten. Vor einem Kauf die Preisentwicklung der Erneuerungsrunde zum 1.1. prüfen. Tranche etwa 1 % des Depots.",
+   "to_entry": 7.9,
+   "price": 582.4,
+   "day": 0.62,
+   "below_high": -3.4,
+   "ls_eur": 582.6,
+   "ls_age": -55
+  },
+  {
+   "ticker": "NESN.SW",
+   "name": "Nestlé",
+   "isin": "CH0038863350",
+   "reason": "Basiskonsum mit Eigenkapitalrendite von etwa 26 %, Free-Cashflow-Rendite etwa 5,7 %, Dividende etwa 3,9 % und geringer Schwankung (Beta 0,5). Aber Aktie nach etwa 18 % Anstieg in 30 Tagen nahe dem Jahreshoch, KGV 2026e etwa 21, Umsatz leicht rückläufig.",
+   "ccy": "CHF",
+   "entry": 78.0,
+   "entry_note": "Einstieg bei etwa 78 CHF (rund 84 €, nahe dem 50-Tage-Schnitt, KGV etwa 17 bis 18). Vorher kein Kauf. Jahreszahlen am 18.02.2027.",
+   "to_entry": 8.8,
+   "price": 84.88,
+   "day": -0.79,
+   "below_high": -4.0,
+   "ls_eur": 92.73,
+   "ls_age": -56
   }
  ],
  "origin": [
@@ -769,15 +799,15 @@
    "name": "eigene Recherche",
    "n": 11,
    "cost": 248432,
-   "gain": -9217.28,
+   "gain": -9211.39,
    "pct": -3.71
   },
   {
    "name": "durch Nutzerthema angestoßen",
    "n": 1,
    "cost": 5779,
-   "gain": -56.99,
-   "pct": -0.99
+   "gain": -53.64,
+   "pct": -0.93
   }
  ],
  "intraday": [
@@ -1208,6 +1238,11 @@
   },
   {
    "t": "2026-11-23 20:33",
+   "v": 96.7,
+   "b": 97.73
+  },
+  {
+   "t": "2026-11-23 20:35",
    "v": 96.7,
    "b": 97.73
   }
