@@ -1,10 +1,10 @@
 {
- "updated": "23.11.2026 09:58 Uhr",
- "value": 265254.05,
+ "updated": "23.11.2026 10:24 Uhr",
+ "value": 265902.0,
  "cash": 27991.38,
- "cash_pct": 10.6,
- "claude_idx": 93.98,
- "bench_idx": 95.08,
+ "cash_pct": 10.5,
+ "claude_idx": 94.21,
+ "bench_idx": 95.44,
  "user": {
   "date": "2026-11-22",
   "idx": 92.33,
@@ -32,17 +32,17 @@
  "positions": [
   {
    "name": "iShares Core MSCI World",
-   "price": 123.21,
-   "pct": -4.75,
-   "weight": 25.5,
+   "price": 123.68,
+   "pct": -4.39,
+   "weight": 25.6,
    "stop_price": null,
    "stop_dist": null,
    "trail": false
   },
   {
    "name": "iShares Core MSCI EM IMI",
-   "price": 41.65,
-   "pct": -8.27,
+   "price": 41.82,
+   "pct": -7.88,
    "weight": 9.7,
    "stop_price": null,
    "stop_dist": null,
@@ -50,8 +50,8 @@
   },
   {
    "name": "Xetra-Gold",
-   "price": 105.63,
-   "pct": -9.23,
+   "price": 105.75,
+   "pct": -9.13,
    "weight": 8.2,
    "stop_price": null,
    "stop_dist": null,
@@ -59,26 +59,26 @@
   },
   {
    "name": "ASML",
-   "price": 1224.0,
-   "pct": -12.14,
+   "price": 1231.0,
+   "pct": -11.64,
    "weight": 8.8,
    "stop_price": 1044.9,
-   "stop_dist": 14.6,
+   "stop_dist": 15.1,
    "trail": false
   },
   {
    "name": "Eli Lilly",
-   "price": 1225.33,
-   "pct": 7.15,
+   "price": 1226.0,
+   "pct": 7.21,
    "weight": 8.8,
    "stop_price": 1171.01,
-   "stop_dist": 4.4,
+   "stop_dist": 4.5,
    "trail": true
   },
   {
    "name": "TotalEnergies",
-   "price": 78.43,
-   "pct": -3.81,
+   "price": 78.37,
+   "pct": -3.89,
    "weight": 8.3,
    "stop_price": 65.23,
    "stop_dist": 16.8,
@@ -86,8 +86,8 @@
   },
   {
    "name": "JPMorgan Chase",
-   "price": 282.46,
-   "pct": -4.56,
+   "price": 282.61,
+   "pct": -4.51,
    "weight": 4.3,
    "stop_price": 236.76,
    "stop_dist": 16.2,
@@ -95,8 +95,8 @@
   },
   {
    "name": "TSMC",
-   "price": 289.9,
-   "pct": -22.39,
+   "price": 290.06,
+   "pct": -22.35,
    "weight": 3.3,
    "stop_price": 280.16,
    "stop_dist": 3.4,
@@ -104,26 +104,26 @@
   },
   {
    "name": "Siemens",
-   "price": 258.7,
-   "pct": 0.74,
+   "price": 260.0,
+   "pct": 1.25,
    "weight": 4.4,
    "stop_price": 205.44,
-   "stop_dist": 20.6,
+   "stop_dist": 21.0,
    "trail": false
   },
   {
    "name": "Bitcoin",
-   "price": 55909.38,
-   "pct": -22.27,
+   "price": 56201.91,
+   "pct": -21.86,
    "weight": 3.2,
    "stop_price": 46750.48,
-   "stop_dist": 16.4,
+   "stop_dist": 16.8,
    "trail": false
   },
   {
    "name": "Alphabet (Klasse A)",
-   "price": 241.31,
-   "pct": -8.14,
+   "price": 241.44,
+   "pct": -8.09,
    "weight": 2.0,
    "stop_price": 197.02,
    "stop_dist": 18.4,
@@ -131,8 +131,8 @@
   },
   {
    "name": "iShares Core MSCI Japan IMI",
-   "price": 67.32,
-   "pct": -7.61,
+   "price": 67.44,
+   "pct": -7.45,
    "weight": 3.2,
    "stop_price": null,
    "stop_dist": null,
@@ -199,10 +199,10 @@
    "entry_note": "Kursgrenze für Tranche 1. Erst kaufen, wenn sich der Nasdaq stabilisiert (5 Handelstage nicht unter dem Tief vom 20.11.). Tranche 1 etwa 1 % des Depots, Tranche 2 nach der Fed-Entscheidung im Dezember.",
    "to_entry": -1.1,
    "price": 484.52,
-   "day": -2.58,
+   "day": -1.01,
    "below_high": -13.3,
-   "ls_eur": 453.48,
-   "ls_age": -53
+   "ls_eur": 455.27,
+   "ls_age": -55
   },
   {
    "ticker": "NVDA",
@@ -214,10 +214,10 @@
    "entry_note": "Kein Einstiegskurs. Neu bewerten, wenn SEC oder Nvidia den Umfang der Prüfung klären (Frist des Kongresses am 2.12.).",
    "to_entry": null,
    "price": 125.53,
-   "day": -13.93,
+   "day": -3.45,
    "below_high": -48.4,
-   "ls_eur": 123.45,
-   "ls_age": -53
+   "ls_eur": 125.56,
+   "ls_age": -54
   },
   {
    "ticker": "NOVO-B.CO",
@@ -227,12 +227,12 @@
    "ccy": "DKK",
    "entry": 224.0,
    "entry_note": "Einstieg bei etwa 30 € (224 DKK, rund 15 % unter dem Kurs vom 20.11.). Nicht vor den Jahreszahlen im Februar 2027.",
-   "to_entry": 17.6,
-   "price": 263.5,
-   "day": -0.38,
-   "below_high": -35.7,
-   "ls_eur": 35.17,
-   "ls_age": -53
+   "to_entry": 17.0,
+   "price": 262.1,
+   "day": -0.91,
+   "below_high": -36.1,
+   "ls_eur": 35.12,
+   "ls_age": -56
   }
  ]
 }
