@@ -1,10 +1,10 @@
 {
- "updated": "23.11.2026 09:17 Uhr",
- "value": 263686.85,
+ "updated": "23.11.2026 09:54 Uhr",
+ "value": 265078.56,
  "cash": 27991.38,
  "cash_pct": 10.6,
- "claude_idx": 93.43,
- "bench_idx": 94.69,
+ "claude_idx": 93.92,
+ "bench_idx": 95.03,
  "user": {
   "date": "2026-11-22",
   "idx": 92.33,
@@ -32,8 +32,8 @@
  "positions": [
   {
    "name": "iShares Core MSCI World",
-   "price": 122.72,
-   "pct": -5.13,
+   "price": 123.15,
+   "pct": -4.8,
    "weight": 25.6,
    "stop_price": null,
    "stop_dist": null,
@@ -41,29 +41,29 @@
   },
   {
    "name": "iShares Core MSCI EM IMI",
-   "price": 40.95,
-   "pct": -9.79,
-   "weight": 9.6,
+   "price": 41.6,
+   "pct": -8.37,
+   "weight": 9.7,
    "stop_price": null,
    "stop_dist": null,
    "trail": false
   },
   {
    "name": "Xetra-Gold",
-   "price": 103.78,
-   "pct": -10.82,
-   "weight": 8.1,
+   "price": 105.5,
+   "pct": -9.34,
+   "weight": 8.2,
    "stop_price": null,
    "stop_dist": null,
    "trail": false
   },
   {
    "name": "ASML",
-   "price": 1209.4,
-   "pct": -13.19,
-   "weight": 8.7,
+   "price": 1222.6,
+   "pct": -12.25,
+   "weight": 8.8,
    "stop_price": 1044.9,
-   "stop_dist": 13.6,
+   "stop_dist": 14.5,
    "trail": false
   },
   {
@@ -77,11 +77,11 @@
   },
   {
    "name": "TotalEnergies",
-   "price": 78.25,
-   "pct": -4.03,
+   "price": 78.27,
+   "pct": -4.01,
    "weight": 8.3,
    "stop_price": 65.23,
-   "stop_dist": 16.6,
+   "stop_dist": 16.7,
    "trail": false
   },
   {
@@ -104,20 +104,20 @@
   },
   {
    "name": "Siemens",
-   "price": 257.0,
-   "pct": 0.08,
+   "price": 258.4,
+   "pct": 0.62,
    "weight": 4.4,
    "stop_price": 205.44,
-   "stop_dist": 20.1,
+   "stop_dist": 20.5,
    "trail": false
   },
   {
    "name": "Bitcoin",
-   "price": 55588.61,
-   "pct": -22.71,
+   "price": 55910.12,
+   "pct": -22.26,
    "weight": 3.2,
    "stop_price": 46750.48,
-   "stop_dist": 15.9,
+   "stop_dist": 16.4,
    "trail": false
   },
   {
@@ -131,8 +131,8 @@
   },
   {
    "name": "iShares Core MSCI Japan IMI",
-   "price": 67.03,
-   "pct": -8.01,
+   "price": 67.32,
+   "pct": -7.61,
    "weight": 3.2,
    "stop_price": null,
    "stop_dist": null,
@@ -201,8 +201,8 @@
    "price": 484.52,
    "day": -2.58,
    "below_high": -13.3,
-   "ls_eur": 452.7,
-   "ls_age": -54
+   "ls_eur": 453.48,
+   "ls_age": -57
   },
   {
    "ticker": "NVDA",
@@ -216,8 +216,8 @@
    "price": 125.53,
    "day": -13.93,
    "below_high": -48.4,
-   "ls_eur": 122.92,
-   "ls_age": -54
+   "ls_eur": 123.45,
+   "ls_age": -57
   },
   {
    "ticker": "NOVO-B.CO",
@@ -228,11 +228,11 @@
    "entry": null,
    "entry_note": "",
    "to_entry": null,
-   "price": 261.85,
-   "day": -1.0,
-   "below_high": -36.1,
-   "ls_eur": 35.0,
-   "ls_age": -56
+   "price": 263.35,
+   "day": -0.43,
+   "below_high": -35.8,
+   "ls_eur": 35.17,
+   "ls_age": -57
   }
  ]
 }
