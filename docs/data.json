@@ -1,6 +1,6 @@
 {
- "updated": "23.11.2026 18:51 Uhr",
- "value": 272992.2,
+ "updated": "23.11.2026 19:48 Uhr",
+ "value": 272911.13,
  "cash": 27991.38,
  "reserve": 30000,
  "rate": 365,
@@ -139,8 +139,8 @@
   },
   {
    "date": "2026-11-23",
-   "value": 272992.2,
-   "idx": 96.72,
+   "value": 272911.13,
+   "idx": 96.69,
    "bench": 97.73
   }
  ],
@@ -329,11 +329,11 @@
    "ticker": "LLY",
    "qty": 19,
    "buy": 1143.57,
-   "price": 1248.86,
+   "price": 1248.94,
    "pct": 9.21,
-   "value": 23728.38,
+   "value": 23729.81,
    "stop": 0.12,
-   "gain": 2000.55,
+   "gain": 2001.98,
    "region": "USA",
    "sector": "Gesundheit",
    "origin": "eigene Recherche",
@@ -358,18 +358,18 @@
    "trail": false,
    "stop_price": 65.23,
    "stop_dist": 15.8,
-   "weight": 7.9
+   "weight": 8.0
   },
   {
    "name": "JPMorgan Chase",
    "ticker": "JPM",
    "qty": 40,
    "buy": 295.95,
-   "price": 291.91,
-   "pct": -1.37,
-   "value": 11676.31,
+   "price": 291.93,
+   "pct": -1.36,
+   "value": 11677.31,
    "stop": 0.2,
-   "gain": -161.69,
+   "gain": -160.69,
    "region": "USA",
    "sector": "Finanzen",
    "origin": "eigene Recherche",
@@ -383,17 +383,17 @@
    "ticker": "TSM",
    "qty": 30,
    "buy": 373.54,
-   "price": 338.02,
-   "pct": -9.51,
-   "value": 10140.52,
+   "price": 336.56,
+   "pct": -9.9,
+   "value": 10096.71,
    "stop": 0.25,
-   "gain": -1065.68,
+   "gain": -1109.49,
    "region": "Asien",
    "sector": "Technologie",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 280.16,
-   "stop_dist": 17.1,
+   "stop_dist": 16.8,
    "weight": 3.7
   },
   {
@@ -419,17 +419,17 @@
    "ticker": "BTC-EUR",
    "qty": 0.15,
    "buy": 71923.82,
-   "price": 56662.61,
-   "pct": -21.22,
-   "value": 8499.39,
+   "price": 56366.3,
+   "pct": -21.63,
+   "value": 8454.95,
    "stop": 0.35,
-   "gain": -2289.18,
+   "gain": -2333.63,
    "region": "Global",
    "sector": "Krypto",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 46750.48,
-   "stop_dist": 17.5,
+   "stop_dist": 17.1,
    "weight": 3.1
   },
   {
@@ -437,17 +437,17 @@
    "ticker": "GOOGL",
    "qty": 22,
    "buy": 262.7,
-   "price": 259.92,
-   "pct": -1.06,
-   "value": 5718.21,
+   "price": 260.13,
+   "pct": -0.98,
+   "value": 5722.96,
    "stop": 0.25,
-   "gain": -61.19,
+   "gain": -56.44,
    "region": "USA",
    "sector": "Technologie",
    "origin": "durch Nutzerthema angestoßen",
    "trail": false,
    "stop_price": 197.02,
-   "stop_dist": 24.2,
+   "stop_dist": 24.3,
    "weight": 2.1
   },
   {
@@ -691,8 +691,8 @@
   "n": 23,
   "mdd": -8.86,
   "mdd_b": -6.84,
-  "vol": 24.1,
-  "beta": 1.04
+  "vol": 24.0,
+  "beta": 1.03
  },
  "alloc": {
   "region": {
@@ -700,7 +700,7 @@
    "Welt": 25.5,
    "Schwellenländer": 9.9,
    "Global": 11.2,
-   "Europa": 21.2,
+   "Europa": 21.3,
    "USA": 15.1,
    "Asien": 3.7,
    "Japan": 3.2
@@ -711,7 +711,7 @@
    "Gold": 8.1,
    "Technologie": 14.7,
    "Gesundheit": 8.7,
-   "Energie": 7.9,
+   "Energie": 8.0,
    "Finanzen": 4.3,
    "Industrie": 4.4,
    "Krypto": 3.1
@@ -726,12 +726,12 @@
    "ccy": "USD",
    "entry": 490.0,
    "entry_note": "Kursgrenze für Tranche 1. Erst kaufen, wenn sich der Nasdaq stabilisiert (5 Handelstage nicht unter dem Tief vom 20.11.). Tranche 1 etwa 1 % des Depots, Tranche 2 nach der Fed-Entscheidung im Dezember.",
-   "to_entry": 1.2,
-   "price": 495.87,
-   "day": 1.68,
-   "below_high": -11.3,
-   "ls_eur": 455.4,
-   "ls_age": -58
+   "to_entry": 1.3,
+   "price": 496.47,
+   "day": 1.81,
+   "below_high": -11.2,
+   "ls_eur": 455.7,
+   "ls_age": -57
   },
   {
    "ticker": "NVDA",
@@ -742,11 +742,11 @@
    "entry": null,
    "entry_note": "Kein Einstiegskurs. Neu bewerten, wenn SEC oder Nvidia den Umfang der Prüfung klären (Frist des Kongresses am 2.12.).",
    "to_entry": null,
-   "price": 163.93,
-   "day": 26.69,
-   "below_high": -32.6,
-   "ls_eur": 150.79,
-   "ls_age": -54
+   "price": 164.32,
+   "day": 27.0,
+   "below_high": -32.5,
+   "ls_eur": 151.0,
+   "ls_age": -53
   },
   {
    "ticker": "NOVO-B.CO",
@@ -760,8 +760,8 @@
    "price": 266.35,
    "day": 0.7,
    "below_high": -35.0,
-   "ls_eur": 35.76,
-   "ls_age": -58
+   "ls_eur": 35.9,
+   "ls_age": -56
   }
  ],
  "origin": [
@@ -769,15 +769,15 @@
    "name": "eigene Recherche",
    "n": 11,
    "cost": 248432,
-   "gain": -9149.89,
-   "pct": -3.68
+   "gain": -9235.72,
+   "pct": -3.72
   },
   {
    "name": "durch Nutzerthema angestoßen",
    "n": 1,
    "cost": 5779,
-   "gain": -61.19,
-   "pct": -1.06
+   "gain": -56.44,
+   "pct": -0.98
   }
  ],
  "intraday": [
@@ -1199,6 +1199,11 @@
   {
    "t": "2026-11-23 18:51",
    "v": 96.72,
+   "b": 97.73
+  },
+  {
+   "t": "2026-11-23 19:48",
+   "v": 96.69,
    "b": 97.73
   }
  ],
