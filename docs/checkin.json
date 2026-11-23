@@ -1,9 +1,9 @@
 {
- "updated": "22.11.2026 15:18 Uhr",
- "value": 262850.33,
+ "updated": "23.11.2026 08:11 Uhr",
+ "value": 262788.63,
  "cash": 27991.38,
- "cash_pct": 10.6,
- "claude_idx": 93.13,
+ "cash_pct": 10.7,
+ "claude_idx": 93.11,
  "bench_idx": 94.69,
  "user": {
   "date": "2026-11-22",
@@ -13,10 +13,10 @@
  },
  "user_meta": {
   "start": 279700,
-  "deposits": 5600.3,
+  "deposits": 5965.3,
   "weekly": 365.0,
   "from": "2026-11-02",
-  "last_counted": "2026-11-16"
+  "last_counted": "2026-11-23"
  },
  "core": {
   "share": 0.5,
@@ -68,11 +68,11 @@
   },
   {
    "name": "Eli Lilly",
-   "price": 1228.03,
-   "pct": 7.39,
+   "price": 1224.52,
+   "pct": 7.08,
    "weight": 8.9,
    "stop_price": 1171.01,
-   "stop_dist": 4.6,
+   "stop_dist": 4.4,
    "trail": true
   },
   {
@@ -86,20 +86,20 @@
   },
   {
    "name": "JPMorgan Chase",
-   "price": 283.08,
-   "pct": -4.35,
+   "price": 282.27,
+   "pct": -4.62,
    "weight": 4.3,
    "stop_price": 236.76,
-   "stop_dist": 16.4,
+   "stop_dist": 16.1,
    "trail": false
   },
   {
    "name": "TSMC",
-   "price": 290.54,
-   "pct": -22.22,
+   "price": 289.71,
+   "pct": -22.44,
    "weight": 3.3,
    "stop_price": 280.16,
-   "stop_dist": 3.6,
+   "stop_dist": 3.3,
    "trail": false
   },
   {
@@ -113,20 +113,20 @@
   },
   {
    "name": "Bitcoin",
-   "price": 55360.62,
-   "pct": -23.03,
+   "price": 55875.07,
+   "pct": -22.31,
    "weight": 3.2,
    "stop_price": 46750.48,
-   "stop_dist": 15.6,
+   "stop_dist": 16.3,
    "trail": false
   },
   {
    "name": "Alphabet (Klasse A)",
-   "price": 241.84,
-   "pct": -7.94,
+   "price": 241.15,
+   "pct": -8.2,
    "weight": 2.0,
    "stop_price": 197.02,
-   "stop_dist": 18.5,
+   "stop_dist": 18.3,
    "trail": false
   },
   {
@@ -198,8 +198,8 @@
    "price": 484.52,
    "day": -2.58,
    "below_high": -13.3,
-   "ls_eur": 446.02,
-   "ls_age": 1520
+   "ls_eur": 451.1,
+   "ls_age": -54
   },
   {
    "ticker": "NVDA",
@@ -210,8 +210,8 @@
    "price": 125.53,
    "day": -13.93,
    "below_high": -48.4,
-   "ls_eur": 117.45,
-   "ls_age": 1519
+   "ls_eur": 122.0,
+   "ls_age": -54
   },
   {
    "ticker": "NOVO-B.CO",
@@ -222,8 +222,8 @@
    "price": 264.5,
    "day": -0.25,
    "below_high": -35.5,
-   "ls_eur": 34.59,
-   "ls_age": 1521
+   "ls_eur": 34.77,
+   "ls_age": -57
   }
  ]
 }
