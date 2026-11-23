@@ -58,7 +58,7 @@ details.help{margin-top:14px}details.help summary{cursor:pointer;font-weight:600
 <h3>Befehle (als Issue mit Titel „Order“)</h3><ul>
 <li><code>KERN;ANTEIL;0,3</code>: Die Zahl ist der Anteil der Wochenrate für die Kern-ETFs. 0,3 sind 30 %, 0,5 sind 50 %, 1 ist alles. Der Rest bleibt Cash.</li>
 <li><code>STOP;Eli Lilly;0,2</code> setzt einen festen Stop (20 % unter Kaufkurs), <code>MITLAUFEND;Eli Lilly;0,12</code> einen Stop 12 % unter dem höchsten Kurs. Namen müssen genau stimmen, sonst nennt der Bot den passenden. Neue Positionen mit ähnlichem Namen oder gleichem Kürzel wie eine vorhandene lehnt der Bot ab, es sei denn, die KAUF-Zeile endet auf <code>;NEU</code>.</li>
-<li><code>WATCH;MSFT;Microsoft;US5949181045;Grund</code> nimmt einen Titel auf die Watchlist, <code>UNWATCH;MSFT</code> entfernt ihn.</li>
+<li><code>WATCH;MSFT;Microsoft;US5949181045;Überlegung;490;Bedingung</code> nimmt einen Titel mit Einstiegskurs (in der Währung des Titels) und Überlegung auf die Watchlist, derselbe Befehl aktualisiert ihn, <code>UNWATCH;MSFT</code> entfernt ihn.</li>
 <li><code>KERN;PAUSE</code> stoppt den Kern-Sparplan, <code>KERN;AN</code> setzt ihn fort.</li>
 <li><code>KERN;AUTO;AUS</code> schaltet den Autopiloten ab, <code>KERN;AUTO;AN</code> wieder ein. Er erhöht den Anteil auf 80 %, wenn der Welt-ETF über 10 % unter dem Jahreshoch liegt, und passt ihn bei hohem oder niedrigem Cash an (70 % bzw. 30 %). Bei einem Tagesverlust über 7 % pausiert er den Sparplan.</li></ul>
 <h3>Telegram</h3><ul>
@@ -73,7 +73,7 @@ details.help{margin-top:14px}details.help summary{cursor:pointer;font-weight:600
 <h2>Verlauf (in % seit Beginn des Zeitraums)</h2><div class="card"><div id="rng"></div><svg id="ch" viewBox="0 0 600 340"></svg>
 <div class="leg"><span><i style="background:var(--c1)"></i>Claude</span><span><i style="background:var(--c2)"></i>Welt-ETF</span><span><i style="background:var(--c3)"></i>Du (gestrichelt)</span><span style="color:var(--gain)">▲ Kauf</span><span style="color:var(--loss)">▼ Verkauf</span><span>● Einzahlung</span></div></div>
 <h2>Positionen</h2><div class="cards" id="pos"></div>
-<h2>Watchlist</h2><div class="wrap"><table id="wl"></table></div>
+<h2>Watchlist</h2><div class="cards" id="wl"></div>
 <h2>Risiko</h2><div class="wrap"><table id="risk"></table></div>
 <h2>Aufteilung</h2><div class="card" id="alloc"></div>
 <h2>Beitrag je Position</h2><div class="wrap"><table id="ctb"></table></div>
@@ -202,11 +202,16 @@ fetch('data.json?'+Date.now()).then(r=>r.json()).then(d=>{
  (d.orders||[]).forEach(r=>{o+='<tr><td>'+r.side+'</td><td>'+r.name+'</td><td>'+(r.side=='KAUF'?'≤ ':'≥ ')+f(r.limit)+'</td><td>'+f(r.qty,r.qty%1?2:0)+'</td><td>'+r.valid_until+'</td><td>'+(r.note||'')+'</td></tr>'});
  if(!(d.orders||[]).length)o+='<tr><td colspan="6">Keine offenen Aufträge</td></tr>';
  document.getElementById('ord').innerHTML=o;
+ const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
  const WL=d.watch||[];
- let wl='<tr><th>Titel</th><th>Kurs</th><th>Heute</th><th>zum 52W-Hoch</th><th>L&amp;S €</th><th>Grund</th></tr>';
- WL.forEach(r=>{wl+='<tr><td>'+r.name+'</td><td>'+(r.price==null?'–':f(r.price)+' '+(r.ccy||''))+'</td><td>'+pc(r.day)+'</td><td>'+pc(r.below_high)+'</td><td>'+(r.ls_eur==null?'–':f(r.ls_eur))+'</td><td>'+(r.reason||'')+'</td></tr>'});
- if(!WL.length)wl+='<tr><td colspan="6">Keine Titel auf der Watchlist</td></tr>';
- document.getElementById('wl').innerHTML=wl;
+ document.getElementById('wl').innerHTML=WL.map(r=>{
+  const hit=r.entry!=null&&r.to_entry!=null&&r.to_entry<=0;
+  const ent=r.entry==null?'Kein Einstiegskurs':'Einstieg bis <b>'+f(r.entry)+' '+esc(r.ccy||'')+'</b> · '+(hit?'<b class="up">Kursgrenze erreicht</b>':(r.to_entry==null?'':'Kurs noch '+f(r.to_entry,1)+' % darüber'));
+  return '<div class="card pc"><div class="ph"><b>'+esc(r.name)+'</b><span>'+pc(r.day)+'</span></div>'
+   +'<div class="mute">Kurs '+(r.price==null?'–':f(r.price)+' '+esc(r.ccy||''))+(r.below_high==null?'':' · '+f(Math.abs(r.below_high),0)+' % unter 52W-Hoch')+(r.ls_eur==null?'':' · L&amp;S '+f(r.ls_eur)+' €')+'</div>'
+   +'<div style="margin:6px 0">'+ent+'</div>'
+   +(r.entry_note?'<div class="mute">Bedingung: '+esc(r.entry_note)+'</div>':'')
+   +(r.reason?'<div class="mute" style="margin-top:6px">'+esc(r.reason)+'</div>':'')+'</div>'}).join('')||'<div class="card mute">Keine Titel auf der Watchlist</div>';
  document.getElementById('warn').textContent=d.warnings.length?'Hinweise: '+d.warnings.join(' '):'';
 }).catch(e=>{document.getElementById('upd').textContent='Daten konnten nicht geladen werden: '+e});
 </script>
