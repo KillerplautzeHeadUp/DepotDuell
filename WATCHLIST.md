@@ -1,32 +1,43 @@
 # Watchlist von Claude (eigene Recherche)
 
-Stand: 22.11.2026. Erste Runde, vom Nutzer im Chat angestoßen. Alle Kurse stammen aus Nachrichtenportalen (Schlusskurse 20.11.), nicht von den Handelsplätzen von Trade Republic. Vor jedem Kauf Live-Kurs prüfen. Keine Anlageberatung, Einstiegsbedingungen sind meine Annahmen für das Duell.
+Stand: 23.11.2026 abends. Zweite Runde ("Recherche groß"), vom Nutzer im Chat angestoßen. Kurse stammen aus Nachrichtenportalen und sind teils mehrere Tage alt, nicht von den Handelsplätzen von Trade Republic. Vor jedem Kauf Live-Kurs und ISIN prüfen. Keine Anlageberatung, Einstiegskurse und Bedingungen sind meine Annahmen für das Duell.
 
-## Wie die Watchlist entsteht
+## So entsteht die Watchlist
 
-- Recherche startet der Nutzer im Chat. "Recherche klein": nur die Einträge unten aktualisieren. "Recherche groß": zusätzlich 2 bis 3 neue Ideen prüfen.
-- Kriterien für einen Eintrag: (1) Qualität: Marktstellung, Gewinne, Bilanz. (2) Bewertung gegenüber eigener Historie und Vergleichswerten. (3) Der Grund für den Kursrückgang ist verstanden und bewertbar, kein offenes Verfahren. (4) Passt zur Streuung im Depot, nicht nur eine weitere KI-Wette. (5) Es gibt einen Einstiegsplan in Tranchen mit Stop.
-- Gekauft wird nur mit eigener Überzeugung und unter den Regeln des Duells (Cash-Untergrenze etwa 10 %, Backup-Reserve nur bei außergewöhnlicher Chance, ANT nicht).
+- Recherche startet der Nutzer im Chat. "Recherche klein": nur die Einträge aktualisieren. "Recherche groß": zusätzlich 2 bis 3 neue Ideen prüfen.
+- Kriterien: (1) Lücke im Depot (Branche oder Region). (2) Qualität: Marktstellung, Gewinne, Bilanz. (3) Bewertung gegenüber Historie und Vergleichswerten. (4) Grund des Kursrückgangs verständlich und bewertbar. (5) Passt zur Streuung, nicht noch eine KI-Wette. (6) Handelbar bei Trade Republic, Marktwert ab etwa 10 Mrd €.
+- Gekauft wird nur mit eigener Überzeugung und unter den Regeln des Duells (Cash-Untergrenze etwa 10 %, Backup-Reserve nur bei außergewöhnlicher Chance, ANT nicht). Am Wochenende gelten die Schlusskurse vom Freitag, unter der Woche die aktuellen Kurse.
 
-## Marktlage
+## Marktlage am 23.11.
 
-Am 20.11. fiel der Nasdaq stark, der Technologiesektor war der schwächste. Seit Oktober haben Basiskonsum, Gesundheit und Versorger etwa 13 % gewonnen, der Nasdaq 100 etwa 13 % verloren. Morgan Stanley spricht von der stärksten defensiven Rotation seit 25 Jahren. Defensive Sektoren sind damit teurer als Technologie, ein Einstieg dort ist kein Schnäppchen. Der VIX lag bei 28,4.
+Die Woche bis zum 20.11. war die schwächste seit März 2020: Nasdaq Composite minus 10 %, S&P 500 minus 8,6 %, am Freitag allein Nasdaq minus 5,3 %, Nvidia minus 14 %. Am Montag 23.11. folgte eine kräftige Erholung (S&P 500 etwa plus 4 bis 5 %, Nasdaq etwa plus 6 bis 7 %), ausgelöst durch die Rückkehr von Jensen Huang als Nvidia-Chef. Der VIX lag zuletzt über 31. Das ist eine Tageserholung nach einem Ausverkauf, noch keine Entwarnung. Defensive Sektoren sind seit Oktober deutlich gestiegen und damit nicht mehr günstig.
 
 ## Einträge
 
 | Titel | Kurs | These | Risiken | Einstieg und Status |
 |---|---|---|---|---|
-| Microsoft (MSFT, ISIN US5949181045) | 484,52 $ (20.11.), etwa 13 % unter dem 52-Wochen-Hoch von 559,15 $ | Azure +48 %, Auftragsbestand 677 Mrd $ (+73 %), operative Marge nahe 50 %. Erwartetes KGV etwa 24 bis 25 (Folgejahr etwa 20) gegen etwa 33 im 5-Jahres-Schnitt. 53 von 58 Analysten raten zum Kauf, im Schnitt Ziel 636 $. | Dieselbe KI-Investitionswette wie ASML, TSMC und Alphabet. Anthropic greift mit Büro-Werkzeugen Office an (Interessenkonflikt von Claude beachten). EU prüft Azure. Analysten-Abstufung. | Priorität 1. Kursgrenze für Tranche 1: bis 490 $ (etwa 24,5-faches Folgejahres-KGV), zuletzt erreicht, die Bedingung Stabilisierung ist offen. Kein Kauf jetzt. Einstieg in Tranchen: erste Tranche etwa 1 % des Depots (etwa 2.600 €), wenn der Nasdaq Composite an 5 Handelstagen in Folge nicht unter das Tief vom 20.11. fällt. Zweite Tranche frühestens nach der Zinsentscheidung der Fed im Dezember. Stop fest 20 %. Nicht aus der Backup-Reserve. Cash danach etwa 9,7 %. |
-| Novo Nordisk B (NOVO-B.CO, ISIN DK0062498333) | 35,18 € (Xetra, 20.11.) | KGV etwa 10, Dividendenrendite etwa 4,5 %, Aktie über 70 % unter dem Hoch. Prognose zum dritten Mal angehoben, Wegovy-Pille übertrifft Erwartungen. | Ab Januar 2027 Listenpreis von Wegovy in den USA etwa 50 % niedriger. Analysten erwarten 2027 kaum Gewinnwachstum, Mehrheit "Halten", Morgan Stanley untergewichtet. Abhängigkeit von Semaglutid, Druck durch Eli Lilly (im Depot). | Günstig, aber Wertfalle möglich. Einstiegskurs etwa 30 € (224 DKK), rund 15 % unter dem Kurs vom 20.11. Kein Kauf vor den nächsten Jahreszahlen (voraussichtlich Anfang Februar 2027, Termin prüfen). Dann prüfen, ob die Gewinne sich stabilisieren. |
-| Nvidia (NVDA, ISIN US67066G1040) | 125,53 $ (20.11., −14 % an einem Tag), etwa 48 % unter dem Rekord | Quartalsumsatz 115,8 Mrd $ (+103 %). | SEC prüft die Bilanzierung, Untersuchung in Kalifornien zu China-Lieferungen, Führungswechsel, Regulierung von Chipexporten (Frist des Kongresses am 2.12.). Umfang der Prüfung unklar. | Nur beobachten, kein Einstiegskurs. Kein Kauf, solange die Reichweite der Prüfung offen ist. Neu bewerten, wenn die SEC oder Nvidia den Umfang klärt. |
-| GE Vernova (GEV) | 797 $ (10.11., nicht aktuell) | Strom und Netz, Auftragsbestand etwa 200 Mrd $ (Stand 12.11.). | Gleiches KI-Strom-Thema, hohe Bewertung, Cashflow stark von Kundenanzahlungen abhängig. | Beobachten. Kurs und Lage vor Kauf neu prüfen. |
-| Alibaba (BABA, ADR) | nicht geprüft | Prüfung nach den Quartalszahlen am 24.11. nach eigenen Kriterien. | China-Regulierung, Exportregeln. | Offen bis 24.11. |
-| iShares MSCI India UCITS ETF (ISIN IE00BZCQB185) | nicht geprüft | Indien-Gewichtung steckt schon im EM-ETF, nur bei Rücksetzer eigener ETF. | Inflation 6,09 %, Ölpreis. | Blick am 27.11. |
+| Microsoft (MSFT, ISIN US5949181045) | 484,52 $ (Schluss 20.11.), am 23.11. um 15:51 Uhr bei 504,03 $ (+4 %) | Azure +48 %, Auftragsbestand 677 Mrd $ (+73 %), Marge nahe 50 %. Erwartetes KGV etwa 24 bis 25 gegen etwa 33 im 5-Jahres-Schnitt. | Gleiche KI-Wette wie ASML, TSMC, Alphabet. Anthropic greift Office an (Interessenkonflikt von Claude). EU prüft Azure. | Priorität 1. Kursgrenze für Tranche 1: bis 490 $. Am 23.11. wieder darüber (504 $), die Grenze ist also nicht mehr erreicht. Bedingung Stabilisierung: erst 1 von 5 Handelstagen über dem Tief vom 20.11. Tranche 2 nach der Fed im Dezember. Nicht aus der Backup-Reserve. |
+| Münchener Rück (MUV2.DE, ISIN DE0008430026, ISIN aus dem Gedächtnis) | etwa 584 € (12.11.), Rekordhoch 602,80 € | KGV etwa 10 bis 11, Dividende etwa 4,5 %, Eigenkapitalrendite etwa 22 %, Solvenzquote etwa 260 %, kaum KI-Bezug. Würde Finanzen und Europa im Depot ergänzen. | Quartalsgewinn zuletzt minus 13 %, Preise in der Rückversicherung sinken, JPMorgan stufte auf "neutral" ab, Kurs nahe Rekord. Analystenmehrheit "Halten". | Neu, Priorität 2. Einstieg bis 540 € (etwa 10 % unter dem Rekord, KGV dann etwa 10). Vor einem Kauf die Preisentwicklung der Erneuerungsrunde zum 1.1. prüfen. Tranche etwa 1 % des Depots. |
+| Nestlé (NESN.SW, ISIN CH0038863350) | etwa 91,8 € (84,45 CHF, Datum unsicher), Jahreshoch 96 € | Basiskonsum, Eigenkapitalrendite etwa 26 %, Free-Cashflow-Rendite etwa 5,7 %, Dividende etwa 3,9 %, Beta 0,5. Ergänzt defensive Streuung. | Aktie etwa 18 % in 30 Tagen gestiegen, nahe Jahreshoch, KGV 2026e etwa 21, Umsatz leicht rückläufig, Konsensziel knapp unter dem Kurs. | Neu, Priorität 3. Einstieg bei etwa 78 CHF (rund 84 €, nahe dem 50-Tage-Schnitt, KGV etwa 17 bis 18). Jahreszahlen am 18.02.2027. |
+| Novo Nordisk B (NOVO-B.CO, ISIN DK0062498333) | 35,18 € (Xetra, 20.11.), keine verlässliche neuere Zahl gefunden | KGV etwa 10, Dividende etwa 4,5 %, über 70 % unter dem Hoch. | Wegovy-Listenpreis in den USA ab Januar etwa 50 % niedriger, 2027 kaum Gewinnwachstum, Mehrheit "Halten". | Unverändert. Einstieg bei etwa 224 DKK (etwa 30 €), nicht vor den Jahreszahlen im Februar 2027. |
+| Nvidia (NVDA, ISIN US67066G1040) | 125,53 $ (Schluss 20.11.), am 23.11. rund 165 $ (etwa +31 %) | Quartalsumsatz 115,8 Mrd $ (+103 %). | Huang ist seit 23.11. wieder CEO, die interne Untersuchung zum Geheimdienst-Verdacht läuft weiter. Die SEC-Bilanzprüfung ist nach letztem Stand offen. Kurssprung von etwa 30 % an einem Tag. | Kein Einstiegskurs. Dem Kurssprung nicht hinterherlaufen. Neu bewerten, wenn die Untersuchungen abgeschlossen sind oder der Kurs deutlich zurückkommt. |
+| GE Vernova (GEV) | 797 $ (10.11., nicht aktualisiert) | Strom und Netz, Auftragsbestand etwa 200 Mrd $ (Stand 12.11.). | Gleiches KI-Strom-Thema, hohe Bewertung, Cashflow von Kundenanzahlungen abhängig. | In dieser Runde nicht geprüft, keine aktuellen Daten. Nicht auf der Skript-Watchlist. |
+| Alibaba (BABA, ADR) | nicht geprüft | Prüfung nach den Quartalszahlen am 24.11. | China-Regulierung, Exportregeln. | Offen bis 24.11. |
+| iShares MSCI India UCITS ETF (ISIN IE00BZCQB185) | nicht geprüft | Indien steckt schon im EM-ETF. | Inflation 6,09 %, Ölpreis. | Blick am 27.11. |
 
-## Ideen, noch nicht geprüft (aus Artikeln, keine Empfehlung)
+## Bewertungsraster der neuen Ideen
 
-Broadcom und Amazon (laut Artikel unter ihrer 5-Jahres-Bewertung), Pfizer (KGV etwa 10), Allianz und Hannover Rück (defensive Versicherer in Europa). Für jede Idee zuerst Qualität und Grund des Kursrückgangs prüfen. Bei Broadcom und Amazon wieder die KI-Korrelation beachten.
+| Idee | Lücke im Depot | Qualität | Bewertung | Grund verständlich | Streuung | Handelbar | Ergebnis |
+|---|---|---|---|---|---|---|---|
+| Münchener Rück | Ja (Versicherer, Europa) | Ja | Ja (KGV etwa 10 gegen Allianz etwa 14) | Teilweise (Preiszyklus) | Ja | Ja (etwa 72 Mrd €) | Aufgenommen |
+| Nestlé | Ja (Basiskonsum) | Ja | Nein (nahe Hoch, KGV etwa 21) | Ja | Ja | Ja | Aufgenommen, nur bei Rücksetzer |
+| Allianz | Ja | Ja | Nein (Rekordhoch, teurer als Münchener Rück) | Ja | Ja | Ja | Nicht aufgenommen |
+| Roche | Ja (Gesundheit) | Ja | Nein (KGV 2026e etwa 18) | Ja | Ja | Ja | Nicht aufgenommen |
+
+## Ideen für spätere Runden, noch ungeprüft
+
+Broadcom und Amazon (laut Artikel unter ihrer 5-Jahres-Bewertung, aber KI-Korrelation), Pfizer (KGV etwa 10), Hannover Rück.
 
 ## Skript-Watchlist (state.json)
 
-Dort stehen derzeit MSFT, NVDA und NOVO-B.CO. Das Skript meldet einen Tagesverlust ab 10 %. Mit dieser Liste stimmen die drei ersten Einträge überein. Ändern lässt sie sich erst mit den Befehlen WATCH und UNWATCH, die für die nächste Änderungsrunde vorgesehen sind.
+Per Befehl `WATCH` (Ticker, Name, ISIN, Überlegung, Einstiegskurs in der Währung des Titels, Bedingung) und `UNWATCH`. Die Seite zeigt Kurs, Veränderung heute, Abstand zum 52-Wochen-Hoch, L&S-Kurs, Einstiegskurs und Überlegung.
