@@ -1,6 +1,6 @@
 {
- "updated": "23.11.2026 22:42 Uhr",
- "value": 272754.01,
+ "updated": "24.11.2026 07:56 Uhr",
+ "value": 272634.03,
  "cash": 27991.38,
  "reserve": 30000,
  "rate": 365,
@@ -142,6 +142,12 @@
    "value": 272754.01,
    "idx": 96.64,
    "bench": 97.73
+  },
+  {
+   "date": "2026-11-24",
+   "value": 272634.03,
+   "idx": 96.6,
+   "bench": 97.73
   }
  ],
  "user": [
@@ -261,7 +267,7 @@
    "pct": -2.1,
    "value": 69654.75,
    "stop": null,
-   "gain": -1491.44,
+   "gain": -1491.43,
    "region": "Welt",
    "sector": "ETF breit",
    "origin": "eigene Recherche",
@@ -329,11 +335,11 @@
    "ticker": "LLY",
    "qty": 19,
    "buy": 1143.57,
-   "price": 1251.47,
-   "pct": 9.44,
-   "value": 23778.02,
+   "price": 1251.34,
+   "pct": 9.42,
+   "value": 23775.43,
    "stop": 0.12,
-   "gain": 2050.19,
+   "gain": 2047.6,
    "region": "USA",
    "sector": "Gesundheit",
    "origin": "eigene Recherche",
@@ -365,11 +371,11 @@
    "ticker": "JPM",
    "qty": 40,
    "buy": 295.95,
-   "price": 290.41,
-   "pct": -1.87,
-   "value": 11616.36,
+   "price": 290.38,
+   "pct": -1.88,
+   "value": 11615.09,
    "stop": 0.2,
-   "gain": -221.64,
+   "gain": -222.91,
    "region": "USA",
    "sector": "Finanzen",
    "origin": "eigene Recherche",
@@ -383,11 +389,11 @@
    "ticker": "TSM",
    "qty": 30,
    "buy": 373.54,
-   "price": 333.46,
-   "pct": -10.73,
-   "value": 10003.73,
+   "price": 333.42,
+   "pct": -10.74,
+   "value": 10002.64,
    "stop": 0.25,
-   "gain": -1202.47,
+   "gain": -1203.56,
    "region": "Asien",
    "sector": "Technologie",
    "origin": "eigene Recherche",
@@ -419,17 +425,17 @@
    "ticker": "BTC-EUR",
    "qty": 0.15,
    "buy": 71923.82,
-   "price": 56231.97,
-   "pct": -21.82,
-   "value": 8434.8,
+   "price": 55469.25,
+   "pct": -22.88,
+   "value": 8320.39,
    "stop": 0.35,
-   "gain": -2353.78,
+   "gain": -2468.19,
    "region": "Global",
    "sector": "Krypto",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 46750.48,
-   "stop_dist": 16.9,
+   "stop_dist": 15.7,
    "weight": 3.1
   },
   {
@@ -437,11 +443,11 @@
    "ticker": "GOOGL",
    "qty": 22,
    "buy": 262.7,
-   "price": 258.71,
-   "pct": -1.52,
-   "value": 5691.71,
+   "price": 258.69,
+   "pct": -1.53,
+   "value": 5691.09,
    "stop": 0.25,
-   "gain": -87.69,
+   "gain": -88.31,
    "region": "USA",
    "sector": "Technologie",
    "origin": "durch Nutzerthema angestoßen",
@@ -688,10 +694,10 @@
   "rule": "Basis"
  },
  "risk": {
-  "n": 23,
+  "n": 24,
   "mdd": -8.86,
   "mdd_b": -6.84,
-  "vol": 23.9,
+  "vol": 23.4,
   "beta": 1.03
  },
  "alloc": {
@@ -730,7 +736,7 @@
    "price": 492.5,
    "day": 0.99,
    "below_high": -11.9,
-   "ls_eur": 452.3,
+   "ls_eur": 455.3,
    "ls_age": -57
   },
   {
@@ -745,8 +751,8 @@
    "price": 165.05,
    "day": 27.56,
    "below_high": -32.2,
-   "ls_eur": 151.5,
-   "ls_age": -55
+   "ls_eur": 150.6,
+   "ls_age": -59
   },
   {
    "ticker": "NOVO-B.CO",
@@ -760,8 +766,8 @@
    "price": 266.35,
    "day": 0.7,
    "below_high": -35.0,
-   "ls_eur": 35.99,
-   "ls_age": -55
+   "ls_eur": 35.95,
+   "ls_age": -54
   },
   {
    "ticker": "MUV2.DE",
@@ -775,8 +781,8 @@
    "price": 582.4,
    "day": 0.62,
    "below_high": -3.4,
-   "ls_eur": 583.4,
-   "ls_age": -54
+   "ls_eur": 581.7,
+   "ls_age": -58
   },
   {
    "ticker": "NESN.SW",
@@ -790,8 +796,8 @@
    "price": 84.88,
    "day": -0.79,
    "below_high": -4.0,
-   "ls_eur": 92.73,
-   "ls_age": -55
+   "ls_eur": 92.7,
+   "ls_age": -57
   }
  ],
  "origin": [
@@ -799,68 +805,18 @@
    "name": "eigene Recherche",
    "n": 11,
    "cost": 248432,
-   "gain": -9361.59,
-   "pct": -3.77
+   "gain": -9480.94,
+   "pct": -3.82
   },
   {
    "name": "durch Nutzerthema angestoßen",
    "n": 1,
    "cost": 5779,
-   "gain": -87.69,
-   "pct": -1.52
+   "gain": -88.31,
+   "pct": -1.53
   }
  ],
  "intraday": [
-  {
-   "t": "2026-11-16 09:07",
-   "v": 100.49,
-   "b": 100.66
-  },
-  {
-   "t": "2026-11-16 11:22",
-   "v": 100.15,
-   "b": 100.83
-  },
-  {
-   "t": "2026-11-16 12:43",
-   "v": 100.22,
-   "b": 100.94
-  },
-  {
-   "t": "2026-11-16 15:46",
-   "v": 99.83,
-   "b": 100.51
-  },
-  {
-   "t": "2026-11-16 17:31",
-   "v": 99.62,
-   "b": 100.19
-  },
-  {
-   "t": "2026-11-16 18:51",
-   "v": 99.58,
-   "b": 100.3
-  },
-  {
-   "t": "2026-11-16 19:44",
-   "v": 99.49,
-   "b": 100.3
-  },
-  {
-   "t": "2026-11-16 20:47",
-   "v": 99.39,
-   "b": 100.3
-  },
-  {
-   "t": "2026-11-16 21:40",
-   "v": 99.38,
-   "b": 100.3
-  },
-  {
-   "t": "2026-11-16 22:40",
-   "v": 99.41,
-   "b": 100.3
-  },
   {
    "t": "2026-11-17 07:57",
    "v": 99.36,
@@ -1264,6 +1220,11 @@
   {
    "t": "2026-11-23 22:42",
    "v": 96.64,
+   "b": 97.73
+  },
+  {
+   "t": "2026-11-24 07:56",
+   "v": 96.6,
    "b": 97.73
   }
  ],
