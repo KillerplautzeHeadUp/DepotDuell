@@ -78,7 +78,7 @@
    "qty": 19,
    "buy": 1143.57,
    "stop": 0.12,
-   "last": 1286.0627,
+   "last": 1287.8173,
    "cls": "stock",
    "since": "2026-10-23",
    "trail": true,
@@ -105,7 +105,7 @@
    "qty": 40,
    "buy": 295.95,
    "stop": 0.2,
-   "last": 288.9136,
+   "last": 288.3117,
    "cls": "stock",
    "since": "2026-10-23",
    "isin": "US46625H1005"
@@ -117,7 +117,7 @@
    "qty": 30,
    "buy": 373.54,
    "stop": 0.25,
-   "last": 318.2958,
+   "last": 317.5103,
    "cls": "stock",
    "since": "2026-10-23",
    "isin": "US8740391003",
@@ -144,7 +144,7 @@
    "qty": 0.15,
    "buy": 71923.82,
    "stop": 0.35,
-   "last": 54606.1094,
+   "last": 54435.8711,
    "cls": "crypto",
    "since": "2026-10-24"
   },
@@ -155,7 +155,7 @@
    "qty": 22,
    "buy": 262.7,
    "stop": 0.25,
-   "last": 253.963,
+   "last": 252.9963,
    "cls": "stock",
    "since": "2026-10-29",
    "isin": "US02079K3059",
@@ -380,7 +380,7 @@
    "note": "Wochenrate"
   }
  ],
- "last_fx": 1.0970927476882935,
+ "last_fx": 1.0969723463058472,
  "orders": [],
  "tax": {
   "year": 2026,
@@ -419,7 +419,7 @@
    "reason": "Quartalsumsatz +103 %. Huang ist seit 23.11. wieder CEO, die Aktie sprang um etwa 30 % auf rund 165 $. Aber die interne Untersuchung läuft weiter und die SEC-Bilanzprüfung ist nach letztem Stand offen.",
    "entry": null,
    "entry_note": "Kein Einstiegskurs. Nicht dem Kurssprung hinterherlaufen. Neu bewerten, wenn die Untersuchungen abgeschlossen sind oder der Kurs deutlich zurückkommt.",
-   "added": "2026-11-23"
+   "added": "2026-11-24"
   },
   "NOVO-B.CO": {
    "name": "Novo Nordisk B",
@@ -435,7 +435,7 @@
    "reason": "Rückversicherer mit KGV etwa 10 bis 11, Dividende etwa 4,5 %, Eigenkapitalrendite von etwa 22 % und kaum KI-Bezug. Aber Quartalsgewinn zuletzt minus 13 %, Preise in der Rückversicherung sinken, Kurs nahe dem Rekordhoch von 602,80 €.",
    "entry": 540.0,
    "entry_note": "Rücksetzer von etwa 10 % abwarten. Vor einem Kauf die Preisentwicklung der Erneuerungsrunde zum 1.1. prüfen. Tranche etwa 1 % des Depots.",
-   "added": "2026-11-23"
+   "added": "2026-11-24"
   },
   "NESN.SW": {
    "name": "Nestlé",
@@ -443,7 +443,7 @@
    "reason": "Basiskonsum mit Eigenkapitalrendite von etwa 26 %, Free-Cashflow-Rendite etwa 5,7 %, Dividende etwa 3,9 % und geringer Schwankung (Beta 0,5). Aber Aktie nach etwa 18 % Anstieg in 30 Tagen nahe dem Jahreshoch, KGV 2026e etwa 21, Umsatz leicht rückläufig.",
    "entry": 78.0,
    "entry_note": "Einstieg bei etwa 78 CHF (rund 84 €, nahe dem 50-Tage-Schnitt, KGV etwa 17 bis 18). Vorher kein Kauf. Jahreszahlen am 18.02.2027.",
-   "added": "2026-11-23"
+   "added": "2026-11-24"
   }
  }
 }
