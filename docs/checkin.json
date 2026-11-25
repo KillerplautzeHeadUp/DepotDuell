@@ -1,9 +1,9 @@
 {
- "updated": "25.11.2026 20:47 Uhr",
- "value": 262307.12,
+ "updated": "25.11.2026 21:45 Uhr",
+ "value": 262340.57,
  "cash": 27991.38,
  "cash_pct": 10.7,
- "claude_idx": 92.94,
+ "claude_idx": 92.95,
  "bench_idx": 94.33,
  "user": {
   "date": "2026-11-25",
@@ -68,11 +68,11 @@
   },
   {
    "name": "Eli Lilly",
-   "price": 1271.35,
-   "pct": 11.17,
+   "price": 1273.99,
+   "pct": 11.4,
    "weight": 9.2,
    "stop_price": 1171.01,
-   "stop_dist": 7.9,
+   "stop_dist": 8.1,
    "trail": true
   },
   {
@@ -86,20 +86,20 @@
   },
   {
    "name": "JPMorgan Chase",
-   "price": 288.87,
-   "pct": -2.39,
+   "price": 288.35,
+   "pct": -2.57,
    "weight": 4.4,
    "stop_price": 236.76,
-   "stop_dist": 18.0,
+   "stop_dist": 17.9,
    "trail": false
   },
   {
    "name": "TSMC",
-   "price": 309.47,
-   "pct": -17.15,
+   "price": 309.23,
+   "pct": -17.22,
    "weight": 3.5,
    "stop_price": 280.16,
-   "stop_dist": 9.5,
+   "stop_dist": 9.4,
    "trail": false
   },
   {
@@ -113,8 +113,8 @@
   },
   {
    "name": "Bitcoin",
-   "price": 54543.19,
-   "pct": -24.17,
+   "price": 54547.43,
+   "pct": -24.16,
    "weight": 3.1,
    "stop_price": 46750.48,
    "stop_dist": 14.3,
@@ -122,11 +122,11 @@
   },
   {
    "name": "Alphabet (Klasse A)",
-   "price": 247.37,
-   "pct": -5.83,
+   "price": 247.87,
+   "pct": -5.65,
    "weight": 2.1,
    "stop_price": 197.02,
-   "stop_dist": 20.4,
+   "stop_dist": 20.5,
    "trail": false
   },
   {
@@ -197,12 +197,12 @@
    "ccy": "USD",
    "entry": 490.0,
    "entry_note": "Kursgrenze für Tranche 1. Erst kaufen, wenn sich der Nasdaq stabilisiert (5 Handelstage nicht unter dem Tief vom 20.11.). Tranche 1 etwa 1 % des Depots, Tranche 2 nach der Fed-Entscheidung im Dezember.",
-   "to_entry": 0.1,
-   "price": 490.44,
-   "day": -0.77,
-   "below_high": -12.3,
-   "ls_eur": 447.75,
-   "ls_age": -55
+   "to_entry": -0.1,
+   "price": 489.29,
+   "day": -1.0,
+   "below_high": -12.5,
+   "ls_eur": 444.85,
+   "ls_age": -54
   },
   {
    "ticker": "NVDA",
@@ -213,11 +213,11 @@
    "entry": null,
    "entry_note": "Kein Einstiegskurs. Nicht dem Kurssprung hinterherlaufen. Neu bewerten, wenn die Untersuchungen abgeschlossen sind oder der Kurs deutlich zurückkommt.",
    "to_entry": null,
-   "price": 147.85,
-   "day": -3.17,
-   "below_high": -39.2,
-   "ls_eur": 134.86,
-   "ls_age": -58
+   "price": 147.66,
+   "day": -3.29,
+   "below_high": -39.3,
+   "ls_eur": 134.23,
+   "ls_age": -57
   },
   {
    "ticker": "NOVO-B.CO",
@@ -231,8 +231,8 @@
    "price": 274.3,
    "day": -0.13,
    "below_high": -33.1,
-   "ls_eur": 37.23,
-   "ls_age": -56
+   "ls_eur": 37.27,
+   "ls_age": -54
   },
   {
    "ticker": "MUV2.DE",
@@ -246,8 +246,8 @@
    "price": 585.0,
    "day": -0.24,
    "below_high": -3.0,
-   "ls_eur": 587.0,
-   "ls_age": -58
+   "ls_eur": 589.3,
+   "ls_age": -57
   },
   {
    "ticker": "NESN.SW",
@@ -261,8 +261,8 @@
    "price": 87.15,
    "day": 0.83,
    "below_high": -1.4,
-   "ls_eur": 95.66,
-   "ls_age": -58
+   "ls_eur": 95.69,
+   "ls_age": -56
   }
  ]
 }

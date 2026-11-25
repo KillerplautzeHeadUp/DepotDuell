@@ -1,6 +1,6 @@
 {
- "updated": "25.11.2026 20:47 Uhr",
- "value": 262307.12,
+ "updated": "25.11.2026 21:45 Uhr",
+ "value": 262340.57,
  "cash": 27991.38,
  "reserve": 30000,
  "rate": 365,
@@ -151,8 +151,8 @@
   },
   {
    "date": "2026-11-25",
-   "value": 262307.12,
-   "idx": 92.94,
+   "value": 262340.57,
+   "idx": 92.95,
    "bench": 94.33
   }
  ],
@@ -347,17 +347,17 @@
    "ticker": "LLY",
    "qty": 19,
    "buy": 1143.57,
-   "price": 1271.35,
-   "pct": 11.17,
-   "value": 24155.73,
+   "price": 1273.99,
+   "pct": 11.4,
+   "value": 24205.82,
    "stop": 0.12,
-   "gain": 2427.9,
+   "gain": 2477.99,
    "region": "USA",
    "sector": "Gesundheit",
    "origin": "eigene Recherche",
    "trail": true,
    "stop_price": 1171.01,
-   "stop_dist": 7.9,
+   "stop_dist": 8.1,
    "weight": 9.2
   },
   {
@@ -383,17 +383,17 @@
    "ticker": "JPM",
    "qty": 40,
    "buy": 295.95,
-   "price": 288.87,
-   "pct": -2.39,
-   "value": 11554.62,
+   "price": 288.35,
+   "pct": -2.57,
+   "value": 11534.01,
    "stop": 0.2,
-   "gain": -283.38,
+   "gain": -303.99,
    "region": "USA",
    "sector": "Finanzen",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 236.76,
-   "stop_dist": 18.0,
+   "stop_dist": 17.9,
    "weight": 4.4
   },
   {
@@ -401,17 +401,17 @@
    "ticker": "TSM",
    "qty": 30,
    "buy": 373.54,
-   "price": 309.47,
-   "pct": -17.15,
-   "value": 9284.23,
+   "price": 309.23,
+   "pct": -17.22,
+   "value": 9276.77,
    "stop": 0.25,
-   "gain": -1921.97,
+   "gain": -1929.43,
    "region": "Asien",
    "sector": "Technologie",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 280.16,
-   "stop_dist": 9.5,
+   "stop_dist": 9.4,
    "weight": 3.5
   },
   {
@@ -437,11 +437,11 @@
    "ticker": "BTC-EUR",
    "qty": 0.15,
    "buy": 71923.82,
-   "price": 54543.19,
-   "pct": -24.17,
-   "value": 8181.48,
+   "price": 54547.43,
+   "pct": -24.16,
+   "value": 8182.11,
    "stop": 0.35,
-   "gain": -2607.09,
+   "gain": -2606.46,
    "region": "Global",
    "sector": "Krypto",
    "origin": "eigene Recherche",
@@ -455,17 +455,17 @@
    "ticker": "GOOGL",
    "qty": 22,
    "buy": 262.7,
-   "price": 247.37,
-   "pct": -5.83,
-   "value": 5442.23,
+   "price": 247.87,
+   "pct": -5.65,
+   "value": 5453.03,
    "stop": 0.25,
-   "gain": -337.17,
+   "gain": -326.37,
    "region": "USA",
    "sector": "Technologie",
    "origin": "durch Nutzerthema angestoßen",
    "trail": false,
    "stop_price": 197.02,
-   "stop_dist": 20.4,
+   "stop_dist": 20.5,
    "weight": 2.1
   },
   {
@@ -707,10 +707,10 @@
  },
  "risk": {
   "n": 25,
-  "mdd": -8.97,
+  "mdd": -8.96,
   "mdd_b": -7.19,
   "vol": 24.2,
-  "beta": 1.04
+  "beta": 1.03
  },
  "alloc": {
   "region": {
@@ -744,12 +744,12 @@
    "ccy": "USD",
    "entry": 490.0,
    "entry_note": "Kursgrenze für Tranche 1. Erst kaufen, wenn sich der Nasdaq stabilisiert (5 Handelstage nicht unter dem Tief vom 20.11.). Tranche 1 etwa 1 % des Depots, Tranche 2 nach der Fed-Entscheidung im Dezember.",
-   "to_entry": 0.1,
-   "price": 490.44,
-   "day": -0.77,
-   "below_high": -12.3,
-   "ls_eur": 447.75,
-   "ls_age": -55
+   "to_entry": -0.1,
+   "price": 489.29,
+   "day": -1.0,
+   "below_high": -12.5,
+   "ls_eur": 444.85,
+   "ls_age": -54
   },
   {
    "ticker": "NVDA",
@@ -760,11 +760,11 @@
    "entry": null,
    "entry_note": "Kein Einstiegskurs. Nicht dem Kurssprung hinterherlaufen. Neu bewerten, wenn die Untersuchungen abgeschlossen sind oder der Kurs deutlich zurückkommt.",
    "to_entry": null,
-   "price": 147.85,
-   "day": -3.17,
-   "below_high": -39.2,
-   "ls_eur": 134.86,
-   "ls_age": -58
+   "price": 147.66,
+   "day": -3.29,
+   "below_high": -39.3,
+   "ls_eur": 134.23,
+   "ls_age": -57
   },
   {
    "ticker": "NOVO-B.CO",
@@ -778,8 +778,8 @@
    "price": 274.3,
    "day": -0.13,
    "below_high": -33.1,
-   "ls_eur": 37.23,
-   "ls_age": -56
+   "ls_eur": 37.27,
+   "ls_age": -54
   },
   {
    "ticker": "MUV2.DE",
@@ -793,8 +793,8 @@
    "price": 585.0,
    "day": -0.24,
    "below_high": -3.0,
-   "ls_eur": 587.0,
-   "ls_age": -58
+   "ls_eur": 589.3,
+   "ls_age": -57
   },
   {
    "ticker": "NESN.SW",
@@ -808,8 +808,8 @@
    "price": 87.15,
    "day": 0.83,
    "below_high": -1.4,
-   "ls_eur": 95.66,
-   "ls_age": -58
+   "ls_eur": 95.69,
+   "ls_age": -56
   }
  ],
  "origin": [
@@ -817,15 +817,15 @@
    "name": "eigene Recherche",
    "n": 11,
    "cost": 248432,
-   "gain": -19558.99,
-   "pct": -7.87
+   "gain": -19536.34,
+   "pct": -7.86
   },
   {
    "name": "durch Nutzerthema angestoßen",
    "n": 1,
    "cost": 5779,
-   "gain": -337.17,
-   "pct": -5.83
+   "gain": -326.37,
+   "pct": -5.65
   }
  ],
  "intraday": [
@@ -1297,6 +1297,11 @@
   {
    "t": "2026-11-25 20:47",
    "v": 92.94,
+   "b": 94.33
+  },
+  {
+   "t": "2026-11-25 21:45",
+   "v": 92.95,
    "b": 94.33
   }
  ],
