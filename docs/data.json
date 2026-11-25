@@ -1,6 +1,6 @@
 {
- "updated": "24.11.2026 22:46 Uhr",
- "value": 267654.9,
+ "updated": "25.11.2026 07:58 Uhr",
+ "value": 267723.16,
  "cash": 27991.38,
  "reserve": 30000,
  "rate": 365,
@@ -148,6 +148,12 @@
    "value": 267654.9,
    "idx": 94.83,
    "bench": 96.12
+  },
+  {
+   "date": "2026-11-25",
+   "value": 267723.16,
+   "idx": 94.85,
+   "bench": 96.12
   }
  ],
  "user": [
@@ -263,7 +269,7 @@
    "ticker": "EUNL.DE",
    "qty": 550.0,
    "buy": 129.3567,
-   "price": 124.57,
+   "price": 124.56,
    "pct": -3.7,
    "value": 68510.75,
    "stop": null,
@@ -335,17 +341,17 @@
    "ticker": "LLY",
    "qty": 19,
    "buy": 1143.57,
-   "price": 1283.3,
-   "pct": 12.22,
-   "value": 24382.7,
+   "price": 1286.68,
+   "pct": 12.51,
+   "value": 24446.88,
    "stop": 0.12,
-   "gain": 2654.87,
+   "gain": 2719.05,
    "region": "USA",
    "sector": "Gesundheit",
    "origin": "eigene Recherche",
    "trail": true,
    "stop_price": 1171.01,
-   "stop_dist": 8.7,
+   "stop_dist": 9.0,
    "weight": 9.1
   },
   {
@@ -371,17 +377,17 @@
    "ticker": "JPM",
    "qty": 40,
    "buy": 295.95,
-   "price": 289.1,
-   "pct": -2.31,
-   "value": 11564.0,
+   "price": 289.86,
+   "pct": -2.06,
+   "value": 11594.44,
    "stop": 0.2,
-   "gain": -274.0,
+   "gain": -243.56,
    "region": "USA",
    "sector": "Finanzen",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 236.76,
-   "stop_dist": 18.1,
+   "stop_dist": 18.3,
    "weight": 4.3
   },
   {
@@ -389,17 +395,17 @@
    "ticker": "TSM",
    "qty": 30,
    "buy": 373.54,
-   "price": 318.37,
-   "pct": -14.77,
-   "value": 9550.97,
+   "price": 319.2,
+   "pct": -14.55,
+   "value": 9576.11,
    "stop": 0.25,
-   "gain": -1655.23,
+   "gain": -1630.09,
    "region": "Asien",
    "sector": "Technologie",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 280.16,
-   "stop_dist": 12.0,
+   "stop_dist": 12.2,
    "weight": 3.6
   },
   {
@@ -425,35 +431,35 @@
    "ticker": "BTC-EUR",
    "qty": 0.15,
    "buy": 71923.82,
-   "price": 54535.67,
-   "pct": -24.18,
-   "value": 8180.35,
+   "price": 54094.1,
+   "pct": -24.79,
+   "value": 8114.12,
    "stop": 0.35,
-   "gain": -2608.22,
+   "gain": -2674.46,
    "region": "Global",
    "sector": "Krypto",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 46750.48,
-   "stop_dist": 14.3,
-   "weight": 3.1
+   "stop_dist": 13.6,
+   "weight": 3.0
   },
   {
    "name": "Alphabet (Klasse A)",
    "ticker": "GOOGL",
    "qty": 22,
    "buy": 262.7,
-   "price": 254.41,
-   "pct": -3.16,
-   "value": 5597.02,
+   "price": 255.08,
+   "pct": -2.9,
+   "value": 5611.75,
    "stop": 0.25,
-   "gain": -182.38,
+   "gain": -167.65,
    "region": "USA",
    "sector": "Technologie",
    "origin": "durch Nutzerthema angestoßen",
    "trail": false,
    "stop_price": 197.02,
-   "stop_dist": 22.6,
+   "stop_dist": 22.8,
    "weight": 2.1
   },
   {
@@ -465,7 +471,7 @@
    "pct": -6.4,
    "value": 8508.73,
    "stop": null,
-   "gain": -582.13,
+   "gain": -582.12,
    "region": "Japan",
    "sector": "ETF breit",
    "origin": "eigene Recherche",
@@ -694,10 +700,10 @@
   "rule": "Basis"
  },
  "risk": {
-  "n": 24,
+  "n": 25,
   "mdd": -8.86,
   "mdd_b": -6.84,
-  "vol": 24.1,
+  "vol": 23.6,
   "beta": 1.03
  },
  "alloc": {
@@ -705,7 +711,7 @@
    "Cash": 10.5,
    "Welt": 25.6,
    "Schwellenländer": 9.7,
-   "Global": 11.1,
+   "Global": 11.0,
    "Europa": 20.9,
    "USA": 15.5,
    "Asien": 3.6,
@@ -720,7 +726,7 @@
    "Energie": 8.1,
    "Finanzen": 4.3,
    "Industrie": 4.3,
-   "Krypto": 3.1
+   "Krypto": 3.0
   }
  },
  "watch": [
@@ -736,8 +742,8 @@
    "price": 496.13,
    "day": 1.05,
    "below_high": -11.3,
-   "ls_eur": 452.82,
-   "ls_age": -54
+   "ls_eur": 448.52,
+   "ls_age": -55
   },
   {
    "ticker": "NVDA",
@@ -751,8 +757,8 @@
    "price": 155.38,
    "day": -5.98,
    "below_high": -36.2,
-   "ls_eur": 140.23,
-   "ls_age": -52
+   "ls_eur": 138.74,
+   "ls_age": -55
   },
   {
    "ticker": "NOVO-B.CO",
@@ -766,8 +772,8 @@
    "price": 274.65,
    "day": 3.12,
    "below_high": -33.0,
-   "ls_eur": 36.73,
-   "ls_age": -56
+   "ls_eur": 36.75,
+   "ls_age": -57
   },
   {
    "ticker": "MUV2.DE",
@@ -781,7 +787,7 @@
    "price": 586.8,
    "day": 0.72,
    "below_high": -2.7,
-   "ls_eur": 587.0,
+   "ls_eur": 586.5,
    "ls_age": -56
   },
   {
@@ -796,8 +802,8 @@
    "price": 86.28,
    "day": 1.34,
    "below_high": -2.4,
-   "ls_eur": 94.36,
-   "ls_age": -56
+   "ls_eur": 93.83,
+   "ls_age": -57
   }
  ],
  "origin": [
@@ -805,88 +811,18 @@
    "name": "eigene Recherche",
    "n": 11,
    "cost": 248432,
-   "gain": -14365.99,
-   "pct": -5.78
+   "gain": -14312.46,
+   "pct": -5.76
   },
   {
    "name": "durch Nutzerthema angestoßen",
    "n": 1,
    "cost": 5779,
-   "gain": -182.38,
-   "pct": -3.16
+   "gain": -167.65,
+   "pct": -2.9
   }
  ],
  "intraday": [
-  {
-   "t": "2026-11-17 07:57",
-   "v": 99.36,
-   "b": 100.3
-  },
-  {
-   "t": "2026-11-17 09:15",
-   "v": 99.28,
-   "b": 100.3
-  },
-  {
-   "t": "2026-11-17 10:28",
-   "v": 98.6,
-   "b": 99.05
-  },
-  {
-   "t": "2026-11-17 11:32",
-   "v": 98.68,
-   "b": 99.24
-  },
-  {
-   "t": "2026-11-17 12:40",
-   "v": 98.82,
-   "b": 99.37
-  },
-  {
-   "t": "2026-11-17 13:48",
-   "v": 99.0,
-   "b": 99.52
-  },
-  {
-   "t": "2026-11-17 15:05",
-   "v": 98.89,
-   "b": 99.39
-  },
-  {
-   "t": "2026-11-17 16:18",
-   "v": 98.52,
-   "b": 99.18
-  },
-  {
-   "t": "2026-11-17 17:24",
-   "v": 97.84,
-   "b": 98.43
-  },
-  {
-   "t": "2026-11-17 18:28",
-   "v": 97.61,
-   "b": 98.06
-  },
-  {
-   "t": "2026-11-17 19:21",
-   "v": 97.57,
-   "b": 98.06
-  },
-  {
-   "t": "2026-11-17 20:30",
-   "v": 97.51,
-   "b": 98.06
-  },
-  {
-   "t": "2026-11-17 21:43",
-   "v": 97.57,
-   "b": 98.06
-  },
-  {
-   "t": "2026-11-17 22:42",
-   "v": 97.62,
-   "b": 98.06
-  },
   {
    "t": "2026-11-18 07:56",
    "v": 97.67,
@@ -1295,6 +1231,11 @@
   {
    "t": "2026-11-24 22:46",
    "v": 94.83,
+   "b": 96.12
+  },
+  {
+   "t": "2026-11-25 07:58",
+   "v": 94.85,
    "b": 96.12
   }
  ],
