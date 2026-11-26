@@ -1,6 +1,6 @@
 {
- "updated": "26.11.2026 18:48 Uhr",
- "value": 267483.79,
+ "updated": "26.11.2026 19:45 Uhr",
+ "value": 267502.62,
  "cash": 27991.38,
  "reserve": 30000,
  "rate": 365,
@@ -157,7 +157,7 @@
   },
   {
    "date": "2026-11-26",
-   "value": 267483.79,
+   "value": 267502.62,
    "idx": 94.77,
    "bench": 97.09
   }
@@ -353,11 +353,11 @@
    "ticker": "LLY",
    "qty": 19,
    "buy": 1143.57,
-   "price": 1268.87,
-   "pct": 10.96,
-   "value": 24108.52,
+   "price": 1268.73,
+   "pct": 10.94,
+   "value": 24105.87,
    "stop": 0.12,
-   "gain": 2380.69,
+   "gain": 2378.04,
    "region": "USA",
    "sector": "Gesundheit",
    "origin": "eigene Recherche",
@@ -389,11 +389,11 @@
    "ticker": "JPM",
    "qty": 40,
    "buy": 295.95,
-   "price": 288.68,
-   "pct": -2.46,
-   "value": 11547.07,
+   "price": 288.65,
+   "pct": -2.47,
+   "value": 11545.81,
    "stop": 0.2,
-   "gain": -290.93,
+   "gain": -292.19,
    "region": "USA",
    "sector": "Finanzen",
    "origin": "eigene Recherche",
@@ -407,11 +407,11 @@
    "ticker": "TSM",
    "qty": 30,
    "buy": 373.54,
-   "price": 312.01,
-   "pct": -16.47,
-   "value": 9360.26,
+   "price": 311.97,
+   "pct": -16.48,
+   "value": 9359.23,
    "stop": 0.25,
-   "gain": -1845.94,
+   "gain": -1846.97,
    "region": "Asien",
    "sector": "Technologie",
    "origin": "eigene Recherche",
@@ -443,17 +443,17 @@
    "ticker": "BTC-EUR",
    "qty": 0.15,
    "buy": 71923.82,
-   "price": 55059.52,
-   "pct": -23.45,
-   "value": 8258.93,
+   "price": 55222.0,
+   "pct": -23.22,
+   "value": 8283.3,
    "stop": 0.35,
-   "gain": -2529.65,
+   "gain": -2505.27,
    "region": "Global",
    "sector": "Krypto",
    "origin": "eigene Recherche",
    "trail": false,
    "stop_price": 46750.48,
-   "stop_dist": 15.1,
+   "stop_dist": 15.3,
    "weight": 3.1
   },
   {
@@ -461,11 +461,11 @@
    "ticker": "GOOGL",
    "qty": 22,
    "buy": 262.7,
-   "price": 248.9,
-   "pct": -5.25,
-   "value": 5475.87,
+   "price": 248.88,
+   "pct": -5.26,
+   "value": 5475.27,
    "stop": 0.25,
-   "gain": -303.53,
+   "gain": -304.13,
    "region": "USA",
    "sector": "Technologie",
    "origin": "durch Nutzerthema angestoßen",
@@ -769,8 +769,8 @@
    "price": 149.3,
    "day": -2.22,
    "below_high": -38.7,
-   "ls_eur": 136.79,
-   "ls_age": -56
+   "ls_eur": 136.42,
+   "ls_age": -55
   },
   {
    "ticker": "NOVO-B.CO",
@@ -784,8 +784,8 @@
    "price": 277.25,
    "day": 1.08,
    "below_high": -32.4,
-   "ls_eur": 36.8,
-   "ls_age": -56
+   "ls_eur": 36.95,
+   "ls_age": -55
   },
   {
    "ticker": "MUV2.DE",
@@ -814,8 +814,8 @@
    "price": 87.65,
    "day": 0.47,
    "below_high": -0.9,
-   "ls_eur": 95.39,
-   "ls_age": -59
+   "ls_eur": 95.4,
+   "ls_age": -56
   }
  ],
  "origin": [
@@ -823,15 +823,15 @@
    "name": "eigene Recherche",
    "n": 11,
    "cost": 248432,
-   "gain": -14415.97,
-   "pct": -5.8
+   "gain": -14396.53,
+   "pct": -5.79
   },
   {
    "name": "durch Nutzerthema angestoßen",
    "n": 1,
    "cost": 5779,
-   "gain": -303.53,
-   "pct": -5.25
+   "gain": -304.13,
+   "pct": -5.26
   }
  ],
  "intraday": [
@@ -1287,6 +1287,11 @@
   },
   {
    "t": "2026-11-26 18:48",
+   "v": 94.77,
+   "b": 97.09
+  },
+  {
+   "t": "2026-11-26 19:45",
    "v": 94.77,
    "b": 97.09
   }

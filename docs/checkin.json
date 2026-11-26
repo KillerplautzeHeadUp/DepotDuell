@@ -1,6 +1,6 @@
 {
- "updated": "26.11.2026 18:48 Uhr",
- "value": 267483.79,
+ "updated": "26.11.2026 19:45 Uhr",
+ "value": 267502.62,
  "cash": 27991.38,
  "cash_pct": 10.5,
  "claude_idx": 94.77,
@@ -68,8 +68,8 @@
   },
   {
    "name": "Eli Lilly",
-   "price": 1268.87,
-   "pct": 10.96,
+   "price": 1268.73,
+   "pct": 10.94,
    "weight": 9.0,
    "stop_price": 1171.01,
    "stop_dist": 7.7,
@@ -86,8 +86,8 @@
   },
   {
    "name": "JPMorgan Chase",
-   "price": 288.68,
-   "pct": -2.46,
+   "price": 288.65,
+   "pct": -2.47,
    "weight": 4.3,
    "stop_price": 236.76,
    "stop_dist": 18.0,
@@ -95,8 +95,8 @@
   },
   {
    "name": "TSMC",
-   "price": 312.01,
-   "pct": -16.47,
+   "price": 311.97,
+   "pct": -16.48,
    "weight": 3.5,
    "stop_price": 280.16,
    "stop_dist": 10.2,
@@ -113,17 +113,17 @@
   },
   {
    "name": "Bitcoin",
-   "price": 55059.52,
-   "pct": -23.45,
+   "price": 55222.0,
+   "pct": -23.22,
    "weight": 3.1,
    "stop_price": 46750.48,
-   "stop_dist": 15.1,
+   "stop_dist": 15.3,
    "trail": false
   },
   {
    "name": "Alphabet (Klasse A)",
-   "price": 248.9,
-   "pct": -5.25,
+   "price": 248.88,
+   "pct": -5.26,
    "weight": 2.0,
    "stop_price": 197.02,
    "stop_dist": 20.8,
@@ -216,8 +216,8 @@
    "price": 149.3,
    "day": -2.22,
    "below_high": -38.7,
-   "ls_eur": 136.79,
-   "ls_age": -56
+   "ls_eur": 136.42,
+   "ls_age": -55
   },
   {
    "ticker": "NOVO-B.CO",
@@ -231,8 +231,8 @@
    "price": 277.25,
    "day": 1.08,
    "below_high": -32.4,
-   "ls_eur": 36.8,
-   "ls_age": -56
+   "ls_eur": 36.95,
+   "ls_age": -55
   },
   {
    "ticker": "MUV2.DE",
@@ -261,8 +261,8 @@
    "price": 87.65,
    "day": 0.47,
    "below_high": -0.9,
-   "ls_eur": 95.39,
-   "ls_age": -59
+   "ls_eur": 95.4,
+   "ls_age": -56
   }
  ]
 }
