@@ -1,6 +1,6 @@
 {
- "updated": "26.11.2026 20:55 Uhr",
- "value": 267507.52,
+ "updated": "26.11.2026 21:44 Uhr",
+ "value": 267527.96,
  "cash": 27991.38,
  "cash_pct": 10.5,
  "claude_idx": 94.78,
@@ -68,8 +68,8 @@
   },
   {
    "name": "Eli Lilly",
-   "price": 1268.59,
-   "pct": 10.93,
+   "price": 1268.73,
+   "pct": 10.94,
    "weight": 9.0,
    "stop_price": 1171.01,
    "stop_dist": 7.7,
@@ -86,8 +86,8 @@
   },
   {
    "name": "JPMorgan Chase",
-   "price": 288.61,
-   "pct": -2.48,
+   "price": 288.65,
+   "pct": -2.47,
    "weight": 4.3,
    "stop_price": 236.76,
    "stop_dist": 18.0,
@@ -95,8 +95,8 @@
   },
   {
    "name": "TSMC",
-   "price": 311.94,
-   "pct": -16.49,
+   "price": 311.97,
+   "pct": -16.48,
    "weight": 3.5,
    "stop_price": 280.16,
    "stop_dist": 10.2,
@@ -113,17 +113,17 @@
   },
   {
    "name": "Bitcoin",
-   "price": 55291.61,
-   "pct": -23.12,
+   "price": 55390.91,
+   "pct": -22.99,
    "weight": 3.1,
    "stop_price": 46750.48,
-   "stop_dist": 15.4,
+   "stop_dist": 15.6,
    "trail": false
   },
   {
    "name": "Alphabet (Klasse A)",
-   "price": 248.85,
-   "pct": -5.27,
+   "price": 248.88,
+   "pct": -5.26,
    "weight": 2.0,
    "stop_price": 197.02,
    "stop_dist": 20.8,
@@ -201,8 +201,8 @@
    "price": 489.93,
    "day": -0.87,
    "below_high": -12.4,
-   "ls_eur": 449.48,
-   "ls_age": -55
+   "ls_eur": 450.5,
+   "ls_age": -54
   },
   {
    "ticker": "NVDA",
@@ -216,8 +216,8 @@
    "price": 149.3,
    "day": -2.22,
    "below_high": -38.7,
-   "ls_eur": 136.73,
-   "ls_age": -57
+   "ls_eur": 137.58,
+   "ls_age": -55
   },
   {
    "ticker": "NOVO-B.CO",
@@ -231,7 +231,7 @@
    "price": 277.25,
    "day": 1.08,
    "below_high": -32.4,
-   "ls_eur": 36.9,
+   "ls_eur": 36.95,
    "ls_age": -56
   },
   {
@@ -246,8 +246,8 @@
    "price": 589.2,
    "day": 0.58,
    "below_high": -2.3,
-   "ls_eur": 587.6,
-   "ls_age": -54
+   "ls_eur": 587.4,
+   "ls_age": -55
   },
   {
    "ticker": "NESN.SW",
@@ -261,8 +261,8 @@
    "price": 87.65,
    "day": 0.47,
    "below_high": -0.9,
-   "ls_eur": 95.42,
-   "ls_age": -58
+   "ls_eur": 95.36,
+   "ls_age": -53
   }
  ]
 }
