@@ -1,10 +1,10 @@
 {
- "updated": "26.11.2026 10:41 Uhr",
- "value": 267109.2,
+ "updated": "26.11.2026 11:50 Uhr",
+ "value": 267184.29,
  "cash": 27991.38,
  "cash_pct": 10.5,
- "claude_idx": 94.63,
- "bench_idx": 96.78,
+ "claude_idx": 94.66,
+ "bench_idx": 96.88,
  "user": {
   "date": "2026-11-25",
   "idx": 95.47,
@@ -32,8 +32,8 @@
  "positions": [
   {
    "name": "iShares Core MSCI World",
-   "price": 125.42,
-   "pct": -3.05,
+   "price": 125.55,
+   "pct": -2.94,
    "weight": 25.8,
    "stop_price": null,
    "stop_dist": null,
@@ -42,7 +42,7 @@
   {
    "name": "iShares Core MSCI EM IMI",
    "price": 42.37,
-   "pct": -6.67,
+   "pct": -6.68,
    "weight": 9.8,
    "stop_price": null,
    "stop_dist": null,
@@ -50,8 +50,8 @@
   },
   {
    "name": "Xetra-Gold",
-   "price": 104.62,
-   "pct": -10.1,
+   "price": 104.39,
+   "pct": -10.29,
    "weight": 8.0,
    "stop_price": null,
    "stop_dist": null,
@@ -59,8 +59,8 @@
   },
   {
    "name": "ASML",
-   "price": 1163.0,
-   "pct": -16.52,
+   "price": 1164.0,
+   "pct": -16.45,
    "weight": 8.3,
    "stop_price": 1044.9,
    "stop_dist": 10.2,
@@ -68,8 +68,8 @@
   },
   {
    "name": "Eli Lilly",
-   "price": 1268.31,
-   "pct": 10.91,
+   "price": 1268.03,
+   "pct": 10.88,
    "weight": 9.0,
    "stop_price": 1171.01,
    "stop_dist": 7.7,
@@ -77,17 +77,17 @@
   },
   {
    "name": "TotalEnergies",
-   "price": 78.01,
-   "pct": -4.33,
+   "price": 78.39,
+   "pct": -3.86,
    "weight": 8.2,
    "stop_price": 65.23,
-   "stop_dist": 16.4,
+   "stop_dist": 16.8,
    "trail": false
   },
   {
    "name": "JPMorgan Chase",
-   "price": 288.55,
-   "pct": -2.5,
+   "price": 288.49,
+   "pct": -2.52,
    "weight": 4.3,
    "stop_price": 236.76,
    "stop_dist": 17.9,
@@ -95,8 +95,8 @@
   },
   {
    "name": "TSMC",
-   "price": 311.87,
-   "pct": -16.51,
+   "price": 311.8,
+   "pct": -16.53,
    "weight": 3.5,
    "stop_price": 280.16,
    "stop_dist": 10.2,
@@ -104,26 +104,26 @@
   },
   {
    "name": "Siemens",
-   "price": 251.35,
-   "pct": -2.12,
+   "price": 251.1,
+   "pct": -2.22,
    "weight": 4.2,
    "stop_price": 205.44,
-   "stop_dist": 18.3,
+   "stop_dist": 18.2,
    "trail": false
   },
   {
    "name": "Bitcoin",
-   "price": 55458.31,
-   "pct": -22.89,
+   "price": 55074.22,
+   "pct": -23.43,
    "weight": 3.1,
    "stop_price": 46750.48,
-   "stop_dist": 15.7,
+   "stop_dist": 15.1,
    "trail": false
   },
   {
    "name": "Alphabet (Klasse A)",
-   "price": 248.79,
-   "pct": -5.29,
+   "price": 248.74,
+   "pct": -5.31,
    "weight": 2.0,
    "stop_price": 197.02,
    "stop_dist": 20.8,
@@ -131,8 +131,8 @@
   },
   {
    "name": "iShares Core MSCI Japan IMI",
-   "price": 68.9,
-   "pct": -5.44,
+   "price": 68.94,
+   "pct": -5.39,
    "weight": 3.2,
    "stop_price": null,
    "stop_dist": null,
@@ -201,7 +201,7 @@
    "price": 489.93,
    "day": -0.87,
    "below_high": -12.4,
-   "ls_eur": 448.75,
+   "ls_eur": 447.73,
    "ls_age": -57
   },
   {
@@ -216,8 +216,8 @@
    "price": 149.3,
    "day": -2.22,
    "below_high": -38.7,
-   "ls_eur": 136.52,
-   "ls_age": -54
+   "ls_eur": 136.63,
+   "ls_age": -57
   },
   {
    "ticker": "NOVO-B.CO",
@@ -227,12 +227,12 @@
    "ccy": "DKK",
    "entry": 224.0,
    "entry_note": "Einstieg bei etwa 30 € (224 DKK, rund 15 % unter dem Kurs vom 20.11.). Nicht vor den Jahreszahlen im Februar 2027.",
-   "to_entry": 24.7,
-   "price": 279.3,
-   "day": 1.82,
-   "below_high": -31.9,
-   "ls_eur": 37.39,
-   "ls_age": -56
+   "to_entry": 24.1,
+   "price": 277.95,
+   "day": 1.33,
+   "below_high": -32.2,
+   "ls_eur": 37.22,
+   "ls_age": -52
   },
   {
    "ticker": "MUV2.DE",
@@ -242,12 +242,12 @@
    "ccy": "EUR",
    "entry": 540.0,
    "entry_note": "Rücksetzer von etwa 10 % abwarten. Vor einem Kauf die Preisentwicklung der Erneuerungsrunde zum 1.1. prüfen. Tranche etwa 1 % des Depots.",
-   "to_entry": 9.0,
-   "price": 588.8,
-   "day": 0.51,
-   "below_high": -2.3,
-   "ls_eur": 588.6,
-   "ls_age": -53
+   "to_entry": 8.7,
+   "price": 587.2,
+   "day": 0.24,
+   "below_high": -2.6,
+   "ls_eur": 587.1,
+   "ls_age": -52
   },
   {
    "ticker": "NESN.SW",
@@ -257,12 +257,12 @@
    "ccy": "CHF",
    "entry": 78.0,
    "entry_note": "Einstieg bei etwa 78 CHF (rund 84 €, nahe dem 50-Tage-Schnitt, KGV etwa 17 bis 18). Vorher kein Kauf. Jahreszahlen am 18.02.2027.",
-   "to_entry": 12.0,
-   "price": 87.36,
-   "day": 0.14,
-   "below_high": -1.2,
-   "ls_eur": 95.52,
-   "ls_age": -57
+   "to_entry": 12.2,
+   "price": 87.49,
+   "day": 0.29,
+   "below_high": -1.1,
+   "ls_eur": 95.55,
+   "ls_age": -54
   }
  ]
 }
