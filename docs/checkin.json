@@ -1,9 +1,9 @@
 {
- "updated": "27.11.2026 19:44 Uhr",
- "value": 271267.9,
+ "updated": "27.11.2026 20:49 Uhr",
+ "value": 271286.65,
  "cash": 28173.88,
  "cash_pct": 10.4,
- "claude_idx": 95.98,
+ "claude_idx": 95.99,
  "bench_idx": 98.16,
  "user": {
   "date": "2026-11-25",
@@ -68,8 +68,8 @@
   },
   {
    "name": "Eli Lilly",
-   "price": 1273.15,
-   "pct": 11.33,
+   "price": 1272.91,
+   "pct": 11.31,
    "weight": 8.9,
    "stop_price": 1171.01,
    "stop_dist": 8.0,
@@ -86,8 +86,8 @@
   },
   {
    "name": "JPMorgan Chase",
-   "price": 295.15,
-   "pct": -0.27,
+   "price": 295.25,
+   "pct": -0.24,
    "weight": 4.4,
    "stop_price": 236.76,
    "stop_dist": 19.8,
@@ -95,8 +95,8 @@
   },
   {
    "name": "TSMC",
-   "price": 323.06,
-   "pct": -13.51,
+   "price": 323.02,
+   "pct": -13.52,
    "weight": 3.6,
    "stop_price": 280.16,
    "stop_dist": 13.3,
@@ -113,17 +113,17 @@
   },
   {
    "name": "Bitcoin",
-   "price": 54637.59,
-   "pct": -24.03,
+   "price": 54778.51,
+   "pct": -23.84,
    "weight": 3.0,
    "stop_price": 46750.48,
-   "stop_dist": 14.4,
+   "stop_dist": 14.7,
    "trail": false
   },
   {
    "name": "Alphabet (Klasse A)",
-   "price": 251.4,
-   "pct": -4.3,
+   "price": 251.37,
+   "pct": -4.31,
    "weight": 2.0,
    "stop_price": 197.02,
    "stop_dist": 21.6,
@@ -201,8 +201,8 @@
    "price": 492.85,
    "day": 0.15,
    "below_high": -11.9,
-   "ls_eur": 451.65,
-   "ls_age": -58
+   "ls_eur": 452.05,
+   "ls_age": -54
   },
   {
    "ticker": "NVDA",
@@ -216,7 +216,7 @@
    "price": 150.49,
    "day": -0.02,
    "below_high": -38.2,
-   "ls_eur": 136.71,
+   "ls_eur": 136.9,
    "ls_age": -55
   },
   {
@@ -231,8 +231,8 @@
    "price": 280.6,
    "day": 1.21,
    "below_high": -31.6,
-   "ls_eur": 37.48,
-   "ls_age": -56
+   "ls_eur": 37.51,
+   "ls_age": -55
   },
   {
    "ticker": "MUV2.DE",
@@ -246,8 +246,8 @@
    "price": 585.4,
    "day": -0.64,
    "below_high": -2.9,
-   "ls_eur": 586.3,
-   "ls_age": -58
+   "ls_eur": 586.1,
+   "ls_age": -53
   },
   {
    "ticker": "NESN.SW",
@@ -261,8 +261,8 @@
    "price": 87.34,
    "day": -0.41,
    "below_high": -1.2,
-   "ls_eur": 95.62,
-   "ls_age": -57
+   "ls_eur": 95.52,
+   "ls_age": -56
   }
  ]
 }
