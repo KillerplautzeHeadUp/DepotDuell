@@ -78,7 +78,7 @@
    "qty": 19,
    "buy": 1143.57,
    "stop": 0.12,
-   "last": 1273.3092,
+   "last": 1273.1537,
    "cls": "stock",
    "since": "2026-10-23",
    "trail": true,
@@ -105,7 +105,7 @@
    "qty": 40,
    "buy": 295.95,
    "stop": 0.2,
-   "last": 295.0721,
+   "last": 295.1544,
    "cls": "stock",
    "since": "2026-10-23",
    "isin": "US46625H1005"
@@ -117,7 +117,7 @@
    "qty": 30,
    "buy": 373.54,
    "stop": 0.25,
-   "last": 319.8039,
+   "last": 323.0588,
    "cls": "stock",
    "since": "2026-10-23",
    "isin": "US8740391003",
@@ -144,7 +144,7 @@
    "qty": 0.15,
    "buy": 71923.82,
    "stop": 0.35,
-   "last": 54367.2109,
+   "last": 54637.5898,
    "cls": "crypto",
    "since": "2026-10-24"
   },
@@ -155,7 +155,7 @@
    "qty": 22,
    "buy": 262.7,
    "stop": 0.25,
-   "last": 249.4485,
+   "last": 251.3959,
    "cls": "stock",
    "since": "2026-10-29",
    "isin": "US02079K3059",
@@ -416,8 +416,8 @@
   "rule": "Basis"
  },
  "last_core": "2026-11-27",
- "last_report": "2026-11-20",
- "report_idx": 93.18,
+ "last_report": "2026-11-27",
+ "report_idx": 95.98,
  "watch_info": {
   "MSFT": {
    "name": "Microsoft",
