@@ -1,9 +1,9 @@
 {
- "updated": "27.11.2026 21:45 Uhr",
- "value": 271273.24,
+ "updated": "27.11.2026 22:45 Uhr",
+ "value": 271287.67,
  "cash": 28173.88,
  "cash_pct": 10.4,
- "claude_idx": 95.98,
+ "claude_idx": 95.99,
  "bench_idx": 98.16,
  "user": {
   "date": "2026-11-25",
@@ -68,8 +68,8 @@
   },
   {
    "name": "Eli Lilly",
-   "price": 1273.05,
-   "pct": 11.32,
+   "price": 1273.33,
+   "pct": 11.35,
    "weight": 8.9,
    "stop_price": 1171.01,
    "stop_dist": 8.0,
@@ -86,8 +86,8 @@
   },
   {
    "name": "JPMorgan Chase",
-   "price": 295.28,
-   "pct": -0.23,
+   "price": 295.35,
+   "pct": -0.2,
    "weight": 4.4,
    "stop_price": 236.76,
    "stop_dist": 19.8,
@@ -95,8 +95,8 @@
   },
   {
    "name": "TSMC",
-   "price": 323.06,
-   "pct": -13.51,
+   "price": 323.13,
+   "pct": -13.5,
    "weight": 3.6,
    "stop_price": 280.16,
    "stop_dist": 13.3,
@@ -113,8 +113,8 @@
   },
   {
    "name": "Bitcoin",
-   "price": 54651.83,
-   "pct": -24.01,
+   "price": 54673.29,
+   "pct": -23.98,
    "weight": 3.0,
    "stop_price": 46750.48,
    "stop_dist": 14.5,
@@ -122,8 +122,8 @@
   },
   {
    "name": "Alphabet (Klasse A)",
-   "price": 251.4,
-   "pct": -4.3,
+   "price": 251.45,
+   "pct": -4.28,
    "weight": 2.0,
    "stop_price": 197.02,
    "stop_dist": 21.6,
@@ -201,8 +201,8 @@
    "price": 492.85,
    "day": 0.15,
    "below_high": -11.9,
-   "ls_eur": 452.95,
-   "ls_age": -54
+   "ls_eur": 453.25,
+   "ls_age": -55
   },
   {
    "ticker": "NVDA",
@@ -216,7 +216,7 @@
    "price": 150.49,
    "day": -0.02,
    "below_high": -38.2,
-   "ls_eur": 137.32,
+   "ls_eur": 136.93,
    "ls_age": -58
   },
   {
@@ -231,8 +231,8 @@
    "price": 280.6,
    "day": 1.21,
    "below_high": -31.6,
-   "ls_eur": 37.51,
-   "ls_age": -57
+   "ls_eur": 37.56,
+   "ls_age": -53
   },
   {
    "ticker": "MUV2.DE",
@@ -246,8 +246,8 @@
    "price": 585.4,
    "day": -0.64,
    "below_high": -2.9,
-   "ls_eur": 586.7,
-   "ls_age": -55
+   "ls_eur": 586.2,
+   "ls_age": -52
   },
   {
    "ticker": "NESN.SW",
@@ -261,8 +261,8 @@
    "price": 87.34,
    "day": -0.41,
    "below_high": -1.2,
-   "ls_eur": 95.61,
-   "ls_age": -57
+   "ls_eur": 95.66,
+   "ls_age": -53
   }
  ]
 }

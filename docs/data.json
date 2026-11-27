@@ -1,6 +1,6 @@
 {
- "updated": "27.11.2026 21:45 Uhr",
- "value": 271273.24,
+ "updated": "27.11.2026 22:45 Uhr",
+ "value": 271287.67,
  "cash": 28173.88,
  "reserve": 30000,
  "rate": 365,
@@ -163,8 +163,8 @@
   },
   {
    "date": "2026-11-27",
-   "value": 271273.24,
-   "idx": 95.98,
+   "value": 271287.67,
+   "idx": 95.99,
    "bench": 98.16
   }
  ],
@@ -359,11 +359,11 @@
    "ticker": "LLY",
    "qty": 19,
    "buy": 1143.57,
-   "price": 1273.05,
-   "pct": 11.32,
-   "value": 24188.01,
+   "price": 1273.33,
+   "pct": 11.35,
+   "value": 24193.3,
    "stop": 0.12,
-   "gain": 2460.18,
+   "gain": 2465.47,
    "region": "USA",
    "sector": "Gesundheit",
    "origin": "eigene Recherche",
@@ -395,11 +395,11 @@
    "ticker": "JPM",
    "qty": 40,
    "buy": 295.95,
-   "price": 295.28,
-   "pct": -0.23,
-   "value": 11811.29,
+   "price": 295.35,
+   "pct": -0.2,
+   "value": 11813.88,
    "stop": 0.2,
-   "gain": -26.71,
+   "gain": -24.12,
    "region": "USA",
    "sector": "Finanzen",
    "origin": "eigene Recherche",
@@ -413,11 +413,11 @@
    "ticker": "TSM",
    "qty": 30,
    "buy": 373.54,
-   "price": 323.06,
-   "pct": -13.51,
-   "value": 9691.76,
+   "price": 323.13,
+   "pct": -13.5,
+   "value": 9693.88,
    "stop": 0.25,
-   "gain": -1514.44,
+   "gain": -1512.32,
    "region": "Asien",
    "sector": "Technologie",
    "origin": "eigene Recherche",
@@ -449,11 +449,11 @@
    "ticker": "BTC-EUR",
    "qty": 0.15,
    "buy": 71923.82,
-   "price": 54651.83,
-   "pct": -24.01,
-   "value": 8197.77,
+   "price": 54673.29,
+   "pct": -23.98,
+   "value": 8200.99,
    "stop": 0.35,
-   "gain": -2590.8,
+   "gain": -2587.58,
    "region": "Global",
    "sector": "Krypto",
    "origin": "eigene Recherche",
@@ -467,11 +467,11 @@
    "ticker": "GOOGL",
    "qty": 22,
    "buy": 262.7,
-   "price": 251.4,
-   "pct": -4.3,
-   "value": 5530.71,
+   "price": 251.45,
+   "pct": -4.28,
+   "value": 5531.92,
    "stop": 0.25,
-   "gain": -248.69,
+   "gain": -247.48,
    "region": "USA",
    "sector": "Technologie",
    "origin": "durch Nutzerthema angestoßen",
@@ -735,7 +735,7 @@
   "n": 27,
   "mdd": -8.95,
   "mdd_b": -7.19,
-  "vol": 24.6,
+  "vol": 24.7,
   "beta": 0.99
  },
  "alloc": {
@@ -774,8 +774,8 @@
    "price": 492.85,
    "day": 0.15,
    "below_high": -11.9,
-   "ls_eur": 452.95,
-   "ls_age": -54
+   "ls_eur": 453.25,
+   "ls_age": -55
   },
   {
    "ticker": "NVDA",
@@ -789,7 +789,7 @@
    "price": 150.49,
    "day": -0.02,
    "below_high": -38.2,
-   "ls_eur": 137.32,
+   "ls_eur": 136.93,
    "ls_age": -58
   },
   {
@@ -804,8 +804,8 @@
    "price": 280.6,
    "day": 1.21,
    "below_high": -31.6,
-   "ls_eur": 37.51,
-   "ls_age": -57
+   "ls_eur": 37.56,
+   "ls_age": -53
   },
   {
    "ticker": "MUV2.DE",
@@ -819,8 +819,8 @@
    "price": 585.4,
    "day": -0.64,
    "below_high": -2.9,
-   "ls_eur": 586.7,
-   "ls_age": -55
+   "ls_eur": 586.2,
+   "ls_age": -52
   },
   {
    "ticker": "NESN.SW",
@@ -834,8 +834,8 @@
    "price": 87.34,
    "day": -0.41,
    "below_high": -1.2,
-   "ls_eur": 95.61,
-   "ls_age": -57
+   "ls_eur": 95.66,
+   "ls_age": -53
   }
  ],
  "origin": [
@@ -843,15 +843,15 @@
    "name": "eigene Recherche",
    "n": 11,
    "cost": 248615,
-   "gain": -11046.36,
+   "gain": -11033.14,
    "pct": -4.44
   },
   {
    "name": "durch Nutzerthema angestoßen",
    "n": 1,
    "cost": 5779,
-   "gain": -248.69,
-   "pct": -4.3
+   "gain": -247.48,
+   "pct": -4.28
   }
  ],
  "intraday": [
@@ -1318,6 +1318,11 @@
   {
    "t": "2026-11-27 21:45",
    "v": 95.98,
+   "b": 98.16
+  },
+  {
+   "t": "2026-11-27 22:45",
+   "v": 95.99,
    "b": 98.16
   }
  ],
