@@ -1,9 +1,9 @@
 {
- "updated": "27.11.2026 22:45 Uhr",
- "value": 271287.67,
- "cash": 28173.88,
- "cash_pct": 10.4,
- "claude_idx": 95.99,
+ "updated": "28.11.2026 08:54 Uhr",
+ "value": 271112.87,
+ "cash": 25926.96,
+ "cash_pct": 9.6,
+ "claude_idx": 95.93,
  "bench_idx": 98.16,
  "user": {
   "date": "2026-11-25",
@@ -68,11 +68,11 @@
   },
   {
    "name": "Eli Lilly",
-   "price": 1273.33,
-   "pct": 11.35,
+   "price": 1269.02,
+   "pct": 10.97,
    "weight": 8.9,
    "stop_price": 1171.01,
-   "stop_dist": 8.0,
+   "stop_dist": 7.7,
    "trail": true
   },
   {
@@ -86,20 +86,20 @@
   },
   {
    "name": "JPMorgan Chase",
-   "price": 295.35,
-   "pct": -0.2,
-   "weight": 4.4,
+   "price": 294.35,
+   "pct": -0.54,
+   "weight": 4.3,
    "stop_price": 236.76,
-   "stop_dist": 19.8,
+   "stop_dist": 19.6,
    "trail": false
   },
   {
    "name": "TSMC",
-   "price": 323.13,
-   "pct": -13.5,
+   "price": 322.03,
+   "pct": -13.79,
    "weight": 3.6,
    "stop_price": 280.16,
-   "stop_dist": 13.3,
+   "stop_dist": 13.0,
    "trail": false
   },
   {
@@ -113,8 +113,8 @@
   },
   {
    "name": "Bitcoin",
-   "price": 54673.29,
-   "pct": -23.98,
+   "price": 54672.37,
+   "pct": -23.99,
    "weight": 3.0,
    "stop_price": 46750.48,
    "stop_dist": 14.5,
@@ -122,11 +122,11 @@
   },
   {
    "name": "Alphabet (Klasse A)",
-   "price": 251.45,
-   "pct": -4.28,
+   "price": 250.6,
+   "pct": -4.61,
    "weight": 2.0,
    "stop_price": 197.02,
-   "stop_dist": 21.6,
+   "stop_dist": 21.4,
    "trail": false
   },
   {
@@ -137,9 +137,27 @@
    "stop_price": null,
    "stop_dist": null,
    "trail": false
+  },
+  {
+   "name": "Microsoft",
+   "price": 449.18,
+   "pct": 0.0,
+   "weight": 0.8,
+   "stop_price": 359.35,
+   "stop_dist": 20.0,
+   "trail": false
   }
  ],
  "trades": [
+  {
+   "date": "2026-11-28",
+   "side": "Kauf",
+   "name": "Microsoft",
+   "qty": 5.0,
+   "price": 449.18,
+   "fee": 1.0,
+   "note": "Limit-Auftrag. eigene Recherche. Tranche 1 laut Watchlist, Kursgrenze 490 $ (etwa 450 €), Nasdaq seit 20.11. nicht unter dem Tief."
+  },
   {
    "date": "2026-11-27",
    "side": "Kauf",
@@ -175,15 +193,6 @@
    "price": 126.86,
    "fee": 1.0,
    "note": "Korrektur Doppelbuchung"
-  },
-  {
-   "date": "2026-11-09",
-   "side": "Kauf",
-   "name": "iShares Core MSCI World",
-   "qty": 47.0,
-   "price": 126.86,
-   "fee": 1.0,
-   "note": "Umbuchung"
   }
  ],
  "orders": [],
@@ -201,8 +210,8 @@
    "price": 492.85,
    "day": 0.15,
    "below_high": -11.9,
-   "ls_eur": 453.25,
-   "ls_age": -55
+   "ls_eur": 453.5,
+   "ls_age": 536
   },
   {
    "ticker": "NVDA",
@@ -216,8 +225,8 @@
    "price": 150.49,
    "day": -0.02,
    "below_high": -38.2,
-   "ls_eur": 136.93,
-   "ls_age": -58
+   "ls_eur": 136.97,
+   "ls_age": 534
   },
   {
    "ticker": "NOVO-B.CO",
@@ -232,7 +241,7 @@
    "day": 1.21,
    "below_high": -31.6,
    "ls_eur": 37.56,
-   "ls_age": -53
+   "ls_age": 534
   },
   {
    "ticker": "MUV2.DE",
@@ -247,7 +256,7 @@
    "day": -0.64,
    "below_high": -2.9,
    "ls_eur": 586.2,
-   "ls_age": -52
+   "ls_age": 534
   },
   {
    "ticker": "NESN.SW",
@@ -262,7 +271,7 @@
    "day": -0.41,
    "below_high": -1.2,
    "ls_eur": 95.66,
-   "ls_age": -53
+   "ls_age": 534
   }
  ]
 }
