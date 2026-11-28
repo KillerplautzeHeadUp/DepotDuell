@@ -95,8 +95,10 @@ def ls_price(isin, cache):
         v = float(rows[-1][1]) if rows else None
         if not v or v <= 0:
             return None
-        age = (dt.datetime.now(dt.timezone.utc).timestamp() - rows[-1][0] / 1000) / 60
-        return v, round(age)
+        # L&S nennt die Uhrzeit in deutscher Ortszeit (als UTC-Zahl verpackt), daher den Zeitversatz addieren
+        off = dt.datetime.now(__import__("zoneinfo").ZoneInfo("Europe/Berlin")).utcoffset().total_seconds()
+        age = (dt.datetime.now(dt.timezone.utc).timestamp() + off - rows[-1][0] / 1000) / 60
+        return v, max(0, round(age))
     except Exception as e:
         print("L&S-Fehler", isin, e)
         return None
