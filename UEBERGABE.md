@@ -55,6 +55,6 @@ Marktlage (Quellen: Portale, nicht unabhängig geprüft): Woche bis 27.11. kräf
 - Indien: Ölpreis über 97 $ und steigend, kein Einstieg. Nächster Blick Mitte Dezember. Dann mit Live-Kurs den iShares MSCI India UCITS ETF (ISIN IE00BZCQB185) mit etwa 2 % prüfen, Cash-Quote beachten.
 - GE Vernova: nicht auf der Skript-Watchlist, Daten alt (797 $ am 10.11.), bei der nächsten Recherche aktualisieren.
 - Nutzer: Depotwert per Telegram melden ("DEPOT 278600"), falls noch nicht geschehen.
-- Technik für die nächste Änderungsrunde: Das Alter der L&S-Kurse wird mit etwa −55 Minuten angezeigt (L&S nennt deutsche Ortszeit, das Skript rechnet mit UTC), die 30-Minuten-Grenze der Abweichungsprüfung wirkt deshalb nicht wie gedacht. In DUELL_REGELN.md die Zeile ergänzen, dass bei jeder Recherche zuerst data.json abgerufen wird.
+- Technik: Der Fehler beim Alter der L&S-Kurse (etwa −55 Minuten, weil L&S deutsche Ortszeit nennt) ist in update.py behoben. Nach dem nächsten Lauf prüfen, dass "ls_age" in der Watchlist von data.json kleine positive Minuten zeigt. DUELL_REGELN.md (Stand 28.11.) enthält die Regel, bei jeder Recherche zuerst data.json abzurufen.
 - Anthropic-Aktie (ANT): kein Kauf durch Claude.
 - Optional später: echter KI-Agent über die API (grob 0,50 bis 10 $ pro Monat).
